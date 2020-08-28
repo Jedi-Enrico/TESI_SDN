@@ -1,0 +1,251 @@
+
+
+%Another key point in the embedded systems development is the Integrated Circuit (IC) technology, that can increase the design cost decreasing the final unit cost, as a trade-off between different form factors. \par
+%Finally, also the use of different design technologies can improve the development of such kind of systems, addressing the needs of the leading companies. 
+%Due frasi per dire complessità HW/SW e necessità di metodologie di progetto adeguate
+%
+% HW/SW Co-Design
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%It is possible to consider the basic trade-off as a possible alternatives in terms of processors and IC technologies, and the switch between hybrid solution in HW or SW can increase/decrease different features. \par
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Therefore, the most important issues in choosing the best HW/SW technology is related to allocate and bind component in HW and SW in the right manner (e.g. the so called "Partitioning" activity). 
+
+%The problem involves the behavioral description of embedded application under FR/NFR, related to Functional (F) or Non-Functional (NF) constraints, optimizing a function that consider HW/SW implementation with different requirements and metrics. 
+
+%It form an optimized system of hardware, software and a communication structure and require a partitioning of the available system specification, communication synthesis, co-simulation and compilation of the SW components and HW synthesis. 
+%In the HW/SW Co-Design flow there are two kind of mixed HW/SW systems:
+%
+%\begin{itemize}
+%    \item Type I: after the specification and benchmark step in a system-level view, the partitioning part splits functionalities into processor architecture (and number of required instruction) and software languages (and compiler tools). Processor functionalities are created from scratch starting from input specification \cite{archC};
+%    \item Type II: the partitioning step splits functionalities in specific HW components (SPP) and SW-component on microprocessor or microcontroller (GPP. ASP), with cooperating HW/SW components and interfaces.
+%\end{itemize}
+
+%In the HW/SW design space implementation of type II systems, the most important issues is related to allocate and bind component in HW and SW in the right manner. 
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Many time these systems are often used in scenarios characterized also by real-time constraints.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%This work focuses also on dedicated systems. A Dedicated System (DS) is a digital electronic system with an application-specific HW/SW architecture. It is specifically designed in order to satisfy a priori known application requirements (both functional and non-functional). A DS could be then embedded in a more complex system and/or it could be subjected to hard/soft real-time constraints. When DS are also HMPS they are called Dedicated Heterogeneous Multi-Processor Systems (D-HMPS). \par
+%D-HMPS are so complex that the adopted HW/SW Co-Design Methodology plays a major role in determining the success of a product. 
+%
+%Moreover, in order to cope with such a complexity, the selected methodology should allow the designer to start working at the so-called Electronic System-Level (ESL) of abstraction. This means to be able to 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Other works \cite{bib26_new09_lee} aims to the problem of designing embedded real-time systems starting from the input/output constraints on the final implementation. Offline schedulability and feasibility analysis involve different research works \cite{bib26_new10_shin,bib26_new11_stan,bib26_new12_but,bib26_new13_crespo} in real-time domain, with respect to the correct algorithms that can guarantee optimality depending on the load parameters. To analyze the behavior of a system, many tools have been developed in order to evaluate/estimate timing parameters, to validate scheduling and to perform simulations.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%In case of single-processor/core MCES, it is crucial to ensure temporal isolation among tasks. In fact, such MCES can be viewed as systems with \textit{Time Division Multiple Access} (TDMA)  \cite{bib01}, in which resources are assigned to tasks at different time slots. In case of parallel MCES, different embedded applications run in parallel on different processors/cores competing to access shared resources by using different communication and synchronization mechanisms. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%A preliminary analysis involves the real-time computing methodologies [5] and works related to industrial [6] and academic research [7], with focus on new techniques for handling real-time tasks [8]. The next step covers the introduction of criticality levels associated to system tasks.A series of safety-related industrial standards (IEC61508, DO-178C, ISO26262 and so on) are analyzed with respect to the criticality level: the preliminary safety assessment process to identify Development Assurance Level (DAL) in aeronautics and avionics domains; Safety Integrity Level (SIL) for electrical controls; and Automotive Safety Integrity Level (ASIL) for road vehicles standards [9].
+
+% a series of research papers have been published \cite{bib02}, with no standard problem formulation with respect to the assurance levels and the real-time task model \cite{bib08}.
+
+
+Techniques to guarantee safety Requirements. \par
+Separation Techniques:
+%
+\begin{itemize}
+    \item Timing separation:  Scheduling policy, temporal partitioning with HVP, NoC.
+    \item Spatial separation: One task per core, one task on HW ad hoc (DSP, FPGA), spatial partition with HVP, NoC, MMU, MPU etc. 
+\end{itemize}
+%
+HW Solution: 
+%
+\begin{itemize}
+    \item  Timing separation: Scheduling HW; 
+    \item Spatial separation: Separated Task on dedicated components (HW ad hoc, FPGA etc.). 
+\end{itemize}
+%
+Single-core solution: 
+%
+\begin{itemize}
+    \item Timing separation:  Scheduling policy with SO o RTOS, Scheduling policy with HVP.
+    \item Spatial separation: MMU, MPU, HVP Partitioning. 
+\end{itemize}
+%
+Multi-core solution: 
+%
+\begin{itemize}
+    \item Architecture: Shared memory systems, Uniform Memory Architecture, UMA (SMP), Not Uniform Memory Architecture, NUMA, distributed systems, NoC.
+    \item Timing separation:  Scheduling policy with SO o RTOS, Scheduling policy with HVP.
+    \item Spatial separation: MMU, MPU, HVP Partitioning. 
+\end{itemize}
+%
+Many-core solution: WIP. \par
+Technologies:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Hepsycode Verification and Validation}  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% OTHER USE CASES %%%%%%%
+%
+\section{Digital Camera}
+%
+TODO.
+%
+\subsection{HML Specification}
+%
+TODO.
+%
+\subsection{Metrics Evaluation}
+%
+TODO.
+%
+\subsection{PAM1}
+%
+TODO.
+%
+\subsection{PAM2}
+%
+TODO.
+%
+\subsection{Timing Simulation}
+%
+TODO.
+%
+\section{Hepsycode Real-Time}
+%
+TODO.
+%
+\subsection{HML Specification}
+%
+TODO.
+%
+\subsection{Metrics Evaluation}
+%
+TODO.
+%
+\subsection{PAM1}
+%
+TODO.
+%
+\subsection{PAM2}
+%
+TODO.
+%
+\subsection{Timing Simulation}
+%
+TODO.
+%
+\section{Sobel Filter}
+%
+TODO.
+%
+\subsection{HML Specification}
+%
+TODO.
+%
+\subsection{Metrics Evaluation}
+%
+TODO.
+%
+\subsection{PAM1}
+%
+TODO.
+%
+\subsection{PAM2}
+%
+TODO.
+%
+\subsection{Timing Simulation}
+%
+TODO.
+%
+\section{Complex Combined Use Case}
+%
+TODO.
+%
+\subsection{HML Specification}
+%
+TODO.
+%
+\subsection{Metrics Evaluation}
+%
+TODO.
+%
+\subsection{PAM1}
+%
+TODO.
+%
+\subsection{PAM2}
+%
+TODO.
+%
+\subsection{Timing Simulation}
+%
+TODO.
+%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{art2kitect}
+%
+TODO.
+%
+\section{Bare-Metal}
+%
+TODO.
+%
+\section{Linux}
+%
+TODO.
+%
+\section{RTEMS}
+%
+TODO.
+%
+\section{PikeOS}
+%
+PikeOS is a multi-architecture real-time operating system able to provide paravirtualization services with support for PowerPc, x86, SPARC V8, ARM, MIPS architecture and so on.. As represented in Fig.~\ref{fig2}, the PikeOS architecture is structured in four layers, divided into user and kernel mode:
+%
+\begin{itemize}
+    \item User Mode:
+    \begin{itemize}
+        \item \textit{Partitions layer}, the user partition applications with the configuration stored in the VMIT configuration file.
+        \item  \item \textit{PikeOS System Software} (PSSW), i.e. a kernel module providing the partition abstraction. The PSSW is responsible for the creation of partitions and threads at boot time. The system configuration is stored in a dedicated database, the \textit{Virtual Machine Initialization Table} (VMIT), specifying the partitions, their resources and access and control rights.
+    \end{itemize}
+    \item Kernel Mode:
+    \begin{itemize}
+        \item \textit{PikeOS Separation Microkernel}: a separation kernel supporting real time performance. PikeOS is based on a microkernel architecture directly inspired by the L4 kernel specification and support tasks (virtual address spaces), threads (execution entities), thread scheduling and inter-thread communication. A Memory Management Unit is required in order to support a separate memory space for each task;
+        \item \item \textit{Architecture and Platform support package}, that encapsulates all the details regarding the CPU architecture and the overall hardware platform;
+    \end{itemize}
+\end{itemize}
+%
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=1.0\linewidth]{img/PikeOS_ARCHITECTURE.jpg}}
+\caption{PikeOS Software Architecture.}
+\label{fig2}
+\end{figure}
+%
+\section{HW Implementation (HLS)}
+%
+TODO.
+%
+

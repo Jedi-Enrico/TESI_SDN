@@ -1,0 +1,384 @@
+\chapter{HEPSYCODE Validation}\label{chap08}  % capitolo 8
+%
+In this chapter, the Thesis discusses some experiments related to the Validation activity in the final HW/SW Co-Design flow.\blfootnote{As reported in the Introduction, this Chapter is related to the following author's contribution: \#5, \#6} 
+The focus is on hypervisors technologies (Xtratum \cite{xtratum_01} in this work, but other virtualization technologies like Xen \cite{xen_project} or PikeOS \cite{pikeos} can be considered as well). This activity has been carried out between University of L'Aquila and Fentiss S.L. \cite{fentiss_01}, in the Industrial Information Technology and Real-Time Systems lab within the Universidad Polit\'ecnica de Valencia (UPV), in Valencia, Spain. 
+The main goal related to this collaboration was related to define a DSE methodology able to take into account mixed-criticality issues for Hypervisor-based systems, with focus on Xtratum Hypervisor \cite{xtratum_01}, and to develop a DSE supporting tools. In particular, the collaboration involved the evolution of a configuration tool for partitioned systems, called Xamber \cite{xamber}, from a prototype to a complete product in the scope of MegaM@rt2 (MegaModelling at Runtime - scalable model-based framework for continuous development and runtime validation of complex systems) European project \cite{megamart}. The work has focused on agnostic models for partitioned mixed-criticality systems into multicore systems and on generation of automatic projects/code of partitions. Solution w.r.t. Operating Systems (e.g., Linux, RTEMS \cite{rtems}) or direct HW implementation (using High level synthesis tools or ASIC solutions) are discusses in the conclusion chapter.
+%
+\section{Xamber}
+%
+Xamber is a graphical configuration tool adapted to assist the user through completion of the configuration of partitioned systems, and provides an interface for capturing and editing the elements that are part of the system. Xamber generates the configuration file needed by a hypervisor (i.e., Xtratum) to execute the system. \par
+%
+\section{Xtratum}
+%
+XtratuM is a bare metal hypervisor supporting paravirtualization for multiple architectures. XtratuM natively supports SPARC architecture and LEON processors. \par
+Fig.~\ref{fig3} shows the software architecture of the XtratuM hypervisor, which includes:
+%
+\begin{itemize}
+    \item \textit{Partitions layer}, divided in supervisor partitions (able to handle Xtratum health monitors features) and user application partitions (i.e., the isolated execution environments). Partition code has to be paravirtualized in order to run on top of the hypervisor and Xtratum do not support any native form of concurrency inside a partition (i.e., it is needed to an operating system inside partition to manage parallel tasks in isolated mode, with the use of Virtual CPU instances, vcpu);
+    \item \textit{XtratuM Hypercall Interface}, the set of hypercalls used to access the paravirtualized services supported by Xtratum;
+    \item \textit{XtratuM kernel}: a monolithic, non-preemptable kernel executed in the supervisor mode of the target processor, supporting hardware platform virtualization (i.e. CPU, memory, interrupts, and critical peripherals), partition scheduling, inter-partition communication and health monitoring features;
+\end{itemize}
+%
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=1.0\linewidth]{img/XTRATUM.jpg}}
+\caption{Xtratum Software Architecture.}
+\label{fig3}
+\end{figure}
+%
+\section{HEPSYCODE - Xamber Integration}
+%
+Starting from HEPSYCODE methodology (and related tools) and Xamber tool, an integration step has been performed in order to check overlapping functionality and to exploit HEPSYCODE framework functionality. \par
+The list of activities involves different modeling and design adaptation in the HEPSYCODE HW/SW Co-Design Flow in order to introduce Hypervisor (HPV) technologies in the Design Space Exploration (DSE) step, by considering a System-Level Real-Time (RT) Model of Computation (MoC) based on Communicating Sequential Processes (CSP), modified with some formal communication constraints with respect to unidirectional point-to-point blocking channels that allow tasks communication in a deterministic network model. 
+Starting from a CSP System Behavioural Model (CSP-SBM), representing an executable model of the application behavior, splitting processes into pieces of code that represent tasks in the real-time domain (creating the so called Process Interaction Model, PIM), it is possible to transform the initial CSP application model into the final Process to Task Graph Model (PTM), conform to the most used real-time standards, as presented in Section~\ref{hepsycode_rt}. After these assumptions and related transformation activities, the integration between HEPSYCODE and Xamber has been realized with a methodology change in the HEPSYCODE framework, as shown in Fig.~\ref{xamber_hepcysode_01}. \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.6\linewidth]{img/xamber_hepsycode.png}}
+	\caption{HEPSYCODE - Xamber Integration.}
+	\label{xamber_hepcysode_01}
+\end{figure}
+%
+The rest of the chapter describes the integration activity in details.
+%
+\subsection{HML Specification}
+%
+The reference System-Level modelling language in HEPSYCODE is the Hepsy Modeling Languages (HML), where the application is described by a process network connected via synchronous channels. In the HEPSYCODE environment, the application described via HML is transformed into a System Behaviour Model (SBM). The SBM is a Communicating Sequential Process (CSP-based) executable Model of Computation (MoC) of the system behavior that explicitly defines also a model of communication among processes using unidirectional point-to-point blocking channels for data exchange. \par
+%An example of HML application is shown in Fig.~\ref{xamber_hepcysode_02}.
+%
+%\begin{figure}[htbp]
+%	\centerline{\includegraphics[width=0.5\linewidth]{img/d2_4_img4.png}}
+%	\caption{HEPSYCODE HML example.}
+%	\label{xamber_hepcysode_02}
+%\end{figure}
+%
+The reference language in HEPSYCODE is the SystemC, a C++ class library able to capture and define system specification. The SBM is implemented by SystemC modules and threads. Starting from the SBM code and following the CSP-to-RT adaptation step described in Section~\ref{hepsycode_rt}, it is possible to transform the CSP (concurrent process network model, not suitable for modeling real-time scenarios) into a task-graph DAG model. The reference use case taken into account is shown in Fig.~\ref{xamber_hepcysode_03}, where the use case presented in Section~\ref{firfirgcd_base} has been changed to match real-time DAG representation. \par    
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.75\linewidth]{img/d2_4_img1.png}}
+	\caption{CSP-SBM to Process to Task Graph Model (PTM) example transformation.}
+	\label{xamber_hepcysode_03}
+\end{figure}
+%
+In this example, the initial CSP processes are divided into different tasks, by following to the transformation pattern defined in Section~\ref{hepsycode_rt}. This transformation is driven by the CSP MoC. The resulting processes inherit the criticality levels associated to the corresponding CSP-SBM processes. Finally, the application specification is listed below. \par
+%
+\footnotesize
+\begin{align*}
+    PS &= \{ ps_1, ps_2, ps_3, ps_4, ps_5, ps_6, ps_7, ps_8, ps_9, ps_{10}, ps_{11}, ps_{12}, ps_{13} \} & & \\
+    ps_1 &= \{ Fir8\_1, c, LP, 0, DT_1 \}, \\         %2
+    ps_2 &= \{ Fir8\_2, c, LP, 0, DT_2 \}, \\         %3
+    ps_3 &= \{ Fir8\_3, c, LP, 0, DT_3 \},  \\        %4
+    ps_4 &= \{ Fir8\_eval, c, LP, 0, DT_4 \}, \\      %5
+    ps_5 &= \{ Fir8\_shift, c, LP, 0, DT_5 \}, \\     %6
+    ps_6 &= \{ Fir16\_1,c, LP, 0, DT_6 \}, \\         %7
+    ps_7 &= \{ Fir16\_2, c, LP, 0, DT_7 \}, \\        %8
+    ps_8 &= \{ Fir16\_3, c, LP, 0, DT_8 \}, \\        %9
+    ps_9 &= \{ Fir16\_eval, c, LP, 0, DT_8 \}, \\    %10
+    ps_{10} &= \{ Fir16\_shift, c, LP, 0, DT_8 \}, \\  %11
+    ps_{11} &= \{ GCD\_1, c, LP, 0, DT_8 \}, \\        %12
+    ps_{12} &= \{ GCD\_eval, c, LP, 0, DT_8 \}, \\     %13
+    ps_{13} &= \{ GCD\_2, c, LP, 0, DT_8 \}, \\        %14
+    \\
+    CH &= \{ ch_1, ch_2, ch_3, ch_4, ch_5, ch_6, ch_7, ch_8, ch_9, ch_{10}, ch_{11}, ch_{12}, ch_{13}, ch_{14}, ch_{15}, ch_{16} \} \\
+    ch_1 &= \{ Fir8\_1, Fir8\_2, Fir8\_1\_fir8\_2\_channel   Fir8e\_Input, 163 \} \\
+    ch_2 &= \{ Fir8\_2, Fir8\_3, Fir8\_2\_Fir8\_3\_channel, 8 \} \\
+    ch_3 &= \{ Fir8\_1, Fir8\_eval, Fir8\_1\_Fir8\_eval\_channel, 163 \} \\
+    ch_4 &= \{ Fir8\_eval, Fir8\_2, Fir8\_eval\_Fir8\_2\_channel, 19 \} \\
+    ch_5 &= \{ Fir8\_2, Fir8\_shift, Fir8\_2\_Fir8\_shift\_channel, 72 \}  \\
+    ch_6 &= \{ Fir8\_shift, Fir8\_3, Fir8\_shift\_Fir8\_3\_channel, 64 \} \\
+    ch_7 &= \{ Fir8\_3, GCD\_1, Fir8\_3\_GCD\_1\_channel, 8 \} \\
+    \\   
+    ch_8 &= \{ Fir16\_1, Fir16\_2, Fir16\_1\_Fir16\_2\_channel, 8 \} \\
+    ch_9 &= \{ Fir16\_2, Fir16\_3, Fir16\_2\_Fir16\_3\_channel, 8 \} \\
+    ch_{10} &= \{ Fir16\_1, Fir16\_eval, Fir16\_1\_Fir16\_eval\_channel, 299 \} \\
+    ch_{11} &= \{ Fir16\_eval, Fir16\_2, Fir16\_eval\_Fir16\_2\_channel, 19 \} \\
+    ch_{12} &= \{ Fir16\_2, Fir16\_eval, Fir16\_2\_Fir16\_shift\_channel, 136 \} \\
+    ch_{13} &= \{ Fir16\_shift, Fir16\_3, Fir16\_shift\_Fir16\_3\_channel, 128 \} \\
+    ch_{14} &= \{ Fir16\_3, GCD\_1, Fir16\_3\_GCD\_1\_channel, 8 \} \\
+    \\
+    ch_{15} &= \{ GCD\_1, GCD\_eval, GCD\_1\_GCD\_eval\_channel, 16 \} \\
+    ch_{16} &= \{ GCD\_eval, GCD\_2, GCD\_eval\_GCD\_2\_channel, 8 \} \\
+\end{align*}
+\normalsize
+%
+%
+\subsection{Metrics Evaluation}
+%
+After the modeling step, several metrics evaluations and estimations have been performed and the execution time associated to each task has been estimated by means of HEPSIM (Chapter \ref{timing_simulator}). The process communication matrix (the number of bits exchanged among the different processes) is shown in Table~\ref{process_comm_xamber}. \par
+%
+\begin{table}[htbp]
+\caption{Process communication.}
+\begin{center}
+\resizebox{0.8\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{c||c|c|c|c|c|c|c|c|c|c|c|c|c} % p{1.4in}
+\hline
+\backslashbox{Proc.}{Proc.} & $ps_1$ & $ps_2$ & $ps_3$ & $ps_4$ & $ps_5$ & $ps_6$ & $ps_7$ & $ps_8$ & $ps_9$ &  $ps_{10}$ &  $ps_{11}$ &  $ps_{12}$ &  $ps_13$   \\
+\hline\hline
+ $ps_1$    & 0 & 80 & 0 & 1630 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ \hline
+ $ps_2$    & 0 & 0 & 80 & 0 & 720 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\  \hline
+ $ps_3$    & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 80 & 0 & 0    \\  \hline
+ $ps_4$    & 0 & 190 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0   \\  \hline
+ $ps_5$    & 0 & 0 & 640 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0   \\   \hline
+ $ps_6$    & 0 & 0 & 0 & 0 & 0 & 0 & 80 & 0 & 2990 & 0 & 0 & 0 & 0 \\   \hline
+ $ps_7$    & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 80 & 0 & 1360 & 0 & 0 & 0 \\   \hline
+ $ps_8$    & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 80 & 0 & 0    \\   \hline
+ $ps_9$    & 0 & 0 & 0 & 0 & 0 & 0 & 190 & 0 & 0 & 0 & 0 & 0 & 0   \\  \hline
+ $ps_{10}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1280 & 0 & 0 & 0 & 0 & 0  \\   \hline
+ $ps_{11}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 160 & 0   \\  \hline
+ $ps_{12}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 80   \\    \hline
+ $ps_{13}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0     \\
+\hline\hline
+\end{tabular}
+$%
+} 
+\label{process_comm_xamber}
+\end{center}
+\end{table}
+%
+Considering the example model in Fig.~\ref{xamber_hepcysode_03}, some metric results has been evaluated by means of timing simulation activities, as described in Section~\ref{timing_simulator}. During the Load Estimation step, the "Free Running Time" (FRT, the application execution time when all the processes are allocated on the same BB instance) has been estimated for the BB with LEON3 PU, and the values is equal to 0.0138695 s. The "Free Running Loads" (FRLs, the load evaluated for each process when all the processes are allocated on the same BB instance) and the average execution time for each process (called  Average-Case Execution Time, ACET) are presented in Table~\ref{load_proc_rt_leon3}.  \par
+%
+\begin{table}[htbp]
+\caption{Process Free Running Load and Average-Case Execution time.}
+\scriptsize
+\begin{center}
+%\resizebox{0.45\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{c||c|c} % p{1.4in}
+\hline
+Process & FRL & ACET  \\
+\hline\hline
+ $ps_1$    & 0.032503   &  263 $\mu$ s  \\ \hline   %2
+ $ps_2$    & 0.0301813  &  243 $\mu$ s  \\ \hline   %3
+ $ps_3$    & 0.0198998  &  175 $\mu$ s \\ \hline   %4
+ $ps_4$    & 0.162515   &  1085 $\mu$ s  \\ \hline  %5
+ $ps_5$    & 0.119067   &  850 $\mu$ s  \\ \hline  %6
+ $ps_6$    & 0.0298497  &  263 $\mu$ s  \\ \hline  %7
+ $ps_7$    & 0.0262014  &  234 $\mu$ s  \\ \hline  %8
+ $ps_8$    & 0.0172465  &  175 $\mu$ s \\ \hline  %9
+ $ps_9$    & 0.256044   &  2050 $\mu$ s \\ \hline  %10
+ $ps_{10}$ & 0.179761   &  1554 $\mu$ s \\ \hline  %11
+ $ps_{11}$ & 0.030513   &  293 $\mu$ s \\ \hline  %12
+ $ps_{12}$ & 0.0859007  &  243 $\mu$ s \\ \hline  %13
+ $ps_{13}$ & 0.0102816  &  117 $\mu$ s \\         %14
+\hline\hline
+\end{tabular}
+%$%
+%} 
+\label{load_proc_rt_leon3}
+\end{center}
+\end{table}
+%
+The FRLs have been calculated using the HEPSIM timing simulator.
+It is worth noting that such information are useful in order to find better tasks allocation among hypervisor software partitions (also considering tasks workload, concurrency, ACET parameters, and mixed-criticality requirements). Considering single core scenarios (because Xamber do not support multi-core architectures), only communication and criticality level are used to allocate and bind tasks on different partitions, then a schedulability analysis allows to refine the allocation in order to verify the correct behavior of tasks execution.
+%
+\subsection{Design Space Exploration}
+%
+The DSE step is able to find a solution, in terms of HPV-based SW partitions in a heterogeneous multi-processor parallel scenario. 
+%
+\subsubsection{PAM1}
+%
+In order to transform HEPSYCODE input models into Xamber projects, it is needed to fix some parameters:
+%
+\begin{enumerate}
+    \item Only single core scenarios (with LEON3 processor cores) is permitted; 
+    \item No other basic HW components (in terms of extra processors connected into a heterogeneous distributed scenarios) are considered in the DSE step;
+    \item To consider a safety-critical scenario, a criticality level is assigned to different processes respect to their functionality;
+    \item A maximum number of 4 Xtratum SW partitions are allowed in the DSE.
+\end{enumerate}
+%
+Under these assumptions, HEPSYCODE produces one solution represented in Table~\ref{table_DSE_1_HPV_part_ppp} and Fig.~\ref{xamber_hepcysode_06}.
+%
+\begin{table}[htbp]
+\caption{Design Space Exploration with Hypervisor-based SW partitions.}
+\begin{center}
+\resizebox{0.8\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{l||c||c|c|c|c||c} % p{1.4in}
+%\toprule
+\hline
+  & \multirow{1}{*}{\textbf{Cost}} & \multicolumn{4}{c||}{\textbf{Partition}} & \multirow{1}{*}{\textbf{PAM1}}  \\ \cmidrule(lr){3-6}
+ \multirow{1}{*}{\textbf{Iteration}} & \multirow{1}{*}{\textbf{Function}} & \multirow{1}{*}{\textbf{1}} & \multirow{1}{*}{\textbf{2}} & \multirow{1}{*}{\textbf{3}} & \multirow{1}{*}{\textbf{4}} & \multirow{1}{*}{\textbf{Execution Time}}  \\
+%\midrule
+\hline\hline
+ 0     & 1.5      & 9,11,12,14  & 3,5,7,8,10,13 & 2,4,6     & -        & 0.007046 s  \\
+ 22    & 0.516461 & 12,13,14    & 2,3,4,5,6     & 7,8,10,11 & 9        & 0.322346 s  \\
+ 25    & 0.50823  & 7,8,9,10,11 & 3,5,6         & 2,4       & 12,13,14 & 0.534798 s  \\
+ 35    & 0.502418 & 7,8,9,10,11 & 5             & 12,13,14  & 2,3,4,6  & 3.17861 s   \\
+ 36    & 0.5      & 2,3,4,5,6   & 12,13,14      & 7,8,9,11  & 10       & 3.63263 s   \\
+ 100   & 0.5      & 2,3,4,5,6   & 12,13,14      & 7,8,9,11  & 10       & 33.5264 s   \\
+%
+\hline\hline
+\end{tabular}
+$%
+}
+\label{table_DSE_1_HPV_part_ppp}
+\end{center}
+\end{table}
+% 
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.8\linewidth]{img/dse_results_xamber.png}}
+	\caption{HEPSYCODE DSE solution considering HPV-based SW partitions (in our case Xtratum).}
+	\label{xamber_hepcysode_06}
+\end{figure}
+%
+\subsection{HEPSYCODE - Xamber Project Transformation}
+%
+The final integration between HEPSYCODE and Xamber has been realized with a methodology change in the HEPSYCODE framework, as shown in Fig.~\ref{xamber_hepcysode_01}. Using a transformation between XML schemas, the Partitioning solution, saved in a XML exchange file, has been translated into a Xamber compliant project, and schedulability analysis has been performed in order to find the best Hyperplan for the initial task set, setting Xamber project parameters (in terms of tasks, processors, partitions, real-time parameters and so on) from HEPSYCODE Co-Analysis, Co-Estimation and Partitioning steps. With respect to the solution presented in Fig.~\ref{xamber_hepcysode_06}, the application model, the platform model, the partition model and the mapping among these entities have been transformed into a Xamber compliant project, using Java Architecture for XML Binding (JAXB) technology. JAXB is a software framework that allows Java developers to map Java classes to XML representations using marshal transformation. Project (automatically) generated starting from HEPSYCODE solution is shown in Fig.~\ref{xamber_hepcysode_07}, Fig.~\ref{xamber_hepcysode_08}, Fig.~\ref{xamber_hepcysode_09}, Fig.~\ref{xamber_hepcysode_10}, Fig.~\ref{xamber_hepcysode_11}.
+%
+\begin{landscape}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/Xamber1.png}}
+	\caption{HEPSYCODE - Xamber transformation (Summary).}
+	\label{xamber_hepcysode_07}
+\end{figure}
+\end{landscape}
+%
+%
+\begin{landscape}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/Xamber2.png}}
+	\caption{HEPSYCODE - Xamber transformation (Main View).}
+	\label{xamber_hepcysode_08}
+\end{figure}
+\end{landscape}
+%
+%
+\begin{landscape}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/Xamber3.png}}
+	\caption{HEPSYCODE - Xamber transformation (Task View).}
+	\label{xamber_hepcysode_09}
+\end{figure}
+\end{landscape}
+%
+%
+\begin{landscape}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/Xamber4.png}}
+	\caption{HEPSYCODE - Xamber transformation (Contrex Schedulability Analysis).}
+	\label{xamber_hepcysode_10}
+\end{figure}
+\end{landscape}
+%
+%
+\begin{landscape}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/Xamber5.png}}
+	\caption{HEPSYCODE - Xamber transformation (Sched View).}
+	\label{xamber_hepcysode_11}
+\end{figure}
+\end{landscape}
+%
+\newpage
+All the Xamber parameters are derived from the Hepsycode framework (i.e., processes execution time and partitions allocation, End-To-End-Flow representation, IPC channels partitions) .
+This transformation allows also to use the Contrex tool (Fig.~\ref{xamber_hepcysode_10}) that performs schedulability analysis and find the best hyper-plan for the reference application (Fig.~\ref{xamber_hepcysode_11}). After this activity, Xamber produces the Xtratum Configuration file for SparcV8 architectures (file .xmc) and it is possible to perform 2 different activities: 
+%
+\begin{itemize}
+    \item simulate the solution into the Hepsycode Hypervisor Simulator engine (with hierarchical scheduling feature);
+    \item check execution time (to check different HPV behavior respect to the specific use case) implementing the proposed input application.
+\end{itemize}
+%
+\subsection{Experimental results}
+%
+This section presents some results regarding the simulation and the implementation of the use case (FirFirGCD transformed to fulfill DAG representation model). \par
+%
+\subsubsection{Timing Simulation}
+%
+The hyper-plan generated by Contrex tool is presented below:
+%
+\scriptsize
+\lstset{language=XML}
+\begin{lstlisting}
+<SystemDescription xmlns="http://www.xtratum.org/xm-3.x" version="1.0.0" 
+name="FirFirGCD">
+<HwDescription>
+<MemoryLayout>
+        <Region type="sdram" start="0x0"        size="64MB"/>  
+        <!-- RAM area  -->
+        <Region type="sdram" start="0x40000000" size="128MB"/>  
+        <!-- VIRTUAL ADDRESS-->
+</MemoryLayout>
+<ProcessorTable>
+<Processor id="0" frequency="75MHz">
+<CyclicPlanTable>
+    <Plan name="Plan Auto" id="0" majorFrame="16.116ms">
+    <Slot id="0" start="0ms" duration="6.167ms" partitionId="0"/>
+    <Slot id="1" start="6.167ms" duration="0.543ms" partitionId="2"/>
+    <Slot id="2" start="6.710ms" duration="4.120ms" partitionId="3"/>
+    <Slot id="3" start="10.830ms" duration="3.953ms" partitionId="2"/>
+    <Slot id="4" start="14.783ms" duration="1.333ms" partitionId="1"/>
+    </Plan>
+</CyclicPlanTable>
+</Processor>
+</ProcessorTable>
+</HwDescription>
+\end{lstlisting}
+\normalsize
+%
+Using this hyper-plan configuration into the HEPSYM simulator, the output in Table~\ref{table_results_hepsycode} has been produced, where each lap represents the execution time of one instance of the hyper-plan (in seconds). It is worth noting that the HEPSIM simulation follows the hyper-plan configuration without timing errors.
+%
+\begin{table}[htbp]
+\caption{HEPSIM HPV Timing Simulation.}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{l||c|c|c|c|c|c|c|c|c|c} % p{1.4in}
+%\toprule
+\hline
+  & \multicolumn{10}{c}{\textbf{HPV Hyper-Plan LAPS (s)}} \\ \cmidrule(lr){2-11} 
+ \multirow{1}{*}{\textbf{Partition}} & \textbf{1} &  \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\
+%\midrule
+\hline\hline
+0             			& 0.006170 & 0.022297 & 0.038433 & 0.054567 & 0.070703 & 0.086835 & 0.102967 & 0.119103 & 0.135239 & 0.151373 \\ \hline
+2             			& 0.006715 & 0.022841 & 0.038977 & 0.055113 & 0.071249 & 0.087381 & 0.103513 & 0.119649 & 0.135785 & 0.151919 \\ \hline
+3             			& 0.010837 & 0.026966 & 0.043102 & 0.059238 & 0.075374 & 0.091506 & 0.107638 & 0.123774 & 0.139911 & 0.156044 \\ \hline
+2             			& 0.014792 & 0.030924 & 0.047059 & 0.063195 & 0.079331 & 0.095463 & 0.111595 & 0.127731 & 0.143867 & 0.160001 \\ \hline
+1             			& 0.016125 & 0.032262 & 0.048396 & 0.064532 & 0.080664 & 0.096796 & 0.112932 & 0.129068 & 0.145202 & 0.160336 \\ \hline \hline
+Display           & 0.015047 & 0.031184 & 0.047354 & 0.063491 & 0.079736 & 0.095898 & 0.111890 & 0.128026 & 0.144232 & 0.159366 \\ \hline
+Tot. LAP Time & 0.016125 & 0.032262 & 0.048396 & 0.064532 & 0.080664 & 0.096796 & 0.112932 & 0.129068 & 0.145202 & 0.160336 \\ 
+%\bottomrule     
+\hline\hline
+\end{tabular}
+$%
+} 
+\label{table_results_hepsycode}
+\end{center}
+\end{table}
+%
+\subsubsection{Use Case Implementation}
+%
+For the system implementation, the LEON3 General Purpose processor (GPP) has been considered. LEON3 is a 32-bit synthesizable soft-processor that is compatible with SPARC V8 architecture: it has a seven-stage pipeline and Harvard architecture, uses separate instruction and data caches and supports multiprocessor configurations in Symmetric Multi-processor (SMP) mode. It represents a soft-processor for aerospace applications. \par
+The single-core reference implementation is shown in Fig.~\ref{fig1}. The development board is the Xilinx ML605 Virtex-6 FPGA with 512 MB RAM. \par
+%
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.8\linewidth]{img/scheme9_multi_core_leon3_ml605.jpg}}
+\caption{Single-core LEON3 Hardware reference implementation.}
+\label{fig1}
+\end{figure}
+%
+Starting from GRLIB, a VHDL library of IP cores for designing a complete system on chip centered around the LEON3 processor, the LEON3 processor has been customized with a system clock of 75 MHz per core and the following characteristics:
+%
+\begin{itemize}
+    \item 1 Cobham Gaisler LEON3 SPARC V8 Processor connected with AHB shared bus;
+    \item 8 register windows;
+    \item GRFPU High-Performance Floating-Point Unit;
+    \item 2*8 KiB instruction caches, with 32 bytes per line with Least-Recently-Used (LRU) replacement algorithm;
+    \item 2*4 KiB data caches, with 16 bytes per line with LRU replacement algorithm.
+\end{itemize}
+%
+The final software partitioned system (suggested by the DSE activity) uses the Xtratum services to implement the FIR-FIR-GCD use case. All the processes are implemented as a bare-metal application into the partitions, where communication is allowed using sampling channels. Fig.~\ref{fig1_tasks} shows the tasks execution time. It is worth noting that the scheduling follows the hyper-plan defined in the Xamber configuration tool (for each one of the 10 input triggers). \par
+%
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.8\linewidth]{img/processes_execution_time_new.png}}
+\caption{Processes Execution Times.}
+\label{fig1_tasks}
+\end{figure}
+%
+Finally, Fig.~\ref{fig1_tasks_comparison} presents the comparison between the execution time on the real target (LEON3 single-core) and the simulation made with HEPSIM. The final average error estimation is under 2 \%, so the simulator is able to evaluate Hypervisor timing behavior with a very limited error. 
+%
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.8\linewidth]{img/processes_execution_time_compare_new.png}}
+\caption{Hypervisor Simulation (HEPSIM) vs Real Execution (on a Single-core LEON3).}
+\label{fig1_tasks_comparison}
+\end{figure}
+%

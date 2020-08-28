@@ -1,0 +1,852 @@
+%\appendice
+\begin{appendices}
+\chapter{Hepsycode Repository} \label{ch:appendixa}
+%
+\section{Installation instructions}
+\subsection{OVERVIEW}
+Hepsycode is a prototypal tool to improve the design time of embedded applications. It is based on a System-Level methodology for HW/SW Co-Design of Heterogeneous Parallel Dedicated Systems. The whole framework drives the designer from an Electronic System-Level (ESL) behavioral model, with related NF requirements, including real-time and mixed-criticality ones, to the final HW/SW implementation, considering specific HW technologies, scheduling policies and Inter-Process Communication (IPC) mechanisms. The system behavior modeling language introduced in Hepsycode, named HML (HEPSY Modeling Language), is based on the Communicating Sequential Processes (CSP) Model of Computation (MoC). It allows modeling the behavior of the system as a network of processes communicating through unidirectional synchronous channels. By means of HML it is possible to specify the System Behavior Model (SBM), an executable model of the system behavior, a set of Non Functional Constraints (NFC) and a set of Reference Inputs (RI) to be used for simulation-based activities. Through the execution of different steps, including a system-level Design Space Exploration (DSE) approach that allows the related co-design methodology to suggest an HW/SW partitioning of the application specification and a mapping of the partitioned entities onto an automatically defined heterogeneous multi-processor architecture, it is possible to proceed with system implementation. \par
+Hepsycode uses Eclipse MDE technologies, SystemC custom simulator implementation and an evolutionary genetic algorithm for partitioning activities, all integrated into an automatic framework that drive the designer from first input to final solution. \par
+The hepsycode repository contains the Hepsycode framework, which consists of a set of
+%
+\begin{itemize}
+    \item Reference libraries
+    \item Scripts and makefiles
+    \item Eclipse plugins
+    \item XML data exchange files
+    \item SystemC files (part of the HEPSYM simulator)
+    \item HW/SW Partitioning And Mapping (PAM) tool
+\end{itemize}
+%
+Users can found more information in the docs/ folder.
+%
+\subsection{WEBSITE}
+%
+www.hepsycode.com
+%
+\subsection{DOWNLOAD}
+%
+Official git repository: https://bitbucket.org/vittorianomuttillo87/tool-hepsycode/src \\ /master/
+%
+\subsection{INSTALLATION}
+%
+\begin{itemize}
+    \item Download Eclipse Modelling Tool: https://www.eclipse.org/downloads/eclipse-packages/
+    \item Installing from its Update Site (Modeling Package Updates for Eclipse Oxygen - http://www.eclipse.org/modeling/amalgam/downloads/package/modeling/oxygen/) in Eclipse the Modeling OXYGEN plugins
+    \item Cloning Hepsycode from https://vittorianomuttillo87@bitbucket.org/vittorianomuttillo87 \\ /tool-hepsycode.git
+    \item Import in eclipse Hepsycode projects present in folder "eclipse-plugin" and run a separate Eclipse application to run and debug Hepsycode plug-in
+    \item Install systemc library (it is recommended version 2.3.0)
+    \item Go to /home/.bashrc and insert the path of systemc (folder lib-linux and include) the names of variable must be SYSTEMCPATHLIB and SYSTEMCPATHINCLUDE for example:
+    \begin{itemize}
+        \item export SYSTEMCPATHLIB=/usr/local/systemc-2.3.0a/lib-linux64
+        \item export SYSTEMCPATHINCLUDE=/usr/local/systemc-2.3.0a/include
+        \item Alternative: launch settings.sh script
+    \end{itemize}
+    \item Try and enjoy Hepsycode Tool!!!
+\end{itemize}
+%
+\subsection{SYSTEM REQUIREMENTS}
+%
+\begin{itemize}
+    \item Ubuntu 16.04.3 LTS (Xenial Xerus)
+    \item SystemC Libraries version 2.3.0
+    \item Eclipse Oxygen Modelling Tools with the following plugins in place:
+    \begin{itemize}
+        \item Oxygen.3a Release (4.7.3a)
+        \item EMF v. 2.13
+        \item Sirius v. 5.1.1
+        \item Xtend v. 3.8.0
+        \item ATL v. 3.8.0
+    \end{itemize}
+\end{itemize}
+%
+\subsection{RELEASE NOTES}
+%
+Latest Release: 1.0.0
+%
+\subsection{LICENSE}
+%
+GNU GENERAL PUBLIC LICENSE Version 2, June 1991 (see https://www.gnu.org/licenses/ \\ old-licenses/gpl-2.0.html)
+%
+\subsection{DEVELOPER RESOURCES}
+%
+Source Repositories: https://bitbucket.org/vittorianomuttillo87/tool-hepsycode/src/master/
+%
+\begin{itemize}
+    \item Clone:
+    \begin{itemize}
+        \item ssh: git@bitbucket.org:vittorianomuttillo87/tool-hepsycode.git
+        \item https: https://vittorianomuttillo87@bitbucket.org/vittorianomuttillo87/tool-hepsycode.git
+    \end{itemize}
+\end{itemize}
+%
+You can use the code from these repositories to experiment, test, build, and create patches, issue pull requests (only by request).
+%
+\subsection{SUPPORT}
+%
+We currently support:
+%
+\begin{itemize}
+    \item Email (please take care to use [HEPSYCODE SUPPORT] as object):
+    \begin{itemize}
+        \item Luigi Pomante, luigi.pomante@univaq.it
+        \item Vittoriano Muttillo, vittoriano.muttillo@graduate.univaq.it
+        \item Giacomo Valente, giacomo.valente@graduate.univaq.it
+    \end{itemize}
+    \item Issues on bitbucket.org
+\end{itemize}
+%
+\section{Getting started guidelines}
+%
+You can find getting start guidelines at the link: www.hepsycode.com
+%
+\subsection{EXAMPLES}
+We provide an example Hepsycode project, called FirFirGCD, a synthetic application that takes in input two values (triggered by some stimulus), makes two filtering actions (Fir8 and Fir16) and then makes the greatest common divisor (GCD) and displays the result. More details details can be found at the link: www.hepsycode.com
+%
+\section{Additional information}
+Research publications are available on \url{http://www.hepsycode.com/} and \url{http://www.pomante.net/sito\_gg/Publications.htm}
+%
+
+\begin{comment}
+
+\chapter{CC4CS Evaluation Framework} \label{ch:appendixb}
+%
+Starting from the definition provided in the Section~\ref{timing_metric_def}, it is clear that to evaluate CC4CS for a given processor technology there is the need for a methodology supported by tools to automate the process and allow fast and repeatable operations. 
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{CC4CS}).}\label{defCC4CS2}
+Considering a single C function, CC4CS is the ratio between the number of clock cycles required by the target processor technology to execute the function and the number of executed C statements, i.e.: 
+%
+\begin{equation}\label{equation112_bis}
+  \begin{aligned}
+    & CC4CS = \#Required\_Clock\_Cycles / \#Executed\_C\_Statements
+\end{aligned}
+\end{equation}
+\end{definition}
+%
+So, to make the metric meaningful for a given processor it is needed, at least, to: define a set of relevant C functions to be used as benchmark for all the processor technologies; for each benchmark function to identify a way to stimulate (i.e. execute) it by means of relevant input data sets; to identify a tool to perform profiling in order to count the number of executed C statements for each input; to identify tools to compile/synthesize the C function for the target processor and to simulate its execution in order to obtain the number of clock cycles needed for the on-target execution. Naturally, such steps must be applied for each different processor technology. However, it is worth noting that it is an offline one-shot task since CC4CS, once evaluated, would be available “for free” for next projects. So, to support CC4CS evaluation, a proper framework has been developed. Additionally, such a framework is also able to evaluate statistics on the metric. A simple benchmark composed of 14 well-known algorithms (i.e. C leaf functions) has been realized. The functions of the benchmark are the following ones: 
+%
+\begin{itemize}
+    \item A*: a graph-searching algorithm that identifies a path from an initial node x to a final node y. Is similar to the Dijkstra algorithm that for each node takes into account all possible directions and then chooses the one with lower cost. A* avoids to visit all edges connected to a node using a heuristic function that estimates the cost to the destination node.
+    \item Banker's Algorithm: used in the operating systems to avoid deadlock situations during the allocation of resources to a process.
+    \item Bellman Ford: computes shortest paths from a single source vertex to all of the other vertices in a weighted graph.
+    \item Binary Search: finds the position of a target value within a sorted array.
+    \item Breadth First Search and Depth First Search: two algorithms for traversing a graph. In the first function the nodes that must be visited are inserted in a queue while in the second one in a stack.
+    \item Bubble Sort: sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
+    \item Dijkstra: calculates the minimum paths from a starting node x towards all nodes accessible by x. The graph must be oriented, can contain loops and must have edges with positive costs. This algorithm uses the concept of relaxation in order to obtain distances.
+    \item Floyd-Warshall: calculates the distances between all pairs of vertices of a weighed graph with no negative loops. The costs of the edges may be negative value as long as these are not part of a negative loop.
+    \item GCD: the classical greatest common divisor algorithm.
+    \item Insertion Sort: builds the final sorted array one item at a time.
+    \item Kruskal: used to find the minimum spanning tree of a non-oriented graph that does not contains negative edges. It is a greedy algorithm and, in this case, the greedy choice consists in taking always the edge with minimum cost between among those available.   
+    \item Matrix Multiplication: an algorithm that does the matrix multiplication multiplying rows by columns.
+    \item Mergesort: another sorting algorithm that follow the divide et impera approach. This also divides the input array in subsequences. This time we suppose that the subsequences are already sorted and so it's enough to choose always the minimum value between two subsequences that are comparing.
+    \item Quicksort: the sorting algorithm that follows the divide et impera approach. The algorithm recursively divides the input array until many small 1-length arrays was obtained. An array and its length have been passed as parameters.
+    \item Selection Sort: divides the input list into two parts, the subset of items already sorted, and the subset of items remaining to be sorted that occupy the rest of the array.
+\end{itemize}
+%
+The source code is available on \cite{bibCC4CS04}. Table~\ref{table33_bis_bis}, Table~\ref{table22_bis_bis} and Table~\ref{table44_bis_bis} summarizes the source-level characteristics of the benchmark such as the number of line code (SLOC), the number of functions, the types and numbers of variables, operations and condition flow statements, the Halstead complexity measures and the McCabe's cyclomatic complexity. As explained before, the representative data types changes respect to the random generation of inputs (from 1 to 4 bytes). SLOC do not include comment lines or empty lines. Most of the programs do not call functions, so all the functions implemented are leaf functions.
+%
+\begin{table}[htbp]
+\caption{Source-level characteristics}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lcccccccccccc} % p{1.4in}
+\toprule
+ \multirow{2}{*}{\textbf{Functions}} & \multirow{2}{*}{\textbf{SLOC}} & \multirow{1}{*}{\textbf{Representative}} & \multirow{1}{*}{\textbf{Scalar}} & \multirow{1}{*}{\textbf{Range}}  & \multirow{1}{*}{\textbf{Array}} & \multirow{1}{*}{\textbf{Range}}\\
+ &  & \multirow{1}{*}{\textbf{Data Type}} & \multirow{1}{*}{\textbf{Inputs}} & \multirow{1}{*}{\textbf{Scalar Values}} & \multirow{1}{*}{\textbf{Inputs}} & \multirow{1}{*}{\textbf{Array Values}} \\
+\midrule
+	\multirow{4}{*}{\textbf{A*}} & \multirow{4}{*}{105} & \multirow{1}{*}{int8} & \multirow{4}{*}{s, g} & \multirow{1}{*}{s $\in [2,9]$, g $ \in [0,8]$} & \multirow{4}{*}{a[s][s]} & [-128,127]\\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{s $\in [2,6]$, g $ \in [0,5]$} &  & [-32768,32767] \\ 
+	&  & \multirow{1}{*}{long} &  & \multirow{1}{*}{s $\in [2,3]$, g $ \in [0,2]$} &  & [-2147483648,2147483647] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{s $\in [2,3]$, g $ \in [0,2]$} &  & [-2147483648.0,2147483647.0] \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{Banker's Algorithm}} & \multirow{4}{*}{46} & \multirow{1}{*}{int8} & \multirow{4}{*}{nr, np} & \multirow{1}{*}{nr $\in [1,5]$, np $ \in [1,5]$} & \multirow{4}{*}{
+    	\resizebox{0.2\hsize}{!}{$%
+    	\begin{tabular}{c}
+    	    available[nr]\\
+            allocated[np][nr]\\
+            max[np][nr]
+        \end{tabular}
+        $%
+        }
+    } 
+    & [0,255]\\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{nr $\in [1,3]$, np $ \in [1,3]$} &  & [0,65535] \\ 
+	&  & \multirow{1}{*}{long}  &  & \multirow{1}{*}{nr $\in [1,2]$, np $ \in [1,2]$} &  & [0,4294967295] \\  
+	&  & \multirow{1}{*}{float}  &  & \multirow{1}{*}{nr $\in [1,2]$, np $ \in [1,2]$} &  & [0.0,4294967295.0] \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{Bellman Ford}} & \multirow{4}{*}{75} & \multirow{1}{*}{int8} & \multirow{4}{*}{s} & \multirow{1}{*}{s $\in [2,10]$} & \multirow{4}{*}{a[s][s]} & [-128,127]\\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{s $\in [2,7]$} &  & [-32768,32767] \\ 
+	&  & \multirow{1}{*}{long} &  & \multirow{1}{*}{s $\in [2,4]$} &  & [-2147483648,2147483647] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{s $\in [2,4]$} &  & [-2147483648.0,2147483647.0] \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{Binary search}} & \multirow{4}{*}{44} & \multirow{1}{*}{int8} & \multirow{4}{*}{n} & \multirow{1}{*}{n $\in [2,116]$} & \multirow{4}{*}{a[n]} & [-128,127]\\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{n $\in [2,54]$} &  & [-32768,32767] \\ 
+	&  & \multirow{1}{*}{long} &  & \multirow{1}{*}{n $\in [2,23]$} &  & [-2147483648,2147483647] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{n $\in [2,23]$} &  & [-2147483648.0,2147483647.0] \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	 & \multirow{4}{*}{74} & \multirow{1}{*}{int8} & \multirow{4}{*}{s} & \multirow{1}{*}{s $\in [2,10]$} & \multirow{4}{*}{a[s][s]} & [-128,127]\\ 
+	\multirow{1}{*}{\textbf{Breadth First Search}} &  & \multirow{1}{*}{int} &  & \multirow{1}{*}{s $\in [2,6]$} &  & [-32768,32767] \\ 
+	\multirow{1}{*}{\textbf{and Depth First Search}} &  & \multirow{1}{*}{long} &  & \multirow{1}{*}{s $\in [2,4]$} &  & [-2147483648,2147483647] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{s $\in [2,4]$} &  & [-2147483648.0,2147483647.0] \\  \hline 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{Bubble Sort}} & \multirow{4}{*}{35} & \multirow{1}{*}{int8} & \multirow{4}{*}{n} & \multirow{1}{*}{n $\in [1,116]$} & \multirow{4}{*}{a[n]} & [-128,127]\\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{n $\in [1,54]$} &  & [-32768,32767] \\ 
+	&  & \multirow{1}{*}{long} &  & \multirow{1}{*}{n $\in [1,23]$} &  & [-2147483648,2147483647] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{n $\in [1,23]$} &  & [-2147483648.0,2147483647.0] \\  \hline  
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{Dijkstra}} & \multirow{4}{*}{82} & \multirow{1}{*}{int8} & \multirow{4}{*}{s} & \multirow{1}{*}{s $\in [2,9]$} & \multirow{4}{*}{a[s][s]} & [-128,127]\\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{s $\in [2,5]$} &  & [-32768,32767] \\ 
+	&  & \multirow{1}{*}{long} &  & \multirow{1}{*}{s $\in [2,3]$} &  & [-2147483648,2147483647] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{s $\in [2,3]$} &  & [-2147483648.0,2147483647.0] \\  \hline   
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{Floyd-Warshall}} & \multirow{4}{*}{29} & \multirow{1}{*}{int8} & \multirow{4}{*}{s} & \multirow{1}{*}{s $\in [1,10]$} & \multirow{4}{*}{a[s][s]} & [0,255]\\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{s $\in [1,7]$} &  & [0,65535] \\ 
+	&  & \multirow{1}{*}{long} &  & \multirow{1}{*}{s $\in [1,5]$} &  & [0,4294967295] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{s $\in [1,5]$} &  & [0.0,4294967295.0] \\  \hline  
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{GCD}} & \multirow{4}{*}{32} & \multirow{1}{*}{int8} & \multirow{4}{*}{n, m} & \multirow{1}{*}{n $\in [2,120]$, m $\in [2,120]$} & \multirow{4}{*}{-} & \multirow{4}{*}{-}  \\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{n $\in [2,32768]$, m $\in [2,32768]$} &  &  \\ 
+	&  & \multirow{1}{*}{long} &  & \multirow{1}{*}{n $\in [2,2147483647]$, m $\in [2,2147483647]$} &  &  \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{n $\in [2,2147483647]$, m $\in [2,2147483647]$} &  &  \\  \hline  
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{Insertion Sort}} & \multirow{4}{*}{35} & \multirow{1}{*}{int8} & \multirow{4}{*}{n} & \multirow{1}{*}{n $\in [2,116]$} & \multirow{4}{*}{a[n]} & [-128,127]\\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{n $\in [2,54]$} &  & [-32768,32767] \\ 
+	&  & \multirow{1}{*}{long} &  & \multirow{1}{*}{n $\in [2,23]$} &  & [-2147483648,2147483647] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{n $\in [2,23]$} &  & [-2147483648.0,2147483647.0] \\  \hline 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{Kruskal}} & \multirow{4}{*}{129} & \multirow{1}{*}{int8} & \multirow{4}{*}{s} & \multirow{1}{*}{s $\in [2,10]$} & \multirow{4}{*}{a[s][s]} & [-128,127]\\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{s $\in [2,6]$} &  & [-32768,32767] \\ 
+	&  & \multirow{1}{*}{long} &  & \multirow{1}{*}{s $\in [2,4]$} &  & [-2147483648,2147483647] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{s $\in [2,3]$} &  & [-2147483648.0,2147483647.0] \\  \hline   
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{Matrix Multiplication}}  & \multirow{4}{*}{34} & \multirow{1}{*}{int8} &  & \multirow{1}{*}{[1,6]} &  & [-128,127]\\ 
+	&  & \multirow{1}{*}{int} & \multirow{1}{*}{rowA, colA} & \multirow{1}{*}{[1,4]} & \multirow{1}{*}{a[rowA][colA]} & [-32768,32767] \\ 
+	&  & \multirow{1}{*}{long} & \multirow{1}{*}{rowB, colB} & \multirow{1}{*}{[1,2]} & \multirow{1}{*}{b[rowB][colB]} & [-2147483648,2147483647] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{[1,2]} &  & [-2147483648.0,2147483647.0] \\  \hline 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{Mergesort}} & \multirow{4}{*}{84} & \multirow{1}{*}{int8} & \multirow{4}{*}{n} & \multirow{1}{*}{n $\in [1,57]$} & \multirow{4}{*}{a[n]} & [-128,127]\\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{n $\in [1,25]$} &  & [-32768,32767] \\ 
+	&  & \multirow{1}{*}{long} &  & \multirow{1}{*}{n $\in [1,11]$} &  & [-2147483648,2147483647] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{n $\in [1,6]$} &  & [-2147483648.0,2147483647.0] \\  \hline   
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{Quicksort}}  & \multirow{4}{*}{55} & \multirow{1}{*}{int8} & \multirow{4}{*}{n} & \multirow{1}{*}{n $\in [1,36]$} & \multirow{4}{*}{a[n]} & [-128,127]\\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{n $\in [1,17]$} &  & [-32768,32767] \\ 
+	&  & \multirow{1}{*}{long} &  & \multirow{1}{*}{n $\in [1,6]$} &  & [-2147483648,2147483647] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{n $\in [1,5]$} &  & [-2147483648.0,2147483647.0] \\ \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{4}{*}{\textbf{Selection Sort}} & \multirow{4}{*}{29} & \multirow{1}{*}{int8} & \multirow{4}{*}{n} & \multirow{1}{*}{n $\in [2,116]$} & \multirow{4}{*}{a[n]} & [0,255]\\ 
+	&  & \multirow{1}{*}{int} &  & \multirow{1}{*}{n $\in [2,54]$} &  & [0,65535] \\ 
+	&  & \multirow{1}{*}{long} &  & \multirow{1}{*}{n $\in [2,23]$} &  & [0,4294967295] \\ 
+	&  & \multirow{1}{*}{float} &  & \multirow{1}{*}{n $\in [2,23]$} &  & [0.0,4294967295.0] \\
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\bottomrule
+\end{tabular}
+$%
+}
+\label{table33_bis_bis}
+\end{center}
+\end{table}
+%
+%\begin{landscape}
+%
+\begin{table}[htbp]
+\caption{McCabe's Cyclomatic Complexity}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lcccccccccccc} % p{1.4in}
+\toprule
+ \multirow{2}{*}{\textbf{Functions}} & \multirow{1}{*}{\textbf{Decision}} & \multirow{1}{*}{\textbf{Global}} & \multirow{2}{*}{\textbf{Loop}} & \multirow{2}{*}{\textbf{GOTO}} & \multirow{2}{*}{\textbf{Assignment}} & \multirow{1}{*}{\textbf{Exit}} & \multirow{1}{*}{\textbf{Function}} & \multirow{1}{*}{\textbf{Pointer}} & \multirow{1}{*}{\textbf{Cyclomatic}} &   \multirow{2}{*}{\textbf{Coverage}} & \multirow{1}{*}{\textbf{Total}} \\
+ & \multirow{1}{*}{\textbf{Point}} & \multirow{1}{*}{\textbf{Variables}} & \multirow{1}{*}{\textbf{}} & \multirow{1}{*}{\textbf{}} & \multirow{1}{*}{\textbf{}} & \multirow{1}{*}{\textbf{Point}} & \multirow{1}{*}{\textbf{call}} & \multirow{1}{*}{\textbf{deferencing}} & \multirow{1}{*}{\textbf{complexity}} & & \multirow{1}{*}{\textbf{Functions}} \\
+\midrule
+	\multirow{1}{*}{\textbf{A*}} & 19  & 13 & 7 & 3 & 39 & 10 & 10 & 0 & 29 & 77.8\% & 10 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Banker's Algorithm}} & 6 & 12 & 4 & 1 & 20 & 4 & 4 & 0 & 10 & 100.0\% & 4 \\ \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Bellman Ford}} & 14 & 7 & 7 & 2 & 28 & 5 & 4 & 0 & 19 & 100.0\% & 5 \\ \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Binary Search}} & 6 & 6 & 3 & 1 & 19 & 4 & 3 & 0 & 10 & 100.0\% & 4 \\ \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Breadth First Search}} & \multirow{2}{*}{12} &  \multirow{2}{*}{10} & \multirow{2}{*}{5} &  \multirow{2}{*}{0} &  \multirow{2}{*}{31} &  \multirow{2}{*}{7} & \multirow{2}{*}{7} &  \multirow{2}{*}{0} &  \multirow{2}{*}{19} & \multirow{2}{*}{100.0\%} & \multirow{2}{*}{7} \\  
+	\multirow{1}{*}{\textbf{and Depth First Search}} &  &  &  &  &  &  &  &  &  & & \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+	\multirow{1}{*}{\textbf{Bubble Sort}} & 4 & 5 & 2 & 0 & 17 & 4 & 3 & 0 & 8 & 100.0\% & 4 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Dijkstra}} & 15 & 12 & 6 & 2 & 35 & 6 & 5 & 0 & 21 & 100.0\% & 6 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Floyd-Warshall}} & 4 & 5 & 3 & 0 & 11 & 3 & 2 & 0 & 7 & 100.0\% & 3 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{GCD}} & 6 & 6 & 2 & 1 & 13 & 4 & 3 & 0 & 10 & 100.0\% & 4 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Insertion sort}} & 3 & 7 & 2 & 0 & 12 & 3 & 2 & 0 & 6 & 100.0\% & 3 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Kruskal}} & 23 & 14 & 12 & 1 & 46 & 11 & 11 & 0 & 34 & 100.0\% & 11 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Matrix Multiplication}} & 4 & 6 & 3 & 0 & 16 & 3 & 2 & 1 & 7 & 100.0\% & 3  \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Mergesort}} & 10 & 6 & 6 & 0 & 41 & 5 & 4 & 0 & 15 & 100.0\% & 5 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Quicksort}} & 6 & 5 & 4 & 0 & 27 & 5 & 5 & 5 & 11 & 60.0\% & 3 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Selection Sort}} & 3 & 7 & 2 & 0 & 14 & 4 & 3 & 0 & 7 & 75.0\% & 4 \\
+	\bottomrule
+\end{tabular}
+$%
+}
+\label{table22_bis_bis}
+\end{center}
+\end{table}
+%
+%\end{landscape}
+%\begin{landscape}
+%
+\begin{table}[htbp]
+\caption{Halstead Complexity Measures}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lcccccccccccc} % p{1.4in}
+\toprule
+ \multirow{2}{*}{\textbf{Functions}} & \multirow{1}{*}{\textbf{Total}} & \multirow{1}{*}{\textbf{Distinct}} & \multirow{1}{*}{\textbf{Total}} & \multirow{1}{*}{\textbf{Distinct}} & \multirow{1}{*}{\textbf{Program}} & \multirow{1}{*}{\textbf{Vocabulary}} & \multirow{1}{*}{\textbf{Program}} & \multirow{2}{*}{\textbf{Effort}} & \multirow{1}{*}{\textbf{Program}} & \multirow{1}{*}{\textbf{Difficulty}} & \multirow{1}{*}{\textbf{Time to}} & \multirow{1}{*}{\textbf{Bugs}} \\
+ & \multirow{1}{*}{\textbf{Operators}} & \multirow{1}{*}{\textbf{Operators}} & \multirow{1}{*}{\textbf{Operands}} & \multirow{1}{*}{\textbf{Operands}} & \multirow{1}{*}{\textbf{length}} & \multirow{1}{*}{\textbf{size}} & \multirow{1}{*}{\textbf{volume}} &  & \multirow{1}{*}{\textbf{level}} & \multirow{1}{*}{\textbf{level}} & \multirow{1}{*}{\textbf{Implement}} & \multirow{1}{*}{\textbf{delivered}} \\
+\midrule
+	\multirow{1}{*}{\textbf{A*}} & 372 & 41 & 205 & 34 & 577 & 75 & 3594.03 & 444232.48 & 0.01 & 123.60 & 24679.58 & 1.94 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Banker's Algorithm}} & 247 & 33 & 119 & 44 & 366 & 77 & 2293.64 & 102353.86 & 0.02 & 44.62 & 5686.33 & 0.73 \\ \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Bellman Ford}} & 352 & 34 & 168 & 52 & 520 & 86 & 3341.66 & 183534.12 & 0.02 & 54.92 & 10196.34 & 1.08 \\ \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Binary Search}} & 195 & 35 & 75 & 25 & 270 & 60 & 1594.86 & 83730.17 & 0.02 & 52.50 & 4651.68 & 0.64 \\ \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Breadth First Search}} & \multirow{2}{*}{326} &  \multirow{2}{*}{35} & \multirow{2}{*}{156} &  \multirow{2}{*}{42} &  \multirow{2}{*}{482} &  \multirow{2}{*}{77} & \multirow{2}{*}{3020.59} &  \multirow{2}{*}{196338.42} &  \multirow{2}{*}{0.02} & \multirow{2}{*}{65} &  \multirow{2}{*}{10907.69} &  \multirow{2}{*}{1.13} \\  
+	\multirow{1}{*}{\textbf{and Depth First Search}} &  &  &  &  &  &  &  &  &  &  &  &   \\ \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+	\multirow{1}{*}{\textbf{Bubble Sort}} & 243 & 29 & 105 & 57 & 348 & 86 & 2236.34 & 59733.82 & 0.04 & 26.71 & 3318.55 & 0.51 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Dijkstra}} & 331 & 39 & 161 & 35 & 492 & 74 & 3055.05 & 274038.08 & 0.01 & 89.70 & 15224.34 & 1.41 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Floyd-Warshall}} & 266 & 26 & 140 & 88 & 406 & 114 & 2774.15 & 57374.54 & 0.05 & 20.68 & 3187.47 & 0.50 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{GCD}} & 164 & 25 & 55 & 21 & 219 & 46 & 1209.66 & 39601.97 & 0.03 & 32.74 & 2200.11 & 0.39 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Insertion sort}} & 164 & 30 & 59 & 20 & 223 & 50 & 1258.58 & 55692.16 & 0.02 & 44.25 & 3094.01 & 0.49 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Kruskal}} & 394 & 34 & 194 & 38 & 588 & 72 & 3627.92 & 314864.91 & 0.01 & 86.79 & 17492.50 & 1.54 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Matrix Multiplication}} & 207 & 33 & 80 & 35 & 287 & 68 & 1747.10 & 65890.70 & 0.03 & 37.71 & 3660.59 & 0.54 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Mergesort}} & 271 & 36 & 133 & 45 & 404 & 81 & 2561.30 & 136261.13 & 0.02 & 53.20 & 7570.06 & 0.88 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Quicksort}} & 238 & 36 & 118 & 33 & 356 & 69 & 2174.63 & 139967.40 & 0.02 & 64.36 & 7775.97 & 0.90 \\  \hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\multirow{1}{*}{\textbf{Selection Sort}} & 163 & 28 & 62 & 22 & 225 & 50 & 1269.87 & 50102.05 & 0.03 & 39.45 & 2783.45 & 0.45 \\  
+	\bottomrule
+\end{tabular}
+$%
+}
+\label{table44_bis_bis}
+\end{center}
+\end{table}
+%
+%\end{landscape}
+The following paragraphs describes the main features of the generic framework. Processor specific features are described later.
+%
+\subsubsection{Input Generation} 
+To evaluate CC4CS, a module that (semi)automatically generates inputs for the benchmark functions has been created. In particular, for each function they have been randomly generated 1000 input data sets. Moreover, for each function, different data types have been considered (i.e. \textit{int8, int16, int32,} and \textit{float}) to analyze the results with respect to the internal architecture of the considered processor. Each input data set is stored in a header file to be included in the function at compile time.\par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.9\linewidth]{img/CC4CS_framework.png}}
+	\caption{CC4CS Evaluation Framework.}
+	\label{figCC4CS4}
+\end{figure}
+%
+%
+\subsubsection{Profiling on the Host Architecture}
+After the inputs generation phase, a procedure to count the number of executed C statements (and also the number of executed assembly instruction, useful for energy/power analysis) is needed. This value is obtained by performing a profiling of the benchmark functions by means of the \textit{gcov} \cite{bibCC4CS03} profiler for each generated input. To obtain the total number of executed C statements for each function, a sum of the single profiling numbers has been performed. It is worth noting that such a profiling is performed one-shot on the host platform since it is independent of the target processor technologies.
+%
+\subsubsection{Profiling on the Target Processor}
+The last data needed to calculate the CC4CS metric is the number of clock cycles needed by the target processor technology to execute each function in the benchmark. Depending on the processor technology there is the need for an \textit{Instruction Set Simulator} (ISS) or an \textit{HDL Simulator}, for SPP (Fig.~\ref{figCC4CS4}).
+
+\subsection{CC4CS in the SW Domain}
+%
+Once developed the framework, CC4CS has been evaluated first in the SW domain by considering processor technologies. In this work a GPP processor (LEON3, a 32-bit synthesizable soft-processor compatible with SPARC V8 architecture \cite{bibCC4CS06} used in aerospace domain) has been analyzed \cite{bibCC4CS05} that allows to consider a more performing architecture that relies on external memory and cache. The execution has been done with a software simulation of the microprocessor using an Instruction Set Simulator (ISS). \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.6\linewidth]{img/leon3_block_diagram.png}}
+	\caption{LEON3 32-bit processor core.}
+	\label{figLEON3_block}
+\end{figure}
+%
+LEON3 \cite{bibCC4CS06} is a 32-bit synthesizable soft-processor that is compatible with SPARC V8 architecture: it has a seven-stage pipeline and Harvard architecture, uses separate instruction and data caches and supports multiprocessor configurations (as shown in Fig.~\ref{figLEON3_block}). It represents a soft-processor for aerospace applications. Cobham Gaisler offers TSIM System Emulator \cite{bibCC4CS07} as an accurate emulator of LEON3 processors. A free evaluation version of TSIM/LEON3 is available on Gobham website \cite{bibCC4CS07}, but it does not support code coverage, configuration of caches, memories and so on. Anyway, it has been chosen as the reference ISS for first analysis since it provides the information needed to evaluate CC4CS. The LEON3 version has a default simulated system clock of 50 MHz. The evaluation version of TSIM/LEON3 implements 2*4 KiB caches (not removable), with 16 bytes per line with Least-Recently-Used (LRU) replacement algorithm. It has 8 register windows, a RAM size of 4096 KiB and a Rom size of 2048 KiB. By default, TSIM/LEON3 emulates the FPU. Benchmark functions have been compiled, with the Bare-C Cross-Compiler (BCC) for LEON3 processors \cite{bibCC4CS08}. It is based on the GNU compiler tools and the New-lib standalone C-library \cite{bibCC4CS09}. BCC is composed by GNU GCC C/C++ compiler 4.4.2 \cite{bibCC4CS10}, GNU Binutils 2.19.51 \cite{bibCC4CS11} and Newlib C-library 1.13.1 \cite{bibCC4CS09}. After the simulation, the framework is ready to calculate the metric and some statistics by considering all the inputs used to stimulate the functions. \par
+%
+\begin{table}[htbp]
+\caption{CC4CS measured using 1000 input data set per function (10000 execution) on LEON3}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lccccccccccccc} % p{1.4in}
+\toprule
+ \textbf{Data} & \multirow{ 2}{*}{\textbf{Min}} & \multirow{ 2}{*}{\textbf{Max}} & \multirow{ 2}{*}{\textbf{AM$^1$}} & \multirow{ 2}{*}{\textbf{SD$^2$}} & \multirow{ 2}{*}{\textbf{RSD$^3$}} & \multirow{ 2}{*}{\textbf{Var$^4$}} & \multirow{ 2}{*}{\textbf{GM$^5$}} & \multirow{ 2}{*}{\textbf{GSD$^6$}} & \multirow{ 2}{*}{\textbf{85\%$^7$}} & \multirow{ 2}{*}{\textbf{90\%$^8$}} & \multirow{ 2}{*}{\textbf{95\%$^9$}} & \multirow{ 2}{*}{\textbf{SE$^{10}$}} & \multirow{ 2}{*}{\textbf{RSE$^{11}$}} \\
+ \textbf{Type} &  &  &  &  &  &  &  &  &  &  &  &  &  \\
+\midrule
+	int8   & 11   & 2197    & 193      & 304      & 1,5751 & 0,000926  & 90       & 3,3565 & 371    & 536    & 721    & 9,6244 & 5\% \\  
+	int16  & 12   & 2194    & 291,9572 & 401,5222 & 1,3817 & 0,0000161 & 149,1118 & 3,2279 & 537    & 644    & 1322   & 12,697 & 4\% \\   
+    int32  & 23   & 2194    & 437,1239 & 512,0694 & 1,1714 & 0,0000262 & 258,8093 & 2,8036 & 786    & 1047   & 2053   & 16,193 & 4\% \\  
+	float  & 28   & 2200    & 481,7072 & 516,9927 & 1,0732 & 0,0000267 & 305,9818 & 2,5861 & 817    & 1326   & 2058   & 16,348 & 3\% \\
+	AVG    & 18,5 & 2196,25 & 350,9470 & 433,6460 & 1,3003 & 0,0002487 & 200,9757 & 2,9935 & 627,75 & 888,25 & 1538,5 & 13,716 & 4\% \\ 
+	\bottomrule
+\end{tabular}
+$%
+}
+\begin{tablenotes}
+\scriptsize
+\centering
+  \item $^1$AM: Arithmetic Mean; $^2$SD: Standard Deviation; $^3$RSD: Relative Standard Deviation; 
+  \item $^4$Var: Variance; $^5$GM: Geometric Mean; $^6$ GSD: Geometric Standard Deviation; 
+  \item $^7$85\%: 85$^{th}$ Percentile; $^8$90\%: 90$^{th}$ Percentile; $^9$95\%: 95$^{th}$ Percentile; 
+  \item $^{10}$SE: Standard Error; $^{11}$RSE: Relative Standard Error.
+\end{tablenotes}
+\label{table22_new}
+\end{center}
+\end{table}
+%
+The obtained results for 1000 executions of the 10 benchmark functions are summarized in Table~\ref{table22_new}. \par
+%
+\begin{figure}[htbp!]
+	\centerline{\includegraphics[width=1.25\linewidth]{img/02_custom_bench_Leon3.png}}
+	\caption{CC4CS Frequency for processor LEON3.}
+	\label{figCC4CS1}
+\end{figure} 
+%
+For each function, different data types have been considered (\textit{int8, int, long,} and \textit{float}). In fact, performances, especially the average ones, change with respect to the dimension of data, as shown in Figure~\ref{figCC4CS1}. However, in this case, the differences with float data type are not as relevant since LEON3 exploits a dedicated FPU. For example, by considering int8 data type, CC4CS(LEON3) belongs to the Min-Max interval 11-2197, with an Arithmetic Mean equals to 193 (with Standard Deviation equals to 304), a Geometric Mean of 90 and the 95th Percentile equals to 721. Also in this case, it is worth noting the relevant difference between this last value and the \textit{Max} while the same difference is not so relevant when considering \textit{int32} and \textit{float} data types.
+%
+\begin{figure}[htbp!]
+	\centerline{\includegraphics[width=0.6\linewidth]{img/cc4cs_LEON3_small.png}}
+	\caption{CC4CS Box Plot for processor LEON3.}
+	\label{figCC4CS1_box}
+\end{figure} 
+%
+\subsection{CC4CS in the HW Domain}
+%
+To highlight another important feature of CC4CS, i.e. to be unifying with respect to HW and SW domains, this section provides a very preliminary evaluation of CC4CS for functions implemented by means of SPP (i.e. HW) exploiting FPGA technologies. For this, to avoid the need of synthesize all the previously adopted benchmark functions (it will be done for future analyses), it has been exploited the already synthesized benchmark used in \cite{bibCC4CS12}, extracted from the C-language CHStone benchmark suite \cite{bibCC4CS13}.
+The work in \cite{bibCC4CS13} performed two sets of experiments to evaluate the compilers:
+\begin{itemize}
+    \item In the first experiment, they executed each tool in a “push-button” manner using all of its default settings, which they refer to as standard-optimization. The first experiment represents what a user would see running the HLS tools “out of the box”;
+%
+\begin{table}[htbp]
+\caption{Standard-Optimization performance results.}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lccccccccc} % p{1.4in}
+\toprule
+ \multirow{2}{*}{\textbf{Function}} & \multirow{2}{*}{\textbf{Statements C}} & \multicolumn{2}{c}{\textbf{Commercial}} & \multicolumn{2}{c}{\textbf{Bambu}} & \multicolumn{2}{c}{\textbf{DWARV}} & \multicolumn{2}{c}{\textbf{LegUp}} \\
+  &  & Cycles & CC4CS & Cycles & CC4CS & Cycles & CC4CS & Cycles & CC4CS \\
+\midrule
+adpcm (int32)    & 36806    & 27250   & 0,74036 & 11179   & 0,3037 & 24454   & 0,6644 & 7883    & 0,2141  \\
+aes\_dec (int32) & 11568    & 5461    & 0,472   & 2766    & 0,2391 & 2579    & 4,4854 & 7367    & 1,5702  \\
+aes\_enc (int32) & 11580    & 3976    & 2,9124  & 1574    & 7,357  & 5135    & 2,2551 & 1564    & 7,404   \\
+gsm (int16)      & 7334     & 5244    & 0,715   & 2805    & 0,3824 & 6866    & 0,9361 & 3966    & 0,5407  \\
+mips (int32)     & 8853     & 4199    & 0,4743  & 4043    & 0,4566 & 8320    & 0,9397 & 5989    & 0,6764  \\
+bellman\_ford    & 1804     & 2838    & 1,5731  & 3218    & 1,7838 & 2319    & 1,2854 & 2444    & 1,3547  \\
+sha (int8)       & 165493   & 197867  & 1,1956  & 111762  & 0,6753 & 71163   & 0,43   & 168886  & 1,0205  \\
+blowflsh (int8)  & 105290   & 101010  & 0,9593  & 57590   & 0,5459 & 70200   & 0,6667 & 75010   & 0,7124  \\
+dfadd (float)    & 2262     & 552     & 0,244   & 404     & 0,1786 & 465     & 0,2055 & 650     & 0,2873  \\
+dfdiv (float)    & 1088     & 2068    & 1,9007  & 1925    & 1,7693 & 2274    & 2,09   & 2046    & 1,8805  \\
+dfsin (float)    & 14368    & 57564   & 4,0064  & 56021   & 3,899  & 64428   & 4,4841 & 57858   & 4,0268  \\
+dfmul (float)    & 872      & 200     & 0,2293  & 174     & 0,1995 & 293     & 0,336  & 209     & 0,2396  \\
+jpeg (int32)     & 962612   & 994945  & 1,0335  & 662380  & 0,6881 & 748707  & 0,7777 & 1128109 & 1,1719  \\
+motion           & 8570     & ERR     & ERR     & 127     & 0,0148 & 152     & 0,0177 & 66      & 0,00077 \\
+sobel            & 21095723 & 2475541 & 0,1173  & 3641472 & 0,1726 & 3648547 & 0,1729 & 1565741 & 0,0884  \\
+satd             & 178      & 87      & 0,4887  & 36      & 0,2022 & 54      & 0,3033 & 42      & 0,2359  \\
+	\bottomrule
+\end{tabular}
+$%
+} 
+\label{table44}
+\end{center}
+\end{table}
+%
+\begin{figure}[htbp!]
+	\centerline{\includegraphics[width=0.5\linewidth]{img/cc4cs_FPGA_standard.png}}
+	\caption{CC4CS Box Plot for Standard-Optimization performance results.}
+	\label{table44_box}
+\end{figure} 
+%
+    \item In the second experiment, they manually optimized the programs and constraints for the specific tools (by using compiler flags and code annotations to enable various optimizations) to generate performance-optimized implementations.
+\end{itemize}
+%
+They used the following default target frequencies: 250 MHz for BAMBU, 150 MHz for DWARV, and 200 MHz for LEGUP. For the commercial tool (Vivado HLS), they decided to use a default frequency of 400 MHz. \par
+%
+\begin{table}[htbp]
+\caption{Performance-Optimized results.}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lccccccccc} % p{1.4in}
+\toprule
+ \multirow{2}{*}{\textbf{Function}} & \multirow{2}{*}{\textbf{Statements C}} & \multicolumn{2}{c}{\textbf{Commercial}} & \multicolumn{2}{c}{\textbf{Bambu}} & \multicolumn{2}{c}{\textbf{DWARV}} & \multicolumn{2}{c}{\textbf{LegUp}} \\
+  &  & Cycles & CC4CS & Cycles & CC4CS & Cycles & CC4CS & Cycles & CC4CS \\
+\midrule
+adpcm (int32)    & 36806    & 12350    & 0,3355 & 7077    & 0,1922 & 9122    & 0,2478 & 6635    & 0,5372 \\
+aes\_dec (int32) & 11568    & 3923     & 0,3391 & 2585    & 0,2234 & 2579    & 0,2229 & 4847    & 0,419  \\
+aes\_enc (int32) & 11580    & 3735     & 0,3225 & 1485    & 0,1282 & 3282    & 0,2834 & 1191    & 0,1028 \\
+gsm (int16)      & 7334     & 3584     & 0,4888 & 2128    & 0,2901 & 7308    & 0,9964 & 1931    & 0,2632 \\
+mips (int32)     & 8853     & 4199     & 0,4743 & 5783    & 0,6532 & 8320    & 0,9397 & 5989    & 0,6764 \\
+bellman\_ford    & 1438     & 2607     & 1,8129 & 4779    & 3,3233 & 2319    & 1,6126 & 1036    & 0,7204 \\
+sha (int8)       & 165493   & 124339   & 0,7513 & 51399   & 0,1897 & 71163   & 4,2887 & 81786   & 0,4941 \\
+blowflsh (int8)  & 105290   & 96460    & 0,9161 & 57590   & 0,5469 & 70200   & 6,6672 & 64480   & 0,6124 \\
+dfadd (float)    & 2262     & 552      & 0,244  & 370     & 0,1635 & 465     & 0,2055 & 319     & 0,141  \\
+dfdiv (float)    & 1088     & 2068     & 1,9007 & 1374    & 1,2628 & 2846    & 2,6158 & 942     & 0,8658 \\
+dfsin (float)    & 872      & 200      & 0,2293 & 162     & 0,1857 & 293     & 0,336  & 105     & 0,1204 \\
+dfmul (float)    & 14368    & 57564    & 4,0064 & 38802   & 2,7005 & 90662   & 6,3099 & 22233   & 1,5473 \\
+jpeg (int32)     & 962612   & 602725   & 0,6261 & 662380  & 0,6881 & 706151  & 0,7335 & 1182092 & 1,228  \\
+motion           & 8570     & ERR      & ERR    & 127     & 0,0148 & 122     & 0,0142 & 66      & 0,0007 \\
+sobel            & 15100132 & 2475541  & 0,1639 & 3641402 & 0,2411 & 3648547 & 0,2416 & No Val  & No Val \\
+satd             & 135      & 27       & 0,2    & 36      & 0,2666 & 54      & 0,4    & 42      & 0,3111 \\
+	\bottomrule
+\end{tabular}
+$%
+} 
+\label{table55}
+\end{center}
+\end{table}
+% 
+\begin{figure}[htbp!]
+	\centerline{\includegraphics[width=0.5\linewidth]{img/cc4cs_FPGA_optimized.png}}
+	\caption{CC4CS Box Plot for Performance-Optimized results.}
+	\label{table55_box}
+\end{figure} 
+%
+The selected C functions originate from different application domains, which are control-flow as well as data-flow dominated. An important aspect of such benchmarks is that golden inputs and related output vectors are already available for each program. So, it has been possible to execute each function to perform profiling. Hence, it is possible to “execute” each benchmark with the built-in input vectors, both in software and also in HLS generated RTL using ModelSim. The Register-Transfer Level (RTL) simulation permits extraction of the total cycle count, as well as enables functional correctness checking. Then, by exploiting the already available number of clock cycles needed to execute the HW function on a Virtex7, evaluated by means of RTL simulations, it has been straightforward to evaluate CC4CS(Virtex7). Table~\ref{table44} and Table~\ref{table55} shows the corresponding CC4CS for each tool considered in \cite{bibCC4CS12}. 
+Table~\ref{table66} and Table~\ref{table77} presents the statistical results related to the estimation of CC4CS(virtex7) considering the whole set results. So, at a very first glance, it is possible to state that CC4CS(Virtex7), with standard optimizations, belongs to a Min-Max interval equals to 1-8 (rounding up to the nearest integer), as a first preliminary analysis. 
+%
+\begin{table}[htbp]
+\caption{CC4CS measured on HW with Standard-Optimization performance results.}
+\begin{center}
+\resizebox{0.6\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lcccc} % p{1.4in}
+\toprule
+    \textbf{HLS tool} & \textbf{Min} & \textbf{AM$^1$} & \textbf{GM$^2$} & \textbf{Max} \\
+\midrule
+    Commercial & 0,1173  & 1,137464    & 0,758158999 & 4,0064 \\
+    Bambu      & 0,0148  & 1,17924375  & 0,468344662 & 7,357  \\
+    DWARV      & 0,0177  & 1,253125    & 0,650089529 & 4,4854 \\
+    LegUp      & 0,00077 & 1,339010625 & 0,483072385 & 7,404  \\
+    AVG        & 0,03764 & 1,227210844 & 0,589916394 & 5,8132 \\
+\bottomrule
+\end{tabular}
+$%
+} 
+\end{center}
+\begin{tablenotes}
+\scriptsize
+\centering
+  \item $^1$AM: Arithmetic Mean; $^2$GM: Geometric Mean;
+\end{tablenotes}
+\label{table66}
+
+\end{table}
+%
+%
+\begin{table}[htbp]
+\caption{CC4CS measured on HW with Performance-Optimized results.}
+\begin{center}
+\resizebox{0.6\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lcccc} % p{1.4in}
+\toprule
+ \textbf{HLS tool} & \textbf{Min} & \textbf{AM$^1$} & \textbf{GM$^2$} & \textbf{Max} \\
+\midrule
+Commercial & 0,1639 & 0,85406     & 0,538482912 & 4,0064  \\
+Bambu      & 0,0148 & 0,69188125  & 0,33433658  & 3,3233  \\
+DWARV      & 0,0142 & 1,6322      & 0,639132411 & 6,6672  \\
+LegUp      & 0,0007 & 0,535986667 & 0,281288968 & 1,5473  \\
+AVG        & 0,0484 & 0,928531978 &  0,44831021 & 3,88605 \\
+\bottomrule
+\end{tabular}
+$%
+}
+\end{center}
+\begin{tablenotes}
+\scriptsize
+\centering
+  \item $^1$AM: Arithmetic Mean; $^2$GM: Geometric Mean;
+\end{tablenotes}
+\label{table77}
+\end{table}
+%
+\subsection{Exploitation of CC4CS in HW/SW Domain}\label{exploit_CC4CS_01}
+%
+The availability of CC4CS for both HW and SW processor technologies is very important to exploit such a metric in HW/SW Co-Design methodologies for both early comparison and selection, and for ESL HW/SW timing co-simulations. In the first case, by having available CC4CS for different processors technologies, with the same host-based profiling it is possible to estimate the execution time of a function of interest for the whole processor technologies set so making a very fast preliminary comparison and selection. As an example, given a target function and a related golden input, by means of host-based profiling is possible to count the number of executed C statements (e.g. 100). Then, as shown in Figure~\ref{figCC4CS2_box}, it is straightforward to compare the whole processor technologies set by multiplying 100 for the related CC4CS. Depending on the required execution time it is then possible to select a specific processor technology or, at least, to reduce the set for further analyses. In the second case, CC4CS is useful since several ESL HW/SW timing co-simulations approaches (e.g. \cite{bib24_c}\cite{bib24_b}) rely on the availability of an estimated execution time for each C/SystemC statement composing the functions belonging to ESL specification.
+%
+%\begin{figure}[htbp!]
+%	\centerline{\includegraphics[width=0.65\linewidth]{img/prova22.png}}
+%	\caption{CC4CS-based HW/SW comparison.}
+%	\label{figCC4CS2}
+%\end{figure} 
+%
+\begin{figure}[htbp!]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/exploit_hwsw_orizontal.png}}
+	\caption{CC4CS-based Box Plot HW/SW comparison.}
+	\label{figCC4CS2_box}
+\end{figure} 
+%
+%\subsection{Timing RT (Average WCET)}
+%
+%TODO.
+%
+\section{Power/Energy}
+%
+This section presents an early-stage statement-level energy consumption metric for different processor technologies (focusing on SW application, but the metric can be estimated also for HW-oriented domains). \par
+Energy consumption is one of the critical design issue in embedded systems area. In fact, the reduced battery capacity, the sensitive multiprocessors chip, and the need to guarantee a long life for all devices are some of the main problems that affect the design activities. At System-Level of abstraction, the choices made by designers can drastically influence the final energy consumption pattern, since different energy optimization can be identified, evaluated and applied in the whole Electronic System Level (ESL) design flow. Different power estimation models are taken into account in order to decrease the gap between errors and inaccuracy respect to the final implementation. \par
+%
+\begin{figure}[htbp!]
+	\centerline{\includegraphics[width=0.4\linewidth]{img/ESL_Design_flow.jpg}}
+	\caption{Classical ESL design flow for embedded processors.}
+	\label{figJ4CS2}
+\end{figure} 
+%
+Processors, memories, interconnections among elements, and custom Application-Specific Integrated-Circuit (ASIC) contribute to the final energy dissipation pattern, and most of those components can be modeled at different levels of abstraction, depending on the granularity and accuracy required \cite{bibJ4CS1_bis}.
+Figure~\ref{figJ4CS2} shows the typical ESL design flow for embedded processors development. The functional abstraction level catches only basic processor features, as average clock cycles per instruction (CPI), static power dissipation, some parameters related to the statement and line code energy leakage, and other high-level metrics chosen by designers. The Architectural/ISS level involves the presence of a well-defined knowledge about the instruction Set Architecture (ISA), using a specific simulator called Instruction Set Simulator (ISS). The pipeline-accurate level adds pipelines functionality to the simulator, considering a more defined model that parallelizes the entire architecture. Finally, the cycle-accurate micro-architectural level adds more details and exploits the HW solutions in terms of control components (control path) and data network architectures (data path), with a cycle-accurate granularity analysis to evaluate all the possible processor implementation. \par
+This metric is located between the first two levels of the classical ESL design flow, while considering metrics related to a "statement-level layer" (i.e. related to statements, J4CS: meaning Joule consumption for Statements C), considering a "common" statement C, as described in the previously paragraph, and applying benchmark activities (based on CC4CS framework) in order to offer a statistical value for each executed line of code. The metrics will be evaluated with reference to the work in \cite{bibJ4CS2}, as explained in Section~\ref{j4csw4js_new}. The J4CS is assigned to program statements and contributes to estimate the total amount of energy consumed over a specific time interval (related to the total application execution time), using an ISS-based simulation activity that collect a large amount of data by means of the framework developed in \cite{bibCC4CS05} and extended in this work. \par
+%
+\subsection{Metrics Definition}\label{j4csw4js_new}
+%
+Normally, the power consumption of an application executed on a microprocessor \cite{bibJ4CS8} can be described by:
+%
+\begin{equation} \label{eq13_aa}
+\resizebox{0.5\hsize}{!}{$%
+\begin{aligned}
+P_{tot} = P_{dyn} + P_{stat} = C_{L} \cdot V^2_{dd} \cdot f + V_{dd} \cdot I_{leak}
+\end{aligned}
+$%
+} 
+\end{equation}
+%
+where $P_{tot}$ is the total power consumption made up of dynamic and static power contributions, $C_L$ is the total average switched capacitance per clock cycle related to the execution of the reference program, $V_{dd}$ is the supply voltage, f is the clock frequency, and $I_{leak}$ is the current leakage, the current that flows through the circuit to ground. Considering the execution time associated to the target application, it is possible to define the total energy consumption as: 
+%
+\begin{equation} \label{eq13_bis}
+\resizebox{0.5\hsize}{!}{$%
+\begin{aligned}
+E_{tot} = P_{tot} \cdot t = C_{tot} \cdot V^2_{dd} \cdot f + V_{dd} \cdot I_{leak} \cdot t
+\end{aligned}
+$%
+} 
+\end{equation}
+%
+where $C_{tot}$ is the total average switched capacitance. Changing the clock frequency (and decrease/increase the program execution time) doesn't change the $C_{tot}$ \cite{bibJ4CS8} and the energy consumption decrease/increase linear with the scaled frequency. \par
+Considering instruction-level software model of a given processor, as presented in \cite{bibJ4CS5}, it is possible to define the mean overall energy cost associated to a given program as:
+%
+\begin{equation} \label{eq13_tris}
+\resizebox{0.5\hsize}{!}{$%
+\begin{aligned}
+\bar E = \sum_{i}{(B_i \times N_i)} + \sum_{i,j}{(O_{i,j} \times N_{i,j})} + \sum_{k}{(E_k)}
+\end{aligned}
+$%
+} 
+\end{equation}
+%
+where $B_i$ is the base cost (i.e. the energy cost associated to the process needed to execute a specific instruction), $N_i$ is the number of assembly instruction executed, $O_{i,j}$ represents the circuit state overhead (i.e. the energy overhead due to the execution of two separated sequential instruction), and $E_k$ is the energy contribution related to other inter-instruction effect (i.e. stalls or cache miss) \cite{bibJ4CS7}. \par
+%In this work, only the base cost contribution is considered, the other two part of the Equation~\ref{eq13_tris} will be analyzed in future.
+Considering the average power consumed by a microprocessor while running a program, it is possible to simplify the Equation~\ref{eq13_bis}, that consider physical aspect related to circuit realization, in terms of average power consumption, such as: $\bar P = I \times V_{dd}$, while I is the average current and $V_{dd}$ the voltage supply. The average energy consumed by a program can be expressed by: $\bar E = P \times N \times \tau$, where N is the number of program clock cycles and $\tau$ is the clock period \cite{bibJ4CS5}.
+Thus our proposed method realizes a benchmark activities on a specific set of functions, evaluates the metrics (related to the mean energy consumption per instruction C) described below and use its to estimates a statistical interval of energy consumption. This metric is used to realize an early analysis into some specific ESL Co-Design flow in order to choose or discard solution that fulfill input requirements. \par
+%
+\subsection{Definition of J4CS: an Off-the-Shelf Unifying Statement Level Performance Metric for HW/SW Technologies}\label{j4csw4js}
+%
+As said in \cite{bibJ4CS2}, many embedded microprocessors have a statistical property of constant energy consumption for each executed assembly instruction, so it is possible to generalize the mean power consumption to a higher abstraction level (i.e. Statement Level). After The assignment of an interval energy cost (minimum, maximum, average and so on) to the execution of each C lines of code, it is possible to perform simulation w.r.t. all the possible mode of execution depending on the reference inputs. \par
+In order to perform statistical analysis and motivate the use of this metrics, some assumptions must be made: 
+\begin{itemize}
+    \item If the program has a huge amount of line of code (LOC), then the energy consumed for each instruction can be considered constant without great loss of accuracy \cite{bibJ4CS8};
+    \item The entire statements set is considered homogeneous between C operators and variable (as the analysis is given in a statistical point of view, each statement contributes in the same way for the calculation of the total energy consumption distribution);
+    \item  A mean number of assembly instruction per C statements is considered; 
+    \item All the assumptions made in \cite{bibJ4CS2} respect to pipeline stages, number of clock cycles and so on must be considered.
+\end{itemize}
+Under this assumptions, it is possible to define the mean energy of a machine instruction \cite{bibJ4CS2} as $\bar E = \frac{\bar P}{\phi \cdot f}$, where $\bar P$ is the mean power consumption of a microprocessor, f is the frequency and $\phi$ is the processor power efficiency (related to MIPS parameters, present on processors datasheet \cite{bibJ4CS1_ARM}).
+Starting from this equation, using a profiling step in order to find the total number of assembly instruction executed (N) and the total number of C statements executed (M), using gcov \cite{bibCC4CS05}, it is possible to define the power/energy metrics as presented below.
+%
+\begin{definition}{(\textit{Joule for C Statements}).}
+Considering a single C function, J4CS is the ratio between the number of assembly instructions executed by the target processor technology and the number of executed C statements multiplied by the mean energy of a machine instruction execution, i.e.:
+%The J4CS (Joule for C Statements) metrics is the mean energy consumption associated to each statements C executed on a specific microprocessor architecture, and is defined as:
+\begin{equation} \label{eq13_five_new}
+\resizebox{0.15\hsize}{!}{$%
+\begin{aligned}
+{J4CS} = \frac{N \times \bar E}{M}
+\end{aligned}
+$%
+}
+\end{equation}
+%
+\end{definition}
+%
+\begin{definition}{(\textit{Watt for C Statements}).}
+The W4CS (Watt for C Statements) metrics is the mean power consumption associated to each statements C executed on a specific microprocessor architecture, and is defined as:
+\begin{equation} \label{eq13_six_new}
+\resizebox{0.15\hsize}{!}{$%
+\begin{aligned}
+{W4CS} = \frac{{J4CS}}{t}
+\end{aligned}
+$%
+}
+\end{equation}
+%
+where t represents the execution time of the target functions.
+%
+\end{definition}
+%
+%In this work, only the first metric will be presented in detail, the second one depends directly from J4CS (or it is possible to evaluate by means of timing simulation). 
+So, to make the metric meaningful for a given processor it is needed, at least, to: 
+%
+\begin{itemize}
+    \item define a set of relevant C functions to be used as benchmark for all the processor technologies \cite{bibCC4CS05};
+    \item identify a way to stimulate (i.e. execute) the benchmark by means of relevant input data sets for each benchmark function;
+    \item identify a tool that perform profiling in order to count the number of executed C statements for each input; 
+    \item identify tools to compile the C function for the target processor and execute functions in order to obtain total number of assembly instructions executed on a given processor. 
+\end{itemize}
+%
+Naturally, such steps must be applied for each different processor technology. However, it is worth noting that it is an offline one-shot task since J4CS/W4CS, once evaluated, would be available “for free” for next projects. So, to support J4CS/W4CS evaluation, a proper framework has been developed. Additionally, such a framework is also able to evaluate statistics on that metrics.
+It is worth noting that this metrics can be evaluated also in the HW domain, using HLS and HDL tools that offer power and energy consumption information in output. 
+%This last step is not necessary to have the number of assembly lines, because it is not present an ISA associated to the specific HW implementation, but it is possible to evaluate it with the use of the energy HLS result informations. %Additional details about J4CS/W4CS framework can be found in Appendix~\ref{ch:appendixc}. 
+%
+%\section{Area (S4CS)}
+%
+%TODO.
+%
+\chapter{J4CS/W4CS Evaluation Framework} \label{ch:appendixc}
+%
+The following appendix describes the main features of the generic framework. Processor specific features are described later.
+%
+\subsubsection{Input Generation} 
+%
+To evaluate J4CS, a module that (semi)automatically generates inputs for the benchmark functions has been created. In particular, for each function they have been randomly generated 1000 input data sets. Moreover, for each function, different data types have been considered (i.e. \textit{int8, int16, int32,} and \textit{float}) to analyze the results with respect to the internal architecture of the considered processor. Each input data set is stored in a header file to be included in the function at compile time.
+%
+\subsubsection{Profiling on the Host Architecture}
+%
+After the inputs generation phase, a procedure to count the number of executed C statements is needed. This value is obtained by performing a profiling of the benchmark functions by means of the \textit{gcov} \cite{bibCC4CS03} profiler for each generated input. To obtain the total number of executed C statements for each function, a sum of the single profiling numbers has been performed. It is worth noting that such a profiling is performed one-shot on the host platform since it is independent of the target processor technologies.
+%
+\subsubsection{Profiling on the Target Processor}
+%
+The last data needed to calculate the J4CS metric is the number of assembly instruction executed by the target processor technology for each function and input set in the benchmark. Depending on the processor technology there is the need for an \textit{Instruction Set Simulator} (ISS)  (Fig.~\ref{figCC4CS4_new}). It is worth noting that an \textit{HDL Simulator} is needed for SPP in order to extract energy consumption information direcly by HDL tools. This HW energy consumption value substitutes the $N \times \bar E$ numerator value in the Definition.~\ref{eq13_five}.
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.8\linewidth]{img/J4CS_framework.jpg}}
+	\caption{J4CS Evaluation Framework.}
+	\label{figCC4CS4_new}
+\end{figure}
+%
+\subsection{J4CS in the SW Domain}\label{j4csw4jsSWdomain}
+%
+J4CS has been evaluated in the SW domain by considering specific processor technologies. In this work two GPP processor (LEON3, a 32-bit synthesizable soft-processor compatible with SPARC V8 architecture \cite{bibCC4CS06}, and the ATmega328/P \cite{atmega}, a low-power CMOS 8-bit microcontroller based on the AVR RISC architecture) has been analyzed \cite{bibCC4CS05}. The execution has been done with a software simulation of the microprocessor using Instruction Set Simulators (ISS) GAISLER TSIM \cite{bibCC4CS07}),
+%, used with loadable modules emulating the Gaisler GR712RC device, 
+and SimulAVR \cite{simulavr} GNU project.  \par
+%
+\begin{table}[htbp]
+\caption{Board characteristics.}
+\begin{center}
+\resizebox{0.6\hsize}{!}{$%
+	%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+	\begin{tabular}{lccc} % p{1.4in}
+		\toprule
+		\textbf{Parameters    } & \textbf{GR712RC    } & \textbf{LEON3FT-RTAX} & \textbf{Arduino UNO} \\ 
+		\midrule
+		Clock     & 100 MHz & 25 MHz &  16 MHz \\
+		$V_{dd}$  & 3,3 V   & 3,3 V & 5,0 V  \\
+		$\bar P$  & 1500 mW & 500 mW & 60 mW  \\
+		MIPS      & 134     & 20 & 16     \\
+		$\phi$    & 0,011   & 0,025 & 0,0037 \\
+		\bottomrule
+\end{tabular}
+$%
+}
+\label{table1_J4CS}
+\end{center}
+\end{table}
+%
+In order to compare results with real scenarios, two board has been considered to take voltage and frequency information (the power information can be found in the processor datasheets): GR712RC \cite{grrc}, LEON3FT-RTAX \cite{rtax} and Arduino Uno \cite{arduinouno}. The microprocessors parameters used to evaluate the metrics \cite{bibCC4CS06} as shown in Table~\ref{table1_J4CS}; \par
+%
+\begin{table}[htbp]
+\caption{J4CS measured on LEON3FT-RTAX and ArduinoUno (in nJ)}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lccccccccc} % p{1.4in}
+\toprule
+ \textbf{Data Type} & \multirow{1}{*}{\textbf{Min}} & \multirow{1}{*}{\textbf{Median}} & \multirow{1}{*}{\textbf{Max}} & \multirow{1}{*}{\textbf{AM$^1$}} & \multirow{1}{*}{\textbf{SD$^2$}} & \multirow{1}{*}{\textbf{Var$^3$}} & \multirow{1}{*}{\textbf{GM$^4$}} & \multirow{1}{*}{\textbf{85\%$^5$}} & \multirow{1}{*}{\textbf{95\%$^6$}} \\
+\midrule
+	LEON3FT-RTAX-int8    & 1     & 36    & 869 & 100,73 & 137,03 & 18779  & 48,33  & 220    & 338    \\  
+	LEON3FT-RTAX-int16   & 1     & 67    & 868 & 140,66 & 173,38 & 30061  & 75,33  & 312    & 523    \\ 
+    LEON3FT-RTAX-int32   & 4     & 129   & 868 & 213,11 & 208,60 & 43513  & 131,98 & 451    & 814    \\
+	LEON3FT-RTAX-float   & 4     & 202   & 869 & 270,45 & 240,16 & 57676  & 173,18 & 597    & 814    \\ \hline
+	LEON3FT-RTAX-AVG     & 5     & 108,5 & 869 & 181,24 & 189,79 & 37507  & 107,20 & 348,25 & 622,25 \\ \hline
+	ArduinoUno-int8   & 7     & 12    & 89  & 14,43  & 7,45   & 55,63  & 13,19  & 20     & 30     \\  
+	ArduinoUno-int16  & 9     & 16    & 116 & 18,57  & 8,89   & 79,12  & 17,06  & 25     & 38     \\ 
+    ArduinoUno-int32  & 11    & 21    & 151 & 33,87  & 32,45  & 1053,4 & 26,28  & 48     & 146    \\
+	ArduinoUno-float  & 16    & 41    & 269 & 61,44  & 52,06  & 2710,6 & 48,34  & 78     & 204    \\ \hline
+	ArduinoUno-AVG    & 10,75 & 22,5  & 156 & 32,08  & 25,21  & 974,7  & 26,22  & 42,75  & 104,5  \\
+	\bottomrule
+\end{tabular}
+$%
+}
+\end{center}
+\begin{tablenotes}
+\scriptsize
+\centering
+  \item $^1$AM: Arithmetic Mean; $^2$SD: Standard Deviation; $^3$Var: Variance; $^4$GM: Geometric Mean; 
+  \item $^5$85\%: 85$^{th}$ Percentile; $^6$95\%: 95$^{th}$ Percentile; 
+\end{tablenotes}
+\label{table22_J4CS11}
+\end{table}
+%
+So, considering this characteristics, the mean energy consumption associated to each assembly instruction executed is: ($\bar E_{GR712RC} = 1,36 \ nJ  / Instr.$, $\bar E_{RTAX} = 0,8 \ nJ  / Instr.$ and $\bar E_{ATMEGA328/P} = 1 \ nJ / Instr.$). The obtained results for the executions of the benchmark functions are summarized in Table~\ref{table22_J4CS11}. For each function, different data types have been considered (\textit{int8, int16, int32,} and \textit{float}). In fact, energy and power estimation, especially the average ones, change with respect to the dimension of data \cite{bibCC4CS05}. Fig.~\ref{fig5} shown the distribution related to J4CS evaluated on LEON3FT-RTAX and Arduino Uno, respect to the reference benchmark.
+%
+\begin{figure}[htbp]
+    \centering
+  \subfloat[J4CS for LEON3FT-RTAX.]{%
+       \includegraphics[width=0.49\linewidth]{img/SParcV8_boxPlot_J4CS.jpg}}
+    \label{5a_new} 
+  \subfloat[J4CS for Arduino Uno.]{%
+        \includegraphics[width=0.49\linewidth]{img/ATMEGA_boxplot_J4CS.jpg}}
+    \label{5b_new} 
+  \caption{J4CS BoxPlot results.} 
+  \label{fig5} 
+\end{figure}
+%
+\subsection{Exploitation of J4CS in SW Domain}\label{j4csw4jsSWdomainExploit}
+%
+\small
+The availability of J4CS/W4CS for SW processor technologies (and also HW domain) is very important to exploit such a metric in HW/SW Co-Design methodologies for both early comparison and selection, and for ESL HW/SW power estimation. In the first case, by having available J4CS for different processors technologies, with the same host-based profiling it is possible to estimate the power consumption of a function of interest for the whole processor technologies set so making a very fast preliminary comparison and selection. As an example, given a target function and a related golden input, by means of host-based profiling is possible to count the number of executed C statements (e.g. 100). 
+Then, as shown in Fig.~\ref{J4CS_Total} (the x-axis is in a logarithmic scale), it is straightforward to compare the whole processor technologies set by multiplying 100 for the related J4CS. Depending on the required power consumption it is then possible to select a specific processor technology or, at least, to reduce the set for further analyses. In the second case, J4CS is useful since several ESL HW/SW power estimation approaches (e.g. \cite{bibJ4CS3_bis},\cite{bibJ4CS1}) rely on the availability of an estimated power consumption for each statement composing the ESL specification.
+%
+\begin{figure}[htbp!]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/J4CS_total_max_interval.jpg}}
+	\caption{J4CS-based SW comparison.}
+	\label{J4CS_Total}
+\end{figure} 
+%
+
+\chapter{Publications} \label{ch:appendixn}
+
+\begin{itemize}
+    \item \textbf{HEPSYCODE Methodology}: \par
+    \cite{ref_intro_01,ref_intro_02} are two works presented in CPS Week and DATE conferences regarding the preliminary HEPSYCODE projects. \cite{ref_intro_03,ref_intro_04} are two works recently submitted that presents the HEPSYCODE project and the extension regarding the DSE for the communication links and the multi-core scenario. \cite{ref_intro_05} is the recently submitted Ph.D. Forum proposal for the DATE 2019 conference, where the idea is to presents the entire Ph.D. thesis work to a broad audience in the system design and design automation community from both industry and academia.
+    \item \textbf{System Description}: \par
+    \cite{bib23} presents the first definition of the HEPSYCODE modeling language, and propose a possible future performance-driven activity in order to reduce the design space.
+    \item \textbf{Metrics Evaluation and Estimation}: \par
+    \cite{bibCC4CS05,bibCC4CS05_bis} treats a specific timing metrics evaluation using a framework and an analysis statistical step to validate and motivate the use of such kind of metric.
+    \cite{bib24_b} presents the real-time extension of HEPSYCODE framework, applying classical task models to the reference HEPSYCODE system-behavioral model.
+    \item \textbf{Search Methods}: \par
+    \cite{bib30,bib29} presents the first DSE approach that consider mixed-criticality issues into the design flow.
+    \cite{bib24_c_2} illustrates preliminary results (in terms of communication and feasible solution) while considering Hypervisor-based SW partition into the seach activity. \cite{best_poster_DSD} illustrates the results regarding different use cases respect to time and cost constraints, considering safety and virtualized technologies (this work won the \textbf{Best Poster Award} at the DSD 2018 conference).  
+    \item \textbf{Timing Simulation}: \par
+    \cite{bib24_c} illustrates the innovation and the implementation features of the timing simulator used for constraints checking (this work won the \textbf{Best Paper Award} at the ECYPS/MECO 2018 conference).  
+    \item \textbf{Other Relevant Article}: 
+    \cite{other_01} presents an approach to improve design time of embedded systems using different monitoring and simulation tools. \cite{other_02} describes an industrial use case where safety requirement is one of the most important in the considered scenario. \cite{other_03} shows a specific multi-core architecture platform useful to use in soft-real-time domain. \cite{other_04,other_05} are two works inserted into an european project that consider the benchmarking activity related to hypervisor used in aerospace domain (this work was used as a starting point for a newest italian regional project with Thales Alenia Space Italy (TAS-I) and University of L'Aquila, where I was involved). Finally, \cite{other_06} is a journal paper, follow-up of \cite{other_01}, that close the work with some experimental results using the use cases developed in \cite{other_02}.
+\end{itemize}
+
+\end{comment}
+
+\end{appendices}

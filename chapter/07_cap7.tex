@@ -1,0 +1,1423 @@
+\chapter{HEPSYCODE Use Cases}  % capitolo 7
+%
+This chapter presents some use cases related to HEPSYCODE verification activities.\blfootnote{As reported in the Introduction, this Chapter is related to the following author's contribution: \#5} 
+ These use cases are taken by different research works, and have been amended to verify and demonstrate HEPSYCODE functionality. In the context of this verification, the Thesis assumes a fixed number of BBs, some of them with Hypervisor support. The CC4CS (Chapter \ref{chap4} Section \ref{timing_metric_def}) values for each data types (int8, int16, int32 and float) are related to the minimum, maximum and average, respectively \cite{bib25}. In details:
+%
+\begin{itemize}
+    \item $PU = \{pu_1, pu_2, pu_3, pu_4, pu_5 \}$; \par
+    where:
+    %
+    \begin{itemize}
+        \item $pu_1$: GPP 16 MHz 8-bit \textit{\textbf{8051}} CISC core, $CC4CS_{int8}=[59, 375, 117]$, $CC4CS_{int16}=[82, 493, 162]$, $CC4CS_{int32}=[106, 473, 223]$, $CC4CS_{float}=[4, 1322, 526]$;
+        \item $pu_2$: ASP 16 MHz 16-bit \textit{\textbf{PIC24}} core,  $CC4CS_{int8}=[59, 375, 117]$, $CC4CS_{int16}=[82, 493, 162]$, $CC4CS_{int32}=[[106, 473, 223]$, $CC4CS_{float}=[4, 1322, 526]$;  
+        \item $pu_3$: GPP 75 MHz 32-bit \textit{\textbf{LEON3}} soft-processor, $CC4CS_{int8}=[11, 2197, 193]$, $CC4CS_{int16}=[11, 2194, 291]$, $CC4CS_{int32}=[23, 2194, 437]$, $CC4CS_{float}=[28, 2200, 440]$;
+        \item $pu_4$: SPP 50 MHz \textit{\textbf{Spartan3an}}, $CC4CS=[0,038, 5,813, 1,227]$;
+        \item $pu_5$: SPP 250 MHz \textit{\textbf{Virtex-7}}, $CC4CS=[0,048, 3,886, 0,928]$;
+    \end{itemize}
+    %
+    \item $EIL = \{ eil_1, eil_2, eil_3, eil_4 \}$;
+     where:
+    %
+    \begin{itemize}
+        \item $eil_1$: Point-to-Point GPIO with 9600 bit/s max bandwidth, number of connectable processing units equal to 2 and 8 bit physical width, unit cost 1;
+        \item $eil_2$: Point-to-Point UART with 38400 bit/s max bandwidth, number of connectable processing units equal to 2 and 8 bit physical width, unit cost 10;
+        \item $eil_3$: BUS I2C with 100000 bit/s max bandwidth, number of connectable processing units equal to 10 and 8 bit physical width, unit cost 10;
+        \item $eil_4$: BUS SPI with 30000000 bit/s max bandwidth, number of connectable processing units equal to 20 and 8 bit physical width, unit cost 15;
+    \end{itemize}
+    %
+    \item $MU = \{m_1, m_2\} = \{V RAM, NV ROM\}$;
+\end{itemize}
+%
+For the sake of simplicity, only a fixed value of CC4CS was chosen for timing simulation activities. So, the available BBs are: 
+%
+\begin{itemize}
+    \item ${bb}_1: \{ pu_1, m_1 (128 byte), m_2 (4KB), - , \{eil_1, eil_3\}, CC4CS = 260, cost = 10 \}$;
+    %${bb}_1$: GPP 16 MHz 8-bit \textit{\textbf{8051}} CISC core with 128 byte of Internal RAM, 4KB of internal ROM (cost 10), with 2 GPIO interfaces, 2 I2C interfaces, and CC4CS equal to 260 (average value);
+    \item  ${bb}_2: \{ pu_2, m_1 (1KB), m_2 (14KB), - , \{eil_3, eil_4\}, CC4CS = 260, cost = 20 \}$;
+    %${bb}_2$: ASP 16 MHz 16-bit \textit{\textbf{PIC24}} core with 14KB of internal ROM and 1KB of internal RAM (cost 20), with 2 I2C interfaces, 2 SPI interfaces and CC4CS value equal to 260 (average value);
+    \item  ${bb}_3: \{ pu_3, m_1 (256MB), m_2 (16KB), - , \{eil_2\}, CC4CS = 345, cost = 100,$  Hypervisor support (e.g., Xtratum) $\}$; 
+    %${bb}_3$: GPP 75 MHz 32-bit \textit{\textbf{LEON3}} soft-processor with 2*4 KB L1 caches, RAM size of 256 MB and a ROM of 16 KB (cost 100), with 2 UART interfaces
+    \item  ${bb}_4: \{ pu_4, - , - , 700K System \ Gates, \{eil_1, eil_2\}, CC4CS = 6, cost = 400 \}$; 
+    %${bb}_4$: SPP 50 MHz \textit{\textbf{Spartan3an}} (cost 400), with 700K system gates (XC3S700AN), 2 GPIO interfaces, 2 UART interfaces and CC4CS equal to 10 (average value);
+    \item ${bb}_5: \{ pu_5, - , - , 12M System \ Gates, \{eil_2, eil_3, eil_4\}, CC4CS = 3, cost = 900 \}$; 
+    %${bb}_5$: SPP 250 MHz \textit{\textbf{Virtex-7}} (cost 900), with 12M system gates, two GPIO interfaces, 2 UART interfaces, 2 I2C interfaces and 2 SPI interfaces, with CC4CS equal to 5 (average value).
+\end{itemize}
+%
+Considering Architectural Constraints (AC), the maximum number of instances for each $bb_i$ is 2 (i.e., the total number of BBs instances is 10) and the maximum number of instances of $bb_i$ considered into the DSE is equal to the number of processes. 
+%
+\section{FIR-FIR-GCD}\label{firfirgcd_base}
+%
+In order to show the main features of the proposed HW/SW Co-Design methodology and framework, a first reference case study, called FIR-FIR-GCD, is reported below. \textit{FIR-FIR-GCD} is a synthetic application that takes in input pairs of values (triggered by \textit{Stimulus}), makes two filtering actions (\textit{Fir8} and \textit{Fir16}) and then evaluates the greatest common divisor of the filtering outputs (\textit{GCD}) and displays the result \cite{bib34}. \par
+It is worth noting that the case study do not perform a meaningful computation, but it is just used as a simple example to easily understand the potential of the proposed approach and, overall, to show the whole HW/SW co-design flow in action. 
+%
+\subsection{HML Specification}
+%
+The FIR-FIR-GCD HML model is shown in Fig.~\ref{firfirgcd_hml_model}, where the application is composed of eight processes and twelve channels. Two more processes (Stimulus and display) and three more channels are then used to describe and connect the test-bench (represented by 2 input channel $i_1$ and $i_2$ and 1 output channel $o_1$). \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.5\linewidth]{img/firfirgcd_hml.png}}
+	\caption{FIR-FIR-GCD HML model.}
+	\label{firfirgcd_hml_model}
+\end{figure}
+%
+$G = \{ PS,CH \}$ is the graph of the FIR-FIR-GCD specification, as presented in Chapter \ref{chap3} Section \ref{chap3_3_1}, where the graph nodes are the processes and the graph edges are the data transfer. The application specification is listed below.
+%
+\footnotesize
+\begin{align*}
+    PS &= \{ ps_1, ps_2, ps_3, ps_4, ps_5, ps_6, ps_7, ps_8 \} & & \\
+    ps_1 &= \{ Fir8, c, LP, 0, DT_1 \}, & DT_1 &= \{ dt_{1,1}, dt_{1,2}, dt_{1,3}, dt_{1,4} \} \\
+    ps_2 &= \{ Fir8 Eval, c, LP, 0, DT_2 \}, & DT_2 &= \{ dt_{2,1}, dt_{2,2} \} \\
+    ps_3 &= \{ Fir8 Shift, c, LP, 0, DT_3 \}, & DT_3 &= \{ dt_{3,1}, dt_{3,2} \} \\
+    ps_4 &= \{ Fir16, c, LP, 0, DT_4 \}, & DT_4 &= \{ dt_{4,1}, dt_{4,2}, dt_{4,3}, dt_{4,4} \}  \\
+    ps_5 &= \{ Fir16 Eval, c, LP, 0, DT_5 \}, & DT_5 &= \{ dt_{5,1}, dt_{5,2} \} \\
+    ps_6 &= \{ Fir16 Shift,c, LP, 0, DT_6 \}, & DT_6 &= \{ dt_{6,1}, dt_{6,2} \} \\
+    ps_7 &= \{ GCD, c, LP, 0, DT_7 \}, & DT_7 &= \{ dt_{7,1}, dt_{7,2} \} \\
+    ps_8 &= \{ GCD Eval, c, LP, 0, DT_8 \}, & DT_8 &= \{ dt_{8,1}, dt_{8,2} \} \\
+    \\
+    CH &= \{ ch_1, ch_2, ch_3, ch_4, ch_5, ch_6, ch_7, ch_8, ch_9, ch_{10}, ch_{11}, ch_{12}\} \\
+    ch_1 &= \{ Fir8, Fir8 Eval, Fir8e\_Input, 163 \} \\
+    ch_2 &= \{ Fir8 Eval, Fir8, Fir8e\_Output, 19 \} \\
+    ch_3 &= \{ Fir8, Fir8 Shift, Fir8s\_Input, 72 \} \\
+    ch_4 &= \{ Fir8 Shift, Fir8, Fir8s\_Output, 64 \} \\
+    ch_5 &= \{ Fir16, Fir16 Eval, Fir16e\_Input, 299 \}  \\
+    ch_6 &= \{ Fir16 Eval, Fir16, Fir16e\_Output, 19 \} \\
+    ch_7 &= \{ Fir16, Fir8 Shift, Fir16s\_Input, 136 \} \\
+    ch_8 &= \{ Fir16 Shift, Fir16, Fir16s\_Output, 128 \} \\
+    ch_9 &= \{ GCD, GCD Eval, gcde\_Input, 16 \} \\
+    ch_{10} &= \{ GCD Eval, GCD, gcde\_Output, 8 \} \\
+    ch_{11} &= \{ Fir8, GCD, Fir8\_gcd\_Input, 8 \} \\
+    ch_{12} &= \{ Fir16, GCD, Fir16\_gcd\_Input, 8 \} 
+\end{align*}
+\normalsize
+%
+Since there are many data types, the Thesis omits details about them (some are struct into source code), while presenting only an example below: 
+%
+\footnotesize
+\begin{align*}
+    dt_{1,1} &= \{ fir8e\_p, fir8e\_param \}; \\
+    fir8e\_param &= \{ acc: uint<19>, coeff[8]: uint<9>, shift[8]: uint<8>, tmp: uint<8> \};\\
+    dt_{1,2} &= \{ fir8e\_r, fir8e\_results \}; \\
+    fir8e\_results &= \{ acc: uint<19> \}; \\
+    dt_{1,3} &= \{ fir8s\_p, fir8s\_param \}; \\
+    fir8s\_param &= \{ shift[8]: uint<8>, tmp: uint<8> \}; \\
+    dt_{1,4} &= \{ fir8s\_r, fir8s\_results \}; \\
+    fir8s\_results &= \{ shift: uint<8> \}; 
+\end{align*}
+\normalsize
+%
+\subsection{Metrics Evaluation and Estimation}
+%
+This section presents the metrics evaluation and estimation activity, while presenting a reference step that will be used for all the other subsequent use cases. The affinity values used are:
+%
+%\begin{equation*}
+%\resizebox{0.4\hsize}{!}{$%
+\footnotesize
+\begin{align*}
+    ps_1 &= \{ GPP=0.9, ASP=0.7, SPP=0.3 \} \\
+    ps_2 &= \{ GPP=0.5, ASP=0.7, SPP=0.5 \} \\
+    ps_3 &= \{ GPP=0.5, ASP=0.8, SPP=0.9 \} \\
+    ps_4 &= \{ GPP=0.9, ASP=0.7, SPP=0.3 \}  \\
+    ps_5 &= \{ GPP=0.5, ASP=0.7, SPP=0.5 \} \\
+    ps_6 &= \{ GPP=0.5, ASP=0.8, SPP=0.9 \} \\
+    ps_7 &= \{ GPP=0.9, ASP=0.7, SPP=0.3 \} \\
+    ps_8 &= \{ GPP=0.5, ASP=0.7, SPP=0.7 \} 
+\end{align*}
+\normalsize
+%
+The affinity values have been assigned from scratch by the designer. The process and channel concurrency matrices have been calculated with a simulation activity, as described in Section~\ref{timing_simulator}, and are listed in Table~\ref{process_conc} and Table~\ref{channel_conc}: \par
+%
+\begin{table}[htbp]
+\caption{Processes concurrency.}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{c||c|c|c|c|c|c|c|c} % p{1.4in}
+\hline
+\backslashbox{Proc.}{Proc.} & $ps_1$ & $ps_2$ & $ps_3$ & $ps_4$ & $ps_5$ & $ps_6$ & $ps_7$ & $ps_8$ \\
+\hline\hline
+ $ps_1$ & 0 & 0.105263 & 0.105263 & 0.105263 & 0.105263 & 0.105263 & 0.105263 & 0.105263 \\ \hline
+ $ps_2$ & 0 & 0 & 0.263158 & 0.263158 & 0.263158 & 0.263158 & 0.263158 & 0.263158 \\ \hline
+ $ps_3$ & 0 & 0 & 0 & 0.421053 & 0.421053 & 0.421053 & 0.421053 & 0.421053  \\ \hline
+ $ps_4$ & 0 & 0 & 0 & 0 & 0.526316 & 0.526316 & 0.526316 & 0.526316  \\ \hline
+ $ps_5$ & 0 & 0 & 0 & 0 & 0 & 0.684211 & 0.684211 & 0.684211   \\ \hline
+ $ps_6$ & 0 & 0 & 0 & 0 & 0 & 0 & 0.842105 & 0.842105  \\ \hline
+ $ps_7$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1   \\ \hline
+ $ps_8$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+\hline\hline
+\end{tabular}
+$%
+} 
+\label{process_conc}
+\end{center}
+\end{table}
+%
+\begin{table}[htbp]
+\caption{Channels concurrency.}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{c||c|c|c|c|c|c|c|c|c|c|c|c} % p{1.4in}
+\hline
+\backslashbox{Proc.}{Proc.} & $ch_1$ & $ch_2$ & $ch_3$ & $ch_4$ & $ch_5$ & $ch_6$ & $ch_7$ & $ch_8$ & $ch_9$ & $ch_{10}$ & $ch_{11}$ & $ch_{12}$\\
+\hline\hline
+ $ch_1$       &       0  &       0  &       0  &       0  &       0  &       0  &     0.5  &       0  &       0  &       0  &0.555556  &       0  \\ \hline
+ $ch_2$       &       0  &0.555556  &       0  &       0  &       0  &       0  &       0  &       1  &       0  &       0  &0.805556  &       0  \\ \hline
+ $ch_3$       &       0  &       0  &0.805556  &       0  &       0  &       0  &       0  &       0  &    0.75  &       0  &       0  &       0  \\ \hline
+ $ch_4$       &       0  &       0  &0.555556  &0.555556  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &    0.75  \\ \hline
+ $ch_5$       &       0  &       0  &       0  &       0  &       0  &       0  &       0  &    0.75  &     0.5  &       0  &       0  &       0  \\ \hline
+ $ch_6$       &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &     0.5  &       0  &       0  &       0  \\ \hline
+ $ch_7$       &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &    0.75  \\ \hline
+ $ch_8$       &       0  &       0  &       0  &       0  &       0  &0.555556  &       0  &       0  &       0  &     0.5  &       0  &       0  \\ \hline
+ $ch_9$       &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  \\ \hline
+ $ch_{10}$    &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &     0.5  &       0  &       0  \\ \hline
+ $ch_{11}$    &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &     0.5  &       0  \\ \hline
+ $ch_{12}$    &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  &       0  \\ 
+\hline\hline
+\end{tabular}
+$%
+} 
+\label{channel_conc}
+\end{center}
+\end{table}
+\normalsize
+%
+During the load estimation step, the "Free Running Time" (FRT, the application execution time when all the processes are allocated on the same BB instance) has been estimated for each one of the considered GPP/ASP BBs, and the values are:
+\footnotesize
+\begin{align*}
+    bb_1 &= 0.06710 \ s; \\
+    bb_2 &= 0.06710 \ s; \\
+    bb_3 &= 0.02656 \ s; 
+\end{align*}
+\normalsize
+%
+The "Free Running Loads" (FRLs, the loads evaluated for each process when all the processes are allocated on the same BB instance) are presented in Table~\ref{load_proc}. The FRLs have been calculated using the HEPSIM timing simulator.  It is worth noting that the load parameter is not defined for SPP technologies since it is only a parameter related to GPP/ASP.
+%(the SPP corresponding load is related to area occupation in terms of equivalent gates or LUTs, while it is needed a trade-off between SW Load, i.e., FRL, and HW Load, i.e., area occupation). 
+This metric is used into the DSE activity to evaluate the load have been to each PUs in order to check timing constraints (the end-to-end-flow TTC timing constraint, or also real-time TTR constraint, as presented in the next sections). \par
+%
+\begin{table}[htbp]
+\caption{Processes Free Running Load.}
+\begin{center}
+\resizebox{0.6\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{c||c|c|c|c|c|c|c|c} % p{1.4in}
+\hline
+\backslashbox{Proc.}{BBs} & $bb_1$ & $bb_2$ & $bb_3$  \\
+\hline\hline
+ $ps_1$ & 0.0493336 & 0.0493336 & 0.0493296   \\ \hline
+ $ps_2$ & 0.126308  & 0.126308  & 0.126298   \\ \hline
+ $ps_3$ & 0.0983173 & 0.0983173 & 0.0983093   \\ \hline
+ $ps_4$ & 0.0493336 & 0.0493336 & 0.0493296   \\ \hline
+ $ps_5$ & 0.238271  & 0.238271  & 0.238251   \\ \hline
+ $ps_6$ & 0.182289  & 0.182289  & 0.182275   \\ \hline
+ $ps_7$ & 0.0458348 & 0.0458348 & 0.045831   \\ \hline
+ $ps_8$ & 0.21028   & 0.21028   & 0.210263   \\ 
+\hline\hline
+\end{tabular}
+$%
+} 
+\label{load_proc}
+\end{center}
+\end{table}
+%
+\begin{comment}
+%
+During this Thesis some assumptions were made, one of this considers the RAM and ROM processes size equal each others. In future more specific analysis will be made regarding the SW and HW estimation values. In this Thesis the values shown in Table~\ref{area_proc_occ} have been used as Area Occupation metric. \par
+%
+\begin{table}[htbp]
+\caption{Process Area Occupations.}
+\begin{center}
+\resizebox{0.45\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{c||c|c|c|c|c|c|c|c} % p{1.4in}
+\hline
+\backslashbox{Proc.}{Area} & RAM & ROM & eqG  \\
+\hline\hline
+ $ps_1$ & 740B  & 60B  & 50   \\ \hline
+ $ps_2$ & 1080B & 45B  & 50   \\ \hline
+ $ps_3$ & 740B  & 26B  & 50   \\ \hline
+ $ps_4$ & 1340B & 110B & 50   \\ \hline
+ $ps_5$ & 1080B & 80B  & 50   \\ \hline
+ $ps_6$ & 740B  & 50B  & 50   \\ \hline
+ $ps_7$ & 1100B & 6B   & 50   \\ \hline
+ $ps_8$ & 720B  & 5B   & 5   \\ 
+\hline\hline
+\end{tabular}
+$%
+} 
+\label{area_proc_occ}
+\end{center}
+\end{table}
+%
+\end{comment}
+Finally, the process communication matrix (the number of bits exchanged among the different processes) is shown in Table~\ref{process_comm}. \par
+%
+\begin{table}[htbp]
+\caption{Processes communication.}
+\begin{center}
+\resizebox{0.6\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{c||c|c|c|c|c|c|c|c} % p{1.4in}
+\hline
+\backslashbox{Proc.}{Proc.} & $ps_1$ & $ps_2$ & $ps_3$ & $ps_4$ & $ps_5$ & $ps_6$ & $ps_7$ & $ps_8$ \\
+\hline\hline
+ $ps_1$ & 0   &1630  & 720 & 0    & 0    & 0    & 80  & 0   \\ \hline
+ $ps_2$ & 190 & 0    & 0   & 0    & 0    & 0    & 0   & 0   \\ \hline
+ $ps_3$ & 640 & 0    & 0   & 0    & 0    & 0    & 0   & 0   \\ \hline
+ $ps_4$ & 0   & 0    & 0   & 0    & 2990 & 1360 & 80  & 0   \\ \hline
+ $ps_5$ & 0   & 0    & 0   & 190  & 0    & 0    & 0   & 0   \\ \hline
+ $ps_6$ & 0   & 0    & 0   & 1280 & 0    & 0    & 0   & 0   \\ \hline
+ $ps_7$ & 0   & 0    & 0   & 0    & 0    & 0    & 0   & 160 \\ \hline
+ $ps_8$ & 0   & 0    & 0   & 0    & 0    & 0    & 80  & 0   \\ 
+\hline\hline
+\end{tabular}
+$%
+} 
+\label{process_comm}
+\end{center}
+\end{table}
+%
+\subsection{Design Space Exploration}
+%
+This section describes the DSE experimental approach used in this specific case study. This activity is divided into 3 main phases: PAM1, PAM2 and the timing simulation.
+%
+\subsubsection{PAM1}
+%
+This section presents some results related to the DSE step in order to verify the proposed system-level HEPSYCODE "HW/SW partitioning, architectural definition e mapping" methodology. The selected cost functions taken into account by the DSE are Affinity, Parallelism, Load and Cost indexes. The goal of this verification is to check the behavior of the PAM1 tool for different timing constraints (in this example only TTC constraints) and different cost function weights in order to highlight the role of Affinity and load balancing issues, while minimizing the physical cost taking into consideration concurrency exploitation. The load upper bound (i.e., the max load that can be associated to a GPP/ASP) is on the order of $\simeq 70\%$, as considered in \cite{sched_load_UB}.\par
+%The Ph.D. Thesis does not consider area and communication issues since the values 
+%
+The first activity involves the choice of GA parameters. In this Ph.D. Thesis the GA uses a One-Point crossover, a random mutation and a Fitness-based survivor selection activity \cite{bibGATutorial}. In this use case, the Ph.D. Thesis selects a maximum number of iteration equal to 100, a initial population size equal to 0.1\% of the solution space size (in this case $10^4$ individuals) and a maximum population size equal to 1.0\% of the solution space size (in this case $10^6$ individuals). This numbers have been chosen after repeated tests (with them it is simple to manually analyze data in detail, without loss of information while keeping also a low DSE execution time), using different performance metrics used in literature to evaluate GA efficiency \cite{metriche1,metriche2,metriche3,metriche8}, as shown in Table~\ref{performance_table}. \par
+The crossover probability, the mutation probability and the survivor selection probability have been selected w.r.t. a performance-based GA analysis using different performance metrics, considering the evolution among the initial population (common to all) and the $100^{th}$ iteration (e.g., greater values for GD, IGD and $\epsilon$, and lower ones for RNI, means that the final $\rho F^\ast$ is better as well), as shown in Table~\ref{performance_table}. In this step all the 4 cost functions weights have been set up equal to 0.25. \par
+\begin{sidewaystable}[htbp]
+\caption{DSE Performance Parameters Analysis (values in bold are the most representative ones).}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{l||c|c|c|c|c|c|c|c|c|c|c} % p{1.4in}
+\hline
+\backslashbox{Metrics}{Param.} & PC & PM & PS & COV & HV & COV Diff. & RNI & GD & IGD & $\Delta$ & $\epsilon$  \\
+\hline\hline
+ Cost - Affinity        & 0.1 & 0.1 & 0.3 & 0.8 & 0.821514 & 0.002639 & 0.000012  & 0.026962 & 0.04356 & 1.718001 & 0.0566667   \\ \hline
+ Cost - Parallelism     & 0.1 & 0.1 & 0.3 & 1   & 0.992425 & 0.001448 & 0.001888  & 0.014318 & 0.000282 & 1 & 0.060748  \\ \hline
+ Cost - Load            & 0.1 & 0.1 & 0.3 & 1   & \textbf{0.948342} & 0.034816 & 0.000024 & 0.091248 & \textbf{0.055347} & 1.166762 & 0.154824 \\ \hline
+ Load - Parallelism     & 0.1 & 0.1 & 0.3 & 1   & 0.9505  & 0.01329 & 0.000038  & 0.032957 & 0.029497 & 1.129897 & 0.080386 \\ \hline
+ Load - Affinity        & 0.1 & 0.1 & 0.3 & 1   & 0.727574 & 0.026679 & 0.00036 & 0.073929 & 0.005297 & 1.256349 & 0.247018  \\ \hline
+ Parallelism - Affinity & 0.1 & 0.1 & 0.3 & 1   & 0.825 & 0.000701 & 0.00001 & 0.031901 & 0.023364 & N.D. & 0.0375  \\ \hline\hline
+ AVG ($1^{st}$ Parameters)                    & 0.1 & 0.1 & 0.3 & \textbf{0.9667} & \textbf{0.87756} & 0.013262 & 0.000389 & 0.045219 & \textbf{0.0262245} & 1.254202 & 0.10619  \\ \hline\hline
+ %
+ Cost - Affinity & 0.1 & 0.3 & 0.1 & 1 & 0.821639 & 0.02725 & 0.000012 & 0.020256 & 0.034811 & 1.169326 & 0.028873 \\ \hline
+ Cost - Parallelism & 0.1 & 0.3 & 0.1     & 1 & 0.99242 & 0.001765 & 0.001512  & 0.022749 & 0.000257 & 1 & 0.088786 \\ \hline
+ Cost - Load & 0.1 & 0.3 & 0.1            & 1 & 0.934598 & 0.019749 & 0.000024  & 0.082678 & 0.023146 & 1 & 0.164686 \\ \hline
+ Load - Parallelism & 0.1 & 0.3 & 0.1     & 0.889 & 0.925935 & \textbf{-0.010897} & 0.000032  & 0.037156 & 0.02718 & 1.047667 & 0.060464 \\ \hline
+ Load - Affinity & 0.1 & 0.3 & 0.1        & 1 & 0.725154 & 0.029687 & 0.00046  & 0.060974 & 0.019974 & 1.150411 & 0.151424 \\ \hline
+ Parallelism - Affinity & 0.1 & 0.3 & 0.1 & 1 & 0.825 & 0.799708 & 0.000016  & 0.035897 & 0.034897 & N.D. & 0.0375 \\ \hline
+ AVG  ($2^{nd}$ Parameters) & 0.1 & 0.3 & 0.1 & \textbf{0.9815} & 0.870791 & 0.015474 & 0.000343  & 0.043285 & 0.023377 & 1.073481 & 0.088622
+ \\ \hline\hline
+ %
+ Cost - Affinity        & 0.3 & 0.1 & 0.1 & 0.75   & 0.818945 & 0.000015 & 0.000014 & 0.021517 & 0.02146 & 1.246875 & 0.025  \\ \hline
+ Cost - Parallelism     & 0.3 & 0.1 & 0.1 & 1      & 0.991111 & 0.001247 & 0.001634 & 0.008949 & 0.000149 & 1.02983 & 0.037384  \\ \hline
+ Cost - Load            & 0.3 & 0.1 & 0.1 & 1      & 0.948193 & 0.013761 & \textbf{0.000018} & \textbf{0.364904} & 0.035646 & \textbf{1.987126} & \textbf{0.619234} \\ \hline
+ Load - Parallelism     & 0.3 & 0.1 & 0.1 & 1      & 0.950379 & 0.012663 & 0.000044 & 0.032271 & 0.027299 & 1.13105 & 0.08038 \\ \hline
+ Load - Affinity        & 0.3 & 0.1 & 0.1 & 1      & 0.726088 & 0.021972 & 0.000314 & 0.035666 & 0.005022 & 1.060439 & 0.091263  \\ \hline
+ Parallelism - Affinity & 0.3 & 0.1 & 0.1 & 1      & 0.825    & 0.000584 & 0.000016 & 0.024196 & 0.023364 & N.D. & 0.025  \\ \hline\hline
+ AVG  ($1^{rd}$ Parameters)                   & 0.1 & 0.3 & 0.1 & 0.9583 & 0.876619 & \textbf{0.0083737} & \textbf{0.00034} & \textbf{0.0812505} & 0.018823 & \textbf{1.291064} & \textbf{0.1463768}  \\
+\hline\hline
+\end{tabular}
+$%
+} 
+\begin{tablenotes}
+\tiny
+\centering
+  \item PC: Probability Crossover; PM: Probability Mutation; PS: Probality Survivor; 
+  \item COV: Coverage; HV: Hypervolume; COV Diff.: Coverage Difference; RNI: Non-Dominated Individuals; GD: Generational Distance; IGD: Inverted Generational Distance;
+\end{tablenotes}
+\label{performance_table}
+\end{center}
+\end{sidewaystable}
+%
+Since the performance metrics are defined between index pairs, it has been considered only the average performance metric values. Fig.~\ref{perf_values} shows the graphical representation related to Table~\ref{performance_table}, where the Average and Load-Cost performance metrics results have been shown. \par
+%
+\begin{figure}[htbp]
+    \centering
+  \subfloat[Average Performance Metrics]{%
+       \includegraphics[width=0.49\linewidth]{img/perf_AVG.png}}
+    \label{1aa_perf} 
+  \subfloat[Load - Cost Performance Metrics]{%
+        \includegraphics[width=0.49\linewidth]{img/perf_CL.png}}
+    \label{1bb_perf} 
+  \caption{Performance metrics comparison.} 
+  \label{perf_values} 
+\end{figure}
+%
+In this Ph.D. Thesis, the average case (considering the mean values associated to each performance metric) and the case related to Load and Cost metrics have been considered (the latter because it is directly related to execution time, as also shown in Fig.~\ref{fig1_radar}).\par
+Table~\ref{table_DSE_FirFirGCD} shows the final parameters setting used during the next activities. \par
+%
+\begin{table}[htbp]
+	\caption{DSE Parameters Settings}
+	\small
+	\begin{center}
+	\resizebox{0.6\hsize}{!}{$%
+	%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+	\begin{tabular}{lll} % p{1.4in}
+		\toprule
+		\textbf{Parameters}    & \textbf{Nr.} & \textbf{Values} \\ 
+		\midrule
+		Application & 8 & Processes \\
+		\multirow{1}{1em}{Platform} & \multirow{1}{3em}{$\mathrm{\le}$ 10} & Basic Blocks \\
+		%2 8051, 2 DSPIC, 2 LEON3, \\
+		%& & 2 Spartan3AN, 2 Virtex-7 \\ 
+		\hline 
+		GA Selection                & 1 & Random \\  
+		GA Crossover (C)            & 1 & One-Point \\  
+		C probability (pc)          & 1 & 0.3 \\  
+		GA Mutation (M)             & 1 & Random \\ 
+		M probability (pm)          & 1 & 0.1 \\ 
+		Survivor Selection (S)      & 1 & Fitness-Based \\  
+		S probability (ps)          & 1 & 0.1 \\ \hline 
+		Search Iteration (I)        & 100 & - \\   
+		Initial Population Size (P) & 10000 & \# Starting Individuals \\   
+		Max Population Size (P)     & $\mathrm{\le}$ 1000000 & Max \#  Final Individuals \\
+		\bottomrule
+	\end{tabular}
+	$%
+    }
+	\label{table_DSE_FirFirGCD}
+	\end{center}
+\end{table}
+%
+The second activity involves the impact of the different metrics (i.e., indexes) with respect to the simulated time of the final system. Fig.~\ref{fig1_radar} shows some radar charts where each angle represents the simulated time related to DSE solutions while setting one weight equal to 1 and the other ones to zero. The only metrics TTC-dependent is the load L, so the charts present different values for the Load Index when changing requested TTC. It is possible to see that the only metrics that badly drives the DSE with respect to timing performance is the Cost Index metrics, as could be expected if your goal is only to limit the cost. The other metrics find a sub-optimal solution every time, considering a decreasing TTC. In the adopted case study, the lower bound in the simulated time is driven by the arrival time of the input triggers (i.e., 20 inputs each one every 1 ms), so the simulated time is hovering around 20 ms. \par
+%
+\begin{figure}[htbp]
+    \centering
+  \subfloat[TTC equal to 0.4s]{%
+       \includegraphics[width=0.39\linewidth]{img/RADAR_PARETO_4.png}}
+    \label{1aa} 
+  \subfloat[TTC equal to 0.3s]{%
+        \includegraphics[width=0.39\linewidth]{img/RADAR_PARETO_3.png}} 
+    \label{1bb} 
+  \subfloat[TTC equal to 0.2s]{%
+        \includegraphics[width=0.39\linewidth]{img/RADAR_PARETO_2.png}}
+    \label{1cc} 
+  \caption{Simulated time with respect to different weights.} 
+  \label{fig1_radar} 
+\end{figure}
+%
+As described in this Ph.D. Thesis (Chapter \ref{dse_chapter_ref} Section \ref{refsection1}), the Design Space Exploration is divided into two main iterative steps: \textit{partitioning and architecture selection} and \textit{timing co-simulation}. For the partitioning step (Section~\ref{refsection1}), the weight of the cost functions are set equal to 0.25 (Cost, Affinity, Load and Parallelism). For the timing co-simulation (Chapter~\ref{timing_simulator}), considering as a reference time the maximum FRT evaluated during the metrics estimation step ($T_{REF} \ = \ 0.06710 \ s$), it is possible to impose, for example, a TTC constraint equal to 50\% $T_{REF}$ (i.e., 0.03355 s). The results obtained by applying the HEPSYCODE methodology are shown in Table~\ref{table_DSE_1}. \par
+%
+\begin{table}[htbp]
+\caption{Design Space Exploration. "Cost, Affinity, Load and Parallelism" columns are the objective function values at different iteration of the best solution found during the GA execution. The "Architecture" values represents the number of $bb_i$ instances. The "HEPSIM Simulated Time" represents the execution time of the best solution in HEPSIM simulator.}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{l||c|c|c|c||c|c|c|c|c||c|c} % p{1.4in}
+%\toprule
+\hline
+  &  &  &  &  & \multicolumn{5}{c||}{\textbf{Architecture}} & \multirow{1}{*}{\textbf{PAM1}} & \multirow{1}{*}{\textbf{HEPSIM}} \\ \cmidrule(lr){6-10}
+ \multirow{1}{*}{\textbf{Iteration}} & \multirow{1}{*}{\textbf{Cost}} & \multirow{1}{*}{\textbf{Affinity}} & \multirow{1}{*}{\textbf{Load}} & \multirow{1}{*}{\textbf{Parallelism}} & \multirow{1}{*}{\textbf{$bb_1$}} & \multirow{1}{*}{\textbf{$bb_2$}} & \multirow{1}{*}{\textbf{$bb_3$}} & \multirow{1}{*}{\textbf{$bb_4$}} & \multirow{1}{*}{\textbf{$bb_5$}} & \multirow{1}{*}{\textbf{Execution Time}} & \multirow{1}{*}{\textbf{Simulated Time}}\\
+%\midrule
+\hline\hline
+ 0 & 0.1555 & 0.35 & 0.3545 & 0.2991 & 0 & 0 & 1 & 1 & 1 & 0.0030 s & 0.0312511 s \\ 
+%
+ 2 & 0.057 & 0.4 & 0.4284 & 0.2336 & 0 & 1 & 1 & 1 & 0 & 0.0094 s & 0.0339587 s \\ 
+%
+ 13 & 0.114 & 0.4 & 0.5205 & 0.1962 & 1 & 1 & 1 & 0 & 1 & 0.0611 s & 0.03251 s \\ 
+%
+ 23 & 0.114 & 0.4 & 0.5205 & 0.1962 & 0 & 2 & 0 & 1 & 0 & 0.1962 s & 0.03254 s \\ 
+%
+ 27 & 0.014 & 0.3375 & 0.4899 & 0.2663 & 1 & 1 & 1 & 0 & 0 & 0.2969 s & 0.03308 s \\ 
+%
+ 63 & 0.014 & 0.325 & 0.4899 & 0.2663 & 1 & 1 & 1 & 0 & 0 & 4.03038 s & 0.03308 \\ 
+%
+ 76 & 0.057 & 0.3125 & 0.4452 & 0.2663 & 0 & 1 & 0 & 1 & 1 & 4.71078 s & 0.03188 s \\ 
+%
+ 100 & 0.057 & 0.3125 & 0.4452 & 0.2663 & 0 & 1 & 0 & 1 & 1 & 9.43362 s & 0.03188 s \\ 
+%
+\hline\hline
+\end{tabular}
+$%
+}
+\label{table_DSE_1}
+\end{center}
+\end{table}
+% 
+Fig.~\ref{fig5} shows the Pareto trade-off analysis for different cost functions pairs. It is worth noting that it is not "easy" to analyze simultaneously all the cost functions with a $k > 3$ design space plot (without some assumptions or trying to visualize the design space with different graphs \cite{pareto_nd}). \par
+%
+\begin{figure}[htbp]
+    \centering
+%\begin{tabular}{c}
+  \subfloat[Cost-Affinity]{%
+       \includegraphics[width=0.49\linewidth]{img/PARETO-C-A-Iteration100.png}}
+    \label{5a} 
+  \subfloat[Cost-Parallelism]{%
+        \includegraphics[width=0.49\linewidth]{img/PARETO-C-EP-Iteration100.png}}
+    \label{5b} \\
+  \subfloat[Cost-Load]{%
+        \includegraphics[width=0.49\linewidth]{img/PARETO-L-C-Iteration100_low.png}}
+    \label{5c}  
+  \subfloat[Parallelism-Load]{%
+        \includegraphics[width=0.49\linewidth]{img/PARETO-L-EP-Iteration100.png}}
+     \label{5d} \\
+    \subfloat[Load-Affinity]{%
+       \includegraphics[width=0.49\linewidth]{img/PARETO-L-TDA-Iteration100.png}}
+    \label{5e}  
+  \subfloat[Parallelism-Affinity]{%
+        \includegraphics[width=0.49\linewidth]{img/PARETO-TDA-EP-Iteration100.png}}
+    \label{5f} 
+%\end{tabular}
+  \caption{Pareto plots respect to cost functions pairs.} 
+  %Each CSP model represents an application into different domain that want to implement some academic/industrial/real scenarios}
+  \label{fig5} 
+\end{figure}
+%
+%
+\subsubsubsection{PAM1 with WLE}
+%
+Applying the WLE method described in Section~\ref{WLE_def}, it is possible to introduce the designer preferences into the DSE activity avoiding classical time consuming pareto front analysis, trying to find a sub-optimal solution that take into account designer requirements. \par
+Table~\ref{table_DSE_2} shows results (and weights values) at each iteration of the GA, where $TTC = 0.25 \times T_{REF}$. Note that the GA converges to a fixed solution (in terms of \# of BBs), where only mapping change the execution time in a certain interval (i.e., [0.0237723,0.0238473]). \par
+%
+\begin{sidewaystable}[htbp]
+\caption{Design Space Exploration for GA+WLE.}
+\begin{center}
+\resizebox{0.9\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{l||c|c|c|c||c|c|c|c|c||c|c} % p{1.4in}
+%\toprule
+\hline
+  & \multirow{1}{*}{\textbf{Cost}} & \multirow{1}{*}{\textbf{Affinity}} &  \multirow{1}{*}{\textbf{Load}} & \multirow{1}{*}{\textbf{Parallelism}} & \multicolumn{5}{c||}{\textbf{Architecture}} & \multirow{1}{*}{\textbf{PAM1}} & \multirow{1}{*}{\textbf{HEPSIM}} \\ \cmidrule(lr){6-10}
+ \multirow{1}{*}{\textbf{Iteration}} & \multirow{1}{*}{\textbf{($\omega_{Cost}$)}} & \multirow{1}{*}{\textbf{($\omega_{Affinity}$)}} & \multirow{1}{*}{\textbf{($\omega_{Load}$)}} & \multirow{1}{*}{\textbf{($\omega_{Parallelism}$)}} & \multirow{1}{*}{\textbf{$bb_1$}} & \multirow{1}{*}{\textbf{$bb_2$}} & \multirow{1}{*}{\textbf{$bb_3$}} & \multirow{1}{*}{\textbf{$bb_4$}} & \multirow{1}{*}{\textbf{$bb_5$}} &  \multirow{1}{*}{\textbf{Execution Time}} & \multirow{1}{*}{\textbf{Simulated Time}} \\
+%\midrule
+\hline\hline
+ \multirow{2}{*}{0} & 0.1488 & 0.25 & 0.3564 & 0.1028 & \multirow{2}{*}{2} & \multirow{2}{*}{1} & \multirow{2}{*}{0} & \multirow{2}{*}{1} & \multirow{2}{*}{1} & \multirow{2}{*}{0.007698 s} & \multirow{2}{*}{0.0253888 s} \\ 
+                    & (0.25) & (0.25) & (0.25) & (0.25) & & & & & & & \\ \hline
+%
+ \multirow{2}{*}{2} & 0.09555 & 0.2125 & 0.62085 & 0.0327 & \multirow{2}{*}{2} & \multirow{2}{*}{2} & \multirow{2}{*}{0} & \multirow{2}{*}{2} & \multirow{2}{*}{0} & \multirow{2}{*}{0.011715 s} &  \multirow{2}{*}{0.0254133 s} \\ 
+                    & (0.2514) & (0.1302) & (0.06997) & (0.5483) & & & & & & & \\ \hline
+%
+ \multirow{2}{*}{13} & 0.10667 & 0.2 & 0.628713 & 0.009345 & \multirow{2}{*}{2} & \multirow{2}{*}{2} & \multirow{2}{*}{1} & \multirow{2}{*}{2} & \multirow{2}{*}{0} & \multirow{2}{*}{0.08173 s} &  \multirow{2}{*}{0.0237723 s} \\ 
+                    & (0.254241) & (0.130984) & (0.070284) & (0.544491) & & & & & & & \\ \hline
+%
+ \multirow{2}{*}{19} & 0.062 & 0.2375 & 0.53086 & 0.0420561 & \multirow{2}{*}{2} & \multirow{2}{*}{2} & \multirow{2}{*}{1} & \multirow{2}{*}{1} & \multirow{2}{*}{0} & \multirow{2}{*}{0.167834 s} &  \multirow{2}{*}{0.0290653 s} \\ 
+                    & (0.254462) & (0.130877) & (0.070282) & (0.544379) & & & & & & & \\ \hline
+%
+ \multirow{2}{*}{26} & 0.062 & 0.2 & 0.6287 & 0.04672 & \multirow{2}{*}{2} & \multirow{2}{*}{2} & \multirow{2}{*}{1} & \multirow{2}{*}{1} & \multirow{2}{*}{0} & \multirow{2}{*}{0.336095 s} &  \multirow{2}{*}{0.0278513 s} \\ 
+                    & (0.253972) & (0.130525) & (0.069933) & (0.545569) & & & & & & & \\ \hline
+%
+ \multirow{2}{*}{32} & 0.062 & 0.2125 & 0.5759 & 0.03271 & \multirow{2}{*}{2} & \multirow{2}{*}{2} & \multirow{2}{*}{1} & \multirow{2}{*}{1} & \multirow{2}{*}{0} & \multirow{2}{*}{0.607573 s} &  \multirow{2}{*}{0.0237723 s} \\ 
+                    & (0.130708) & (0.546011) & (0.253334) & (0.069947) & & & & & & & \\ \hline
+%
+ \multirow{2}{*}{44} & 0.062 & 0.2125 & 0.5759 & 0.03271 & \multirow{2}{*}{2} & \multirow{2}{*}{2} & \multirow{2}{*}{1} & \multirow{2}{*}{1} & \multirow{2}{*}{0} & \multirow{2}{*}{1.84694 s} &  \multirow{2}{*}{0,0238473 s} \\ 
+                    & (0.130739) & (0.546326) & (0.252586) & (0.06997) & & & & & & & \\ \hline
+%
+ \multirow{2}{*}{81} & 0.062 & 0.2125 & 0.5759 & 0.03271 & \multirow{2}{*}{2} & \multirow{2}{*}{2} & \multirow{2}{*}{1} & \multirow{2}{*}{1} & \multirow{2}{*}{0} & \multirow{2}{*}{7.06671 s} &  \multirow{2}{*}{0.0237723 s} \\ 
+                    & (0.131004) & (0.547247) & (0.252637) & (0.069909) & & & & & & & \\ \hline
+%
+ \multirow{2}{*}{89} & 0.062 & 0.2125 & 0.5759 & 0.03271 & \multirow{2}{*}{2} & \multirow{2}{*}{2} & \multirow{2}{*}{1} & \multirow{2}{*}{1} & \multirow{2}{*}{0} & \multirow{2}{*}{8.13365 s} &  \multirow{2}{*}{0.0238473 s} \\ 
+                    & (0.131058) & (0.547247) & (0.251824) & (0.06987) & & & & & & & \\ \hline
+%
+ \multirow{2}{*}{100} & 0.062 & 0.2125 & 0.5759 & 0.03271 & \multirow{2}{*}{2} & \multirow{2}{*}{2} & \multirow{2}{*}{1} & \multirow{2}{*}{1} & \multirow{2}{*}{0} & \multirow{2}{*}{10.5003 s} &  \multirow{2}{*}{0.0238473 s} \\ 
+                    & (0.131039) & (0.545983) & (0.252774) & (0.070204) & & & & & & & \\ \hline
+%
+\hline\hline
+\end{tabular}
+$%
+}
+\label{table_DSE_2}
+\end{center}
+\end{sidewaystable}
+% 
+%
+%\begin{landscape}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/Weight_Value.png}}
+	\caption{Weights trend respect to normal GA and WLE-GA.}
+	\label{weight_value}
+\end{figure}
+%\end{landscape}
+%
+Then, Fig.~\ref{weight_value} shows the weights trend respect to the average cost functions values calculated at each iteration. At the beginning, the cost functions are weighted the same (0,25), then, a higher cost function average value (e.g., the \textit{Load} index, that has the highest average value) leads to change the correspondent weight proportionally to its magnitude (e.g., the \textit{Load} weight becomes lower than the others). Note that the $\lambda_{i}$ values, defined in Chapter \ref{dse_chapter_ref} Section \ref{WLE_def}, are set to 2 (each weight will contribute equally to the cost function). \par
+Fig.~\ref{total_cf} presents the weighted utility function trend respect to the different iterations and the best solution found at each iteration. The GA modified with WLE (the violet curves) has an higher average utility function value ($\approx 9\%$ higher), and an higher standard deviation value (the curves in the top and bottom that delimit the violet area, $\approx 17\%$ higher) respect to normal GA, so the WLE method increases the GA variance introducing more diversity respect to the normal GA population. \par
+%
+%\begin{landscape}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/Total_CF.png}}
+	\caption{Normal GA and WLE-GA average population utility function values.}
+	\label{total_cf}
+\end{figure}
+%\end{landscape}
+%
+The GA+WLE drives in a better way the GA evolution since it has a better performance metrics trend, as shown in Table~\ref{WLE_table}. \par
+%
+\begin{sidewaystable}[htbp]
+\caption{DSE Performance Parameters Analysis (values in bold are the most representative ones).}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{l||c|c|c|c|c|c|c|c|c} % p{1.4in}
+\hline
+\backslashbox{Metrics}{Param.} & Type & COV & HV & COV Diff. & RNI & GD & IGD & $\Delta$ & $\epsilon$ \\
+\hline\hline
+%
+ Cost - Affinity        & GA & 1      & 0.821639          & 0.02725  & 0.000012  & 0.020256 & 0.034811 & 1.169326 & 0.028873 \\ \hline
+ Cost - Parallelism     & GA & 1      & \textbf{0.99242}  & 0.001765 & 0.001512  & 0.022749 & 0.000257 & 1        & 0.088786 \\ \hline
+ Cost - Load            & GA & 1      & 0.934598          & 0.019749 & 0.000024  & 0.082678 & 0.023146 & 1        & \textbf{0.164686} \\ \hline
+ Load - Parallelism     & GA & 0.889  & 0.925935          & -0.01089 & 0.000032  & 0.037156 & 0.02718  & 1.047667 & 0.060464 \\ \hline
+ Load - Affinity        & GA & 1      & 0.725154          & 0.029687 & 0.00046   & 0.060974 & 0.019974 & 1.150411 & 0.151424 \\ \hline
+ Parallelism - Affinity & GA & 1      & 0.825             & 0.025292 & 0.000016  & 0.035897 & 0.034897 & N.D.     & 0.0375 \\ \hline
+ AVG                    & GA & 0.9815 & 0.870791          & 0.015474 & 0.000343  & 0.043285 & 0.023377 & 1.073481 & 0.088622
+ \\ \hline\hline
+ %
+  Cost - Affinity       & GA + WLE & 1          & 0.820514          & 0.003583 & 0.000018 & 0.053488 & 0.017853 & 2.247952 & 0.112505  \\ \hline
+ Cost - Parallelism     & GA + WLE & 1          & 0.991781          & 0.000909 & 0.00165  & 0.015711 & 0.000272 & 1        & 0.074767  \\ \hline
+ Cost - Load            & GA + WLE & 1          & 0.918361          & 0.038957 & 0.00002  & 0.083835 & 0.055658 & 1.096049 & 0.154826  \\ \hline
+ Load - Parallelism     & GA + WLE & 1          & 0.947484          & 0.013137 & 0.00004  & 0.032488 & 0.030224 & 1.152754 & 0.071821 \\ \hline
+ Load - Affinity        & GA + WLE & 1          & 0.726672          & 0.026645 & 0.00004  & 0.070282 & 0.038839 & 1.172117 & 0.169747  \\ \hline
+ Parallelism - Affinity & GA + WLE & 1          & 0.825             & 0.000935 & 0.000022 & 0.0318   & 0.025      & N.D.   & 0.037383  \\ \hline\hline
+ AVG                    & GA + WLE & \textbf{1} & \textbf{0.871635} & 0.014028 & 0.000298 & 0.047934 & 0.0279743 & 1.33377 & 0.103508
+  \\ \hline\hline
+ %
+ Cost - Affinity        & GA + Elitism & 1      & 0.819861 & 0.002597  & 0.000008           & 0.044216          & 0.011471         & 2.725318         & 0.108889 \\ \hline
+ Cost - Parallelism     & GA + Elitism & 1      & 0.991143 & 0.000358  & 0.001614           & 0.010595          & 0.000137         & 1.14115          & 0.056075  \\ \hline
+ Cost - Load            & GA + Elitism & 0.75   & 0.906191 & -0.01399  & 0.000016           & 0.238707          & \textbf{0.067619}         & \textbf{1.987126} & 0.619233 \\ \hline
+ Load - Parallelism     & GA + Elitism & 0.875  & 0.930168 & -0.016336 & 0.000038           & 0.02967           & 0.027293         & 1.03059           & 0.039094 \\ \hline
+ Load - Affinity        & GA + Elitism & 1      & 0.732964 & 0.041952  & 0.000028           & 0.180764          & 0.053098         & 1.516398          & 0.472875  \\ \hline
+ Parallelism - Affinity & GA + Elitism & 1      & 0.825    & 0.001752  & 0.000014           & 0.052621          & 0.025            & N.D.              & 0.070093  \\ \hline\hline
+ AVG                    & GA + Elitism & 0.9375 & 0.867554 & 0.002722  & \textbf{0.000286}  & \textbf{0.092763} & \textbf{0.03077} & \textbf{1.680116} & \textbf{0.22771}
+  \\ \hline\hline
+ %
+ Cost - Affinity        & GA + WLE + Elitism & 0.083    & 0.821681 & 0.005653          & 0.000012          & 0.07406           & 0.031521 & 3.26762 & 0.167778  \\ \hline
+ Cost - Parallelism     & GA + WLE + Elitism & 0.956522 & 0.992342 & 0.001096          & 0.001554          & 0.023297          & 0.000581 & 1 & 0.107483  \\ \hline
+ Cost - Load            & GA + WLE + Elitism & 0.75     & 0.917616 & \textbf{-0.01911} & \textbf{0.000014} & \textbf{0.092516} & 0.05276  & 1 & 0.154822  \\ \hline
+ Load - Parallelism     & GA + WLE + Elitism & 1        & 0.927881 & 0.010776          & 0.000124          & 0.037765          & 0.024663 & 1.092291 & 0.070872 \\ \hline
+ Load - Affinity        & GA + WLE + Elitism & 1        & 0.733335 & 0.023023          & 0.000036          & 0.174035          & 0.033322 & 1.516357 & 0.472857  \\ \hline
+ Parallelism - Affinity & GA + WLE + Elitism & 1        & 0.825    & 0.001343          & 0.000012          & 0.042662          & 0.025    & N.D. & 0.060748  \\ \hline\hline
+ AVG                    & GA + WLE + Elitism & 0.798254 & 0.869643 & 0.003797          & 0.000292          & 0.074056          & 0.027974 & 1.5752536 & 0.172427
+  \\
+\hline\hline
+\end{tabular}
+$%
+} 
+\begin{tablenotes}
+\tiny
+\centering
+  \item COV: Coverage; HV: Hypervolume; COV Diff.: Coverage Difference; RNI: Non-Dominated Individuals; GD: Generational Distance; IGD: Inverted Generational Distance; $\Delta$: Delta; $\epsilon$: Epsilon; 
+\end{tablenotes}
+\label{WLE_table}
+\end{center}
+\end{sidewaystable}
+%
+Fig.~\ref{feasible_CF} presents the average utility function trend, considering only the feasible individuals. In this case, the average utility function value and the average standard deviation decrease ($\approx 59\%$ and $\approx 9\%$ respectively) because the different cost functions are weighted in order to equalize their value respect to their average value (for all the feasible individuals in the population, the feasible solutions are related to an utility function value $< 1$). \par
+%
+%\begin{landscape}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/feasible_CF.png}}
+	\caption{Normal GA and WLE-GA average feasible utility function values.}
+	\label{feasible_CF}
+\end{figure}
+%\end{landscape}
+%
+Instead, the best WLE solution found at each iteration is lower in terms of utility function value for the different weights assigned (Fig.~\ref{total_cf}). In terms of final best solution (at iteration 100), it is worth noting that the normal (i.e., without WLE) solution is an only-HW solution (2 Spartan3an and 1 Virtex-7, where the utility function is 0.212, as shown in Table~\ref{table_DSE_2}, where $0.25 \times T_{REF}$), because the best solution for the Load index is the all-HW implementation, while the WLE best solution is a real equalized trade-off between the different metrics (2 8051, 2 PIC24 and 1 Spartan3an).\par % , where the utility function is 0.118
+%
+%\begin{landscape}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/execution_time.png}}
+	\caption{Execution times comparison.}
+	\label{execution_time}
+\end{figure}
+%\end{landscape}
+%
+Finally, Fig.~\ref{execution_time} presents the execution time related to 4 different GA implementations: standard GA, GA with elitism, GA with WLE and GA with WLE and elitism. The elitism has been implemented to save the best solution at each iteration, and also to save the solutions with the best single cost function value at each iteration. Unfortunately, this Elitism feature increases the execution time in terms of about  30\% respect to the normal one, but behaves better respect to other GA performance metrics. Introducing WLE in the GA increases the DSE execution time in terms of about 2-4\%, which is acceptable compared to the possibility of finding a result that takes into account decision maker preferences. \par
+%We also reduce redundancy respect to best sub-optimal solution evaluating the presence of elite solution in the population, so we avoid the reintroduction of elite solution to increase diversity in the GA implementation.
+%
+\subsubsection{PAM2}
+%
+The second step of the DSE tries to identify the best solution in term of physical interconnection links among BBs. Consider the solution shown in Fig.~\ref{pam2_sol_input}. 
+In this scenario, PAM1 produces a solution with 4 BBs (1 MPU8051, 2 PIC24 and 1 SPARTAN3AN). The BING matrix (Chapter \ref{dse_chapter_ref} Section \ref{refsection2}) is shown on the top of the figure. In this configuration, only 3 links have been selected (i.e., $BB_1 - BB_2$, $BB_1 - BB_4$, $BB_2 - BB_3$), and PAM2 will try to find a sub-optimal soluton in terms of feasibility (shared among BBs), and able to fulfill constraints (e.g., in terms of saturation and cost index). So, Table~\ref{table_DSE_PAM2} presents some results from PAM2 activity, w.r.t. the solution shown in Fig.~\ref{pam2_sol_input}.
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/PAM2_input.png}}
+	\caption{PAM2 input (PAM1 example solution).}
+	\label{pam2_sol_input}
+\end{figure}
+%
+%
+\begin{table}[htbp]
+\caption{Design Space Exploration in PAM2.}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{l||c|c|c||c|c|c|c||c} % p{1.4in}
+%\toprule
+\hline
+  &  &  &  & \multicolumn{4}{c||}{\textbf{Architecture}} & \multirow{1}{*}{\textbf{PAM2}} \\ \cmidrule(lr){5-8}
+ \multirow{1}{*}{\textbf{Iteration}} & \multirow{1}{*}{\textbf{Cost}} &  \multirow{1}{*}{\textbf{Saturation}} & \multirow{1}{*}{\textbf{Feasible}} & \multirow{1}{*}{\textbf{$eil_1$}} & \multirow{1}{*}{\textbf{$eil_2$}} & \multirow{1}{*}{\textbf{$eil_3$}} & \multirow{1}{*}{\textbf{$eil_4$}} & \multirow{1}{*}{\textbf{Execution Time}}\\
+%\midrule
+\hline\hline
+ 0   & 0.205128 & 0.834348 & No  & 1 & 0 & 0 & 1 & 0.0004 s \\ \hline
+ 5   & 0.205128 & 0.916614 & Yes & 1 & 0 & 1 & 1 & 0.000509 s \\ \hline
+ 11  & 0.141026 & 0.900767 & Yes & 1 & 0 & 2 & 0 & 0.0030 s \\ \hline
+ 100 & 0.141026 & 0.900767 & Yes & 1 & 0 & 2 & 0 & 23.3885 s \\ \hline
+\hline\hline
+\end{tabular}
+$%
+}
+\label{table_DSE_PAM2}
+\end{center}
+\end{table}
+% 
+%
+\subsubsection{Timing Simulation}\label{firfirgcd_nomc}
+%
+%Variable TTC (90\%, 75\%, 50\%, 40\%, 25\%). RISULTATI PARMA DITAM 2018 (Solo non-critical. \par
+Fig.~\ref{dse_small_01} shows a subset of solutions suggested by the DSE while considering different weights and TTCs. This plot has been created performing the DSE activity several time, and performing a timing simulation activity for each solution found by the GA.  \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.8\linewidth]{img/DSE_No_MC.png}}
+	\caption{DSE small-set result (Pareto Analysis). "DSE" in legend means pareto points found during the DSE activity.}
+	\label{dse_small_01}
+\end{figure}
+%
+Considering the best solutions, the advantages of this DSE step is to directly identify individuals optimizing different metrics at the same time. Starting from the Worst Case TTC ($T_{REF} \ = \ 0.06710 \ s$) equal to the simulated time evaluated by means of a timing co-simulation performed allocating all the processes on the slowest available processor (in this case the one in $bb_1$), the DSE suggests a set of architecture/mapping pairs able to provide TTCs equal, respectively, to 0.90*WCTTC (0.06039 s), 0.75*WCTTC (0.05033 s), 0.5*WCTTC (0.03355 s), 0.40*WCTTC (0.02684 s) and 0.25*WCTTC (0.01678 s, it is worth noting that such a value is under the lower-bound, so the final simulated time is still above 0.02 s). \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.8\linewidth]{img/DSE_Timing_1.png}}
+	\caption{DSE step results (w.r.t. Table~\ref{table_DSE_timing}).}
+	\label{dse_small_02}
+\end{figure}
+%
+Given the previous set of TTC constraints, the DSE provides the results shown in Fig.~\ref{dse_small_02} and Table~\ref{table_DSE_timing}. The results are always under the blue "Requested Time" line (the last results is above the "Requested Time" line since the minimum execution time needed by FIR-FIR-GCD application is 20 ms caused by time triggered stimulus input, 20 inputs trigger every 1 ms), with costs that increase with the decreasing simulated time (i.e., from right to left). \par
+All the steps, prior to DSE one, have been executed in a few minutes (on a high-end notebook). It is worth noting that this is a one-time effort, while the time for the DSE step depends on designer experience and number of considered constraints. A more exhaustive analysis involves more time (Fig.~\ref{dse_small_01}) with respect to one that directly suggest a possible partitioning/mapping item able to satisfy all the constraints. Just to propose an example, by exploiting an Intel Core i7-6700HQ 2.60 GHz CPU, 16 GB RAM and 64-bit Xubuntu 16.04 operating systems, the chart in Fig.~\ref{dse_small_02} has been achieved in 5 min meanwhile Fig.~\ref{dse_small_01} has been achieved in about 15 min because timing simulation has been the most expensive step.
+%
+\begin{table}[htbp]
+\caption{Timing Simulation.}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{l||c|c|c|c||c||c|c|c|c|c||c||c} % p{1.4in}
+%\toprule
+\hline
+  & &  &  &  & \multirow{1}{*}{\textbf{TTC}} & \multicolumn{5}{c||}{\textbf{Architecture}} & \multirow{1}{*}{\textbf{HEPSIM}} & \\ \cmidrule(lr){7-11}
+ \multirow{1}{*}{\textbf{Solution}} & \multirow{1}{*}{\textbf{$\omega_{Cost}$}} & \multirow{1}{*}{\textbf{$\omega_{Affinity}$}} & \multirow{1}{*}{\textbf{$\omega_{Load}$}} & \multirow{1}{*}{\textbf{$\omega_{Parallelism}$}} &  & \multirow{1}{*}{\textbf{$bb_1$}} & \multirow{1}{*}{\textbf{$bb_2$}} & \multirow{1}{*}{\textbf{$bb_3$}} & \multirow{1}{*}{\textbf{$bb_4$}} & \multirow{1}{*}{\textbf{$bb_5$}} & \multirow{1}{*}{\textbf{Simulated Time}} & \multirow{1}{*}{\textbf{Cost}} \\
+%\midrule
+\hline\hline
+ 1 & 0.25 &  0.25 &  0.25 &  0.25 & $0.9 \times T_{REF}$  & 1 & 0 & 0 & 1 & 1 & 0.04317 s & 1310 \\ \hline
+ 2 & 0.25 &  0.25 &  0.25 &  0.25 & $0.75 \times T_{REF}$ & 0 & 1 & 0 & 1 & 1 & 0.04317 s & 1320 \\ \hline
+ 3 & 0.25 &  0.25 &  0.25 &  0.25 & $0.5 \times T_{REF}$  & 0 & 1 & 0 & 1 & 1 & 0.03188 s & 1320 \\ \hline
+ 4 & 0.25 &  0.25 &  0.25 &  0.25 & $0.4 \times T_{REF}$  & 1 & 0 & 0 & 2 & 1 & 0.02675 s & 1710 \\ \hline
+ 5 & 0.25 &  0.25 &  0.25 &  0.25 & $0.25 \times T_{REF}$ & 0 & 0 & 0 & 2 & 1 & 0.02125 s & 1700 \\
+\hline\hline
+\end{tabular}
+$%
+}
+\label{table_DSE_timing}
+\end{center}
+\end{table}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\section{FIR-FIR-GCD with Mixed-Criticality Requirements}
+%
+This section presents verification activities related to the main contribution of this Ph.D. Thesis: the introduction of mixed-criticality constraints into the HEPSYCODE methodology. 
+%
+\subsection{HML Specification}
+%
+The reference Use Case is the same of Section~\ref{firfirgcd_base}. The main difference is related to the level of criticality assigned to each process, as shown in Fig.~\ref{firfirgcd_hml_MC}. The red number under the name of each process represents the criticality level that has been associated to processes (the value has been assigned depending on the number of communicating channels and interactions among different processes). \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.5\linewidth]{img/firfirgcd_hml_with_MC.png}}
+	\caption{ FIR-FIR-GCD with Mixed-Criticality Constraints.}
+	\label{firfirgcd_hml_MC}
+\end{figure}
+%
+The metrics evaluation step is equal to the previous section, while only criticality levels are added to the SBM. These criticality levels do not change the metrics estimation activities.
+%
+\subsection{Design Space Exploration}
+%
+This section has been divided into two main PAM1 validation activities to check mixed-criticality constraints with respect to different objectives, trying to evaluate and estimate how much MC constraints affect the DSE results. During this activity, the number of iterations have been reduced to 40 (the PAM1 simulation time for the MC scenario is rising due to the increase of the solutions space), the number of initial population to 100, and the maximum population size to 1000, since the new solutions space dimension is $(10 + 4)^8 = 14^8$ individuals. In this experimental activity, the PAM2 step has not been addressed.
+%
+\subsubsection{PAM1 (Communication - Affinity - Parallelism)}
+%
+Fig.~\ref{fig6} shows some results from the PAM1 step, and how the DSE finds feasible solutions at each iteration step of Genetic Algorithm. Considering Affinity (provided by designer), Communication and Parallelism (taken from the Co-Analysis Activities) metrics, it is possible to note that the results, without considering (HPV-based SW) partitions, are higher in Communication cost with respect to the situation with partitions. This is due to the possibility to find solutions with a number of basic HW components less than the number of criticality levels, and also because the introduction of SW partitions offers the opportunity to allocate multiple processes on the same (partitioned) environment, so DSE can find solutions more convenient in terms of exchanged data with respect to the scenario without partitions.. It is also possible to note that the Pareto Points follow a specific pattern (they are grouped into sub-sets that appear independent among each others). This behaviour could encourage the use of clustering methods into the GA steps in order to find different solutions, increasing diversity into individual generation/mutation activities. \par
+%
+\begin{figure*}[htbp]
+	\centering
+	\subfloat[Initial Population]{%
+		\includegraphics[width=0.49\linewidth]{img/01-it.png}}
+	\label{6a_init}
+	\subfloat[Iteration 5]{
+		\includegraphics[width=0.49\linewidth]{img/05-it.png}}
+	\label{6b_init} \\
+	\subfloat[Iteration 10]{%
+		\includegraphics[width=0.49\linewidth]{img/10-it.png}}
+	\label{6c_init} 
+	\subfloat[Iteration 20]{%
+		\includegraphics[width=0.49\linewidth]{img/20-it.png}}
+	\label{6d_init} \\
+	\subfloat[Iteration 30]{%
+		\includegraphics[width=0.49\linewidth]{img/30-it.png}}
+	\label{6e_init}
+	\subfloat[Iteration 40]{%
+		\includegraphics[width=0.49\linewidth]{img/40-it.png}}
+	\label{6f_init}
+	\caption{Pareto Set results from the Design Space Exploration activities with respect to Affinity, Communication and Parallelism metrics. The different Pareto Points positions and dispersion patterns depend on SBM application, on the number of processes/BBs/channels/criticality levels and on the specific iteration, weights values and reference inputs considered in the whole design flow.}
+	\label{fig6} 
+\end{figure*}
+%
+Table~\ref{table2_DSEResults} shows results in term of DSE execution times. From this table it is worth noting that the MC scenarios take less time with respect to the classical non-MC scenarios. This is due to the reduced number of feasible solutions considered and the reduced number of total population size. With respect to SW partition one, the normal situation seems to be worse in terms of number of feasible (possible) solutions found by DSE activity ($\simeq 50 \%$). In terms of communication index, the SW partition scenario seems to be better in the average situation (as shown in Fig.~\ref{fig6}). 
+Starting from this results, considering communication, parallelism and affinity metrics, the introduction of SW partitions (and HPV technologies) makes possible find solutions that behave better in term of exchanged data among processes. These solutions are not suitable in term of timing constraints, but they demonstrate how the introduction of SW partitions into DSE step improves results in terms of orthogonal metrics behavior (like communication and parallelism) and increases the number of feasible solutions by providing extended design space exploration opportunities while considering MC requirements. \par
+%
+\begin{table*}[htbp]
+\caption{DSE Execution Time Results.}
+\renewcommand{\arraystretch}{1.1}
+\begin{center} 
+\resizebox{1.0\hsize}{!}{$%
+	%\resizebox{0.49\textwidth}{!}{%
+	\begin{tabular}{ccccccccccccc} % p{1.4in}
+		\toprule
+		\multirow{2}{*}{\textbf{Iteration}}  & \multicolumn{3}{c}{\textbf{No Partition - No MC}} & \multicolumn{3}{c}{\textbf{No Partition - MC}} & \multicolumn{3}{c}{\textbf{Partition - No MC}} & \multicolumn{3}{c}{\textbf{Partition - MC}} \\ \cline{2-13}
+		 & 
+		 \multicolumn{1}{c}{\textbf{ET$^1$ ($\mu$s)}}  & \multicolumn{1}{c}{\textbf{\# Sol.$^2$}} &
+		 \multicolumn{1}{c}{\textbf{Com.$^3$}} &
+		 \multicolumn{1}{c}{\textbf{ET$^1$ ($\mu$s)}}  & \multicolumn{1}{c}{\textbf{\# Sol.$^2$}} &
+		 \multicolumn{1}{c}{\textbf{Com.$^3$}} &
+		 \multicolumn{1}{c}{\textbf{ET$^1$ ($\mu$s)}}  & \multicolumn{1}{c}{\textbf{\# Sol.$^2$}} &
+		 \multicolumn{1}{c}{\textbf{Com.$^3$}} &
+		 \multicolumn{1}{c}{\textbf{ET$^1$ ($\mu$s)}}  & \multicolumn{1}{c}{\textbf{\# Sol.$^2$}} &
+		 \multicolumn{1}{c}{\textbf{Com.$^3$}} \\
+		\midrule
+		Initial & 0.17 & -   & -      & 0.16 & -   & -      & 0.33  & -   & -      & 0.24 & -   & -       \\ %\hline
+		1       & 8.77 & 89  & 0.9150 & 0.99 & 7   & 0.8426 & 18.3  & 82  & 0.2295 & 1.28 & 15  & 0.2220  \\ 
+		5       & 9.29 & 267 & 0.9331 & 1.73 & 21  & 0.8565 & 19.1  & 218 & 0.2351 & 3.16 & 57  & 0.2354  \\   
+		10      & 19.8 & 941 & 0.9295 & 3.69 & 71  & 0.8183 & 39.4  & 684 & 0.2341 & 7.1  & 116 & 0.2376  \\  
+		20      & 30.7 & 949 & 0.9317 & 6.75 & 70  & 0.8680 & 59.7  & 939 & 0.2344 & 15.3 & 268 & 0.2277  \\ 
+		%30      & 41.6 & 944 & 0.9241 & 9.66 & 61  & 0.8417 & 81.0  & 908 & 0.2331 & 23.8 & 284 & 0.2257  \\ 
+		40      & 56.3 & 913 & 0.9317 & 12.2 & 128 & 0.8215 & 102.0 & 864 & 0.2422 & 32.4 & 208 & 0.2391  \\ %\hline
+		Final   & 57.9 & -   & -      & 13.6 & -   & -      & 104.0 & -   & -      & 34.5 & -   & -       \\   
+		\bottomrule
+	\end{tabular} 
+    $%
+    }
+	\begin{tablenotes}
+	\scriptsize
+	\centering
+      \item $^1$ET: PAM1 Execution Time; $^2$\# Sol.: Number of feasible solution (from DSE); $^3$ Com.: average normalized value of the individual Communication indexes at each iteration.
+    \end{tablenotes}
+	\label{table2_DSEResults}
+\end{center}
+\end{table*}
+%
+%
+\subsubsection{PAM1 (Load - Cost)}
+%
+Fig.~\ref{fig8_a} shows some results from PAM1 step considering Load and Cost metrics. It is possible to note that the results without considering HPV-based SW partitions are slightly thickened respect to results with them. This is due to the possibility to find solutions with a number of basic HW components less than the number of criticality levels.  \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.85\linewidth]{img/firfirgcd_all.png}}
+	\caption{FIR-FIR-GCD Pareto Set results from the Design Space Exploration activities respect to Load and Cost metrics.}
+	\label{fig8_a}
+\end{figure}
+%
+%The different pareto points positioning and dispersion patterns depend on the number of processes/BBs/channels/criticality levels and on the specific iteration, weigths values and reference input considered in the whole design steps.
+As the previous PAM1 results (in terms of Communication, Parallelism and Affinity), the Pareto Points in this example follow a specific pattern (they are grouped into sub-sets that appear independent among each others). This behaviour could encourage the use of clustering methods into the GA steps in order to find different solutions, increasing diversity into individual generation/mutation activities. \par
+Considering the iteration trend respect to find and generate every time an increasing number of feasible solutions injected into the GA activities, Fig.~\ref{fig7} shows that the introduction of MC constraints into the GA steps reduces the number of feasible solutions. \par
+%
+\begin{figure*}[htbp]
+    \centering
+  \subfloat[Normal DSE]{%
+       \includegraphics[width=0.49\linewidth]{img/firfirgcd_normal_feasible.png}}
+    \label{7a} \hfill 
+  \subfloat[MC DSE (no HPV-based SW partitions)]{%
+        \includegraphics[width=0.49\linewidth]{img/firfirgcd_nopart_feasible.png}}
+    \label{7b}  \\
+  \subfloat[MC DSE (with HPV-based SW partitions)]{%
+        \includegraphics[width=0.49\linewidth]{img/firfirgcd_part_feasible.png}}
+    \label{7c}\hfill
+    \subfloat[Difference between No Part. and Part.]{%
+        \includegraphics[width=0.49\linewidth]{img/firfirgcd_diff_feasible.png}}
+    \label{7d} \\
+  \caption{Design space exploration trend considering each iteration and the percentage of feasible solutions found during each step of the genetic algorithm.}
+  \label{fig7} 
+\end{figure*}
+%
+Table~\ref{table2_DSEPercentage} presents the feasible reduction percentage respect to the DSE without MC constraints and the comparison between MC with and without HPV-based SW partitions (in term of \% of feasible Pareto solutions). \par
+From Table~\ref{table2_DSEPercentage} it is possible to say that the introduction of HPV-based SW partitions into the Co-Design flow increases the number of feasible possible solutions (and increases the number of possible different individuals into the GA algorithm) in a quantity $\simeq 11 \%$ respect to no HPV-based SW partitions scenarios. \par 
+%
+\begin{table}[htbp]
+\caption{DSE percentage reduction of feasible solutions.}
+\begin{center}
+\resizebox{0.7\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lccc} % p{1.4in}
+\toprule
+ \textbf{Use}   & \textbf{AVG Red.} & \textbf{AVG Red.} & \textbf{AVG} \\ 
+ \textbf{Cases} & \textbf{No Part. - Nor.}  & \textbf{Part. - Nor.} & \textbf{No Part. - Part.} \\
+\midrule
+	FIR-FIR-GCD      & 79\%    & 68\%    & 11\%  \\  \hline
+	\bottomrule
+\end{tabular}
+$%
+} 
+\label{table2_DSEPercentage}
+\end{center}
+\end{table}
+%
+Respect to final individual (relative) cost, Table~\ref{table3_DSEMINIMUM} shows the minimum (Min) relative cost, found on the $30^{th}$ iteration, that demonstrates how the HPV-based SW partitions introduction improves detection of cheaper final HW/SW solutions in a quantity $\simeq62 \%$, meanwhile also in average (AVG) and maximum (Max) relative cost, MC DSE with HPV-based SW partitions seems better than no partitions one (Fig.~\ref{fig8}). \par
+%
+\begin{table}[htbp]
+\caption{DSE minimum (relative) cost analysis}
+\begin{center}
+\resizebox{0.6\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lccc} % p{1.4in}
+\toprule
+ \textbf{Use}   & \textbf{Min} & \textbf{Min} & \textbf{\% Reduction} \\ 
+ \textbf{Cases} & \textbf{No Part.}  & \textbf{Part.} & \textbf{No Part. - Part.} \\
+\midrule
+	FIR-FIR-GCD      & 660    & 250    & 62.1\%  \\  \hline
+	\bottomrule
+\end{tabular}
+$%
+} 
+\label{table3_DSEMINIMUM}
+\end{center}
+\end{table}
+%
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.85\linewidth]{img/FirFirGCD_result_cost.png}}
+	\caption{Cost Results after 30 GA Iteration.}
+	\label{fig8}
+\end{figure}
+%
+Finally, to take a look to the DSE activity made with hypervisor-based software partition, Table~\ref{table_DSE_1_HPV_part} shows a results of PAM1 execution, where $TTC = 0.5 * T_{REF}$, $\omega_{cost} = 0.5 \ and \ \omega_{load} = 0.5$. Only $bb_3$ (LEON3 based) support hypervisor technologies (e.g., Xtratum). The columns relative to $bb_3$ ($bb_3 (1)$ and $bb_3 (2)$ represents the number of partitions found by the GA during the iterations (only 1 partition means that it is possible to not consider HPV solution since it introduces scheduling overheads, 0 means that the BB instance should not be considered). \par
+%
+\begin{table}[htbp]
+\caption{Design Space Exploration with Hypervisor-based SW partitions.}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{l||c|c||c|c|c|c|c|c||c} % p{1.4in}
+%\toprule
+\hline
+  &  &  & \multicolumn{6}{c||}{\textbf{Architecture}} & \multirow{1}{*}{\textbf{PAM1}} \\ \cmidrule(lr){4-9}
+ \multirow{1}{*}{\textbf{Iteration}} & \multirow{1}{*}{\textbf{Cost}} & \multirow{1}{*}{\textbf{Load}} & \multirow{1}{*}{\textbf{$bb_1$}} & \multirow{1}{*}{\textbf{$bb_2$}} & \multirow{1}{*}{\textbf{$bb_3$ (1)}} & \multirow{1}{*}{\textbf{$bb_3$ (2)}} & \multirow{1}{*}{\textbf{$bb_4$}} & \multirow{1}{*}{\textbf{$bb_5$}} & \multirow{1}{*}{\textbf{Execution Time}} \\
+%\midrule
+\hline\hline
+ 0   & 0.072 & 0.7614 & 1 & 2 & 1 & 2 & 1 & 0 & 0.0015 s \\
+ 1   & 0.072 & 0.7578 & 1 & 2 & 1 & 2 & 1 & 0 & 0.0022 s \\
+ 2   & 0.010 & 0.6951 & 2 & 2 & 0 & 1 & 1 & 0 & 0.0035 s \\
+ 6   & 0.010 & 0.6951 & 2 & 2 & 0 & 1 & 2 & 0 & 0.0035 s \\
+ 10  & 0.072 & 0.6573 & 1 & 2 & 1 & 1 & 1 & 0 & 0.0083 s \\
+ 15  & 0.095 & 0.5899 & 2 & 2 & 0 & 0 & 2 & 0 & 0.0131 s \\
+ 22  & 0.050 & 0.5740 & 1 & 2 & 0 & 0 & 1 & 0 & 0.0295 s \\
+ 25  & 0.159 & 0.4486 & 1 & 1 & 2 & 0 & 0 & 1 & 0.0556 s \\
+ 32  & 0.027 & 0.5562 & 1 & 2 & 1 & 3 & 0 & 0 & 0.2064 s \\
+ 34  & 0.115 & 0.4598 & 2 & 1 & 0 & 4 & 0 & 1 & 0.2698 s \\
+ 40  & 0.058 & 0.4559 & 1 & 1 & 4 & 0 & 1 & 0 & 0.6618 s \\
+ 44  & 0.058 & 0.4559 & 1 & 1 & 4 & 0 & 1 & 0 & 1.2248 s \\
+ 60  & 0.068 & 0.3198 & 0 & 1 & 1 & 4 & 0 & 0 & 11.959 s \\
+ 100 & 0.068 & 0.3198 & 0 & 1 & 1 & 4 & 0 & 0 & 35.443 s \\
+%
+\hline\hline
+\end{tabular}
+$%
+}
+\label{table_DSE_1_HPV_part}
+\end{center}
+\end{table}
+% 
+%
+\subsubsection{Timing Simulation}
+%
+This section describes two different scenario. The former compares the no-MC use case scenario (Section~\ref{firfirgcd_nomc}) with the introduction of criticality levels into the application model. The latter considers also the introduction of HPV-based software partitions, with the use of hierarchical scheduling into the HEPSIM simulator.
+%
+\subsubsubsection{Timing Simulation with Standard Mixed-criticality constraints (no HPV-based SW partitions involved)}
+%
+Fig.~\ref{dse_small_01_MC} shows a subset of solutions suggested by the DSE while considering different weights, TTCs and introducing mixed-criticality constraints. Considering different possible Pareto alternatives, it is worth noting that the DSE solutions with MC constraints are dominated by the no-MC ones since it is possible to use only a limited subset of all the design points. \par
+Furthermore, MC applications are more expensive in terms of resources and the final solution space is reduced, as shown in Fig.~\ref{dse_small_02_MC}. In this scenario, when considering MC constraints, the DSE suggests solutions that are under the green "Estimated Time" line but with higher costs. These results confirm the hypotheses proposed in Chapter \ref{dse_chapter_ref} Section \ref{crit_section_01}. \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.85\linewidth]{img/DSE_MC.png}}
+	\caption{DSE small-set results with Mixed-Criticality constraints (Pareto Analysis).}
+	\label{dse_small_01_MC}
+\end{figure}
+%
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.85\linewidth]{img/DSE_Timing_MC_1.png}}
+	\caption{DSE step results considering MC constraints.}
+	\label{dse_small_02_MC}
+\end{figure}
+%
+Table~\ref{table_DSE_timing_MC} shows results without HPV technologies (this solutions allocate processes on different isolated BBs, while the final simulation time gets lower respect to the no-mixed-criticality scenario, meanwhile the total solution cost becomes bigger.
+%
+\begin{table}[htbp]
+\caption{Timing Simulation.}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{l||c|c|c|c||c||c|c|c|c|c||c||c} % p{1.4in}
+%\toprule
+\hline
+  & &  &  &  &  & \multicolumn{5}{c||}{\textbf{Architecture}} & \multirow{1}{*}{\textbf{HEPSIM}} & \\ \cmidrule(lr){7-11}
+ \multirow{1}{*}{\textbf{Solution}} & \multirow{1}{*}{\textbf{$\omega_{Cost}$}} & \multirow{1}{*}{\textbf{$\omega_{Affinity}$}} & \multirow{1}{*}{\textbf{$\omega_{Load}$}} & \multirow{1}{*}{\textbf{$\omega_{Parallelism}$}} & \multirow{1}{*}{\textbf{TTC}} & \multirow{1}{*}{\textbf{$bb_1$}} & \multirow{1}{*}{\textbf{$bb_2$}} & \multirow{1}{*}{\textbf{$bb_3$}} & \multirow{1}{*}{\textbf{$bb_4$}} & \multirow{1}{*}{\textbf{$bb_5$}} & \multirow{1}{*}{\textbf{Simulated Time}} & \multirow{1}{*}{\textbf{Cost}} \\
+%\midrule
+\hline\hline
+ 1 & 0.25 &  0.25 &  0.25 &  0.25 & $0.9 \times T_{REF}$  & 1 & 0 & 0 & 1 & 1 & 0.0300092 s & 1310 \\ \hline
+ 2 & 0.25 &  0.25 &  0.25 &  0.25 & $0.75 \times T_{REF}$ & 0 & 1 & 0 & 1 & 1 & 0.0300092 s & 1320 \\ \hline
+ 3 & 0.25 &  0.25 &  0.25 &  0.25 & $0.5 \times T_{REF}$  & 0 & 0 & 1 & 2 & 1 & 0.0210112 s & 1800 \\ \hline
+ 4 & 0.25 &  0.25 &  0.25 &  0.25 & $0.4 \times T_{REF}$  & 1 & 0 & 0 & 2 & 1 & 0.0205904 s & 1710 \\ \hline
+ 5 & 0.25 &  0.25 &  0.25 &  0.25 & $0.25 \times T_{REF}$ & 0 & 0 & 0 & 2 & 2 & 0.0200198 s & 2600 \\
+\hline\hline
+\end{tabular}
+$%
+}
+\label{table_DSE_timing_MC}
+\end{center}
+\end{table}
+% 
+%
+\subsubsubsection{Timing Simulation with Mixed-criticality constraints and HPV-based SW partition}
+%
+During the timing Co-Estimation activity, an average execution time has been evaluated for each application process, and they are shown below:
+%
+\footnotesize
+\begin{align*}
+    ps_1 &= 64 \ \mu s, \ ps_2 = 166 \ \mu s, \ ps_3 = 129 \ \mu s, \ ps_4 = 64 \ \mu s; \\
+    ps_5 &= 313 \ \mu s, \ ps_6 = 239 \ \mu s, \ ps_7 = 60 \ \mu s, \ ps_8 = 276 \ \mu s; 
+\end{align*}
+\normalsize
+%
+This values have been used to set hypervisor partition hyper-plan, in order to reduce delays in the final implementation (each partition time-slice is equal to the sum of the relative allocated processes execution time increased by a factor of 10\% to consider estimation errors). These values can also be set and evaluated by some external timing analysis tools (i.e., task Worst case execution time, WCRT). \par
+Finally, starting from timing simulation activity able to find execution time for the application processes, Table~\ref{table_DSE_timing_MC_HPV_based} shows DSE results with HPV technologies (this solutions allocate processes on different HPV-based SW partitions, while the final simulation time gets lower respect to the no-mixed-criticality scenario, meanwhile the total solution cost becomes lower respect to the no-HPV scenario, while hierarchical scheduling introduces overhead into the final simulated time). \par
+%
+\begin{table}[htbp]
+\caption{Timing Simulation (with hierarchical scheduling).}
+\begin{center}
+\resizebox{1.0\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{l||c|c|c|c||c||c|c|c|c|c|c||c|c|c} % p{1.4in}
+%\toprule
+\hline
+  & &  &  &  &  & \multicolumn{6}{c||}{\textbf{Architecture}} & \multirow{1}{*}{\textbf{HEPSIM}} & & Hyperplan \\ \cmidrule(lr){7-12}
+ \multirow{1}{*}{\textbf{Solution}} & \multirow{1}{*}{\textbf{$\omega_{Cost}$}} & \multirow{1}{*}{\textbf{$\omega_{Affinity}$}} & \multirow{1}{*}{\textbf{$\omega_{Load}$}} & \multirow{1}{*}{\textbf{$\omega_{Parallelism}$}} & \multirow{1}{*}{\textbf{TTC}} & \multirow{1}{*}{\textbf{$bb_1$}} & \multirow{1}{*}{\textbf{$bb_2$}} & \multirow{1}{*}{\textbf{$bb_3$ (1)}} & \multirow{1}{*}{\textbf{$bb_3$ (2)}} & \multirow{1}{*}{\textbf{$bb_4$}} & \multirow{1}{*}{\textbf{$bb_5$}} & \multirow{1}{*}{\textbf{Simulated Time}} & \multirow{1}{*}{\textbf{Cost}} & laps \\
+%\midrule
+\hline\hline
+ 1 & 0.25 &  0.25 &  0.25 &  0.25 & $0.9 \times T_{REF}$  & 1 & 2 & 0 & 2 & 1 & 0 & 0.0271504 s & 560 & 26 \\ \hline
+ 2 & 0.25 &  0.25 &  0.25 &  0.25 & $0.75 \times T_{REF}$ & 1 & 2 & 2 & 0 & 0 & 0 & 0.0229511 s & 160 & 22 \\ \hline
+ 3 & 0.25 &  0.25 &  0.25 &  0.25 & $0.5 \times T_{REF}$  & 2 & 2 & 1 & 1 & 0 & 0 & 0.0235803 s & 260 & - \\ \hline
+ 4 & 0.25 &  0.25 &  0.25 &  0.25 & $0.4 \times T_{REF}$  & 1 & 1 & 2 & 0 & 0 & 0 & 0.023488 s & 140 & 42 \\ \hline
+ 5 & 0.25 &  0.25 &  0.25 &  0.25 & $0.25 \times T_{REF}$ & 2 & 2 & 2 & 0 & 1 & 0 & 0.0216 s & 560 & 93 \\
+\hline\hline
+\end{tabular}
+$%
+}
+\label{table_DSE_timing_MC_HPV_based}
+\end{center}
+\end{table}
+% 
+To see the results in terms of partition time slices, the hyper-plan configurations for the different solutions are: 
+%
+\footnotesize
+\begin{align*}
+    Solution \ 1: & \ Partition \ 1 = 460 \ \mu s, \ Partition \ 2 = 602 \ \mu s, \ Major \ Frame = 1062 \ \mu s  \\
+    Solution \ 2: & \ Partition \ 1 = 460 \ \mu s, \ Partition \ 2 = 602 \ \mu s, \ Major \ Frame = 1062 \ \mu s  \\
+    Solution \ 3: & \ Undefined (No HPV-based SW Partitions) \\
+    Solution \ 4: & \ Partition \ 1 = 344 \ \mu s, \ Partition \ 2 = 252 \ \mu s, \ Major \ Frame = 596 \ \mu s  \\
+    Solution \ 5: & \ Partition \ 1 = 182 \ \mu s, \ Partition \ 2 = 66 \ \mu s, \ Major \ Frame = 248 \ \mu s  \\
+\end{align*}
+\normalsize
+%
+Finally, Fig.~\ref{dse_small_02_MC_HPV} shows that MC applications with HPV-based SW partitions are less expensive in terms of resources, while increase the execution times because the HPV introduces overhead into the whole response time.
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.85\linewidth]{img/final_DSE_MC.png}}
+	\caption{DSE step results considering MC constraints and HPV-based SW partitions.}
+	\label{dse_small_02_MC_HPV}
+\end{figure}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\section{Real-Time Use Case}\label{real_time_use_case_example}
+%
+This section presents a simple case study used to show the effects of the proposed real-time extension to HEPSYCODE.
+%
+\subsection{HML Specification}
+%
+The reference Use Case is shown in Fig.~\ref{firfirgcd_rt_exaple}. This is a simple synthetic CSP application model that implements a simple data flow between input trigger and final output. \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.65\linewidth]{img/real-time-model.png}}
+	\caption{Simple "real-time" model.}
+	\label{firfirgcd_rt_exaple}
+\end{figure}
+%
+This application is composed of 4 processes, $(p_1, p_2, p_3, p_4)$ with $(p_1, p_2, p_4)$ with priority $(pr_1, pr_2, pr_4)$ equal each other and $p_3$ with priority $pr_3$ higher than the others. Processes exchange data using CSP channels. In this scenario there are three non real-time processes $(p_1, p_2, p_4)$ and one process $p_3$ with real-time constraint equal to $TTR_3$. The whole SBM is also subject to a TTC. 
+%
+\subsection{Metrics Evaluation}
+%
+The affinity values used are:
+%
+%\begin{equation*}
+%\resizebox{0.4\hsize}{!}{$%
+\begin{align*}
+    p_1 &= \{ GPP=0.9, ASP=0.7, SPP=0.3 \} \\
+    p_2 &= \{ GPP=0.5, ASP=0.7, SPP=0.5 \} \\
+    p_3 &= \{ GPP=0.5, ASP=0.8, SPP=0.9 \} \\
+    p_4 &= \{ GPP=0.9, ASP=0.7, SPP=0.3 \} 
+\end{align*}
+%
+The affinity values have been assigned from scratch by the designer. The processes and channels concurrency matrices have been calculated with a SystemC simulation activity, as described in Chapter~\ref{timing_simulator}, and are listed in Table~\ref{process_conc_rt} and Table~\ref{channel_conc_rt}: \par
+%
+\begin{table}[htbp]
+\caption{Processes concurrency.}
+\begin{center}
+\resizebox{0.35\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{c||c|c|c|c} % p{1.4in}
+\hline
+\backslashbox{Proc.}{Proc.} & $p_1$ & $p_2$ & $p_3$ & $p_4$  \\
+\hline\hline
+ $p_1$ & 0 & 0 & 0 & 0  \\ \hline
+ $p_2$ & 0 & 0 & 0.5 & 0.5 \\ \hline
+ $p_3$ & 0 & 0 & 0 & 1   \\ \hline
+ $p_4$ & 0 & 0 & 0 & 0 \\ 
+\hline\hline
+\end{tabular}
+$%
+} 
+\label{process_conc_rt}
+\end{center}
+%\end{table}
+%
+\bigskip
+%
+%\begin{table}[htbp]
+\caption{Channels concurrency.}
+\begin{center}
+\resizebox{0.35\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{c||c|c|c|c|c|c|c} % p{1.4in}
+\hline
+\backslashbox{Proc.}{Proc.} & $ch_1$ & $ch_2$ & $ch_3$ & $ch_4$ & $ch_5$ \\
+\hline\hline
+ $ch_1$       & 0 & 0  & 1     & 0  & 0   \\ \hline
+ $ch_2$       & 0 & 0  & 0.111 & 0  & 0   \\ \hline
+ $ch_3$       & 0 & 0  & 0     & 0  & 0  \\ \hline
+ $ch_4$       & 0 & 0  & 0     & 0  & 0  \\ \hline
+ $ch_5$       & 0 & 0  &  0    & 0  & 0   \\ 
+\hline\hline
+\end{tabular}
+$%
+} 
+\label{channel_conc_rt}
+\end{center}
+\end{table}
+%
+During the load estimation steps, the "Free Running Time" (FRT, the application execution time when all the processes are allocated on the same BB instance) has been estimated for each BB presents in the TL, and the values are:
+\begin{align*}
+    bb_1 &= 1.07114 \ s; \\
+    bb_2 &= 1.07114 \ s; \\
+    bb_3 &= 0.581619 \ s; 
+\end{align*}
+%
+The "Free Running Loads" (FRLs, the load evaluated for each process when all the processes are allocated on the same BB instance) are presented in Table~\ref{load_proc_rt}. \par
+%
+\begin{table}[htbp]
+\caption{Process Free Running Load.}
+\begin{center}
+\footnotesize
+%\resizebox{0.45\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{c||c|c|c|c|c|c|c|c} % p{1.4in}
+\hline
+\backslashbox{Proc.}{BBs} & $bb_1$ & $bb_2$ & $bb_3$  \\
+\hline\hline
+ $ps_1$ & 0.0769768 & 0.0769768 & 0.04013   \\ \hline
+ $ps_2$ & 0.152967  & 0.152967  & 0.079746   \\ \hline
+ $ps_3$ & 0.0169487 & 0.0169487 & 0.0047978   \\ \hline
+ $ps_4$ & 0.0766733 & 0.0766733 & 0.0399719   \\ 
+\hline\hline
+\end{tabular}
+%$%
+%} 
+\label{load_proc_rt}
+\end{center}
+\end{table}
+%
+Finally, the processes communication matrix (the number of bits exchanges between the different processes) is shown in Table~\ref{process_comm_rt}. \par
+%
+\begin{table}[htbp]
+\caption{Process communication.}
+\begin{center}
+\footnotesize
+%\resizebox{0.5\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{c||c|c|c|c|c|c|c|c} % p{1.4in}
+\hline
+\backslashbox{Proc.}{Proc.} & $p_1$ & $p_2$ & $p_3$ & $p_4$ \\
+\hline\hline
+ $p_1$ & 0 & 80 & 0 & 80  \\ \hline
+ $p_2$ & 0 & 0 & 80 & 0  \\ \hline
+ $p_3$ & 0 & 80 & 0 & 0  \\ \hline
+ $p_4$ & 0 & 80 & 0 & 0  \\ 
+\hline\hline
+\end{tabular}
+%$%
+%} 
+\label{process_comm_rt}
+\end{center}
+\end{table}
+%
+%
+\subsection{Design Space Exploration}
+%
+This section describes the DSE experimental approach used in this specific case study. In this use cases the Thesis presents only the results in terms of PAM1 solutions and timing simulation. Furthermore, during this experimental activity, only one instance of $bb_1$, $bb_3$, and $bb_5$ has been allowed since the focus is related to the real-time constraint validation, and they are supposed to communicate by means of a shared bus. So, for a given processor $pu_j$, the load parameters for the 4 processes are:
+%
+\begin{equation} \label{equation131_PAM2}
+  \begin{aligned}
+    L_{1,j} &= \frac{t_{1,j}}{\frac{x_j \cdot FRT_j}{N}}, \ 
+    L_{2,j} &= \frac{t_{2,j}}{\frac{x_j \cdot FRT_j}{N}}, \
+    L_{3,j} &= \frac{t_{3,j}}{TTR_3}, \   
+    L_{4,j} &= \frac{t_{4,j}}{\frac{x_j \cdot FRT_j}{N}} \\
+\end{aligned}
+\end{equation}
+%
+After the Co-analysis and Co-estimation steps (as presented in the previous section), by considering such loads, the DSE step is able to suggest a partition/mapping item able to fulfill both TTC and $TTR_3$ constraints. \par
+%
+\begin{table}[htbp]
+\caption{Design Space Exploration (with Timing Simulations).}
+\begin{center}
+\resizebox{0.85\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{c|c|c|c||c||c|c|c} % p{1.4in}
+\hline
+\multicolumn{4}{c||}{\textbf{Allocation}} & \multirow{1}{*}{\textbf{HEPSIM}} & $p_3$ & TTC & TTR \\ \cline{1-4}
+$p_1$ & $p_2$ & $p_3$ & $p_4$ & \multirow{1}{*}{\textbf{Simulated Time (ms)}} & (ms) & (ms) & (ms) \\
+\hline\hline
+ $bb_1$ & $bb_1$ & $bb_1$ & $bb_1$ & 794.88          & 8.10  & 600 & 10 \\ \hline
+ $bb_3$ & $bb_3$ & $bb_3$ & $bb_3$ & 650.66          & 5.54  & 600 & 10 \\ \hline 
+ $bb_1$ & $bb_1$ & $bb_1$ & $bb_3$ & 590.80          & 8.10  & 600 & 10 \\ \hline 
+ $bb_3$ & $bb_5$ & $bb_1$ & $bb_3$ & 264.89          & 8.10  & 400 & 10 \\ \hline
+ $bb_1$ & $bb_5$ & $bb_1$ & $bb_3$ & 298.88          & 8.10  & 300 & 10 \\ \hline
+ $bb_5$ & $bb_5$ & $bb_5$ & $bb_1$ & \textbf{201.48} & 0,009 & 200 & 10 \\ \hline
+ $bb_5$ & $bb_5$ & $bb_1$ & $bb_3$ & 145.67          & 8.10  & 200 & 10 \\ \hline
+ $bb_5$ & $bb_5$ & $bb_1$ & $bb_5$ & 81.04           & 8.10  & 100 & 10 \\ \hline
+ $bb_1$ & $bb_1$ & $bb_3$ & $bb_3$ & 562.85          & 5.54  & 600 & 7 \\ \hline
+ $bb_1$ & $bb_3$ & $bb_3$ & $bb_1$ & \textbf{462.58} & 5.54  & 400 & 7 \\ \hline
+ $bb_1$ & $bb_5$ & $bb_3$ & $bb_3$ & 220.80          & 5.54  & 400 & 7 \\ \hline
+ $bb_1$ & $bb_5$ & $bb_3$ & $bb_5$ & 206.99          & 5.54  & 300 & 7 \\ \hline
+ $bb_5$ & $bb_5$ & $bb_3$ & $bb_5$ &  55.55          & 5.55  & 200 & 7 \\ \hline
+ $bb_1$ & $bb_3$ & $bb_5$ & $bb_1$ & 428.87          & 0.009 & 600 & 4 \\ \hline
+ $bb_3$ & $bb_3$ & $bb_5$ & $bb_1$ & 337.56          & 0.009 & 400 & 4 \\ \hline
+ $bb_3$ & $bb_5$ & $bb_5$ & $bb_1$ & 214.80          & 0.009 & 300 & 4 \\ \hline
+ $bb_5$ & $bb_5$ & $bb_5$ & $bb_3$ & 137.62          & 0.009 & 200 & 4 \\ \hline
+ $bb_5$ & $bb_5$ & $bb_5$ & $bb_5$ & 0.22            & 0.009 & 100 & 4 \\
+\hline\hline
+\end{tabular}
+$%
+} 
+\label{rt_timing_sim}
+\end{center}
+\end{table}
+
+%
+Several DSE have been performed considering different TTC/TTR pairs, as shown in Table~\ref{rt_timing_sim} and Fig~\ref{results_rt_exaple}. In particular, by setting TTR and decreasing TTC, DSE suggests solutions that fulfill the timing requirements most of the time (two not satisfactory suggestions are bold in Table~\ref{rt_timing_sim}). Decreasing the TTR, the DSE suggests to allocate the real-time process on $pu_j$ that fulfill the constraints. It is worth noting that, if the TTR is very strict, the only valid mapping involve the use of a more expensive FPGA. \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.9\linewidth]{img/hepsy_rt_result.png}}
+	\caption{Results from the DSE on the" Real-Time" Use Case.}
+	\label{results_rt_exaple}
+\end{figure}
+%
+Considering the mixed criticality scenario (where criticality levels are the red number under the processes name into the HML), Fig.~\ref{fig8_a_rt} shows some Pareto results from PAM1 step considering Load and Cost metrics. As expected, the results without considering HPV-based SW partitions are slightly thickened respect to results with them, like in the FIR-FIR-GCD use case.  \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.9\linewidth]{img/simplecsp_new.png}}
+	\caption{Real-Time CSP model use case Pareto Set results from the Design Space Exploration activities respect to Load and Cost metrics.}
+	\label{fig8_a_rt}
+\end{figure}
+%
+Considering the iteration trend respect to find and generate every time an increasing number of feasible solutions injected into the GA activities, Fig.~\ref{fig7_rt} shows that the introduction of MC constraints into the GA steps reduces the number of feasible solutions. \par
+%
+\begin{figure*}[htbp]
+    \centering
+  \subfloat[Normal DSE]{%
+       \includegraphics[width=0.48\linewidth]{img/simple_csp_feasible.png}}
+    \label{7a_rt} \hfill 
+    \subfloat[Difference between No Part. and Part.]{%
+        \includegraphics[width=0.50\linewidth]{img/simple_csp_feasible_part_nopart.png}}
+    \label{7d_rt} \\
+  \caption{Design space exploration trend considering each iteration and the percentage of feasible solutions found during each step of the genetic algorithm.}
+  \label{fig7_rt} 
+\end{figure*}
+%
+Table~\ref{table2_DSEPercentage_rt} presents the feasible reduction percentage respect to the DSE without MC constraints and the comparison between MC with and without HPV-based SW partitions (in term of \% of feasible pareto solutions). \par
+%
+\begin{table}[htbp]
+\caption{DSE percentage reduction of feasible solutions}
+\begin{center}
+\resizebox{0.85\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lccc} % p{1.4in}
+\toprule
+ \textbf{Use}   & \textbf{AVG Red.} & \textbf{AVG Red.} & \textbf{AVG} \\ 
+ \textbf{Cases} & \textbf{No Part. - Nor.}  & \textbf{Part. - Nor.} & \textbf{No Part. - Part.} \\
+\midrule
+	Real-Time Use Case      & 82\%    & 70\%    & 12\%  \\  \hline
+	\bottomrule
+\end{tabular}
+$%
+} 
+\label{table2_DSEPercentage_rt}
+\end{center}
+\end{table}
+%
+From Table~\ref{table2_DSEPercentage_rt} it is possible to say that the introduction of HPV-based SW partitions into the Co-Design flow increases the number of feasible possible solutions (and increases the number of possible different individuals into the GA algorithm) in a quantity $\simeq 12 \%$ respect to no HPV-based SW partitions scenarios. \par 
+%
+\begin{table}[htbp]
+\caption{DSE minimum (relative) cost analysis}
+\begin{center}
+\resizebox{0.8\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lccc} % p{1.4in}
+\toprule
+ \textbf{Use}   & \textbf{Min} & \textbf{Min} & \textbf{\% Reduction} \\ 
+ \textbf{Cases} & \textbf{No Part.}  & \textbf{Part.} & \textbf{No Part. - Part.} \\
+\midrule
+	Real-Time Use Case & 530    & 160    & 69.8\%  \\  \hline
+	\bottomrule
+\end{tabular}
+$%
+} 
+\label{table3_DSEMINIMUM_rt}
+\end{center}
+\end{table}
+%
+Respect to final individual (relative) cost, Table~\ref{table3_DSEMINIMUM_rt} shows the minimum (Min) relative cost, found on the $40^{th}$ iteration, that demonstrates how the HPV-based SW partitions introduction improves detection of cheaper final HW/SW solutions in a quantity $\simeq 70\%$, meanwhile also in average (AVG) and maximum (Max) relative cost, MC DSE with HPV-based SW partitions seems better than no partitions ones (Fig.~\ref{fig8_rt}).
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/simple_csp_cost.png}}
+	\caption{Cost Results after 30 GA Iteration.}
+	\label{fig8_rt}
+\end{figure}
+%
+\section{Other case studies: Digital Camera and Sobel Filter}
+%
+This last section presents results from two use cases representing applications from a real scenario. The HML related to the reference use cases are shown in Fig.~\ref{fig_hml_digitalcam_sobel}. \par
+%
+\begin{figure}[htbp]
+    \centering
+%\begin{tabular}{c}
+  \subfloat[Digital Camera]{%
+       \includegraphics[width=0.33\linewidth]{img/digital_cam_HML.png}}
+    \label{5a_digit} \ \ \ \ 
+  \subfloat[Sobel Filter]{%
+        \includegraphics[width=0.40\linewidth]{img/sobel_HML.png}}
+    \label{5b_sobel} 
+%\end{tabular}
+  \caption{CSP Use Cases Application Examples.} 
+  %Each CSP model represents an application into different domain that want to implement some academic/industrial/real scenarios}
+  \label{fig_hml_digitalcam_sobel} 
+\end{figure}
+%
+In particular:
+%
+\begin{itemize}
+    \item \textit{Digital Camera} is an academic use case that represents a simple digital camera \cite{bib35}. It performs two key tasks: image processing and storing into an internal memory, and uploading images serially to an attached PC. So, the environment simulates the \textit{Charge-Coupled Device} (CCD) image acquisition and the relative image digital conversion. The image is transmitted to the first application process through the use of an input channel (one pixel at the time). The \textit{CCDPP} collects input pixels and performs zero-bias adjustment processing (PP stands for preprocessing). \textit{CCDPP} sends the corrected image to the \textit{CNTRL} process ("Control" process), that uses \textit{CCDPP} and \textit{CODEC} processes to capture and perform the \textit{Fast Discrete Cosine Transformation} (FDTC) and quantization on an image. Then, the encoded image is sent to the \textit{UART} process that simply transmits it serially to a PC;
+    \item \textit{Sobel Image} is an application that performs the Sobel filter on sample input images \cite{bib36}. The environment simulates the sending of a fixed image (512x512 pixels) every 40 ms. The \textit{Split} process captures the image, and breaks it into blocks of 8 x 8 pixels. These blocks are sent to the \textit{Sobel} process that performs the Sobel operator on each single block. Finally, process \textit{Merge} puts the blocks together and stores the final encoded image in memory. In order to obtain a visual feedback for the final user, the OpenCV library has been used, as shown in Fig.~\ref{fig_sobel_functional}.
+\end{itemize}
+%
+The red number under the name of each process represents its criticality level (values have been assigned depending on number of channels and interactions among different processes). \par
+In this case only DSE activities are presented, to show how the proposed approach finds better solutions in terms of relative cost while using HPV technologies. So, after the metrics evaluation and estimation activities, Fig.~\ref{fig6_digit_sobel} shows some results from DSE step. \par
+%
+%
+\begin{figure}[htbp]
+    \centering
+  \subfloat[Digital Camera]{%
+        \includegraphics[width=0.49\linewidth]{img/digitalcam_new.png}}
+    \label{6b_digit}
+  \subfloat[Sobel Image]{%
+        \includegraphics[width=0.49\linewidth]{img/sobelimage_new.png}}
+     \label{6d_sobel} 
+  \caption{Pareto Set results from the Design Space Exploration activities respect to Load and Cost metrics.}
+  \label{fig6_digit_sobel} 
+\end{figure}
+%
+Note that the objective space has a trend similar to the FIR-FIR-GCD and Real-Time use cases (Section~\ref{firfirgcd_base} and Section~\ref{real_time_use_case_example}, respectively). Moreover, in those scenario the DSE with HPV partitions seems to behave better than the normal and the no-HPV scenario (in terms of relative costs), and this is related to the use of less number of BBs in the final results. Furthermore, the Load objective is higher than the normal case since the minimun upper bound is set to 0.36 \% for the overhead introduced by the  hierarchical scheduling. \par
+%
+\begin{figure}[htbp]
+    \centering
+  \subfloat[Digital Camera]{%
+        \includegraphics[width=0.49\linewidth]{img/digital_camera_feasible.png}}
+    \label{6b_digit_feasible} 
+  \subfloat[Sobel Image]{%
+        \includegraphics[width=0.49\linewidth]{img/sobel_feasible.png}}
+     \label{6d_sobel_feasible} 
+  \caption{Design space exploration trend considering each iteration and the percentage of feasible solutions found during each step of the genetic algorithm.}
+  \label{fig6_digit_sobel_feasible} 
+\end{figure}
+%
+In terms of feasible solutions (Fig.~\ref{fig6_digit_sobel_feasible} and Table~\ref{table2_sobel_digit}) and the percentage of cost reduction (Table~\ref{table3_sobeo_digit} and Fig.~\ref{fig6_digit_sobel_cost}), these use cases present a lower relative cost value w.r.t. the normal and the No-Partition scenario, also lower than the FIR-FIR-GCD and the Real-Time Scenario (this depends on the application functional implementation that considers processes more complex in computational execution time but with higher degree of cohesion, with less concurrency factors, so the DSE tends to aggregate processes on the same shared resources). \par
+%
+\begin{table}[htbp]
+\caption{DSE percentage reduction of feasible solutions}
+\begin{center}
+\resizebox{0.7\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lccc} % p{1.4in}
+\toprule
+ \textbf{Use}   & \textbf{AVG Red.} & \textbf{AVG Red.} & \textbf{AVG} \\ 
+ \textbf{Cases} & \textbf{No Part. - Nor.}  & \textbf{Part. - Nor.} & \textbf{No Part. - Part.} \\
+\midrule
+	Digital Camera   & 25\%    & 14\%    & 12\%  \\  \hline 
+	Sobel Image      & 51\%    & 39\%    & 13\%  \\  \hline
+	\bottomrule
+\end{tabular}
+$%
+} 
+\label{table2_sobel_digit}
+\end{center}
+\end{table}
+%
+%
+\begin{table}[htbp]
+\caption{DSE minimum (relative) cost analysis}
+\begin{center}
+\resizebox{0.6\hsize}{!}{$%
+%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+\begin{tabular}{lccc} % p{1.4in}
+\toprule
+ \textbf{Use}   & \textbf{Min} & \textbf{Min} & \textbf{\% Reduction} \\ 
+ \textbf{Cases} & \textbf{No Part.}  & \textbf{Part.} & \textbf{No Part. - Part.} \\
+\midrule
+	Digital Camera   & 420    & 40     & 90.5\%  \\   \hline
+	Sobel Image      & 960    & 140    & 85.4\%  \\  \hline
+	\bottomrule
+\end{tabular}
+$%
+} 
+\label{table3_sobeo_digit}
+\end{center}
+\end{table}
+%
+%
+\begin{figure}[htbp]
+    \centering
+  \subfloat[Digital Camera]{%
+        \includegraphics[width=0.9\linewidth]{img/digital_camera_cost.png}}
+    \label{6b_digit_cost} \\
+  \subfloat[Sobel Image]{%
+        \includegraphics[width=0.9\linewidth]{img/sobel_cost.png}}
+     \label{6d_sobel_cost} 
+  \caption{Results about costs after 30 GA Iteration.}
+  \label{fig6_digit_sobel_cost} 
+\end{figure}
+%
+%
+\begin{landscape}
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/sobel_exe.png}}
+	\caption{Sobel Application: Functional Simulation.}
+	\label{fig_sobel_functional}
+\end{figure}
+\end{landscape}
+%

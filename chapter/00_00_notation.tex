@@ -1,0 +1,115 @@
+\chapter*{\centering Notation}  
+
+This is a list of notation I used in this work. In general, italic latin or greek letters denote sets and matrices, italic overline latin letters indicate vectors. Small subscripts latin or greek letters denote elements of sets, vectors, matrices, variables, functions, parameters, or indices. Due to a limited supply of alphabetical symbols, I have reused some for several purposes. Their usage should be clear form the context, nevertheless I apologize for any confusion that may arise. 
+The following table summarizes the most commonly used symbols.
+%
+\begin{center}
+\small
+\begin{longtable}{ll}% p{1.4in}
+\hline
+ \textbf{Notation}   & \textbf{Explanation} \\ \hline
+ \endhead
+ \hline
+ \endfoot
+    SW                                      & Software \\
+    HW                                      & Hardware \\
+    HPV                                     & Hypervisor \\
+    MC                                      & Mixed-Criticality \\
+    MCES                                    & Mixed-Criticality Embedded Systems \\
+    HMPS                                   & Heterogeneous Multi-Processor Systems \\
+    H-MPSoC                                & Heterogeneous Multi-Processor System-On-Chip \\
+    TDMA                                    & Time Division Multiple Access \\
+    DSE                                     & Design Space Exploration \\
+    ESL                                     & Electronic System-Level \\
+    EDA                                     & Electronic Design Automation \\
+    VLSI                                    & Very large scale integration \\
+    VHSIC														& Very High Speed Integrated Circuits \\
+    VHDL														& VHDL Hardware Description Language \\
+    BHV                                     & Behavioural Level (Modeling) \\
+    HML                                     & Hepsycode Modeling Language \\
+    MoC                                     & Model of Computation  \\
+    CSP                                     & Communicating Sequential Processes \\
+    KPN                                     & Kahn Processes Network \\
+    DF                                      & Dataflow Model \\
+    $SBS = \{SBM, RI, NFC\}$                & System Behaviour Specification \\
+	$SBM = \{PS, CH\}$                      & System Behavior Model           \\ 
+	$PS = \{ps_{1}, ps_{2}, .. , ps_{n}\}$  & \textit{n} concurrent processes \\
+	$C(ps_{i})$                             & Criticality level associated to process $ps_{i}$ \\ 
+	$CH = \{ch_{1}, ch_{2}, .. , ch_{c}\}$  & \textit{c} logical channels     \\
+	\textbf{$RI = \{(I_{1}(t_1), O_{1}), {\dots}, (I_{r}(t_r), O_{r})\}$}    & Reference Inputs  \\
+	$I_{j}(t_j) = \{(i^{j}_{1}(t_j), {\dots}, (i^{j}_{s}(t_j))\}^\intercal$  & Timed Inputs  \\
+	$O_{j} = \{(o^{j}_{1}, {\dots}, (o^{j}_{t})\}^\intercal$  & Expected outputs  \\
+	FR                                       & Functional Requirements \\
+  NFR                                     & Non-Functional Requirements \\
+	TC                                      & Timing Constraints \\
+	AC                                      & Architectural Constraints \\
+	SD                                      & Scheduling Directives \\ 
+	TTC                                     & Time-to-Completion \\
+	TFF                                     & Target Form Factor \\
+	SoC                                     & System-on-Chip  \\
+	SOPC                                    & System On Programmable Chip \\
+	ASIC                                    & Application Specific Integrated Circuit \\
+	ASIP                                    & Application Specific Instruction Set Processor \\
+	PLD                                     & Programmable Logic Devices \\
+	FPGA                                    & Field Programmable Gate Array  \\
+   SoB                                     & System On-Board \\
+	PCB                                     & Printed Circuit Board  \\
+	TTA                                     & Target Template Architecture \\
+	RR                                      & Round Robin  \\
+	FCFS                                    & First-Came First-Served \\
+	FP                                      & Fixed Priority  \\
+	GPP                                     & General Purpose Processor \\
+	NRE                                     & Not Recurrent Engineering \\
+   GPU                                     & Graphical Processing Unit \\
+   SPP                                     & Single/Specific Purpose Processor \\
+	DSP                                     & Digital Signal Processor \\
+	ASP                                     & Application Specific Processor \\
+	FSM                                     & Finite State Machine \\
+	Geq                                     & Equivalent Gates \\
+    LUT                                     & Look-Up Table \\
+    HDL                                     & Hardware Description Language \\
+    COTS                                    & Common/Commercial Off-The-Shelf \\
+    IC                                      & Integrated Circuit \\
+    IP                                      & Intellectual Property \\
+    ISA                                     & Instruction Set Architecture \\
+    ISS                                     & Instruction Set Simulator \\
+    NP                                      & Network Processor \\
+    OS                                      & Operating System \\
+    RTL                                     & Register Transfer Level (Modeling) \\
+    RTOS                                    & Real Time Operating System \\
+    SDL                                     & System Description Language \\
+    SysML                                   & System Modeling Language \\
+    TLM                                     & Transaction Level Modeling \\
+    UML                                     & Unified Modeling Language \\
+    $PT = \{pt_{1}, {\dots}, pt_{q}\}$      & \textit{q} HPV-based SW partitions \\
+    $\mathbb{N}_{\geq 0}^{q}$               & Natural numbers greater than or equal to zero \\
+    $TL = \{PU, MU, EIL\}$                  & Technology Library \\
+    $PU = \{pu_{1}, {\dots}, pu_{p}\}$      & \textit{p} Processing Units \\
+    $MU = \{mu{}_{1}, {\dots}, mu{}_{m}\}$  & \textit{m} Memory Units \\
+    $EIL = \{il{}_{1}, {\dots}, il{}_{l}\}$ & \textit{l} External Interconnection Links \\
+    IIL                                     & Internal interconnection Link \\
+    CU                                      & Communication Unit \\
+    CC4CS                                   & Clock Cycle for C Statement \\
+    VLMU                                    & Volatile Memory Units \\
+    NVLMU                                   & Non-Volatile Memory Units \\
+    $BB = \{bb{}_{1}, {\dots}, bb{}_{b}\}$  & \textit{b} Basic Blocks \\
+    PAM                                     & Partitioning Architecture and Mapping \\
+    SOOP                                     & Single-objective Optimization Problem \\
+    $\Omega$                                & Feasible set of an optimization problem \\
+    $\bar x = \{x_1,\ldots, x_n\} \in \mathbb{R}^n$ & \textit{n-dimensional} decision variable vector \\
+    $f(\bar x) \in \mathbb{R}$              & Single objective function \\ 
+    MOOP                                     & Multi-objective Optimization Problem \\
+    $\bar F(\bar x) = [f_1(\bar x), \ldots , f_k(\bar x)] \in \mathbb{R}^{k}$ & Vector of objective functions \\
+    $\bar F = \{f_1,\ldots, f_k\}$          & Vector of objective function values \\
+    $\bar u \preceq \bar v$                 & $\bar u$ dominate $\bar v$ \\
+    $\bar F^I = \{ f^I_1, \ldots , f^I_k\} \in \mathbb{R}^{k}$ & Ideal Point \\
+    $\bar F^U = \{ f^U_1, \ldots , f^U_k\} \in \mathbb{R}^{k}$ & Utopian point \\
+    $\bar F^N = \{ f^N_1, \ldots , f^N_k\} \in \mathbb{R}^{k}$ & Nadir point \\
+    GA                                      & Genetic Algorithm \\
+    $\bar \omega = \{\omega_1, \ldots , \omega_k \} \in \mathbb{R}^{k}$ & Weight vector \\
+	$ps_i \Rightarrow pu_x$                 & $ps_i$ is allocated on $pu_x$ \\
+\end{longtable}
+\addtocounter{table}{-1}
+\label{table5}
+\end{center}
+\normalsize

@@ -1,0 +1,178 @@
+\chapter{Metrics Evaluation and Estimations}\label{chap4}  % chapter 4
+%
+This chapter presents the activities related to the evaluation/estimation of metrics useful to extract as-much-as-possible information about system features (e.g., execution time, power/energy consumption, processes interaction and communication). These metrics will be used into the DSE activity (described in Chapter~\ref{dse_chapter_ref}) in order to find HW/SW feasible solutions w.r.t. input NFR.\blfootnote{As reported in the Introduction, this Chapter is related to the following author's contribution: \#4} 
+%
+\section{Affinity}\label{aff_section}
+%
+The first metric considered in this Thesis is the \textbf{Affinity} \cite{bib27,affinity_001}. This metric indicates the most suitable PU elements from the proposed BBs for the execution of a given functionality (i.e., blocks of statements), as presented in Definition~\ref{index_01_affinity}. As presented in \cite{bib27,affinity_001}, a possible Affinity measurement activity can be related to the static detection of the most suitable PU classes (e.g., GPP, ASP, SPP). For this, an architectural analysis of this PU classes has been proposed in order to determine their relevant features. Finally, a set of metrics able to provide indications to drive designer choices through the definition of a set of specification patterns has been produced in output. \par
+In particular, the Affinity \cite{bib27,affinity_001} of a method $m$ can be expressed by the following function:
+%
+\begin{equation} \label{equation_affinity}
+  \begin{aligned}
+    A^T_m = f(W \cdot C^T_m)
+\end{aligned}
+\end{equation}
+%
+where
+%
+\begin{equation} \label{equation_affinity}
+\centering
+  \begin{aligned}
+    A_m &= [A_{{GPP}_m} \ A_{{ASP}_m} \ A_{{SPP}_m}], \\ \\
+    W &= 
+    \begin{bmatrix} 
+        0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
+        1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 
+    \end{bmatrix}, \\ \\
+    C_m &= [SCD_m, WCD_m, SHD_m, WHD_m, SMD_m, WMD_m, IOR_m, \\
+    & \ \ \ \ \ CR_m, LR_m, BMR_m, DR^m_{bit}, \displaystyle \sum_{z \in {int,read}} DR^m_z,STR_m] \\ \\
+    f(x) &= \frac{\arctan 2 \pi x^2}{\pi / 2}
+\end{aligned}
+\end{equation}
+%
+%An extension of this metric was proposed in \cite{affinity_002_new}, where the Affinity metric has been enriched with a parallelism metric. 
+%
+\section{Concurrency (Parallelism)}\label{comm_con_metric_eval}
+%
+This section presents the metrics related to processes and channels behavior characteristics (in terms of concurrency). More specifically, their evaluation relies on the use of the HEPSYCODE Simulator (HEPSIM) software, where the concurrency has been calculated counting all active processes and channels pairs every times a communication occurs (more details in Section~\ref{concurrency_explain}). 
+%There is an event (boolean) array in the CSP channel implementation, that represents processes and channel states (1: waiting, 0: idle or stopped). Each times a process or a channel is ready, the corresponding value in the concurrency matrices is increased (every times a communication happens). 
+These values are stored in a proper matrix and then normalized to the maximum values that arises from the sum of each column value in the corresponding of every single row in the matrix. The first output of this activity is the so called \textit{Processes Concurrency Matrix}:
+%
+\begin{equation} \label{eq4}
+\small
+\begin{aligned}
+	{PCON}=\ \left[  
+	\begin{array}{cccc}
+	{pcon}_{1,1} & {pcon}_{1,2} & \cdots  & {pcon}_{1,n} \\ 
+	{pcon}_{2,1} & {pcon}_{2,2} & \cdots  & {pcon}_{2,n} \\ 
+	\vdots      & \vdots      & \vdots  & \vdots  \\ 
+	{pcon}_{n,1} & {pcon}_{n,2} & \cdots  & {pcon}_{n,n} 
+	\end{array}
+    \right]   \\ 
+\end{aligned}
+\end{equation}
+%
+$PCON$ provides information about how much the processes pairs can be concurrently ``working'', where $PCON = \{ \ pcon_{i,j} \neq 0 \ : \ ps_{i} \land ps_{j}$ can be potentially executed concurrently$\} \in \mathbb{R}^{n \times n}$. \par
+The second output of this activity is the \textit{Channels Concurrency Matrix}:
+%
+\begin{equation} \label{eq4_ch}
+\small
+\begin{aligned}
+	{CCON}=\ \left[  
+	\begin{array}{cccc}
+	{ccon}_{1,1} & {ccon}_{1,2} & \cdots  & {ccon}_{1,c} \\ 
+	{ccon}_{2,1} & {ccon}_{2,2} & \cdots  & {ccon}_{2,c} \\ 
+	\vdots      & \vdots      & \vdots  & \vdots  \\ 
+	{ccon}_{c,1} & {ccon}_{c,2} & \cdots  & {ccon}_{c,c} 
+	\end{array}
+    \right]   \\ 
+\end{aligned}
+\end{equation}
+%
+$CCON$ provides information about how much the channel pairs can be concurrently transmitting data, where $CCON = \{ \ ccon_{i,j} \neq 0 \ : \ ch_{i} \land ch_{j}$ can be potentially exchange data concurrently$\} \in \mathbb{R}^{c \times c}$. \par
+%
+\section{Communication}\label{comm_con_metric_eval_only_comm}
+%
+The communication metric is the sum of the size, in bit, of each data exchanged between each process pairs, and the \textit{Communication Matrix} has been produced as output of this step:
+%
+\begin{equation} \label{eq8}
+\small
+\begin{aligned}
+{CM}=\ \left[  
+\begin{array}{cccc}
+{cm}_{1,1} & {cm}_{1,2} & \cdots  & {cm}_{1,n} \\ 
+{cm}_{2,1} & {cm}_{2,2} & \cdots  & {cm}_{2,n} \\ 
+\vdots      & \vdots      & \vdots  & \vdots  \\ 
+{cm}_{n,1} & {cm}_{n,2} & \cdots  & {cm}_{n,n} 
+\end{array}
+\right]   \\ 
+\end{aligned}
+\end{equation}
+%
+$CM$ is expressed by the number of bits sent/received over each channel, where $CM = \{ \ cm_{i,j} \neq 0 \ : \ ps_{i} \land ps_{j}$ exchange $cm_{i,j}$ total amount of data between them$\} \in \mathbb{R}^{n \times n}$. 
+%
+\section{Timing}\label{timing_metric_def}
+%
+The goals of this Section are to analyze the usefulness and the meaningfulness of a metric that is concurrently “Off the Shelf”, “HW/SW Unifying”, and “Statement Level”. In fact, to overcome existing metrics limitations \cite{bib25}, the idea is to consider one related to \textbf{Clock Cycles for C Statement} (CC4CS), i.e., the number of clock cycles needed to a specific processor technology to execute a \textit{common C statement}. So, it is at statement-level of abstraction and, thanks to even more improved \textit{High-Level Synthesis} (HLS) tools that are able to synthesize C functions, it is targeted to both SW and HW processor technologies (i.e., \textit{HW/SW unifying}): processors built to execute a given ISA (\textit{General Purpose Processors}, GPP; \textit{Application Specific Processors}, ASP) and processors built to directly (i.e., NO ISA involved) execute applicative functions (\textit{Single/Specific Purpose Processors}, SPP). So, such a metric would be an ideal one for the very early steps of an ESL HW/SW Co-Design Methodology but also for the comparison of SW implementation performances. 
+%However, some critical issues soon arise when thinking with more attention to CC4CS. First of all, the concept of \textit{generic C statement} is ambiguous, since a C statement is not a-priori limited in complexity and can give rise to very different HW/SW implementations. Second, to evaluate it in a standard, repeatable, fast and low-cost way, they are needed an evaluation framework and a meaningful set of benchmark functions. The first point can be addressed by considering as “generic C statements” the most common way a programmer writes them (so it is better to talk about \textit{common C statements}), and this consideration should drive the selection of the adopted benchmark. An encouraging precedent can be considered the work done for the definition of the very first (and successful) COCOMO model \cite{cocomo} where, by analyzing a very huge set of source codes, a relationship by the number of \textit{Lines of Code} (LOC) and the SW development cost has been identified, independently by the complexity of each line. The second point, other than identifying a relevant benchmark, can be addressed by designing a proper framework for CC4CS evaluation. 
+%So, this work mainly focuses on the development of such a framework and, by means of a simple benchmark, tries to evaluate usefulness and meaningfulness of CC4CS to understand if further effort must be invested in such a direction.
+%
+\subsection{Definition of CC4CS: an Off-the-Shelf Unifying Statement Level Performance Metric for HW/SW Technologies}
+%
+The proposed metric is related to C programming language statements, so it is called CC4CS (\textit{Clock Cycles for C Statement}). The choice of the C language is motivated by the following three reasons: it is the most used language for embedded SW development; it is very similar to \textit{SystemC} \cite{bib24_a} (especially when focusing on \textit{SystemC Synthesizable Subset}), one of the most used specification languages for HW/SW co-design; the most diffused HLS (\textit{High Level Synthesis}) tools are able to realize SPPs that implements an algorithm specified in C/SystemC language. 
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Clock Cycles For C Statements}).}\label{def1_1}
+For a given processor X, CC4CS(X) is the number of clock cycles needed by processor X to execute a common C statement
+\end{definition}
+%
+A first clarification is due with respect to the concept of “common C statement”. It could be generally intended as “something that ends with a semicolon” (other views are possible too, e.g., Table 6.1 in \cite{bibCC4CS02}) but, to avoid ambiguity, this work adopts an empirical approach: it refers to the way a common profiling tool as gcov \cite{bibCC4CS03} performs the C statements identification when profiling their execution. Another clarification is related to the fact that such a metric will be for sure influenced by the used compiler or HLS tool. Some ways to manage this issue could be: to specify also the used tools (possibly giving rise to a set of CC4CS for each processor); to report the average of the results obtained by using the most diffused tools; to report only the results related to the most diffused one. At this point, it is quite clear that CC4CS, as defined above, will be influenced by several factors and that a CC4CS-based estimation will be affected by relevant errors. However, these are acceptable by keeping in mind the following aspects: it is a straightforward way to have an off-the-shelf metric; it can be applied to each processor technology (i.e., GPP, ASP and SPP); it is intended to be used for very early performance analysis in SW and HW/SW domains. Anyway, CC4CS can be also characterized by a set of values related to \textit{Min}, \textit{Max}, \textit{Average}, and \textit{Standard Deviation} (or by a statistical distribution). In this way, it is possible to perform different analysis depending on the final goal.
+%
+%
+\subsection{Timing estimation activity in HEPSYCODE framework}\label{exploit_CC4CS_01}
+%
+As said before, the CC4CS metric is used to estimate the execution time of different processes on different PU technologies. This is used as an alternative to the standard Cycles Per Instruction (CPI) or Million Instructions Per Second (MIPS) values, and another advantage of this metric is the fact that it is not a single value but a distribution. To exploit such a feature, the affinity metric is used to assign a fixed (singular) CC4CS value to the execution of each process statements (it is also possible to select the min, average, maximum, median values as an alternative, to perform different kind of analysis), using a linear interpolation to evaluate CC4CS value for each function Affinity. \par
+%
+\begin{figure}[htbp!]
+	\centerline{\includegraphics[width=0.7\linewidth]{img/boxdiagram_LEON3_int8.png}}
+	\caption{CC4CS distribution for LEON3 int8 data type benchmark.}
+	\label{boxplot_cc4cs_show}
+\end{figure} 
+%
+As an example, it is possible to consider the CC4CS distribution shown in Figure~\ref{boxplot_cc4cs_show}. From this box plot and distribution is difficult to chose a fixed CC4CS value without any knowledge of the input application behaviour. It is possible to chose the median value, the second or third quartile and so on. In order to help this "decision" step, Figure~\ref{boxplot_cc4cs_show_solution} propose a mixed approach combining Timing and Affinity metrics (defined in Section~\ref{aff_section}). In such a scenario, it is possible to choice the CC4CS value with the equations shown in Figure~\ref{boxplot_cc4cs_show_solution}, w.r.t. a \textit{Best Case} (Affinity, median, first quartile and third quartile have been considered), an \textit{Average Case} (Affinity, median and the interquartile range, IRQ, have been considered), or a \textit{Worst Case} (Affintiy, median, min and max distribution values have been considered).
+%
+\begin{figure}[htbp!]
+	\centerline{\includegraphics[width=0.9\linewidth]{img/CC4CS_affinity.png}}
+	\caption{CC4CS timing metric assignment with Affinity value.}
+	\label{boxplot_cc4cs_show_solution}
+\end{figure} 
+%
+\begin{comment}
+%
+\section{Bandwidth}
+%
+The bandwidth estimation considers each communication operation, evaluating the size of exchanged data in the following equation:
+%
+\begin{equation} \label{eq20_ch_bandwidth}
+\resizebox{0.6 \textwidth}{!}{$%
+\begin{aligned} 
+    BW = (\# data \ exchanged \ \ [bits]) * (link \ speed \ \ [bits/s])
+\end{aligned}
+$%
+}
+\end{equation}
+%
+\end{comment}
+%
+\section{Load}\label{load_metric}
+%
+Finally, the Load metric is related to the execution of processes on a single instance of PU. In particular, by allocating all the \textit{n} processes to a single instance of each SW processor $pu_{k}$ and performing a timing simulation for each one,  three parameters are computed: 
+%
+\begin{itemize}
+    \item \textit{$FRT_{k}$ (Free Running Time)}, i.e., the total simulated time on processor $pu_{k}$;
+    \item \textit{$t_{k,j}$}, the simulated time for each process \textit{$ps_{j}$} on processor \textit{$pu_{k}$};
+    \item \textit{$N_{k,j}$,} the number of executions of each process \textit{$ps_{j}$} on processor \textit{$pu_{k}$} (i.e., the number of loops).
+\end{itemize}
+%
+Starting from these parameters, it is possible to define the \textit{Free Running Load Matrix} \textit{$FRL$}:
+%
+\begin{equation} \label{eq12}
+\small
+\begin{aligned}
+{FRL} = \left[  
+\begin{array}{cccccc}
+{frl}_{1,1} & {frl}_{1,2} & \cdots  & {frl}_{1,j} & \cdots & {frl}_{1,n} \\ 
+{frl}_{2,1} & {frl}_{2,2} & \cdots  & {frl}_{2,j} & \cdots & {frl}_{2,n} \\ 
+\vdots 			& \vdots 		  & \vdots  & \vdots 		  & \vdots & \vdots 		 \\ 
+{frl}_{k,1} & {frl}_{k,2} & \cdots  & {frl}_{k,j} & \cdots & {frl}_{k,n} \\
+\vdots  		& \vdots 		  & \vdots  & \vdots 		  & \vdots & \vdots 		 \\ 
+{frl}_{s,1} & {frl}_{s,2} & \cdots  & {frl}_{s,j} & \cdots & {frl}_{s,n} \\
+\end{array}
+\right]  \\
+where \ {frl}_{k,j} =\frac{\left(t_{k,j} \cdot N_{k,j}\right)}{{FRT}_k} \ \forall  k=1..s, \ j=1..n \ \ \ 
+\end{aligned}
+\end{equation}
+%
+where \textit{${FRT}_{k}/N_{k,j}$} is the average period of each processes \textit{$ps_{j}$} on processor \textit{$pu_{k}$}. 
+%

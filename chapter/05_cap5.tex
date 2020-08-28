@@ -1,0 +1,1249 @@
+\chapter{Search Methods: The Design Space Exploration Approach} \label{dse_chapter_ref}
+%
+In the embedded system design domain, the most critical development step is related to the \textit{Design Space Exploration} activities \cite{bib10} and the main differences among the works in the literature are mainly related to the different amount of information and actions that explicitly rely on the designer experience. This section presents mathematical classical models that rely on the definition of multi-criterion optimization problems and presents the injection of mixed-criticality requirements into the classical representation one.\blfootnote{As reported in the Introduction, this Chapter is related to the following author's contribution: \#2, \#3, \#4} 
+%
+\section{The Single-Objective Optimization Problem}
+Considering engineering area, mathematical description of single-objective problems related to minimize or maximize a single objective function $f(\bar x)$ over a set of decision variables $\bar x$ limited by constraints functions has been widely treated in literature. Generally, a single-objective optimization problems (SOOPs) can be defined as \cite{bib1Chiandussi}:
+\theoremstyle{definition}
+\begin{definition}{(\textit{General Single-Objective Optimization Problem}).} Given a function $ f : \Omega \subseteq \mathbb{R}^{n} \to \mathbb{R}, \Omega \not= 0$, a general single-objective optimization problem is defined as: 
+%
+\begin{equation} \label{equation111}
+  \begin{aligned}
+    & \underset{\bar x}{\text{min}} &  & f(\bar x) \\
+    & \text{subject to}             &  & \bar x \in \Omega
+\end{aligned}
+\end{equation}
+%
+where $\bar x$ is a n-dimensional decision variable vector, $\bar x = \{x_1,\ldots, x_n\}$ and $\Omega$ is the computation variable space normally described by function constraints (continuous or discrete) which limit $f$ objective function (and indirectly $\bar x$).
+\end{definition}
+%
+Finding a global optimum of any function (that could not be unique) is known as Global Optimization problem. In general, the goal to determining the global minimum solution of a single-objective problem is defined as \cite{bib2}:
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Single-Objective Global Minimum Optimization}).}\label{def1}
+Given a function $ f : \Omega \subseteq \mathbb{R}^{n} \to \mathbb{R}, \Omega \not= 0$, for $\bar x \in \Omega$ the value $f^\ast \triangleq f(\bar x^\ast) > -\infty$ is called a global minimum if and only if: 
+%
+\begin{equation}\label{equation112}
+  \begin{aligned}
+    & \forall \bar x \in \Omega : f(\bar x^\ast) \leq f(\bar x)
+\end{aligned}
+\end{equation}
+where $\bar x^\ast$ is the global minimum solution, $f$ is the objective function and $\Omega$ is the feasible region of $\bar x$.
+\end{definition}
+%
+\section{The Multi-Objective Optimization Problem}
+Usually, in optimization problems, there is more than one objective function that can be considered (i.e., minimize cost, power consumption, maximize performance, througput etc.), but most of the time objectives are often conflicting. This kind of optimization issues are called "Multi-objective optimization problems" (MOOP), where multiple objectives have to be optimized simultaneously. Typically, a MOOP can be defined as follows \cite{bib3}:
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{General Multi-Objective Optimization Problem}).}
+Given a function $ \bar F : \Omega \subseteq \mathbb{R}^{n} \to \mathbb{R}^k, \Omega \not= 0$, a general multi-objective optimization problem is defined as:
+%
+\begin{equation}\label{equation113}
+  \begin{aligned}
+    & \underset{\bar x}{\text{min}} &  & \bar F(\bar x) = [f_1(\bar x), f_2(\bar x), \ldots , f_k(\bar x)] \\
+    & \text{subject to}             &  & \bar x \in \Omega
+\end{aligned}
+\end{equation}
+%
+where $\bar x = \{x_1,\ldots, x_n\}$ is an n-dimensional decision variable vector in the solution space $\Omega$ (which refers to a feasible search space, feasible set of decision vectors) and $\mathbb{R}^k$ refers to the objective space. $\bar F(\bar x) = [f_1(\bar x), f_2(\bar x), \ldots , f_k(\bar x)] \in \mathbb{R}^k$ consists of k $\geq 2$ real value objective functions. The solution space $\Omega$ is generally restricted by a series of constraints and bounds on the decision variables.
+%
+\end{definition}
+%
+Given $\bar x \in \Omega$, find a vector $\bar x^\ast$ that minimizes k objective functions $\bar F(\bar x) = [f_1(\bar x), f_2(\bar x), \ldots , f_k(\bar x)] \in \mathbb{R}^k$ is not simple because optimizing $\bar x$ (with respect to a single objective) often results unacceptable with respect to other objectives. Therefore, a multi-objective solution that simultaneously optimizes each objective function is almost impossible, so a solution to a multi-objective problem is to find a set of solutions, each of which satisfies the objectives without being dominated by any other solution (the concept of domination will be introduced later). \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/00-Multi-objective-optimization-problems.png}}
+	\caption{Mapping of a multi-objective problem.}
+	\label{fig_multiobjmapp}
+\end{figure}
+%
+Since SOOPs may have a unique optimal solution, MOOP present a possibly infinite set of solutions. Two $\mathbb{R}$ Euclidean spaces are considered in multi-objective problems, as shown in Fig.~\ref{fig_multiobjmapp}:
+%
+\begin{itemize}
+    \item  the n-dimensional decision variables space ($\mathbb{R}^n$) in which each axis corresponds to an element of vector $\bar x$;
+    \item the k-dimensional objective functions space ($\mathbb{R}^k$) in which each axis corresponds to the element vector $f_k(\bar x)$.
+\end{itemize}
+%
+The function $ \bar F : \Omega \subseteq \mathbb{R}^{n} \to \mathbb{R}^k$, maps the decision variables vector $\bar x = \{x_1,\ldots, x_n\} \in \mathbb{R}^n$ to vectors $\bar F = \{f_1,\ldots, f_k\} \in \mathbb{R}^k$. To find a solution for this kind of problems, Pareto Optimality Theory \cite{bib3} has been defined in research works, in which the optimal solution set is not a single solution but a set of trade-off solutions, namely, Pareto optimal solutions. \par
+%
+Briefly, in summary, a multi-objective optimization problem (also called multi-criteria optimization problem) can be defined as the problem of \cite{bib5} \textit{''finding a vector of decision variables which satisfies constraints and optimizes a vector function whose elements represent the objective functions. These functions form a mathematical description of performance criteria which are usually in conflict with each other. Hence, the term ‘optimize’ means finding such a solution which would give the values of all the objective functions acceptable to the decision maker''}. \par
+Thus, a multi-objective problem consists of k objectives reflected in the k objective functions and n decision variables, where the k objective functions may be linear or nonlinear and continuous or discrete (as the decision variables $x_i$ may be continuous or discrete). During the remainder of this 
+work, some basic definition will be presented. \par
+%
+\section{Basic Definitions}
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Convexity}).}\label{defC1}
+A function $g(\bar x)$ is called convex over the domain of $\mathbb{R}$ if for any two vectors $\bar x_1, \bar x_2 \in \mathbb{R}$:
+%
+\begin{equation} \label{equation114}
+  \begin{aligned}
+    g(\alpha \bar x_1 + (1 - \alpha)\bar x_2) \leq \alpha g(\bar x_1) + (1-\alpha)g(\bar x_2), \ \ 0 \leq \alpha \leq 1
+\end{aligned}
+\end{equation}
+%
+\end{definition}
+It should be noted that $g(\bar x)$ is concave if $-g(\bar x)$ is convex.
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Convex Set}).}\label{defC1C2}
+A set of points (or a region) is defined as a convex set $\Omega$ in n-dimensional space if:
+%
+\begin{equation} \label{equation115}
+  \begin{aligned}
+    \forall x_1, x_2 \in \Omega, \ \bar x = \alpha \bar x_1 + (1-\alpha)\bar x_2 \in \Omega, \ \ 0 \leq \alpha \leq 1  
+\end{aligned}
+\end{equation}
+%
+\end{definition}
+Fig.~\ref{fig_convex} shows few examples of convex sets, and Fig.~\ref{fig_concave} shows few examples of non-convex sets.
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.8\linewidth]{img/convex.png}}
+	\caption{Convex Sets.}
+	\label{fig_convex}
+\end{figure}
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.8\linewidth]{img/convexNO.png}}
+	\caption{Non-Convex Sets.}
+	\label{fig_concave}
+\end{figure}
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Pareto Dominance}).}\label{defC2}
+A vector $\bar u = (\bar u_1, \ldots , \bar u_k)$ is said to dominate another vector $\bar v = (\bar v_1, \ldots , \bar v_k)$ (denoted by $\bar u \preceq \bar v$) if and only if $\bar u$ is partially less than $\bar v$:
+%
+\begin{equation} \label{equation116}
+  \begin{aligned}
+    \forall i \in \{ 1, \ldots , k\}, \ u_i \leq v_i \ \wedge \ \exists i \in \{1, \ldots , k\} :  u_i < v_i
+\end{aligned}
+\end{equation}
+%
+\end{definition}
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Pareto Optimality}).}\label{defC3}
+A solution $\bar x^\ast \in \Omega$ is said to be Pareto optimal with respect to $\Omega$ if and only if 
+%
+\begin{equation} \label{equation117}
+  \begin{aligned}
+    \nexists  \ \bar x' \in \Omega : \bar v = \bar F(\bar x') = ( f_1(\bar x'), . . . , f_k(\bar x')) \preceq \bar u = \bar F(\bar x^\ast) = ( f_1(\bar x^\ast), . . . , f_k(\bar x^\ast))
+\end{aligned}
+\end{equation}
+%
+So, $\bar x^\ast$ is Pareto optimal if there is not feasible vector $\bar x'$ which would decrease/increase some criterion/objective without causing a simultaneous increase/decrease in at least one other criterion/objective assuming minimization/maximization.
+%
+\end{definition}
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Pareto Optimal Set}).}\label{defC4}
+For a given multi-objective problem, $\bar F(\bar x)$, the Pareto Optimal Set, $\rho^\ast$, is defined as:
+%
+\begin{equation} \label{equation118}
+  \begin{aligned}
+    \rho^\ast = \{ \bar x \in \Omega \ | \ \nexists \ \bar x' \in \Omega : \bar F(\bar x') \preceq \bar F(\bar x)\}
+\end{aligned}
+\end{equation}
+%
+\end{definition}
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Pareto Front}).}\label{defC5}
+For a given multi-objective problem, $\bar F(\bar x)$, and Pareto optimal Set $\rho^\ast$, the Pareto front $\rho F^\ast$ is defined as:
+%
+\begin{equation} \label{equation119}
+  \begin{aligned}
+    \rho F^\ast = \{ \bar u = \bar F(\bar x) \ | \ \bar x \in \rho^\ast\}
+\end{aligned}
+\end{equation}
+%
+\end{definition}
+%
+The standard procedure to generate the Pareto front is to compute many points in $\Omega$ and their corresponding objective images. Whit a sufficient number of points, it is possible to find the non dominated vector set and the relative Pareto front. A sample Pareto Optimal Set and Pareto Front are shown in Fig.~\ref{fig_paretofront}.
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.9\linewidth]{img/paretoFront.png}}
+	\caption{Example of Pareto Front and Pareto Optimal set.}
+	\label{fig_paretofront}
+\end{figure}
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Ideal Point}).}\label{defC6}
+The ideal point $\bar F^I = \{ f^I_1, \ldots , f^I_k\}$ is the vector composed with the best objective values over the search space. Analytically, the ideal objective vector is expressed by: 
+%
+\begin{equation} \label{equation120}
+  \begin{aligned}
+    \bar f^I_i = \underset{\bar x \in \Omega}{\text{min}} \ f_i(\bar x), \ \ i = 1, \ldots , k
+\end{aligned}
+\end{equation}
+%
+\end{definition}
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Utopian Point}).}\label{defC7}
+The utopian point $\bar F^U = \{ f^U_1, \ldots , f^U_k\}$ is the infeasible vector composed with the difference between the components $f^I_i$ of the ideal point and a relative small but computationally significant scalar $\epsilon_i$. Analytically, the ideal objective vector is expressed by: 
+%
+\begin{equation} \label{equation121}
+  \begin{aligned}
+    \bar f^U_i = f^I_i - \epsilon_i, \ \ i = 1, \ldots , k
+\end{aligned}
+\end{equation}
+%
+\end{definition}
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Nadir Point}).}\label{defC8}
+The nadir point $\bar F^N = \{ f^N_1, \ldots , f^N_k\}$ is the vector composed with the worst objective values over the Pareto set. Analytically, the nadir objective vector is expressed by: 
+%
+\begin{equation} \label{equation122}
+  \begin{aligned}
+    \bar f^N_i = \underset{\bar x \in \Omega}{\text{max}} \ f_i(\bar x), \ \ i = 1, \ldots , k
+\end{aligned}
+\end{equation}
+%
+\end{definition}
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Weak Pareto Optimality}).}\label{defC9}
+A point $\bar x^\ast \in \Omega$ is a weak Pareto optimal if: 
+%
+\begin{equation} \label{equation123}
+  \begin{aligned}
+    \nexists \ \bar x \in \Omega : f_i(\bar x) < f_i(\bar x^\ast), \ i = 1, \ldots , k
+\end{aligned}
+\end{equation}
+%
+\end{definition}
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Strict Pareto Optimality}).}\label{defC10}
+A point $\bar x^\ast \in \Omega$ is a strictly Pareto optimal if: 
+%
+\begin{equation} \label{equation124}
+  \begin{aligned}
+    \nexists \ \bar x \in \Omega : f_i(\bar x) \leq f_i(\bar x^\ast), \ i = 1, \ldots , k
+\end{aligned}
+\end{equation}
+%
+\end{definition}
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Multi-Objective Global Minimum}).}\label{defC11}
+Given a function $\bar F : \Omega \subseteq \mathbb{R}^n \Rightarrow \mathbb{R}^k, \Omega \not=0, k \geq 2$, for $\bar x \in \Omega$ the set $\rho F^\ast \triangleq \bar f(\bar x^\ast_i) > (-\infty, \ldots, -\infty)$ is called the global minimum if and only if:
+%
+\begin{equation} \label{equation125}
+  \begin{aligned}
+    \forall \ \bar x \in \Omega : \bar f(\bar x^\ast_i) \preceq \bar f(\bar x), \ i = 1, \ldots, n
+\end{aligned}
+\end{equation}
+%
+$\bar x^\ast_i$ is the global minimum solution set, $\bar f$ is the multiple objective function vector, and $\Omega$ is the feasible region. The problem to find global minimum solution set is called multi-objective global optimization problem \cite{bib1Chiandussi}.
+\end{definition}
+%
+\section{Genetic Algorithm}\label{genetic_algo_section}
+%
+The concept of Genetic Algorithm (GA) was created by Holland in the 1975 \cite{bibGA}. GA are inspired by Charles Darwin’s theory of natural evolution. In nature, species within their environment are faced with extinction by natural selection and the strongest individual could pass their genes to future children generations via reproduction. In a long period, species succeed to transmit in dominant genes, adapting their condition to the wild environment. Sometimes also random changes may occur in genes and a new species evolve from the old ones. Unsuccessful changes are eliminated by natural selection. \par
+In GA terminology, a solution vector $\bar x \in \Omega$ is called an \textit{individual} or a \textit{chromosome} (generally a set of binary digits 0 and 1, but also real or integer values are used). Chromosomes are composed by discrete units called \textit{genes}. Each gene controls one or more characteristic of the chromosome. The values of a gene are known as \textit{alleles} and the set of all genes is called \textit{genotype} of the chromosome. Normally, a chromosome is a unique solution $\bar x$ in the solution space $\Omega$. This requires a mapping mechanism between the solution space and the chromosomes, called \textit{encoding}. The set of encoded real or integer genotypes, called \textit{control factors}, composes the so called \textit{phenotype}. When an objective function is evaluated in correspondence of a chromosome control factors, its value is called \textit{fitness} value of that chromosome, and the function is the \textit{fitness function}. Thus, each chromosome produce a solution to single objective optimization problem. GA operate with a set of chromosomes, called \textit{population}, normally randomly created. Evolving the search method, the population converges to a single solution that dominated any other individuals. \par
+%
+\begin{algorithm}
+    \caption{Classical GA}\label{alg:ga_algorithm1}
+    \begin{algorithmic}[1]
+        \State Init. Population P
+        \Procedure{Evaluation}{$P$}
+            \While{Each individual $\bar x$ in population P}
+                \State Calculate single objective function $F_i$ for individual $\bar x$ 
+                \State Calculate fitness function $F$ for individual $\bar x$
+            \EndWhile
+            \State Elitism (Optional)
+        \EndProcedure
+        \State EVALUATION
+        \While{!(STOP CRITERIA)}
+            \State Selection
+            \State Crossover $\land$ Mutation
+            \State Survivor Selection
+            \Procedure{Evaluation}{$P$}
+            \EndProcedure
+            \State EVALUATION
+        \EndWhile\label{gadwhile}
+        \State \textbf{return}
+    \end{algorithmic}
+\end{algorithm}
+%
+Algorithm~\ref{alg:ga_algorithm1} shown the classical GA implementation. GA use two steps in order to find new solutions from existing ones: \textit{crossover} and \textit{mutation}. In crossover, generally two chromosomes, called \textit{parents}, are merged together to form two new chromosomes, called \textit{offspring} or \textit{children}. The parents are selected from existing chromosomes in the population respect to the fitness value. Repeating the crossover step for a huge number of iteration, good genes appear more frequently in the population, arriving to the convergence of the final global optimal Pareto solution. The mutation step makes random changes into genes, where the mutation rate is very small and depends on the chromosome size, reintroducing genetic diversity into the population and avoid remaining into local optimal points. It is possible to use \textit{Elitism} to guarantee that solution quality obtained by the GA will not decrease from one generation to the next, copying the best individuals from the current generation to the next one. 
+Finally, to select good chromosomes for the next generation, the individual fitness value determines the survival probability. Different selection approaches are presents in literature, as proportional selection, ranking, tournament selection and so on. 
+%
+%\subsection{Multi-objective Genetic Algorithm: State-of-the-Art}
+%
+%TODO
+%
+\subsection{Multi-objective Genetic Algorithm: Fitness Function Assignment}
+%
+A classical approach to solve a MOOP is the \textit{Weighted Sum Method} (WSM), which assign a weight $\omega_i$ to each objective function $\bar F(\bar x)$ so that the problem is converted to a \textit{Single-Objective Optimization Problem} (SOOP) with a scalar cost function (called \textit{utility function}, defining a relative criterion importance), as follows:
+%
+\begin{definition}{(\textit{Weight Sum Method}).}
+Given a function $ \bar F : \Omega \subseteq \mathbb{R}^{n} \to \mathbb{R}^k, \Omega \not= 0$, a general MOOP can be reduced to a SOOP as defined below:
+%
+\begin{equation} \label{equation126}
+\resizebox{0.7\hsize}{!}{$%
+  \begin{aligned}
+    & \underset{\bar x}{\text{min}} & & \bar U(\bar x) = \omega_1 \cdot F_1(\bar x) + \ldots + \omega_k \cdot F_k(\bar x) = \sum_{k} \omega_{k} \cdot F_k(\bar x) \\
+    & \text{s.t.}             &  & \bar x \in \Omega 
+\end{aligned}
+$%
+}
+\end{equation}
+%
+\end{definition}
+Since the magnitude of objective functions could be quite different, a scaling operation can be applied to them \cite{yuea}. In such a case, the final problem definition is as follows:
+%
+\begin{definition}{(\textit{Scaled Weighted Sum Method}).}
+%
+The linear combination of WSM can be normalized as defined before:
+%
+\begin{equation} \label{equation127}
+\resizebox{0.7\hsize}{!}{$%
+  \begin{aligned}
+    & \underset{\bar x}{\text{min}} & & \bar U(\bar x) &= \omega_1 \cdot \frac{F_1(\bar x)}{F^\ast_1(\bar x)} + \ldots + \omega_k \cdot \frac{F_k(\bar x)}{F^\ast_k(\bar x)} &=  \sum_{k} \omega_{k} \cdot \frac{F_k(\bar x)}{F^\ast_k(\bar x)} \\
+    & & & &= \omega_1 \cdot F'_1(\bar x) + \ldots + \omega_k \cdot F'_k(\bar x) &= \sum_{k} \omega_{k} \cdot F'_k(\bar x) \\
+    & \text{s.t.} &  & \bar x \in \Omega & &
+\end{aligned}
+$%
+}
+\end{equation}
+%
+where $F^\ast_i(\bar x)$ are the scaling parameters for the objective function, so $F'_i(\bar x)$ is the normalized objective function of $F_i(\bar x)$ and $\sum \omega_{i}=1$. 
+\end{definition}
+%
+With this definition, the multi-criteria optimal design problem is changed into a single objective optimal design problem, and can be solved in a relatively straightforward manner, using also genetic algorithm procedure. In fact, it has been demonstrated \cite{miettinen} that (S)WSM provides a sufficient condition for Pareto optimality, and a necessary condition if the decision space $\Omega$ and the feasible criterion space $Z$ are convex. These proprieties are not simple to demonstrates. One methods is to evaluate the Hessian matrix $H(\bar F)$ and to evaluate if it is positive or semi-positive definite, so the considered set are convex. This technique is not simple to be implemented while the input problem depends on application and platform models, so calculating the Hessian matrix value for each input is time consuming. However the non-convexity property relies in a local minimum, and other methods are used in literature (as adaptive weight methods \cite{apost_01}) but it is out of the scope of his work. \par
+This approach is called \textit{a priori approach} because decision maker should provide weights in advance. Solving the problem for a fixed weight vector $\bar \omega = \{\omega_1, \omega_2, \ldots , \omega_k \}$ produce a single solution, and the problem must be solved multiple times with different weight combinations if multiple solutions shall be produced, so the selecting of the weight vector for each iteration is a critical point \cite{bibGATutorial}. So the actual problem in the (S)WSM is the required decision maker actions, since it is not easy to consider the overall relative importance of all the cost functions. Moreover, the scaled objective functions can still have different bias in the [0, 1] interval and such an issue should be fixed. So, a method to automatically evaluate weights, but still able to take into account decision maker preferences, is needed. In fact, the change in weights value, the not-uniform distribution of $\rho F^\ast$ and the non-convex objective functions can lead to worse solutions. \par
+%
+%{\color{red}ALTRI METODI DI CALCOLO DELLA FUNZIONE DI FITNESS.}
+%
+%\subsubsection{Selection Step}
+%
+%TODO.
+%
+%\subsubsection{Crossover \& Mutation}
+%
+%TODO.
+%
+%\subsubsection{Diversity}
+%
+%TODO.
+%
+%\subsubsection{Elitism}
+%
+%TODO.
+%
+%
+%\subsection{Multi-objective Parallel Genetic Algorithm}
+%
+%TODO.
+%
+%\subsubsection{Coarse-Grain Parallel Genetic Algorithm}
+%
+%TODO.
+%
+%\subsubsection{Fine-Grain Parallel Genetic Algorithm}
+%
+%TODO.
+%
+%\subsubsection{Hierarchical Parallel Genetic Algorithm}
+%
+%TODO.
+%
+\section{HPV-based SW Partitions aware Design Space Exploration for HW/SW Partitioning, Architecture and Mapping}\label{refsection1}
+%
+After this MOOP overview, the rest of this section descibes the reference MOOP considered in this Ph.D. Thesis. The whole two-phase DSE approach is shown in Fig.~\ref{figure4_1}. The DSE is splitted into two main phases: \textbf{P}artitioning, \textbf{A}rchitecture Definition and \textbf{M}apping Phase \textbf{1} and \textbf{2} (PAM1 and PAM2). PAM1 provides the partial HW/SW architecture (with the number and type of needed processors), the partitioning between HW and SW components and the mapping between processes and BBs. PAM2 provides the final HW/SW architecture ready to be implemented. PAM2 also finds the number of needed interconnection links (physical links) with a specific topology graph. Next sections will present both activities in more detail.
+%
+\begin{figure}[!ht]
+\centerline{\includegraphics[width=.6\linewidth]{img/DSE-Two-Phases_new.jpg}}
+\caption{The two-phase DSE approach\label{figure4_1}}
+\end{figure}
+%
+\subsection{Phase 1: PAM1}
+In the context of HEPSYCODE Co-Design Flow, the first phase is related to the mapping of the CSP processes onto a dedicated heterogeneous parallel architecture while considering mainly computation issues. The different models representing the specification, annotated by means of the Co-Analysis and Co-Estimation step, is provided as input to the PAM1 tool (i.e., \textbf{P}artitioning, \textbf{A}rchitecture Definition and \textbf{M}apping Phase \textbf{1}). This section describes the PAM1 Design Space Exploration (DSE) activities respect to consider single-core BBs, meanwhile the multicore scenario will be analyzed later. The DSE step involves several stages, from the definition of the solution space, the encoding respect to the decision variable space, and the definition of the objective function and the general multi-objective general problem.
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Multi-Objective Design Space Exploration Optimization Problem in PAM1}).}
+%
+\begin{equation} \label{equation128}
+  \begin{aligned}
+    & \underset{\bar x}{\text{min}} &  & \bar F(\bar x) = [f_1(\bar x), f_2(\bar x), \ldots , f_k(\bar x)] \\
+    & \text{subject to}             &  & \bar x \in \Omega = \{ \bar x  \in \mathbb{N}_{> 0}^{n} : x_i \leq (b - r) + r * p_{max} \}
+\end{aligned}
+\end{equation}
+%
+where $\bar x = \{x_1,\ldots, x_n\}$ is an n-dimensional decision variable vector representing processes in the solution space $\Omega$ (which refers to a feasible search space, feasible set of decision vectors) and $\bar F(\bar x) = [f_1(\bar x), f_2(\bar x), \ldots , f_k(\bar x)] \in \mathbb{R}^k$ consists of k $\geq 2$ real-valued objective functions ($\mathbb{R}^k$ refers to the objective space). The value $b$ is the total number of BBs, $r$ is the number of BBs that have processor type equal to GPP, and $p_{max}$ is the maximum number of HPV-based SW Partition instances for each GPP processor. \par
+%
+\end{definition}
+%
+%\begin{figure}[htbp]
+%	\centerline{\includegraphics[width=0.8\linewidth]{img/03-Multi-objective-optimization-problems-overview-reduced.png%}}
+%	\caption{Multi-objective Optimization Problem in PAM1.}
+%	\label{figMOOPO}
+%\end{figure}
+Fig.~\ref{figMOGAOverview} shown the graphical representation of the multi-objective problem related to partitioning issues in the Co-Design Flow. 
+The $\bar x$ vector represents processes and values in the decision variable space are \textit{Basic Block} (BB) instances and HPV-Based SW Partition (representing by integer number related to some element identifiers). 
+In this example, 2 processes and 4 BBs have been considered: 2 GPP, 1 ASP and 1 SPP (this information is present in the BBs, in the figure it is possible to note only id values); Each GPP processor has 2 maximum HVP-based SW partition instances. Each solution is mapped on a discrete value, and constrained by the maximum number of BBs and HPV-based SW partitions instances.
+The objective function depends on different metrics evaluated and estimated during the Co-Design Flow (and can be extended introducing other different ones). Starting from these definitions, in this works a multi-objective genetic algorithm has been used in order to find an approximation of the Pareto Front ($\rho F^\ast$) in a single run (respect to a consistent number of iteration), as shown in Fig.~\ref{figMOGAOverview}, where, starting from the phenotype space, the solution has been encoded considering processes, HPV-based SW Partitions and BBs.
+It is worth noting that the feasible design space $\Omega$ is convex, but we cannot say anything about the feasible criterion space $Z$. As said before, a GA is used  to solve the HW/SW partitioning problem.
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/03-Multi-objective-optimization-problems-overview.png}}
+	\caption{Multi-objective Optimization Problem in PAM1.}
+	\label{figMOGAOverview}
+\end{figure}
+%
+%\textcolor{red}{LINEAR COMBINATION OF WEIGHT}. Fig.~\ref{figMOGAD}
+%
+%\begin{figure}[htbp]
+%	\centerline{\includegraphics[width=0.9\linewidth]{04-Multi-objective-optimization-problems_definition.png}}
+%	\caption{Multi-objective Genetic Algorithm transformation.}
+%	\label{figMOGAD}
+%\end{figure}
+%
+%\subsubsection{HPV-based SW Partitions aware Evolutionary Approach in PAM1}\label{HPV_PAM1}
+%
+%This section describe the GA realization respect to the problem of considering the HW/SW partitioning problem introducing different objective and metrics into the DSE and Co-Design Flow.
+
+\subsubsection{Individual}\label{ind_PAM1}
+
+Normally, the decision variables $\bar x$ have been represented in GAs using binary strings \cite{bibgenetic18}, but some authors have studied the convenience of using other alternatives, suggesting the utilization of more natural representations such as the real valued encoding \cite{bibgenetic18}. For our purpose, an integer representation of individual has been considered (Fig.~\ref{fig3_001}). \par
+%
+\begin{figure}[htbp!]
+	\centerline{\includegraphics[width=0.8\linewidth]{img/fig4a.png}}
+	\caption{Genetic Algorithm Individual Set in PAM1. Each individual is composed by different genes, where $ps_j$ are application processes, $pt_{i,j}$ are Hypervisor-based SW Partitions, and $bb_{i,j}$ are BB instances.}
+	\label{fig3_001}
+\end{figure}
+%
+Fig.~\ref{figMOGADef} shows the constituents of a chromosome made up of n genes and the relation between the genotype and the external environment, i.e., the phenotype, constituted by n control factors $x_1, x_2, \ldots , x_n$, one for each gene. The passage from the genotype to the phenotype and vice versa is ruled by the phenotyping parameters of all genes, which perform the coding/decoding actions. Each individual is characterized by a fitness, which is the value of the objective function calculated in correspondence of the control factors for each individual. \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.7\linewidth]{img/04-Multi-objective-optimization-problems_definition.png}}
+	\caption{Components of an individual (chromosome) and its fitness in PAM1. This figure summarizes the GA approach, as described in Section \ref{genetic_algo_section}}
+	\label{figMOGADef}
+\end{figure}
+%
+As shown in Fig.~\ref{figMOGAOverview}, the solution space is bounded by the total number of BBs and HPV-Based SW Partitions, that introduces more challenges in the definition of the decision space, introducing mixed-criticality requirements in the whole methodology. Considering the decision variable space size, it is possible to calculate the number of feasible solution (without criticality constraints) as the permutations with repetition of \textit{n} processes, that compose the solution vectors $\bar x$, allocated on \textit{b} BBs, so the computation space size is $b^n$. \par
+Considering the introduction of \textit{$p_{max}$} instances of HPV-based SW partitions for each $BB$, and splitting the BBs set into two subsets, the first including \textit{r} BBs type able to support HPV technologies (i.e., GPP), the second \textit{t} BBs not able to support HPV technologies (i.e., ASP or SPP), the final decision variable space size is equal to $(t + r \cdot p_{max})^n$. It is worth noting that the maximum number of HPV-based SW partition is equal for all the GPP able to support HPV technologies. In future we introduce the possibility to assign different maximum number of partition for each different instances of BBs.\par
+The introduction of mixed-criticality requirements reduce the decision space. In particular, introducing \textit{l} criticality levels assigned to each process (with some kind of risk analysis driven by standards and certifications), the decision variable space (without HPV-based software partition) could be diveded into different clusters, as shown in Fig.~\ref{Sol_Space_size_1}. 
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.7\linewidth]{img/cluster1.png}}
+	\caption{Cluster representation of mixed-criticality processes.}
+	\label{Sol_Space_size_1}
+\end{figure}
+%
+It is possible to identify two different situation with different stringent constraint, under the assumption that l must be greater then b (the number of criticality level must be greater or equal to the number of BBs). The first case consider the possibility to allocate all the processes belonging to a cluster on a single instances of BBs, so the total solution size becomes equal to the l-permutation of b (the different ordered arrangements of a l-element subset of a b-set, also called  sequences without repetition):  
+%
+\begin{equation} \label{equation129}
+    \begin{aligned}
+    P(b,l) = \frac{b!}{(b-l)!}, \ l \leq b
+    \end{aligned}
+\end{equation}
+%
+Introducing HPV-based software partition increase the decision variable feasible set in the order of:
+%
+\begin{equation} \label{equation129_bis}
+    \begin{aligned}
+    P([t + r \cdot p_{max}],l) = \frac{[t + r \cdot p_{max}]!}{([t + r \cdot p_{max}]-l)!}, \ l \leq [t + r \cdot p_{max}]
+    \end{aligned}
+\end{equation}
+%
+The second case involves the possibility to divide processes belonging to the same criticality cluster on a different BB instances (defined in Chapter \ref{chap2_01} Section \ref{platform_chap3}). In this case the total solution size is more complex to evaluate mathematically (because involves permutation, combination and partition theoretical issues) and it is out of the scope of this thesis. Future works will evaluate it (with mathematics or approximation methods). \par
+%
+\subsubsection{Weights Linear Equalization}\label{WLE_def}
+%
+To introduce decision maker preferences, in this Thesis a ranking assignment has been used that try to answer to the following questions:
+%
+\begin{enumerate}
+    \item How is it possible to explicitly introduce decision maker preferences?
+    \item How is it possible to offer the possibility to correctly understand the cost functions magnitude without a Pareto trade-off analysis?
+    \item How is it possible to tune the DSE solution to fulfill decision maker preferences?
+\end{enumerate}.
+%
+The proposed approach consider the possibility to use the relative importance values $\lambda_i$ assigned by decision maker in the system of linear equations presented below:
+\begin{definition}{(\textit{Weights Linear Equalization (WLE)}).}
+%
+The weights $\omega_i(t)$ associated to each cost function $F(\bar x)$ at iteration $t > 0 \ (t \in \mathbb{N})$ are evaluated by solving the linear system:
+%
+\begin{equation} \label{equationtt}
+    \begin{aligned}
+        \begin{cases} 
+        \lambda_1 \cdot \mu_1(t) \cdot \omega_1(t) = \lambda_2 \cdot \mu_2(t) \cdot \omega_2(t) \\ 
+        %\lambda_2 \cdot \mu_2(t) \cdot \omega_2(t) = \lambda_3 \cdot \mu_3(t) \cdot \omega_3(t) \\
+        \cdots \\
+        \lambda_{k-1} \cdot \mu_{k-1}(t) \cdot \omega_{k-1}(t) = \lambda_k \cdot \mu_k(t) \cdot \omega_k(t) \\
+        \omega_1(t) + \omega_2(t) + \cdots + \omega_k(t) = 1
+        \end{cases}
+\end{aligned}
+\end{equation}
+%
+\end{definition}
+%
+Decision maker may assign four relative importance values $\bar \lambda = \{ \lambda_1,\lambda_2, \cdots , \lambda_k \}$: 
+%
+\begin{itemize}
+    \item $\lambda_i = 0$: this cost function will not be considered at all; 
+    \item $\lambda_i = 1$: low balance, the tool considers cost function i with low importance (it will be half weighted in the linear combination); 
+    \item $\lambda_i = 2$: normal balance, the tool considers cost function i equal to others; 
+    \item $\lambda_i = 3$: high balance, the tool considers cost function i with high importance (it will be double weighted in the linear combination);
+\end{itemize}
+The tuning factors assigned to different weights are: \par
+%
+\begin{equation} \label{equationtt2}
+    \begin{aligned}
+        \mu_i(t) = \frac{\sum_{j=1}^{I(t)} F_i(\bar x_j(t))}{I(t)}
+    \end{aligned}
+\end{equation}
+%
+Starting from this ranking, the weights assigned to each cost function will change depending on the GA evolution. In particular, I(t) is the population size at iteration t, so weights are tuned by the average cost functions values at each step of GA. $\bar x_j(t)$ is the individual j in the population at iteration t. Using this method it is possible to make explicit the decision maker suggestions (by means of $\lambda_i$ values), avoid to represents trade-off solution in a k-dimensional design space (k$>$3), and to propose a feasible solution tuned with respect to the average cost functions values. Equation~\ref{equationtt} admits a solution that can be found with different methods. A possible one is to apply the following iterative approach:
+%
+\begin{equation} \label{equationtt3}
+    \begin{aligned}
+        \begin{cases} 
+            \omega_k(t) = \sum_{i=1}^k \frac{\lambda_k \cdot \mu_k(t)}{\lambda_i \cdot \mu_i(t)} \\
+            %\omega_{k-1}(t) = \frac{\lambda_k \cdot \mu_k(t)}{\lambda_{k-1} \cdot \mu_{k-1}(t)} \cdot \omega_k(t) \\
+            \cdots \\
+            \omega_1(t) = \frac{\lambda_2 \cdot \mu_2(t)}{\lambda_{1} \cdot \mu_{1}(t)} \cdot \omega_2(t)
+        \end{cases} 
+\end{aligned}
+\end{equation}
+%
+The computational cost of this iterative solution is $\mathcal{O}(k^2)$, so it  does not take too much time if k is small \cite{Jacobi}. Another possible solution can be related to a matrix representation of the linear system, in terms of $ A(t) \cdot \bar \omega(t) = \bar b$. The solution is $\bar \omega(t) = A^{-1}(t) \cdot \bar b$, so it is possible to apply well-known algorithms for matrix inversion as the Coppersmith-Winograd \cite{copper}, that has a computational cost of $\mathcal{O}(k^{2,3728639})$. Fig.~\ref{lwe_ga} shows the proposed GA extended to incorporate the WLE method.
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.7\linewidth]{img/LWE_GA.png}}
+	\caption{GA with WLE schema \cite{parma_ditam_2019}.}
+	\label{lwe_ga}
+\end{figure}
+%
+\subsubsection{Mixed-Criticality Design Space Exploration Approach in PAM1}
+%
+Applying a linear combination of weights respect to mixed-criticality multi-objective optimization problem considered in this work (Equation~\ref{equation128} in Section~\ref{refsection1}), it is possible to define the utility function that quantifies the quality of each individual of the GA population.
+%
+The main problem is presented below:
+\theoremstyle{definition}
+\begin{definition}{(\textit{Linearization of Multi-objective Design Space Exploration Optimization Problem in PAM1}).}
+%
+%
+\begin{equation} \label{equation131}
+  \begin{aligned}
+    & \underset{\bar x}{\text{min}} &  & U(\bar x) = \sum_{k} \omega_{k} \cdot f_{k}(\bar x) = \sum_{k} \omega_{k} \cdot f_{k}(x_1, x_2, \ldots, x_n)\\
+    & \text{subject to}             &  & \bar x \in \Omega = \{ \bar x  \in \mathbb{N}_{> 0}^{n} : \ 0 < x_i \leq (b - r) + r * p_{max} \}
+\end{aligned}
+\end{equation}
+%
+$U(\bar x)$ is the utility function evaluated at each iteration of the GA for each individual $\bar x \in \Omega$. \textit{$f_{k}$} represents the value of the objective function (or metric) \textit{k} for each individual \textit{$\bar x$}, while \textit{$\omega_{k}$} is the weight associated to each objective function or metric. 
+\end{definition}
+So, starting from this problem definition, the first phase goal is to determine number and type of BB/PUs and a mapping on CSP processes onto them, while trying to:
+%
+\begin{itemize}
+    \item Minimize the cost of the set of BBs (The max number of instances allowed for each BBs can be specified by the designer as an architectural constraint);
+    \item Keep the load of each PU near but under its threshold;
+    \item Minimize the communications between different BBs;
+    \item Exploit to the optimum the affinity between the PUs and the mapped processes;
+    \item Keep the used size near but under some threshold;
+    \item Exploit the explicit parallelism expressed in the CSP model;
+    \item In the multicore scenario (this is a work-in-progress activity, based on \cite{bib26});
+    \begin{itemize}
+        \item Minimize the cost of the set of PUs (The max number of instances allowed for each kind of PUs and the max number of PUs allowed in a single BB can be specified by the designer as an architectural constraint);
+        \item Keep each IIL bandwidth under but near its threshold;
+        \item Keep the number of PUs inside a single BB using the same IIL under but near its threshold;
+    \end{itemize}
+    \item Minimize the total energy/power consumed in an application run;
+    \item Consider mixed-criticality issues;
+    %
+\end{itemize}
+%
+The rest of this paragraph defines the objective functions (called indexes) and the methods used to evaluate them at each iteration. In this context, the instance of an individual \textit{$\bar x$} is defined as a matrix where the column index represents processes and the value represents BB and PT integer identifiers, as shown in Fig.~\ref{fig3}. \par
+%
+\subsubsubsection{Affinity Index}
+The \textbf{\textit{Affinity Index}} \cite{bib27} is a metric based on two matrices that consider each individual $\bar x$. The first matrix is the \textit{Affinity Matrix} $A = \{ \ [a_{1}, \ a_{2}, \ .. \ , a_{j}, \ .. \ , \ a_{n}]^\intercal \ : \ a_{j} = [a_{j,1}(GPP), \ a_{j,2}(DSP), \ a_{j,3}(SPP)]^\intercal\} \in \mathbb{R}^{n \times 3}$. $a_{j}$ is an array of a triples in the interval [0,1] that provides a quantification of the matching among the structural and functional features of the functionality implemented by a process $ps_{j}$ and the architectural features of each one of the following processor types: \textit{GPP, DSP, SPP}. Higher the \textit{Affinity Matrix} element value, more suitable the corresponding processor type. The second matrix is the \textit{Affinity Selection Matrix} $ASM(\bar x) = \{ \ [asm_{1}(\bar x), \ asm_{2}(\bar x), \ .. \ , asm_{j}(\bar x), \ .. \ , \ asm_{n}(\bar x)] \ \} \in \mathbb{R}^{3 \times n} $, where the array $\ asm_{j}(\bar x) = [asm_{j,1}(GPP), \ asm_{j,2}(DSP), \ asm_{j,3}(SPP)]^\intercal \in \mathbb{R}^{3}$ assume the value 0 or 1, respectively, if the process $ps_{j}$ is allocated or not to the associated type of processor. So, it is possible to evaluate the \textit{Total Degree of Affinity (TDA) Index} as:
+%
+\begin{equation} \label{eq3}
+\small
+\begin{aligned}
+f_{TDA}(\bar x) = 1 - \frac{\tr[A \cdot ASM(\bar x)]}{n}  
+ 		    = 1 - \frac{\sum^n_{j=1}\sum^3_{k=1}{a_{j,k} \cdot asm_{k,j}(\bar x)}}{n}
+\end{aligned}
+\end{equation}
+%
+It is worth noting that the \textit{Affinity Matrix} $A$ is independent from the specific iteration and individual \textit{$\bar x$}, since it is a unique and fixed matrix evaluated in the Co-Estimation step, Section~\ref{aff_section}.
+%
+\subsubsubsection{Processes Concurrency Index}
+The \textbf{\textit{Processes Concurrency Index}} \cite{bib24_b}\cite{bib24_c} is based on a \textit{Process Concurrency Matrix}, calculated in the Co-Estimation step, Section~\ref{comm_con_metric_eval}:
+Starting from each individual $\bar x$, it is possible to define a \textit{Processes Concurrency Selection Matrix}, $S^{con}(\bar x) \in \mathbb{R}^{n \times n}$, as listed below:
+%
+\begin{equation} \label{eq5}
+\small
+\begin{aligned}
+S^{pcon}(\bar x) = \begin{cases}
+    s^{pcon}_{i,j}(\bar x) = 1, & if \ ps_{i} \Rightarrow pu_{x} \land ps_{j} \Rightarrow pu_{y} \land pu_{x} \neq pu_{y}\\
+    s^{pcon}_{i,j}(\bar x) = 0, & \text{otherwise}
+\end{cases} \in \mathbb{R}^{n \times n}
+\end{aligned}
+\end{equation}
+%
+So, for each individual $\bar x$, the \textit{Exploited Inter Cluster Parallelism} matrix, $EICP(\bar x) \in \mathbb{R}^{n \times n}$, indicates how much an individual can exploit the potential concurrency:
+%
+\begin{equation} \label{eq6}
+\small
+\begin{aligned}
+EICP(\bar x) = PCON \cdot S^{pcon}(\bar x)
+\end{aligned}
+\end{equation}
+%
+Starting from $EICP(\bar x)$ matrix function, the \textit{Exploited Parallelism (EP)} index is equal to:
+%
+\begin{equation} \label{eq7}
+\small
+\begin{aligned}
+f_{EP}(\bar x) &= \frac{\sum^n_{j=1}\sum^n_{k=1}{eicp_{j,k}}(\bar x)}{max_{EP}} \\
+&max_{EP} = \sum^n_{j=1}\sum^n_{k=1}pcon_{j,k} 
+% \frac{\sum^n_{j=1}\sum^n_{k=1}{CON_{j,k} \cdot S(CON)^{i}_{j,k}}}{maxEP} \\ 
+% &=
+\end{aligned}
+\end{equation}
+%
+\subsubsubsection{Processes Communication Index}
+The \textbf{\textit{Processes Communication Index}} \cite{bib24_b}\cite{bib24_c} is based on the \textit{Communication Matrix}, calculated in the Co-Estimation step, Section~\ref{comm_con_metric_eval_only_comm}. So, for each individual $\bar x$, it is possible to define a \textit{Processes Communication Selection Matrix}, $S^{cm}(\bar x) \in \mathbb{R}^{n \times n}$, as listed below:
+%
+\begin{equation} \label{eq9}
+\small
+\begin{aligned}
+S^{cm}(\bar x) = \begin{cases}
+s_{i,j}^{cm}(\bar x) = 1, & if \ ps_{i} \Rightarrow pu_{x} \land ps_{j} \Rightarrow pu_{y} \land pu_{x} \neq pu_{y}\\
+s_{i,j}^{cm}(\bar x) = 0.25, & if \ ps_{i} \Rightarrow pt_{x} \land ps_{j} \Rightarrow pt_{y} \land pt_{x} \neq pt_{y}\\
+s_{i,j}^{cm}(\bar x) = 0, & \text{otherwise}
+\end{cases} \in \mathbb{R}^{n \times n}
+\end{aligned}
+\end{equation}
+%
+HPV-based SW Partitions introduce Inter Partition Communication (IPC) issues, so the communication between processes allocated on different HPV partitions but on the same processor/core affect the final execution time introducing an extra timing overhead, depending on HPV technologies and IPC implementation. For this reason, the value associated to processes allocated on different HPV partitions on the same processor/core is weighed at 25\% (This value could be reduced with targeted benchmarks in order to refine this objective cost function). So, for each individual $\bar x$, the \textit{Inter Cluster Communication Cost}, $ICCC(\bar x) \in \mathbb{R}^{n \times n}$, represents the cost associated to process communication if processes are allocated on different processors:
+%
+\begin{equation} \label{eq10}
+\small
+\begin{aligned}
+ICCC(\bar x) = CM \cdot S^{cm}(\bar x)
+\end{aligned}
+\end{equation}
+%
+Starting from ICCC matrix, the \textit{Normalized Total Communication Cost} index is:
+%
+\begin{equation} \label{eq11}
+\small
+\begin{aligned}
+% &= \frac{\sum^n_{j=1}\sum^n_{k=1}{CM_{j,k} \cdot S(CM)^{i}_{j,k}}}{maxNTCC} \\
+f_{NTCC}(\bar x) &= \frac{\sum^n_{j=1}\sum^n_{k=1}{iccc_{j,k}(\bar x)}}{max_{NTCC}} \\
+max_{NTCC} &= \sum^n_{j=1}\sum^n_{k=1}cm_{j,k} 
+\end{aligned}
+\end{equation}
+%
+\subsubsubsection{Load Index}\label{load_index_dse_01}
+The  \textbf{\textit{Load Index}} \cite{bib24_b}\cite{bib24_c} is based on the \textit{Load Matrix} $L = \{ \ [l_{1}, \ l_{2}, \ .. \ , l_{j}, \ .. \ , \ l_{n}] \ : \ l_{j} = [l_{1,j}, \ l_{2,j}, \ .. \ , \ l_{k,j}, \ .. \ , l_{s,j}]^\intercal\} \in \mathbb{R}^{s \times n}$, where each matrix element represents the load that each process \textit{$ps_{j}$} would impose to each \textit{s} processor $pu_{k}$ (i.e., SW processor, used in at least one BB, s = \#PU - \#HW\_PU) to satisfy TTC. \textit{$L$} is estimated by allocating all the \textit{n} processes to a single-instance of each SW processor $pu_{k}$ and performing a simulation for each one into the Co-Estimation step (as described in Section~\ref{load_metric}). By imposing that the simulated time shall be equal to \textit{TTC}, it is possible to evaluate the Load \textit{$l_{k,j}$} that processes \textit{$ps_{j}$} would impose to the SW processor \textit{$pu_{k}$} to satisfy \textit{TTC} itself. In fact, by defining $x_k$ such that: 
+%\textit{$FRT_{k}$} equal to \textit{TTC}, for each process/processor pair, such as:
+%
+\begin{equation} \label{eq13}
+\small
+\begin{aligned}
+{TTC}=x_k \cdot ( {FRT}_k + {OH}_k ) \ \  with \ 0 \le x_k \le 1 
+\end{aligned}
+\end{equation}
+%
+while ${OH}_k$ is the overhead introduced by a given scheduling policy, the value of estimated load \textit{$l_{k,j}$} that a process imposes to processor \textit{$pu_{k}$} to satisfy \textit{TTC} is equal to:
+%
+\begin{equation} \label{eq14}
+\small
+\begin{aligned}
+l_{k,j} &= \frac{\left(t_{k,j} \cdot N_{k,j}\right)}{TTC} = \frac{\left(t_{k,j} \cdot N_{k,j}\right)}{{FRT}_k} \cdot \frac{{FRT}_k}{TTC} = \\
+&= {frl}_{k,j} \cdot \frac{{FRT}_{k}}{{TTC}} = \frac{{frl}_{k,j}}{x_k} \cdot \frac{{FRT}_k}{({FRT}_k + {OH}_k)} \\ 
+& \ \ \ \ \ \ \ \ \ \ \ \ \ \forall k=1..s, \ j=1..n 
+\end{aligned}
+\end{equation}
+%
+Considering real-time processes (leaf process in the CSP model, as described in Section~\ref{hepsycode_rt}), The Load $l_{k,j}$ that each real-time process $ps_j$ would impose to each software processor $pu_k$ to satisfy input real-time constraint $TTR_j$ (as described in Section~\ref{app_model_constraint}), is directly set equal to:
+%
+\begin{equation} \label{eq14}
+\small
+\begin{aligned}
+    l_{k,j} = \frac{t_{k,j}}{TTR_j}, \ \forall k = 1, \cdots, s
+\end{aligned}
+\end{equation}
+%
+$TTR_j$ is the real-time constraint related to the process $ps_j$. In this way it is possible to consider two different situations:
+%
+\begin{itemize}
+    \item \textit{Hard real-time process}: if $t_{k,j} < TTR_j$, then the constraints are fulfilled and it is possible to consider the value $l_{k,j}$ as an input to the DSE step;
+    \item \textit{Soft real-time process}: if $t_{k,j} < (TTR_j + \delta (t) )$, then constraints could be considered as soft real-time ones.
+\end{itemize}
+%
+From a DSE perspective, by considering the sum of the loads $l_{k,j}$ of all the processes allocated to a GPP/ASP \textit{$pu_{k}$}, it is possible to check if the total imposed Load is acceptable. Considering \cite{bib28}, the load least upper bound is on the order of $\simeq$ 70\%. In this work, the introduction of HPV-based SW partitions adds a second level scheduling, introducing hierarchical scheduling issues, so the new load upper bound became $\simeq$ 36\% \cite{bib28_new}. So it is possible to define the \textit{Load Index} as:
+%
+\begin{equation} \label{eq15}
+\resizebox{0.85\hsize}{!}{$%
+\begin{aligned} 
+f_{L}(\bar x) &= 1 - \tr{[L \cdot ALL^L(\bar x)]} = 1 - \frac{\sum^s_{k=1} \sum^n_{j=1} l_{k,j} \cdot all^L_{j,k}(\bar x)}{s} \\
+L &= L^{Non \ Real-Time} + L^{Real-Time} \\
+L^{Non \ Real-Time} &= \begin{cases} 
+{\frac{{frl}_{k,j}}{x_k} \cdot \frac{{FRT}_k}{({FRT}_k + {OH}_k)}} & if\ TTC\ \le ({FRT}_k + {OH}_k) \\ 
+frl_{k,j} & otherwise \\
+\end{cases} \in \mathbb{R}^{s \times n} \\
+L^{Real-Time} &= \begin{cases} 
+\frac{t_{k,j}}{TTR_j} & if \ t_{k,j} < TTR_j  \ \land \ TTC \le ({FRT}_k + {OH}_k) \\
+1  & if \ t_{k,j} > TTR_j \ (Hard \ real-time)\\
+\frac{{frl}_{k,j}}{x_k} \cdot \frac{{FRT}_k}{({FRT}_k + {OH}_k)}  & if \ t_{k,j} > TTR_j \\
+& \land \ TTC \le ({FRT}_k + {OH}_k) \ (Soft \ real-time) \\
+frl_{k,j} & otherwise \ (soft \ real-time)
+\end{cases} \in \mathbb{R}^{s \times n} \\
+ALL^L(\bar x) &= \begin{cases} 
+all^L_{j,k}(\bar x) = 1 & if \ ps_{j} \Rightarrow pu_{k} \\all^L_{j,k}(\bar x) =  
+0 & otherwise
+\end{cases} \in \mathbb{R}^{n \times s} \\
+ALL^L(\bar x) &= \begin{cases} 
+all^L_{j,k}(\bar x) = 1 & if \ ps_{j} \Rightarrow pu_{k} \\all^L_{j,k}(\bar x) =  
+0 & otherwise
+\end{cases} \in \mathbb{R}^{n \times s}
+\end{aligned}
+$%
+} 
+\end{equation}
+%
+It is worth noting that also the classical real-time workload analysis can be made in this step, because it is possible to assign classical real-time parameters to (conform to DAG representation) processes (period, deadline, worst case Execution time), found using specific timing analysis tools. DSE refinements will be made in future to achieve standard real-time analysis, also considering schedulability analysis in single and multi-core scenarios, but this is out of the scope of this Thesis.
+%
+\subsubsubsection{Cost Index}
+The \textbf{\textit{Cost Index}} \cite{bib24_b}\cite{bib24_c} is a metric related to the cost (where the concept of cost can be related to monetary cost, design effort, or any other issues of interest for the designer) $C \ =[c_{1}, \ c_{2}, \ .. \ , \ c_{k}, \ .. \ , c_{b}]$ associated to each \textit{$bb_{k}$} considered in the specific \textit{$\bar x$} (considering PU, MU and CU):
+%
+\begin{equation} \label{eq16}
+\small
+\begin{aligned} 
+f_{C}(\bar x) &= 1 - C \ps ALL^{C}(\bar x) = 1 - \frac{\sum^b_{k=1} c_{k} \cdot all^{C}_{k}(\bar x)}{max_{C}} \\
+ALL^{C}(\bar x) &= \begin{cases} 
+all^{C}_{k}(\bar x) = 1 & if \ \exists \ ps_{j} \ : \ ps_{j} \Rightarrow pu_{k}, \ \forall j=1..n\\ 
+all^{C}_{k}(\bar x) = 0 & otherwise
+\end{cases} \in \mathbb{R}^{b} \\
+max_C &= b \cdot max(c_{k}), \ \forall k=1..b
+\end{aligned}
+\end{equation}
+%
+\begin{comment}
+%
+\subsubsubsection{Size Index}
+The \textbf{\textit{Size Index}} \cite{bib24_b}\cite{bib24_c} is a set of estimations for each statement of each process with respect to each available processor. It is related to number of bytes or area/resources metrics depending on SW or HW implementations. It is possible to define three matrices: 
+\begin{equation} \label{eq17A}
+\small
+\begin{aligned} 
+RAM &= \{ [ram_{1}, \ ram_{2}, \ .. \ , \ ram_{j}, \ .. \ , ram_{n}]  \ : \\ ram_{j} &= [ram_{j,1}, \ ram_{j,2}, \ .. \ , \ ram_{j,k}, \ .. \ , \ ram_{j,b}]^\intercal\ \} \in \mathbb{R}^{n \times b}
+\end{aligned}
+\end{equation}
+%
+where $ram_{j,k}$ is the RAM size value of each process $ps_{j}$ allocated on SW processor $pu_{k}$ defined into the BB.
+%
+\begin{equation} \label{eq17B}
+\small
+\begin{aligned} 
+ROM &= \{ [rom_{1}, \ rom_{2}, \ .. \ , \ rom_{j}, \ .. \ , rom_{n}]  \ : \\ rom_{j} &= [rom_{j,1}, \ rom_{j,2}, \ .. \ , \ rom_{j,k}, \ .. \ , \ rom_{j,b}]^\intercal\ \} \in \mathbb{R}^{n \times b }
+\end{aligned}
+\end{equation}
+%
+where $rom_{j,k}$ is the ROM size value of each process $ps_{j}$ allocated on SW processor $pu_{k}$ defined into the BB
+%
+\begin{equation} \label{eq17C}
+\small
+\begin{aligned} 
+EQG &= \{ [eqg_{1}, \ eqg_{2}, \ .. \ , \ eqg_{j}, \ .. \ , eqg_{n}]  \ : \\
+eqg_{j} &= [eqg_{j,1}, \ eqg_{j,2}, \ .. \ , \ eqg_{j,k}, \ .. \ , \ eqg_{j,b}]^\intercal\ \} \in \mathbb{R}^{n \times b}
+\end{aligned}
+\end{equation}
+%
+where $eqg_{j,k}$ is the equivalent gate value associated to each process $ps_{j}$ allocated on SPP $pu_{k}$ defined into the BB. Starting from this matrix, it is possible to calculate the \textit{Size Index}:
+%
+\begin{equation} \label{eq17}
+\small
+\begin{aligned} 
+f_{S}(\bar x) = f_{SW}(\bar x) + f_{HW}(\bar x)
+\end{aligned}
+\end{equation}
+% 
+\par
+%
+\begin{equation} \label{eq18}
+\small
+\begin{aligned} 
+f_{SW}(\bar x) = \frac{ \tr{\left[(RAM + ROM) \cdot ALL^{SW}(\bar x)\right]} - max_{SIZE\_SW}}{max_{SIZE\_SW}} \\
+= \frac{ \left[ \sum^n_{j=1} \sum^b_{k=1} (ram_{j,k}+rom_{j,k}) \cdot all^{SW}_{k,j}(\bar x) \right] - max_{SIZE\_SW}}{max_{SIZE\_SW}}
+\end{aligned}
+\end{equation}
+% 
+\par
+%
+\begin{equation} \label{eq18_bis}
+\small
+\begin{aligned} 
+ALL^{SW}(\bar x) = \begin{cases} 
+all^{SW}_{k,j}(\bar x) = 1 & if \ ps_{j} \Rightarrow pu_{k} \ SW\_PU \\ 
+all^{SW}_{k,j}(\bar x) = 0 & otherwise
+\end{cases} \in \mathbb{R}^{b \times n}
+\end{aligned}
+\end{equation}
+% 
+\par
+%
+\begin{equation} \label{eq19}
+\small
+\begin{aligned} 
+f_{HW}(\bar x) = \frac{\tr{\left[EQG \cdot ALL^{HW}(\bar x)\right]} - max_{SIZE\_HW}}{max_{SIZE\_HW}} \\
+= \frac{ \left[ \sum^n_{j=1} \sum^b_{k=1} eqg_{j,k} \cdot all^{HW}_{k,j}(\bar x) \right] - max_{SIZE\_HW}}{max_{SIZE\_HW}}
+\end{aligned}
+\end{equation}
+% 
+\par
+%
+\begin{equation} \label{eq19_bis}
+\small
+\begin{aligned} 
+ALL^{HW}(\bar x) = \begin{cases} 
+all^{HW}_{k,j}(\bar x) = 1 & if \ ps_{j} \Rightarrow pu_{k} \ HW\_PU  \\ 
+all^{HW}_{k,j}(\bar x) = 0 & otherwise
+\end{cases} \in \mathbb{R}^{b \times n}
+\end{aligned}
+\end{equation}
+%
+\end{comment}
+%
+%$max_{SIZE\_SW}$ considered into the BBs depends on OS technologies, in order to reduce the SW memory size available for allocated processes in terms of OS size (and HPV-based SW partition size, where the memory is allocated and reduced respect to the size and memory allocated to each partition and each HPV solution). It is worth nothing that $ALL(\bar x)$ is equal for load and size indexes.
+%
+\subsubsubsection{Criticality Index}\label{crit_section_01}
+The metric specifically introduced in \cite{bib29}\cite{bib30} and extended in this work to consider HPV-based SW partitions is the \textbf{\textit{Criticality Index}}, related to the criticality level associated to each process $ps_{j}$. In particular, defined the array $CRIT \ = \{ [crit_{1}, \ crit_{2}, \ .. \ , \ crit_{j}, \ .. \ , crit_{n}]  \ : \ crit_{j} \in \mathbb{R} \ $ is the criticality level associated to process $ps_{j} \}$, then it is possible to define the \textit{Criticality Index} as:
+%
+\begin{equation} \label{eq20}
+\resizebox{0.75 \textwidth}{!}{$%
+\begin{aligned} 
+f_{CRIT}(\bar x) &= \frac{\sum^n_{j=1} \sum^n_{k=j+1} mc_{j,k}(\bar x)}{\frac{n \cdot (n - 1)}{2}} \\
+MC(\bar x) &= \begin{cases} 
+mc_{j,k}(\bar x) = 1 & if \ |crit_{j} - crit_{k}| > 0 \\ 
+ & \land \ ps_{j} \Rightarrow pu_{x} \ \land  ps_{k} \Rightarrow pu_{y} \ \land \ pu_{x} = pu_{y} \\ 
+mc_{j,k}(\bar x) = 1 & if \ |crit_{j} - crit_{k}| > 0 \\ 
+ & \land \ ps_{j} \Rightarrow pt_{j} \Rightarrow pu_{x} \land \ ps_{k} \Rightarrow pt_{k} \Rightarrow pu_{y}  \\ 
+  & \land \ pt_{j} = pt_{k} \ \land \ pu_{x} = pu_{y} \\
+mc_{j,k}(\bar x) = 0 & otherwise
+\end{cases}
+\end{aligned}
+$%
+}
+\end{equation}
+%
+A reduced form of this metric, that consider only feasibility feature regarding criticality levels, is defined as follow:
+%
+\begin{equation} \label{eq20_bis}
+\small
+\begin{aligned} 
+    f_{CRIT}(\bar x) &= \max_{j,k} mc_{j,k}(\bar x) \\
+\end{aligned}
+\end{equation}
+% 
+The goal behind this metric is to avoid having processes with different criticality levels on the same (shared) partition/processor/core resource. If the constraint is not satisfied, the index value becomes 1 (eq~\ref{eq20_bis}, otherwise it assumes a value into the interval $\{0,1\}$), so the final cost function has a higher value (in term of utility function) if an individual doesn't satisfy criticality constraint.
+if no HPV-based SW partitions are allowed (Fig.~\ref{fig4}), limiting the processes allocation taking into account MC has generally two main effects: 
+%
+\begin{itemize}
+    \item Increase the minimum cost;
+    \item Decrease the maximum execution time.
+\end{itemize}
+%
+This is due to the number of BBs instances that will not be less than the number of criticality levels. The introduction of HPV-based SW partitions has generally two main effects too: 
+%
+\begin{itemize}
+    \item decrease the minimum cost respect to the MC scenario without HPV-based SW partitions;
+    \item increase the maximum execution time respect to the MC scenario without HPV-based SW partitions.
+\end{itemize}
+%
+This is due to the possibility to use a number of BBs instances less than the number of criticality levels, increasing the number of feasible design solution respect to criticality requirements (as shown in Fig.~\ref{fig4}).
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.65\linewidth]{img/fig4_new2.png}}
+	\caption{Design space representation with MC requirements.}
+	\label{fig4}
+\end{figure}
+%
+\subsubsubsection{PAM1 Output}
+%
+As shown in Fig.~\ref{figure4_1}, PAM1 takes in input an HML specification (and a TL instance built by designer) and produces a feasible solution (i.e., that satisfy the constraints) through a C++ tool. This tool will find an HW/SW CSP process partition, an HMPES composed by different BBs that fulfill architectural constraints, and the mappijng between CSP processes and BBs, able to satisfy also timing constraints (TTC, TTR or classical real-time). A possible solution is presented in Fig.~\ref{figure4_2}.  \par
+%
+\begin{figure}[!ht]
+\centerline{\includegraphics[width=1.0\linewidth]{img/PAM1_result.png}}
+\caption{Example of PAM1 processes/BBs mapping\label{figure4_2}}
+\end{figure}
+%
+In this example (Fig.~\ref{figure4_2}), PAM1 provides a HMPES solution in terms of number of BBs, number of HPV-based SW partitions (2 for $BB_2$ and 4 for $BB_5$) and processes-BBs mapping. Starting from this (possible) solution, the DSE reaches the PAM2 activity. 
+%
+\subsection{Phase 2: PAM2}\label{refsection2}
+%
+The output of the first phase is mainly related to the computational aspects of the architecture: number and type of BB/PUs and the mapping of each CSP processes onto them. The starting point of the second phase is the so called BBs interaction graph (BING), an internal model used to represent the partial system obtained at the end of the first phase. It allows us to shift from a process-oriented to a BB-oriented view of the system while keeping the information related to the BBs that need to communicate. Such BBs are so connected with an edge that will be annotated depending on a proper function (f in Fig.~\ref{fig4_BING}) of the bandwidth required by each process mapped onto each BBs (e.g., f could be the sum of max bandwidth values to represent the worst-case scenario, or the average of the max bandwidth values to represent an average situation, etc.). \par
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=0.6\linewidth]{img/BING.png}}
+	\caption{BBs Interaction graph.}
+	\label{fig4_BING}
+\end{figure}
+%
+Fig.~\ref{fig4_BING} represents the BING related to the architecture graph and the CSP model in Fig.~\ref{fig4_Arch_graph}. Starting from this graphical representation, it is possible to define the BING Matrix as:
+%
+\begin{equation} \label{eq8_BING}
+\small
+\begin{aligned}
+{BING} = \left[  
+\begin{array}{cccc}
+{BING}_{1}  \\ 
+{BING}_{2}  \\ 
+\vdots   \\ 
+{BING}_{p}
+\end{array}
+\right] = \left[  
+\begin{array}{cccc}
+{bing}_{1,1} & {bing}_{1,2} & {bing}_{1,3}  \\ 
+{bing}_{2,1} & {bing}_{2,2} & {bing}_{2,3}  \\ 
+\vdots      & \vdots  & \vdots    \\ 
+{bing}_{p,1} & {bing}_{p,2} & {bing}_{p,3}  
+\end{array}
+\right]   \\ 
+\end{aligned}
+\end{equation}
+%
+where ${bing}_{i,1}$ and ${bing}_{i,2}$ represents the BB pairs (considering their identifiers), the ${bing}_{i,3}$ is the total bandwidth (considering all the logical channels involved in the communication between each BB pairs), while \textit{p} is the total number of BB pairs. \par
+%
+\begin{table}[htbp]
+\caption{BING matrix related to Fig.~\ref{fig4_BING}.}
+\begin{center}
+\resizebox{0.25\hsize}{!}{$%
+	%\begin{tabular}{|p{0.8in}|p{0.3in}|p{1.0in}|} \hline 
+	\begin{tabular}{ccc} % p{1.4in}
+		\toprule
+		\multicolumn{2}{c}{\textbf{BB Pairs}} & \textbf{f} \\ 
+		\midrule
+		$[BB_1]$ & $[BB_3]$ & $f(b_2)$  \\ 
+		$[BB_2]$ & $[BB_3]$ & $f(b_1)$  \\
+		$[BB_3]$ & $[BB_4]$ & $f(b_{3},b_{4})$  \\
+		\bottomrule
+\end{tabular}
+$%
+}
+\label{table1_BING}
+\end{center}
+\end{table}
+%
+Table~\ref{table1_BING} shows the BING matrix related to Fig.~\ref{fig4_BING}. Such a model and related matrix is provided as input to the PAM2 (i.e., \textbf{P}artitioning, \textbf{A}rchitecture Definition and \textbf{M}apping Phase \textbf{2}) tool, with the goal of determining number and type of EILs between BBs that minimizes a proper cost function (the second phase is very similar to the one reported in \cite{bib22}).\par
+This section describes the PAM2 Design Space Exploration (DSE) activities. The DSE step involves several stages, from the definition of the solution space, the encoding respect to the decision variable space, and the definition of the objective function and the general multi-objective general problem, similar to the PAM1 approach.%
+%
+\theoremstyle{definition}
+\begin{definition}{(\textit{Multi-Objective Design Space Exploration Optimization Problem in PAM2}).}
+%
+\begin{equation} \label{equation128_PAM2}
+  \begin{aligned}
+    & \underset{\bar x}{\text{min}} &  & \bar F(\bar x) = [f_1(\bar x), f_2(\bar x), \ldots , f_k(\bar x)] \\
+    & \text{subject to}             &  & \bar x \in \Omega = \{ \bar x  \in \mathbb{N}_{> 0}^{n} : x_i \leq l \}
+\end{aligned}
+\end{equation}
+%
+where $\bar x = \{x_1,\ldots, x_n\}$ is an n-dimensional decision variable vector representing BBs pairs (BBs that have at least two processes communicating each others by means of shared channels) in the solution space $\Omega$ and $\bar F(\bar x) = [f_1(\bar x), f_2(\bar x), \ldots , f_k(\bar x)] \in \mathbb{R}^k$ consists of k $\geq 2$ real-valued objective functions ($\mathbb{R}^k$ refers to the objective space). The value $l$ is the total number of External Interconnection Links. \par
+%
+\end{definition}
+%
+%\begin{figure}[htbp]
+%	\centerline{\includegraphics[width=0.8\linewidth]{img/03-Multi-objective-optimization-problems-overview-reduced_PAM2.png}}
+%	\caption{Multi-objective Optimization Problem in PAM2.}
+%	\label{figMOOPO_PAM2}
+%\end{figure}
+%
+\begin{figure}[htbp]
+	\centerline{\includegraphics[width=1.0\linewidth]{img/03-Multi-objective-optimization-problems-overview_PAM2.png}}
+	\caption{Multi-objective Optimization Problem in PAM2.}
+	\label{figMOGAOverview_PAM2}
+\end{figure}
+%
+Fig.~\ref{figMOGAOverview_PAM2} shown the graphical representation of the multi-objective problem related to links partitioning issues in the Co-Design Flow. 
+The $\bar x$ vector represents BBs pairs (a row in the BING matrix) and values in the decision variable space are External Interconnection Link instances (representing by integer number related to some element identifiers). 
+In this example, 2 BBs pairs (${BING}_1$ and ${BING}_2$) and 6 links have been considered: 1 ${I}^{2}{C}$, 1 SPI, 1 AMBA bus, 1 OneWire and 2 RS-232 (this information is present in the BBs, in the figure it is possible to note only $eil_i$); Each solution is mapped on a discrete value, and constrained by the maximum number of External Interconnection link instances.
+The objective function depends on different metrics evaluated and estimated during the Co-Design Flow (and can be extended introducing other different ones). Starting from these definitions, in this works a multi-objective genetic algorithm has been used in order to find an approximation of the Pareto Front ($\rho F^\ast$) in a single run (respect to a consistent number of iteration), as shown in Fig.~\ref{figMOGAOverview_PAM2}, where, starting from the phenotype space, the solution has been encoded considering BBs and links. 
+%
+%\subsubsection{Evolutionary Approach in PAM2}
+%
+%This section describe the GA realization respect to the problem of considering the HW/SW partitioning problem introducing different objective and metrics into the DSE and Co-Design Flow.
+%
+\subsubsection{Individual}
+As presented in Section~\ref{ind_PAM1}, an integer representation of individual has been considered (Fig.~\ref{fig3_PAM2}). The approach presented in Fig.~\ref{figMOGADef} is the same of PAM2. The passage from the genotype to the phenotype and vice versa is ruled by the phenotyping parameters of all genes, which perform the coding/decoding actions. Each individual is characterized by a fitness, which is the value of the objective function calculated in correspondence of the control factors for each individual. \par
+As shown in Fig.~\ref{figMOGAOverview_PAM2}, the solution space is bounded by the total number of EIL instances. Introducing mixed-criticality requirements in the whole methodology add more challenges in the definition of the decision space, reducing feasible solution and constraints EIL instances allocation for every BBs pairs (i.e., if two block, that communicates with a shared link, have processes with the same criticality level, so other BBs can communicate with the same link only if the communication is allowed for processes with the same criticality level). Communication between BBs that have processes with different criticality level should be avoid. An idea to extend this step is to assign a criticality level to the link equal to the criticality level of the pairs of processes that want to communicates each others. 
+%
+\begin{figure}[htbp!]
+	\centerline{\includegraphics[width=0.8\linewidth]{img/fig4a_PAM2.png}}
+	\caption{Genetic Algorithm Individual Set for PAM2.}
+	\label{fig3_PAM2}
+\end{figure}
+%
+\subsubsection{Design Space Exploration Approach in PAM2} \label{dse_PAM2_index_def}
+%
+Applying a linear combination of weights respect to multi-objective optimization problem considered in this work (Equation~\ref{equation128} in Section~\ref{refsection1}), it is possible to define the utility function that quantifies the quality of each individual of the GA population.
+%
+The main problem is presented below:
+\theoremstyle{definition}
+\begin{definition}{(\textit{Linearization of Multi-objective Design Space Exploration Optimization Problem in PAM2}).}
+%
+%
+\begin{equation} \label{equation131_PAM2}
+  \begin{aligned}
+    & \underset{\bar x}{\text{min}} &  & U(\bar x) = \sum_{k} \omega_{k} \cdot f_{k}(\bar x) = \sum_{k} \omega_{k} \cdot f_{k}(x_1, x_2, \ldots, x_n)\\
+    & \text{subject to}             &  & \bar x \in \Omega = \{ \bar x  \in \mathbb{N}_{> 0}^{n} : \ 0 < x_i \leq l \}
+\end{aligned}
+\end{equation}
+%
+$U(\bar x)$ is the utility function evaluated at each iteration of the GA for each individual $\bar x \in \Omega$. \textit{$f_{k}$} represents the value of the objective function (or metric) \textit{k} for each individual \textit{$\bar x$}, while \textit{$\omega_{k}$} is the weight associated to each objective function or metric. 
+\end{definition}
+So, starting from a BING the goal is to determine number and type of EILs between BBs in order to:
+%
+\begin{itemize}
+    \item Keep the bandwidth of each EIL under but near the threshold;
+    \item Keep the number of BBs (in BING matrix) using each EIL under but near the threshold;
+    \item Minimize cost of the set of EILs (The max number of instances for each EIL can be specified by the designer as an architectural constraints, to limit cost or to model an existing platform);
+    \item Minimize the number of concurrent access to the EIL considering concurrency channel properties;
+    \item Keeping feasibility by respecting CUs characterization;
+    \item Consider mixed-criticality issues;
+\end{itemize}
+%
+The rest of this paragraph defines the objective functions (called indexes) and the methods used to evaluate them at each iteration. In this context, the instance of an individual \textit{$\bar x$} is defined as a matrix where the column index represents BING rows (BBs pairs) and the value represents EIL identifiers, as shown in Fig.~\ref{fig3_PAM2}. \par
+
+\subsubsubsection{Saturation Index (B)}
+%
+The \textbf{Saturation Index} is a metric related to the max bandwidth offered by the EIL. Starting from the max bandwidth array $maxBW = \{ maxBW_1, \cdots, maxBW_j, \cdots, maxBW_l \} \in \mathbb{R}^{l}$, representing the max bandwidth allowed for every $eil_i$, such kind of index can be calculated by:  
+%
+\begin{equation} \label{eq16_PAM2}
+\small
+\begin{aligned} 
+f_{B}(\bar x) &= \sum^l_{j=1} { \frac{\sum^p_{k=1} bing_{(k,3)} \cdot all^{B}_{k,j}(\bar x)}{{maxBW}_j} } \\
+ALL^{B}(\bar x) &= \begin{cases} 
+all^{B}_{k,j}(\bar x) = 1 & if \ {BING}_k \Rightarrow eil_{j} \\ 
+all^{B}_{k,j}(\bar x) = 0 & otherwise
+\end{cases} \in \mathbb{R}^{p \times l} \\
+\end{aligned}
+\end{equation}
+%
+\subsubsubsection{Exploitation Index (EX)}
+%
+Starting from the max number of BBs that can use an EIL instance (presents in the TL instances), the \textbf{Exploitation Index} can be calculated by:
+\begin{equation} \label{eq16_bis_PAM2}
+\small
+\begin{aligned} 
+    f_{EX}(\bar x) &= \sum^l_{j=1} { \frac{\sum^p_{k=1} all^{EX}_{k,j}(\bar x)}{{maxNumBB}_j} } \\
+    ALL^{EX}(\bar x) &= \begin{cases} 
+    all^{EX}_{k,j}(\bar x) = 2 & if \ {BING}_k \Rightarrow eil_{j} \\
+    & \land \ bing_{(k,1)} 	\neq bing_{(i,1)} \ \forall k \neq i \\
+    & \land \ bing_{(k,2)} \neq bing_{(i,2)} \\ 
+    all^{EX}_{k,j}(\bar x) = 1 & if \ {BING}_k \Rightarrow eil_{j} \\
+    & \land \ bing_{(k,1)} 	\neq bing_{(i,1)} \ \forall k \neq i \\
+    & \lor \ bing_{(k,2)} \neq bing_{(i,2)} \\ 
+    all^{EX}_{k,j}(\bar x) = 0 & otherwise
+\end{cases} \in \mathbb{R}^{p \times l} \\
+\end{aligned}
+\end{equation}
+%
+\subsubsubsection{Channel Concurrent Communications Index (CCC)}
+%
+The \textbf{\textit{Channel Concurrent Communications Index}} is based on a \textit{Channel Concurrency Matrix}, calculated in the Co-Estimation step, Section~\ref{comm_con_metric_eval}. Starting from each individual $\bar x$, it is possible to define a \textit{Channel Concurrency Communication Selection Matrix}, $S^{ccon}(\bar x) \in \mathbb{R}^{c \times c}$, as listed below:
+%
+\begin{equation} \label{eq5_ch}
+\small
+\begin{aligned}
+S^{ccon}(\bar x) = \begin{cases}
+    s^{ccon}_{i,j}(\bar x) = 1, & if \ ch_{i} \ {uses} \ BING_{x} \\
+    & \ \land ch_{j} \ {uses} \ BING_{y} \land BING_{x} \neq BING_{y}\\
+    s^{con}_{i,j}(\bar x) = 0, & \text{otherwise}
+\end{cases} \in \mathbb{R}^{c \times c}
+\end{aligned}
+\end{equation}
+%
+So, for each individual $\bar x$, the \textit{Exploited Inter Cluster Channel Parallelism} matrix, $EICCP(\bar x) \in \mathbb{R}^{c \times c}$, indicates how much an individual can exploit the potential concurrency:
+%
+\begin{equation} \label{eq6_ch}
+\small
+\begin{aligned}
+EICCP(\bar x) = CCON \cdot S^{ccon}(\bar x)
+\end{aligned}
+\end{equation}
+%
+Starting from $EICCP(\bar x)$ matrix function, the \textit{Exploited Channel Parallelism (ECP)} index is equal to:
+%
+\begin{equation} \label{eq7_ch}
+\small
+\begin{aligned}
+f_{ECP}(\bar x) &= \frac{\sum^c_{j=1}\sum^c_{k=1}{eiccp_{j,k}}(\bar x)}{max_{ECP}} \\
+&max_{ECP} = \sum^c_{j=1}\sum^c_{k=1}ccon_{j,k} 
+% \frac{\sum^n_{j=1}\sum^n_{k=1}{CON_{j,k} \cdot S(CON)^{i}_{j,k}}}{maxEP} \\ 
+% &=
+\end{aligned}
+\end{equation}
+%
+%
+\subsubsubsection{Physical Cost Index (PC)}
+%
+The \textbf{\textit{Physical Cost Index}} is a metric related to the cost (where the concept of cost can be related to monetary cost, design effort, or any other issues of interest for the designer) $C \ =[c_{1}, \ c_{2}, \ .. \ , \ c_{k}, \ .. \ , c_{l}]$ associated to each \textit{$eil_{k}$} considered in the specific \textit{$\bar x$}:
+%
+\begin{equation} \label{eq17_PAM2}
+\small
+\begin{aligned} 
+f_{C}(\bar x) &= 1 - C \ps ALL^{C}(\bar x) = 1 - \frac{\sum^l_{k=1} c_{k} \cdot all^{C}_{k}(\bar x)}{maxCOST} \\
+ALL^{C}(\bar x) &= \begin{cases} 
+all^{C}_{k}(\bar x) = 1 & if \ \exists \ BING_{j} \ : \ BING_{j} \Rightarrow eil_{k}, \ \forall j=1..n\\ 
+all^{C}_{k}(\bar x) = 0 & otherwise
+\end{cases} \in \mathbb{R}^{l} \\
+maxCOST &= \sum^l_{k=1} c_{k}
+\end{aligned}
+\end{equation}
+%
+\subsubsubsection{Feasibility Index (IF)}
+%
+In order to perform the exploration of the design space, the initial population is randomly generated, while during the evolution of the population the algorithm follows the classical rules of genetic algorithms (as described for PAM1). However, such an approach could give rise to unfeasible solutions so the feasibility of the children has to be checked and properly took into account: unfeasible solutions will get an higher cost function and so they will be probably removed from the population. However, there is always the possibility of a mutation process giving rise to better individuals that otherwise could be difficult to obtain (i.e., avoiding local minimum). In order to check such a feasibility, it is needed a CU characterization with respect to the BBs belonging to the BING. This is obtained by defining a proper \textit{CU Characterization Matrix} (CUCM) that explicitly indicates the $eil_i$ that each BB is able to manage:
+%
+\begin{equation} \label{eq8_PAM2IF}
+\small
+\begin{aligned}
+CUCM=\ \left[  
+\begin{array}{cccc}
+{cucm}_{1,1} & {cucm}_{1,2} & \cdots  & {cucm}_{1,l} \\ 
+{cucm}_{2,1} & {cucm}_{2,2} & \cdots  & {cucm}_{2,l} \\ 
+\vdots      & \vdots      & \vdots  & \vdots  \\ 
+{cucm}_{b,1} & {cucm}_{b,2} & \cdots  & {cucm}_{b,l} 
+\end{array}
+\right]  \in \mathbb{R}^{b \times l}  \\ 
+\end{aligned}
+\end{equation}
+%
+where b is the number of BBs considered in this step (from the solution taken from PAM1) and l is the maximum number of $eil_i$. The matrix values depends on the available $eil_i$ in each BB (since a pair of CUs should be able to manage at least a common $eil_i$ in order to allow the related BBs to directly communicate), such as:  
+%
+\begin{equation} \label{eq16_PAM2_CUCM}
+\small
+\begin{aligned} 
+CUCM &= \begin{cases} 
+cucm_{k,j} = 1 & if \ eil_j \in CU_{k} \\ 
+cucm_{k,j} = 0 & otherwise
+\end{cases} \in \mathbb{R}^{b \times l} \\
+\end{aligned}
+\end{equation}
+%
+Starting from this matrix, it is possible to define a related \textit{BING Characterization Matrix} (BCM) as:
+%
+\begin{equation} \label{eq8_PAM2IF_B}
+\small
+\begin{aligned}
+BCM=\ \left[  
+\begin{array}{cccc}
+{bcm}_{1,1} & {bcm}_{1,2} & \cdots  & {bcm}_{1,l} \\ 
+{bcm}_{2,1} & {bcm}_{2,2} & \cdots  & {bcm}_{2,l} \\ 
+\vdots      & \vdots      & \vdots  & \vdots  \\ 
+{bcm}_{p,1} & {bcm}_{p,2} & \cdots  & {bcm}_{p,l} 
+\end{array}
+\right] \in \mathbb{R}^{p \times l}   \\ 
+\end{aligned}
+\end{equation}
+%
+where p is the number of BING row elements (the number of links between pairs of BB that have at least two processes that want to communicates by means of channel links) and l is the maximum number of $eil_i$. The BCM values are defined by the following equation:
+%
+\begin{equation} \label{eq16_PAM2_BCM}
+\small
+\resizebox{0.9\hsize}{!}{$%
+\begin{aligned} 
+BCM &= \begin{cases} 
+bcm_{k,j} = 1 & if \ eil_j \in CU_k, \ {where} \ CU_k = \{ CU_{{bing}_{k,1}} \cap CU_{{bing}_{k,2}} \} \\ 
+bcm_{k,j} = 0 & otherwise
+\end{cases} \in \mathbb{R}^{p \times l} \\
+\end{aligned}
+$%
+}
+\end{equation}
+%
+So, the \textbf{Feasibility Index} indicates how much of the actual communications are unfeasible and is described by the following equation.
+%
+\begin{equation}\label{eq17_PAM2_IF_eq}
+\small
+\begin{aligned} 
+f_{IF}(\bar x) &= \tr{[BCM \cdot ALL^{IF}(\bar x)]}  = \sum^p_{k=1} \sum^l_{k=1} bcm_{j,k} \cdot all^{IF}_{k,j}(\bar x) \\
+ALL^{IF}(\bar x) &= \begin{cases} 
+all^{IF}_{k,j}(\bar x) = 1 & if \ BING_{j} \Rightarrow eil_{k} \\ 
+all^{IF}_{k,j}(\bar x) = 0 & otherwise
+\end{cases} \in \mathbb{R}^{l \times p} \\
+\end{aligned}
+\end{equation}
+%
+So, if there are $BING_i$ with BBs that doesn't have the corresponding $eil_i$ in their CUs, the feasibility index increase the utility function in terms of the number of mismatching links. It is worth nothing that, if the index is 0, the solution is acceptable and only the other indexes can be considered (using a convex combination of weights).
+%
+\subsubsubsection{Criticality Index (CRT) for PAM2}
+%
+Finally, respect of the criticality assigned to each $eil_i$ depending on the different processes that use the specific link, the main goal of this metrics is to avoid allocation of the same $eil_i$ physical link to BBs that have processes with different criticality levels. In particular, each $BING_i$ inherits the maximum criticality level associated to the processes that uses a communication link among each BB. Then, defined the array $CRIT \ = \{ [crit_{1}, \ crit_{2}, \ .. \ , \ crit_{j}, \ .. \ , crit_{p}]  \ : \ crit_{j} \in \mathbb{R} \ $ is the criticality level associated to $BING_{j}\}$, then it is possible to define the \textit{Criticality Index} as:
+%
+\begin{equation} \label{eq20_ch}
+\resizebox{0.75 \textwidth}{!}{$%
+\begin{aligned} 
+f_{CRIT}(\bar x) &= \frac{\sum^n_{j=1} \sum^n_{k=j+1} mc_{j,k}(\bar x)}{\frac{n \cdot (n - 1)}{2}} \\
+MC(\bar x) &= \begin{cases} 
+mc_{j,k}(\bar x) = 1 & if \ |crit_{j} - crit_{k}| > 0 \\ 
+ & \land \ BING_{j} \Rightarrow eil_{x} \ \land  BING_{k} \Rightarrow eil_{y} \ \land \ eil_{x} = eil_{y} \\ 
+  & \land \ pt_{j} = pt_{k} \ \land \ pu_{x} = pu_{y} \\
+mc_{j,k}(\bar x) = 0 & otherwise
+\end{cases}
+\end{aligned}
+$%
+}
+\end{equation}
+%
+A reduced form of this metric, that consider only feasibility feature regarding criticality levels, is defined as follow:
+%
+\begin{equation} \label{eq20_ch_2}
+\small
+\begin{aligned} 
+f_{CRIT}(\bar x) &= \max_{j,k} mc_{j,k}(\bar x) \\
+\end{aligned}
+\end{equation}
+%
+\subsubsubsection{PAM2 Output}
+%
+As shown in Fig.~\ref{figure4_1}, PAM2 takes in input a BING instances (related to the PAM1 solution) and produces in output a feasible solution (i.e., that satisfy the constraints) through a C++ tool. This tool will find an HW/SW final architecture that fulfill input constraints (provided by the designer) and uses the same GA presented in the previous sections. A possible solution is presented in Fig.~\ref{figure4_2_PAM2}.  \par
+%
+\begin{figure}[!ht]
+\centerline{\includegraphics[width=1.0\linewidth]{img/PAM2_result.png}}
+\caption{Example of PAM2 BING/EIL mapping\label{figure4_2_PAM2}}
+\end{figure}
+%
+In this example (Fig.~\ref{figure4_2_PAM2}), PAM2 provides a HMPES solution in terms of number of EILs and BING-EIL mapping. after this step, it is possible to validate the solutions by means of a timing simulation activity, as presented in the next chapter. It is worth noting that a detailed evaluation of the performance of the GAs is provided in different chapter.
+%
+%
+%\subsection{Performance Metrics for Multi-Objective Optimization Algorithms}
+%
+%TODO.
+%
+%\subsubsection{Hypervolume Indicator (HV)}
+%
+%TODO.
+%
+%\subsubsection{Generational Distance (GD)}
+%
+%TODO.
+%
+%\subsubsection{Epsilon \textbf{\texorpdfstring{$(\epsilon)$}{Lg}}}
+%
+%TODO.
+%
+%\subsubsection{Inverted Generational Distance (IGD), Spread \texorpdfstring{$(\Delta)$} e Two Set Coverage (C)}
+%
+%TODO.
+%
+%\subsubsection{Non-dominated Individuals (RNI)}
+%
+%TODO.
+%
+%\subsubsection{Other Relevant Metrics}
+%
+%TODO.
+%
+%\subsubsection{Pareto Analysis Tool}
+%
+%TODO.
+%

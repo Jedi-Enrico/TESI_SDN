@@ -1,0 +1,247 @@
+\chapter{Timing Simulation Activities}\label{timing_simulator}
+%
+This chapter describes main design and implementation issues related to the development of \textit{HEPSIM} (HEPSYCODE SIMulator), the extended SystemC simulator used for HW/SW Co-Simulations in HEPSYCODE. The description starts by briefly analyzing the HEPSIM SW Architecture and its components (represented in Fig.~\ref{hepsim1}). The large package on the left of Fig.~\ref{hepsim1} is the standard SystemC Library, which contains also the standard SystemC Scheduler. The library has been extended with a \textit{SC\_CSP\_CHANNEL} template class to implement the point-to-point CSP channel semantic. The other cooperating items are \textit{SystemModel}, \textit{SystemManager} and \textit{SchedulingManager}. All them are supported by the \textit{Technology Library} (TL).\blfootnote{As reported in the Introduction, this Chapter is related to the following author's contribution: \#2, \#3, \#4} 
+%
+\begin{figure}[!ht]
+\centerline{\includegraphics[width=0.9\linewidth]{img/HEPSYM_SOFTWARE_ARCHITECTURE.png}}
+\caption{HEPSIM Software Architecture}\label{hepsim1}
+\end{figure}
+%
+\section{SystemModel}
+%
+SystemModel contains the definition of all the processes and channels used in the SBM (System class) together with their corresponding SystemC code (SBM Package). Depending on the kind of simulation/analysis to be performed (i.e., Functional Simulation, Concurrency Analysis, Load Estimation, Timing Simulation) SBM code is instrumented by means of some macros (i.e., macro \textit{S}, macro \textit{P}, macro \textit{C}, macro \textit{CH}) defined in the SystemManager. It is worth noting that the use of such macros has been adopted to simplify automatic instrumentation of code by still keeping readability.
+%
+\section{SystemManager}
+%
+This class contains all the details needed to simulate the system. In fact, it manages all the data structure needed to drive the simulation. Moreover, it defines all the macros (i.e., macro \textit{S}, macro \textit{P}, macro \textit{C}, macro \textit{CH}) used for SBM code instrumentation. Depending on the kind of simulation to be performed, they allow to take into account the concept of simulated time, to implement different Scheduling Policies, and to evaluate some of the metrics used in the reference HW/SW co-design flow.
+%
+\section{SC\_CSP\_CHANNEL}
+%
+The SystemC Library has been extended with a \textit{SC\_CSP\_CHANNEL}. This channel has been developed according to properties of CSP MoC and SystemC. It inherits from the SystemC \textit{sc\_prim\_channel} and uses two interfaces, \textit{sc\_csp\_channel\_in\_if} and \textit{sc\_csp\_channel\_out\_if}, for reading and writing respectively on the channel with blocking \textit{read()} and \textit{write()} methods. This full handshake mechanism has been realized through two boolean flags, \textit{ready\_to\_read} and \textit{ready\_to\_write}, to check the state of the process on the other side of the channel, in combination with two \textit{sc\_event} and the use of \textit{notify()} and \textit{wait()} methods in order to properly return the control, when needed, to the standard SystemC Scheduler. Finally, it is worth noting that there exist two versions of \textit{SC\_CSP\_CHANNEL}: functional channel and timing channel. The second one inherits from the first one and it allows to consider also communication times among processes depending on their allocation. The basic policy is that, if two processes are mapped on the same instance of a GPP/ASP or on two SPP, then the time of communication is negligible, otherwise it will mainly depend on the amount of data to be transferred. Such a policy can be customized to consider different contributions and also to take into consideration the allocation of channels on different physical links. Currently, other than point-to-point physical links, HEPSIM allows to consider shared buses by taking into account also the latency needed to access the shared bus itself. \par
+%
+\section{SchedulingManager}
+%
+This class represents the central element in HEPSIM. It implements a second-level scheduler (i.e., \textit{HEPSCHED}, HEPSYCODE SCHEDuler) with respect to the standard SystemC one. HEPSCHED has been implemented as a SystemC \textit{SC\_MODULE} containing a dedicated HEPSCHED instance for each instance of GPP and ASP composing the system. Each HEPSCHED instance is implemented as a \textit{SC\_THREAD}. The implementation of different analysis mechanisms and scheduling policies in HEPSIM is based on the instrumentation of code by means of macros and their interaction with the SchedulingManager.
+Such macros are defined in the SystemManager. Macro \textit{P} is placed at the end of the infinite loop of each \textit{SC\_THREAD} representing a process, to count the number of times it has been executed. It calls the \textit{Profiling()} method in SchedulingManager. Macro \textit{S} is inserted as a prefix to the SystemC statements composing the SBM to support the handshake mechanism for the scheduling of processes as shown in Listing~\ref{lst:hepsched_fullhandshake}.  
+%
+\lstset{language=C++,basicstyle=\footnotesize}
+\begin{lstlisting}[caption={HEPSCHED Full Handshake: Interactions with macro S},label=lst:hepsched_fullhandshake]
+/* Macro S */
+#define S(X) \
+      pSystemManager->Increase(X); \
+      if(!pSystemManager->checkSPP(X)) \
+            wait(pSchedulingManager->schedule[X]); \
+............
+/* HEPSCHED */
+if(ready[ps.id]==true){
+      schedule[ps.id].notify(SC_ZERO_TIME);
+      wait(release[ps.id]);
+}
+............
+/* Macro S */
+      wait(pSystemManager->upSimTime(X)); \
+      if(!pSystemManager->checkSPP(X)) \
+            pSchedulingManager->release[X].notify(SC_ZERO_TIME);
+      #endif
+............
+/* The handle goes to HEPSCHED */
+\end{lstlisting}
+%
+It calls the \textit{Increase()} method into SchedulingManager. During this activity, control passes from \textit{S} to the HEPSCHED instance (i.e., a \textit{SC\_THREAD}) associated to the GPP/ASP processor that executes the process and viceversa. This allows to take into account the time needed to execute each statement of the process for statistical purposes, and then to wait for a \textit{notify()} from the HEPSCHED instance. So, the HEPSCHED instance has the opportunity to select the next ready process to be executed following the implemented scheduling policy. Then, the control passes again to macro \textit{S} that advances the simulated time and then the control comes back to the HEPSCHED instance that will finally \textit{release()} the control to allow the standard SystemC Scheduler performing the scheduling of the next process (i.e., \textit{SC\_THREAD}). Such a last release is performed by an additional \textit{wait()} that allows also to take into account the overhead due to scheduling activities (i.e., Context Switch Overhead). Based on such a mechanism, two different scheduling policies have been implemented. Adding new ones is straightforward since it is needed only to code the desired algorithm inside a HEPSCHED instance (i.e., a \textit{SC\_THREAD}). The first algorithm is a \textit{First-Come FirstServed} (FCFS) scheduling, i.e., after the execution of a SystemC statement (or a group of them) of a process it is selected the next ready process into a \textit{First-In First-Out} (FIFO) queue, among the ones mapped on the GPP/ASP that execute the related HEPSCHED instance. The second algorithm is a \textit{Fixed-Priority} with \textit{Statement-Level Preemption}. In this case, after the execution of each SystemC statement of a process, it is selected the ready process with the highest priority. \par
+\begin{comment}
+%, as shown in Algorithm~\ref{lst:hepsched_example}. \par
+%
+\lstset{language=C++,basicstyle=\tiny}
+\begin{lstlisting}[caption={HEPSCHED Fixed Priority Scheduling Implementation},label=lst:hepsched_example]
+void SchedulingManager::scheduler_leon3_0()
+{
+    scheduler_xy_FP("MPULEON3", 0);
+}
+
+void SchedulingManager::scheduler_xy_FP(string pname, int pinstance)
+{
+    vector<Process> vps = pSystemManager->getVPS();
+    multimap<int, pair<string,int> > Map = pSystemManager->getAllocation();
+    Process ps;
+    ProcessingUnit p;
+    unsigned int old_id = 0, pri_max = 0, ps_max= 0;
+
+    // no scheduling needed for the selected processor instance
+    bool exit=true;
+    for(unsigned int j=2; j<vps.size(); j++){
+        for(multimap<int, pair<string,int> >::iterator i = Map.begin(); 
+            i!=Map.end(); ++i){
+            if (((*i).first == vps[j].id) && (i->second.first == pname ) && 
+            (i->second.second == pinstance))
+                exit=false;	// to check processor istances
+        }
+    }
+
+    if (exit==true){
+        cout << "exit0: " << pname << "-" << pinstance << endl;
+        return;
+    }
+    
+    unsigned int j=2;
+    
+    do{
+
+        pri_max = 0, ps_max= 0;
+        for(j=2; j<pSystemManager->getVPS().size(); j++){
+            for(multimap<int, pair<string,int> >::iterator i = Map.begin(); 
+                 i != Map.end(); i++){
+                if(((*i).first == vps[j].id) && ((i->second.first == pname) && 
+                    (i->second.second == pinstance)) && \
+                    ready[vps[j].id]==true &&  vps[j].priority > pri_max){
+                    // Find high priority process
+                    ps = vps[j];
+                    pri_max = ps.priority;
+                    ps_max = ps.id;
+                    break;
+                }
+            }
+        }
+
+        pair<string,int> PRID = pSystemManager->getPRIDbyProcess(ps.id);
+        vector<ProcessingUnit> vp = pSystemManager->getVP();
+        for(unsigned int j=0; j<vp.size(); j++){
+            if ((PRID.first == pSystemManager->getVBB()[j].getName()) && 
+                (PRID.second == pSystemManager->getVBB()[j].getId())){
+                p=vp[j];
+                break;
+            }
+        }
+
+		    wait(0.001*p.getOverheadCS());
+		    sched_oh[pinstance]+=(0.001*p.getOverheadCS());
+
+        if (ps_max!=0){
+            if (ps_max!=old_id){
+                old_id=ps_max;
+                wait(0.999*p.getOverheadCS());
+                sched_oh[pinstance]+=(0.999*p.getOverheadCS());
+            }
+            schedule[ps_max].notify(SC_ZERO_TIME);
+            wait(release[ps_max]);
+        }
+        pri_max=0, ps_max=0;
+    }while(1);
+}
+
+\end{lstlisting}
+%
+%
+%\begin{figure}[!ht]
+%\centerline{\includegraphics[width=.7\linewidth]{img/full_handshake.png}}
+%\caption{HEPSCHED full handshake methods}\label{hepsim1_full_hand}
+%\end{figure}
+%
+\end{comment}
+\section{Hierarchical Scheduling}
+%
+The main contribution in this Thesis is the development of a hierarchical scheduler (to simulate Hypervisor timing behaviors). When control passes from \textit{S} to the HEPSCHED instance (i.e., a \textit{SC\_THREAD}) associated to the GPP/ASP processor that executes the process and support Hypervisor technologies, a further handshake between processor and the related partition (a sort of a Partition Manager) has been implemented. This mechanism lasts as long as the duration of the time slice associated to each partitions. To avoid partition overrun, HEPSCHED controls if the time needed for the execution of the next ready process statement exceeds the time bound (i.e., the partition time slice) associated to the considered partition. HEPSCHED is also able to define a specific \textit{Partition Hyperplan}, as suggested by the DSE step. Then, after the handshake among the HEPSCHED and the macro \textit{S}, the control came back to the SystemC scheduler. \par
+\begin{comment}
+%The HEPSIM hierarchical scheduling systemc code is shown in Algorithm~\ref{lst:hepsched_hierar}
+%
+\lstset{language=C++,basicstyle=\tiny}
+\begin{lstlisting}[caption={HEPSIM Hierarchical Scheduling Implementation},label=lst:hepsched_hierar]
+void SchedulingManager::scheduler_xy_RR(int ptype, int pinstance){
+    ............
+    do{
+    ............
+    if(vps[j].psupportHPV) wait(myping[partIstance]);
+    ............
+    if (vps[j].psupportHPV){
+        mypong[partIstance].notify(SC_ZERO_TIME);
+    }
+    ............
+    while(1);
+}
+
+void SchedulingManager::scheduler_hierarchic()
+{	
+    ............
+    while(1){
+        start=sc_time_stamp();
+        cout << start << endl;
+        
+        do{
+            wait(5, SC_US); 
+            myping[0].notify(SC_ZERO_TIME);
+            wait(mypong[0]);  // Partition 0
+        }
+        while(((sc_time_stamp()-start)+sc_time((vps[j].getCC4S()/(frequency*1000), SC_MS)) 
+            < sc_time(200, SC_US));
+
+        //Delta
+        wait(sc_time(200, SC_US)-(sc_time_stamp()-start)); 
+        cout << "HPV-Partition0: " << start << " - " << sc_time_stamp() << endl;
+        
+        start=sc_time_stamp();
+        
+        do{
+            wait(5, SC_US);
+            myping[1].notify(SC_ZERO_TIME);
+            wait(mypong[1]); // // Partition 1
+        }
+        while(((sc_time_stamp()-start)+sc_time((vps[j].getCC4S()/(frequency*1000), SC_MS)) 
+            < sc_time(200, SC_US));
+
+        //Delta
+        wait(sc_time(200, SC_US)-(sc_time_stamp()-start));
+        cout << "HPV-Partition1: " << start << " - " << sc_time_stamp() << endl;
+        
+        cout << "LAP: " << ++laps << endl;
+    }
+}
+
+\end{lstlisting}
+%
+%
+%\section{HEPSIM: Main design and Implementation Issue}
+%
+%This section provides details about design and implementation of HEPSIM analysis capabilities during the "Concurrency Analysis" activity.
+%
+\end{comment}
+\section{HEPSIM Concurrency Analysis}\label{concurrency_explain}
+%
+In the activity of co-analysis, HEPSIM is used to evaluate the possible degree of concurrency among processes and channels within the system. The goal is to obtain an indication about “how much” concurrency can be found in the activities of processes and channels pairs. It is evaluated by means of HEPSIM running in a configuration similar to the one used for the Functional Simulation, as described in Chapter~\ref{chap3} Section~\ref{chap3_4}. The difference is that, by using some supporting data structures, it is possible to build two matrices of concurrency, one for processes pairs and one for channels pairs. Values in the matrices represent the number of times two processes or two channels have been concurrently active. \par
+More in detail, the strategy adopted in HEPSIM is the following one. First, it has been defined two data structures, in particular two arrays to represent the state of processes and channels and two macros (i.e., macro \textit{C} and macro \textit{CH}) to check the state of these ones. %Besides, they have been defined two matrices to contain the concurrency values for each pair of processes and channels. 
+Then, the macros have been inserted within the code of processes, in particular at each \textit{read()} and \textit{write()} call on the channel, and within the code of the \textit{SC\_CSP\_CHANNEL} itself. \par
+The mechanism to evaluate the possible concurrency is the following one: in correspondence of macro \textit{C}, it is called the function \textit{checksStatesProcesses()} in SystemManager, to verify which processes are potentially concurrent. In detail, if there is a process ready, its state value is equal to 1. Each other process with the same state is potentially concurrent with the first and this is accounted by increasing the corresponding values in the matrix. The same mechanism is adopted for the channels, by calling the function \textit{checksStatesChannels()} in SystemManager for the macro \textit{CH} and using the appropriate data structures. \par
+As said above, in general, values contained in the matrices (properly normalized between 0 and 1) represent the number of times (i.e., how much) two processes or two channels are potentially concurrent. From a DSE perspective, such values are used to evaluate which processes and channels can benefit from an allocation on, respectively, different processors and links.
+%
+\begin{comment}
+%, as shown in Algorithm~\ref{lst:hepsched_concom}. \par
+%
+\lstset{language=C++,basicstyle=\tiny}
+\begin{lstlisting}[caption={HEPSIM Concurrency Macros},label=lst:hepsched_concom]
+/* Macro for instrumentation */
+#define C pSystemManager->checkStatesProcesses();
+#define CH pSystemManager->checkStatesChannels();
+............
+void SystemManager:: checkStatesProcesses(){
+    for (unsigned int i=2; i<NPS; i++){
+        if (ready[i]==1){
+            for(unsigned int k=i+1; k<NPS; k++){
+                countPS[i][k]++;
+                if(ready[k]==1)
+                    matrix[i][k]++;
+            }
+        }
+    }
+}
+
+void SystemManager:: checkStatesChannels(){
+    for (unsigned int i=0; i<NCH; i++){
+        if (readyCH[i]==0){
+            for(unsigned int k=i+1; k<NCH; k++){
+                if(readyCH[k]==0)
+                    matrixCH[i][k]++;
+            }
+        }
+    }
+}
+\end{lstlisting}
+%
+\end{comment}

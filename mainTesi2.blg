@@ -1,0 +1,99 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: mainTesi2.aux
+Reallocating 'name_of_file' (item size: 1) to 29 items.
+A level-1 auxiliary file: chapter/acknowledgements.aux
+Reallocating 'name_of_file' (item size: 1) to 21 items.
+A level-1 auxiliary file: chapter/abstract.aux
+Reallocating 'name_of_file' (item size: 1) to 4 items.
+Reallocating 'name_of_file' (item size: 1) to 15 items.
+The style file: elsarticle-num.bst
+Database file #1: SDN.bib
+Warning--I didn't find a database entry for "Cacti"
+Warning--empty journal in Hodo2017
+Warning--empty year in Hodo2017
+Warning--empty journal in Zhou2017
+Warning--empty year in Zhou2017
+Warning--empty journal in Chen2017
+Warning--empty year in Chen2017
+Warning--empty author and editor in OFP13
+Warning--empty journal in Xu2018
+Warning--empty author in ONF
+Warning--empty journal in ONF
+Warning--empty year in ONF
+Warning--empty author and editor in OVS
+Warning--empty publisher in OVS
+Warning--empty author in Indigo
+Warning--empty journal in Indigo
+Warning--empty year in Indigo
+Warning--empty author in Pantou
+Warning--empty journal in Pantou
+Warning--empty year in Pantou
+Warning--empty journal in Lu2011
+Warning--empty author and editor in RYU
+Warning--empty publisher in RYU
+Warning--empty author in POX
+Warning--empty journal in POX
+Warning--empty year in POX
+Warning--empty author in Floodlight
+Warning--empty journal in Floodlight
+Warning--empty year in Floodlight
+Warning--empty journal in OVS_Pfaff
+Warning--empty journal in yin2012
+Warning--there's a number but no volume in yin2012
+Warning--empty publisher in Hastie2009
+Warning--empty journal in Breiman1999
+Warning--empty publisher in Haykin
+Warning--empty year in Haykin
+Warning--empty journal in Bakker2017
+Warning--empty author and editor in Mininet
+Warning--empty publisher in Mininet
+Warning--empty author and editor in ofctlrest
+Warning--empty publisher in ofctlrest
+Warning--empty author and editor in QoS
+Warning--empty publisher in QoS
+Warning--empty author and editor in UDOO
+Warning--empty publisher in UDOO
+Warning--empty journal in tensorflow2015
+You've used 136 entries,
+            2952 wiz_defined-function locations,
+            1547 strings with 32950 characters,
+and the built_in function-call counts, 43996 in all, are:
+= -- 4148
+> -- 1494
+< -- 22
++ -- 588
+- -- 452
+* -- 3349
+:= -- 5799
+add.period$ -- 198
+call.type$ -- 136
+change.case$ -- 127
+chr.to.int$ -- 0
+cite$ -- 181
+duplicate$ -- 1380
+empty$ -- 5002
+format.name$ -- 556
+if$ -- 11396
+int.to.chr$ -- 0
+int.to.str$ -- 136
+missing$ -- 144
+newline$ -- 508
+num.names$ -- 128
+pop$ -- 933
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 2830
+stack$ -- 0
+substring$ -- 2306
+swap$ -- 427
+text.length$ -- 22
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 45
+while$ -- 314
+width$ -- 139
+write$ -- 1235
+(There were 46 warnings)

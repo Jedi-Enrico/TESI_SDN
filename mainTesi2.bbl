@@ -1,0 +1,833 @@
+\begin{thebibliography}{100}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Neely2010}
+M.~J. Neely, Stochastic network optimization with application to communication
+  and queueing systems, Synthesis Lectures on Communication Networks 3~(1)
+  (2010) 1--211.
+
+\bibitem{Lemeshko2019}
+O.~Lemeshko, T.~Lebedenko, A.~Al-Dulaimi, Improvement of method of balanced
+  queue management on routers interfaces of telecommunication networks, in:
+  2019 3rd International Conference on Advanced Information and Communications
+  Technologies (AICT), IEEE, 2019, pp. 170--175.
+
+\bibitem{Clark2003}
+D.~D. Clark, C.~Partridge, J.~C. Ramming, J.~T. Wroclawski, A knowledge plane
+  for the internet, in: Proceedings of the 2003 conference on Applications,
+  technologies, architectures, and protocols for computer communications, ACM,
+  2003, pp. 3--10.
+
+\bibitem{Mestres2017}
+A.~Mestres, A.~Rodriguez-Natal, J.~Carner, P.~Barlet-Ros, E.~Alarc{\'o}n,
+  M.~Sol{\'e}, V.~Munt{\'e}s-Mulero, D.~Meyer, S.~Barkai, M.~J. Hibbett,
+  et~al., Knowledge-defined networking, ACM SIGCOMM Computer Communication
+  Review 47~(3) (2017) 2--10.
+
+\bibitem{Patcha2007}
+A.~Patcha, J.-M. Park, An overview of anomaly detection techniques: Existing
+  solutions and latest technological trends, Computer networks 51~(12) (2007)
+  3448--3470.
+
+\bibitem{Nguyen2008}
+T.~T. Nguyen, G.~Armitage, A survey of techniques for internet traffic
+  classification using machine learning, IEEE communications surveys \&
+  tutorials 10~(4) (2008) 56--76.
+
+\bibitem{Bkassiny2013}
+M.~{Bkassiny}, Y.~{Li}, S.~K. {Jayaweera}, A survey on machine-learning
+  techniques in cognitive radios, IEEE Communications Surveys Tutorials 15~(3)
+  (2013) 1136--1159.
+
+\bibitem{Alsheikh2014}
+M.~A. {Alsheikh}, S.~{Lin}, D.~{Niyato}, H.~{Tan}, Machine learning in wireless
+  sensor networks: Algorithms, strategies, and applications, IEEE
+  Communications Surveys Tutorials 16~(4) (2014) 1996--2018.
+
+\bibitem{Wang2015}
+X.~{Wang}, X.~{Li}, V.~C.~M. {Leung}, Artificial intelligence-based techniques
+  for emerging heterogeneous network: State of the arts, opportunities, and
+  challenges, IEEE Access 3 (2015) 1379--1391.
+
+\bibitem{Buczak2016}
+A.~L. {Buczak}, E.~{Guven}, A survey of data mining and machine learning
+  methods for cyber security intrusion detection, IEEE Communications Surveys
+  Tutorials 18~(2) (2016) 1153--1176.
+
+\bibitem{Klaine2017}
+P.~V. {Klaine}, M.~A. {Imran}, O.~{Onireti}, R.~D. {Souza}, A survey of machine
+  learning techniques applied to self-organizing cellular networks, IEEE
+  Communications Surveys Tutorials 19~(4) (2017) 2392--2431.
+
+\bibitem{Fadlullah2017}
+Z.~M. {Fadlullah}, F.~{Tang}, B.~{Mao}, N.~{Kato}, O.~{Akashi}, T.~{Inoue},
+  K.~{Mizutani}, State-of-the-art deep learning: Evolving machine intelligence
+  toward tomorrow’s intelligent network traffic control systems, IEEE
+  Communications Surveys Tutorials 19~(4) (2017) 2432--2455.
+
+\bibitem{Hodo2017}
+E.~Hodo, X.~Bellekens, A.~Hamilton, C.~Tachtatzis, R.~Atkinson, Shallow and
+  deep networks intrusion detection system: A taxonomy and survey\href
+  {http://arxiv.org/abs/1701.02145v1} {\path{arXiv:1701.02145v1}}.
+
+\bibitem{Zhou2017}
+X.~Zhou, M.~Sun, G.~Y. Li, B.-H. Juang, Intelligent wireless communications
+  enabled by cognitive radio and machine learning\href
+  {http://arxiv.org/abs/1710.11240v4} {\path{arXiv:1710.11240v4}}.
+
+\bibitem{Chen2017}
+M.~Chen, U.~Challita, W.~Saad, C.~Yin, M.~Debbah, Artificial neural
+  networks-based machine learning for wireless networks: A tutorial\href
+  {http://arxiv.org/abs/1710.02913v2} {\path{arXiv:1710.02913v2}}.
+
+\bibitem{Usama2017}
+M.~Usama, J.~Qadir, A.~Raza, H.~Arif, K.-L.~A. Yau, Y.~Elkhatib, A.~Hussain,
+  A.~Al-Fuqaha, Unsupervised {Machine} {Learning} for {Networking}:
+  {Techniques}, {Applications} and {Research} {Challenges}, arXiv:1709.06599
+  [cs]ArXiv: 1709.06599 (Sep. 2017).
+
+\bibitem{Sezer2013}
+S.~Sezer, S.~Scott-Hayward, P.~K. Chouhan, B.~Fraser, D.~Lake, J.~Finnegan,
+  N.~Viljoen, M.~Miller, N.~Rao, Are we ready for {SDN}? {Implementation}
+  challenges for software-defined networks, IEEE Communications Magazine 51~(7)
+  (2013) 36--43.
+\newblock \href {https://doi.org/10.1109/MCOM.2013.6553676}
+  {\path{doi:10.1109/MCOM.2013.6553676}}.
+
+\bibitem{Kreutz2015}
+D.~{Kreutz}, F.~M.~V. {Ramos}, P.~E. {Veríssimo}, C.~E. {Rothenberg},
+  S.~{Azodolmolky}, S.~{Uhlig}, Software-defined networking: A comprehensive
+  survey, Proceedings of the IEEE 103~(1) (2015) 14--76.
+\newblock \href {https://doi.org/10.1109/JPROC.2014.2371999}
+  {\path{doi:10.1109/JPROC.2014.2371999}}.
+
+\bibitem{Jarschel2014}
+M.~{Jarschel}, T.~{Zinner}, T.~{Hossfeld}, P.~{Tran-Gia}, W.~{Kellerer},
+  Interfaces, attributes, and use cases: A compass for sdn, IEEE Communications
+  Magazine 52~(6) (2014) 210--217.
+\newblock \href {https://doi.org/10.1109/MCOM.2014.6829966}
+  {\path{doi:10.1109/MCOM.2014.6829966}}.
+
+\bibitem{Chen2015}
+T.~{Chen}, M.~{Matinmikko}, X.~{Chen}, X.~{Zhou}, P.~{Ahokangas}, Software
+  defined mobile networks: concept, survey, and research directions, IEEE
+  Communications Magazine 53~(11) (2015) 126--133.
+\newblock \href {https://doi.org/10.1109/MCOM.2015.7321981}
+  {\path{doi:10.1109/MCOM.2015.7321981}}.
+
+\bibitem{Ameigeiras2015}
+P.~{Ameigeiras}, J.~J. {Ramos-munoz}, L.~{Schumacher}, J.~{Prados-Garzon},
+  J.~{Navarro-Ortiz}, J.~M. {Lopez-soler}, Link-level access cloud architecture
+  design based on sdn for 5g networks, IEEE Network 29~(2) (2015) 24--31.
+\newblock \href {https://doi.org/10.1109/MNET.2015.7064899}
+  {\path{doi:10.1109/MNET.2015.7064899}}.
+
+\bibitem{Amaral2016}
+P.~Amaral, J.~Dinis, P.~Pinto, L.~Bernardo, J.~Tavares, H.~S. Mamede, Machine
+  {Learning} in {Software} {Defined} {Networks}: {Data} collection and traffic
+  classification, in: 2016 {IEEE} 24th {International} {Conference} on
+  {Network} {Protocols} ({ICNP}), 2016, pp. 1--5.
+\newblock \href {https://doi.org/10.1109/ICNP.2016.7785327}
+  {\path{doi:10.1109/ICNP.2016.7785327}}.
+
+\bibitem{Wang2018}
+M.~{Wang}, Y.~{Cui}, X.~{Wang}, S.~{Xiao}, J.~{Jiang}, Machine learning for
+  networking: Workflow, advances and opportunities, IEEE Network 32~(2) (2018)
+  92--99.
+\newblock \href {https://doi.org/10.1109/MNET.2017.1700200}
+  {\path{doi:10.1109/MNET.2017.1700200}}.
+
+\bibitem{McKeown2008}
+N.~McKeown, T.~Anderson, H.~Balakrishnan, G.~Parulkar, L.~Peterson, J.~Rexford,
+  S.~Shenker, J.~Turner, {OpenFlow}: {Enabling} {Innovation} in {Campus}
+  {Networks}, SIGCOMM Comput. Commun. Rev. 38~(2) (2008) 69--74.
+\newblock \href {https://doi.org/10.1145/1355734.1355746}
+  {\path{doi:10.1145/1355734.1355746}}.
+
+\bibitem{OFP13}
+\href{https://www.opennetworking.org/wp-content/uploads/2014/10/openflow-spec-v1.3.0.pdf}{OpenFlow
+  Switch Specification, Version 1.3.0}, The Open Networking Foundation, 2012.
+\newline\urlprefix\url{https://www.opennetworking.org/wp-content/uploads/2014/10/openflow-spec-v1.3.0.pdf}
+
+\bibitem{Boero2016}
+L.~Boero, M.~Cello, C.~Garibotto, M.~Marchese, M.~Mongelli, {BeaQoS}: {Load}
+  balancing and deadline management of queues in an {OpenFlow} {SDN} switch,
+  Computer Networks 106 (2016) 161--170.
+
+\bibitem{Cello2016}
+M.~Cello, M.~Marchese, M.~Mongelli, On the {QoS} {Estimation} in an {OpenFlow}
+  {Network}: {The} {Packet} {Loss} {Case}, IEEE Communications Letters 20~(3)
+  (2016) 554--557.
+
+\bibitem{LeeIEEEToN2007}
+J.~Lee, S.~Bohacek, J.~Hespanha, K.~Obraczka, Modeling communication networks
+  with hybrid systems, IEEE/ACM Transactions on Networking 15~(3) (2007)
+  630--643.
+
+\bibitem{DiBenedetto2014}
+M.~D. {Di Benedetto}, A.~{Di Loreto}, A.~{D'Innocenzo}, T.~{Ionta}, Modeling of
+  traffic congestion and re-routing in a service provider network, in: Proc.
+  IEEE Int. Conf. Communications Workshops (ICC), 2014, pp. 557--562.
+\newblock \href {https://doi.org/10.1109/ICCW.2014.6881257}
+  {\path{doi:10.1109/ICCW.2014.6881257}}.
+
+\bibitem{Mulinka2018}
+P.~Mulinka, P.~Casas, Stream-based machine learning for network security and
+  anomaly detection, in: Proceedings of the 2018 Workshop on Big Data Analytics
+  and Machine Learning for Data Communication Networks, ACM, 2018, pp. 1--7.
+
+\bibitem{Kim2019}
+J.~{Kim}, G.~{Hwang}, Prediction based efficient online bandwidth allocation
+  method, IEEE Communications Letters 23~(12) (2019) 2330--2334.
+\newblock \href {https://doi.org/10.1109/LCOMM.2019.2947895}
+  {\path{doi:10.1109/LCOMM.2019.2947895}}.
+
+\bibitem{Aljoby2019}
+W.~{Aljoby}, X.~{Wang}, T.~Z.~J. {Fu}, R.~T.~B. {Ma}, On sdn-enabled online and
+  dynamic bandwidth allocation for stream analytics, IEEE Journal on Selected
+  Areas in Communications 37~(8) (2019) 1688--1702.
+\newblock \href {https://doi.org/10.1109/JSAC.2019.2927062}
+  {\path{doi:10.1109/JSAC.2019.2927062}}.
+
+\bibitem{Lebedenko2018}
+T.~Lebedenko, O.~Yeremenko, S.~Harkusha, A.~S. Ali, Dynamic model of queue
+  management based on resource allocation in telecommunication networks, in:
+  2018 14th International Conference on Advanced Trends in Radioelecrtronics,
+  Telecommunications and Computer Engineering (TCSET), IEEE, 2018, pp.
+  1035--1038.
+
+\bibitem{Le2007}
+L.~{Le}, J.~{Aikat}, K.~{Jeffay}, F.~D. {Smith}, The effects of active queue
+  management and explicit congestion notification on web performance, IEEE/ACM
+  Transactions on Networking 15~(6) (2007) 1217--1230.
+\newblock \href {https://doi.org/10.1109/TNET.2007.910583}
+  {\path{doi:10.1109/TNET.2007.910583}}.
+
+\bibitem{SouravGhosh2005}
+and {Sourav Ghosh}, R.~{Rajkumar}, J.~{Hansen}, J.~{Lehoczky}, Scalable
+  {QoS}-based resource allocation in hierarchical networked environment, in:
+  Proc. 11th IEEE Real Time and Embedded Technology and Applications Symp,
+  2005, pp. 256--267.
+\newblock \href {https://doi.org/10.1109/RTAS.2005.47}
+  {\path{doi:10.1109/RTAS.2005.47}}.
+
+\bibitem{Xie2019}
+J.~Xie, F.~R. Yu, T.~Huang, R.~Xie, J.~Liu, C.~Wang, Y.~Liu, A {Survey} of
+  {Machine} {Learning} {Techniques} {Applied} to {Software} {Defined}
+  {Networking} ({SDN}): {Research} {Issues} and {Challenges}, IEEE
+  Communications Surveys Tutorials 21~(1) (2019) 393--430.
+\newblock \href {https://doi.org/10.1109/COMST.2018.2866942}
+  {\path{doi:10.1109/COMST.2018.2866942}}.
+
+\bibitem{Xu2018}
+G.~Xu, Y.~Mu, J.~Liu, Inclusion of artificial intelligence in communication
+  networks and services (Jan. 2018).
+
+\bibitem{Carner2017}
+J.~Carner, A.~Mestres, E.~Alarcón, A.~Cabellos, Machine learning-based network
+  modeling: {An} artificial neural network model vs a theoretical inspired
+  model, in: 2017 {Ninth} {International} {Conference} on {Ubiquitous} and
+  {Future} {Networks} ({ICUFN}), 2017, pp. 522--524.
+\newblock \href {https://doi.org/10.1109/ICUFN.2017.7993839}
+  {\path{doi:10.1109/ICUFN.2017.7993839}}.
+
+\bibitem{Jain2016}
+S.~Jain, M.~Khandelwal, A.~Katkar, J.~Nygate, Applying big data technologies to
+  manage {QoS} in an {SDN}, in: 2016 12th {International} {Conference} on
+  {Network} and {Service} {Management} ({CNSM}), 2016, pp. 302--306.
+\newblock \href {https://doi.org/10.1109/CNSM.2016.7818437}
+  {\path{doi:10.1109/CNSM.2016.7818437}}.
+
+\bibitem{Pasquini2017}
+R.~Pasquini, R.~Stadler, Learning end-to-end application {QoS} from openflow
+  switch statistics, in: 2017 {IEEE} {Conference} on {Network} {Softwarization}
+  ({NetSoft}), 2017, pp. 1--9.
+\newblock \href {https://doi.org/10.1109/NETSOFT.2017.8004198}
+  {\path{doi:10.1109/NETSOFT.2017.8004198}}.
+
+\bibitem{ONF}
+\href{https://www.opennetworking.org/}{Open networking foundation}.
+\newline\urlprefix\url{https://www.opennetworking.org/}
+
+\bibitem{OVS}
+\href{https://www.openvswitch.org/}{Open vSwitch}, 2019.
+\newline\urlprefix\url{https://www.openvswitch.org/}
+
+\bibitem{Indigo}
+\href{https://github.com/floodlight/indigo}{Indigo: Open source openflow
+  switches}.
+\newline\urlprefix\url{https://github.com/floodlight/indigo}
+
+\bibitem{Pantou}
+\href{https://github.com/CPqD/ofsoftswitch13/wiki/OpenFlow1.3-for-OpenWRT}{Pantou:
+  Openflow 1.3 for open wrt}.
+\newline\urlprefix\url{https://github.com/CPqD/ofsoftswitch13/wiki/OpenFlow1.3-for-OpenWRT}
+
+\bibitem{Lockwood2007}
+J.~W. Lockwood, N.~McKeown, G.~Watson, G.~Gibb, P.~Hartke, J.~Naous,
+  R.~Raghuraman, J.~Luo, {NetFPGA}–{An} {Open} {Platform} for
+  {Gigabit}-{Rate} {Network} {Switching} and {Routing}, in: 2007 {IEEE}
+  {International} {Conference} on {Microelectronic} {Systems} {Education}
+  ({MSE}'07), 2007, pp. 160--161.
+
+\bibitem{Anwer2010}
+M.~B. Anwer, M.~Motiwala, M.~b. Tariq, N.~Feamster,
+  \href{https://doi.org/10.1145/1851182.1851206}{{SwitchBlade}: a platform for
+  rapid deployment of network protocols on programmable hardware}, in:
+  Proceedings of the {ACM} {SIGCOMM} 2010 conference, {SIGCOMM} '10,
+  Association for Computing Machinery, New York, NY, USA, 2010, pp. 183--194.
+\newblock \href {https://doi.org/10.1145/1851182.1851206}
+  {\path{doi:10.1145/1851182.1851206}}.
+\newline\urlprefix\url{https://doi.org/10.1145/1851182.1851206}
+
+\bibitem{Lu2011}
+G.~Lu, C.~Guo, Y.~Li, Z.~Zhou, T.~Yuan, H.~Wu, Y.~Xiong, R.~Gao, Y.~Zhang,
+  \href{https://www.microsoft.com/en-us/research/publication/serverswitch-a-programmable-and-high-performance-platform-for-data-center-networks/}{{ServerSwitch}:
+  {A} {Programmable} and {High} {Performance} {Platform} for {Data} {Center}
+  {Networks}} (Mar. 2011).
+\newline\urlprefix\url{https://www.microsoft.com/en-us/research/publication/serverswitch-a-programmable-and-high-performance-platform-for-data-center-networks/}
+
+\bibitem{RYU}
+\href{https://osrg.github.io/ryu/}{RYU Controller}, 2019.
+\newline\urlprefix\url{https://osrg.github.io/ryu/}
+
+\bibitem{Medved2014}
+J.~Medved, R.~Varga, A.~Tkacik, K.~Gray, {OpenDaylight}: {Towards} a
+  {Model}-{Driven} {SDN} {Controller} architecture, in: Proceeding of {IEEE}
+  {International} {Symposium} on a {World} of {Wireless}, {Mobile} and
+  {Multimedia} {Networks} 2014, 2014, pp. 1--6.
+\newblock \href {https://doi.org/10.1109/WoWMoM.2014.6918985}
+  {\path{doi:10.1109/WoWMoM.2014.6918985}}.
+
+\bibitem{NOX}
+N.~Gude, T.~Koponen, J.~Pettit, B.~Pfaff, M.~Casado, N.~McKeown, S.~Shenker,
+  Nox: Towards an operating system for networks, SIGCOMM Comput. Commun. Rev.,
+  vol. 38, no. 3, pp. 105–110, (2008).
+
+\bibitem{POX}
+\href{https://github.com/noxrepo/pox}{Pox}.
+\newline\urlprefix\url{https://github.com/noxrepo/pox}
+
+\bibitem{Floodlight}
+\href{https://github.com/floodlight/floodlight}{Floodlight}.
+\newline\urlprefix\url{https://github.com/floodlight/floodlight}
+
+\bibitem{Erickson2013}
+D.~Erickson, \href{https://doi.org/10.1145/2491185.2491189}{The beacon openflow
+  controller}, in: Proceedings of the second {ACM} {SIGCOMM} workshop on {Hot}
+  topics in software defined networking, {HotSDN} '13, Association for
+  Computing Machinery, New York, NY, USA, 2013, pp. 13--18.
+\newblock \href {https://doi.org/10.1145/2491185.2491189}
+  {\path{doi:10.1145/2491185.2491189}}.
+\newline\urlprefix\url{https://doi.org/10.1145/2491185.2491189}
+
+\bibitem{OVS_Pfaff}
+B.~Pfaff, B.~Davie, \href{https://rfc-editor.org/rfc/rfc7047.txt}{The open
+  vswitch database management protocol} (2013).
+\newline\urlprefix\url{https://rfc-editor.org/rfc/rfc7047.txt}
+
+\bibitem{Song2013}
+H.~Song, \href{https://doi.org/10.1145/2491185.2491190}{Protocol-oblivious
+  forwarding: unleash the power of {SDN} through a future-proof forwarding
+  plane}, in: Proceedings of the second {ACM} {SIGCOMM} workshop on {Hot}
+  topics in software defined networking, {HotSDN} '13, Association for
+  Computing Machinery, New York, NY, USA, 2013, pp. 127--132.
+\newblock \href {https://doi.org/10.1145/2491185.2491190}
+  {\path{doi:10.1145/2491185.2491190}}.
+\newline\urlprefix\url{https://doi.org/10.1145/2491185.2491190}
+
+\bibitem{Bianchi2014}
+G.~Bianchi, M.~Bonola, A.~Capone, C.~Cascone,
+  \href{https://doi.org/10.1145/2602204.2602211}{{OpenState}: programming
+  platform-independent stateful openflow applications inside the switch}, ACM
+  SIGCOMM Computer Communication Review 44~(2) (2014) 44--51.
+\newblock \href {https://doi.org/10.1145/2602204.2602211}
+  {\path{doi:10.1145/2602204.2602211}}.
+\newline\urlprefix\url{https://doi.org/10.1145/2602204.2602211}
+
+\bibitem{Koponen}
+T.~Koponen, M.~Casado, N.~Gude, J.~Stribling, L.~Poutievski, M.~Zhu,
+  R.~Ramanathan, Y.~Iwata, H.~Inoue, T.~Hama, S.~Shenker, Onix: A distributed
+  control platform for large-scale production networks, Proc. OSDI, vol. 10.
+  (2010).
+
+\bibitem{Tootoonchian}
+A.~Tootoonchian, Y.~Ganjali, Hyperflow: A distributed control plane for
+  openflow, Proc. Enterprise Netw (2010).
+
+\bibitem{yin2012}
+H.~Yin, H.~Xie, T.~Tsou, D.~Lopez, P.~Aranda, R.~Sidi,
+  \href{http://tools.ietf.org/id/draft-yin-sdn-sdni-00.txt}{{SDNi: A Message
+  Exchange Protocol for Software Defined Networks (SDNS) across Multiple
+  Domains}}~(draft-yin-sdn-sdni-00) (June 2012).
+\newline\urlprefix\url{http://tools.ietf.org/id/draft-yin-sdn-sdni-00.txt}
+
+\bibitem{Lin2013}
+P.~Lin, J.~Bi, Y.~Wang, East-{West} {Bridge} for {SDN} {Network} {Peering}, in:
+  J.~Su, B.~Zhao, Z.~Sun, X.~Wang, F.~Wang, K.~Xu (Eds.), Frontiers in
+  {Internet} {Technologies}, Communications in {Computer} and {Information}
+  {Science}, Springer, Berlin, Heidelberg, 2013, pp. 170--181.
+\newblock \href {https://doi.org/10.1007/978-3-642-53959-6_16}
+  {\path{doi:10.1007/978-3-642-53959-6_16}}.
+
+\bibitem{Benamrane2017}
+F.~Benamrane, M.~Ben~mamoun, R.~Benaini,
+  \href{http://www.sciencedirect.com/science/article/pii/S0045790616302798}{An
+  {East}-{West} interface for distributed {SDN} control plane: {Implementation}
+  and evaluation}, Computers \& Electrical Engineering 57 (2017) 162--175.
+\newblock \href {https://doi.org/10.1016/j.compeleceng.2016.09.012}
+  {\path{doi:10.1016/j.compeleceng.2016.09.012}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0045790616302798}
+
+\bibitem{Mendiola2017}
+A.~Mendiola, J.~Astorga, E.~Jacob, M.~Higuero, A {Survey} on the
+  {Contributions} of {Software}-{Defined} {Networking} to {Traffic}
+  {Engineering}, IEEE Communications Surveys Tutorials 19~(2) (2017) 918--953.
+\newblock \href {https://doi.org/10.1109/COMST.2016.2633579}
+  {\path{doi:10.1109/COMST.2016.2633579}}.
+
+\bibitem{Ahmad2015}
+I.~Ahmad, S.~Namal, M.~Ylianttila, A.~Gurtov, Security in {Software} {Defined}
+  {Networks}: {A} {Survey}, IEEE Communications Surveys Tutorials 17~(4) (2015)
+  2317--2346.
+\newblock \href {https://doi.org/10.1109/COMST.2015.2474118}
+  {\path{doi:10.1109/COMST.2015.2474118}}.
+
+\bibitem{ScottHayward2016}
+S.~Scott-Hayward, S.~Natarajan, S.~Sezer, A {Survey} of {Security} in
+  {Software} {Defined} {Networks}, IEEE Communications Surveys Tutorials 18~(1)
+  (2016) 623--654.
+\newblock \href {https://doi.org/10.1109/COMST.2015.2453114}
+  {\path{doi:10.1109/COMST.2015.2453114}}.
+
+\bibitem{Rawat2017}
+D.~B. Rawat, S.~R. Reddy, Software {Defined} {Networking} {Architecture},
+  {Security} and {Energy} {Efficiency}: {A} {Survey}, IEEE Communications
+  Surveys Tutorials 19~(1) (2017) 325--346.
+\newblock \href {https://doi.org/10.1109/COMST.2016.2618874}
+  {\path{doi:10.1109/COMST.2016.2618874}}.
+
+\bibitem{Ali2015}
+S.~T. Ali, V.~Sivaraman, A.~Radford, S.~Jha, A {Survey} of {Securing}
+  {Networks} {Using} {Software} {Defined} {Networking}, IEEE Transactions on
+  Reliability 64~(3) (2015) 1086--1097.
+\newblock \href {https://doi.org/10.1109/TR.2015.2421391}
+  {\path{doi:10.1109/TR.2015.2421391}}.
+
+\bibitem{Yan2016}
+Q.~Yan, F.~R. Yu, Q.~Gong, J.~Li, Software-{Defined} {Networking} ({SDN}) and
+  {Distributed} {Denial} of {Service} ({DDoS}) {Attacks} in {Cloud} {Computing}
+  {Environments}: {A} {Survey}, {Some} {Research} {Issues}, and {Challenges},
+  IEEE Communications Surveys Tutorials 18~(1) (2016) 602--622.
+\newblock \href {https://doi.org/10.1109/COMST.2015.2487361}
+  {\path{doi:10.1109/COMST.2015.2487361}}.
+
+\bibitem{Dargahi2017}
+T.~Dargahi, A.~Caponi, M.~Ambrosin, G.~Bianchi, M.~Conti, A {Survey} on the
+  {Security} of {Stateful} {SDN} {Data} {Planes}, IEEE Communications Surveys
+  Tutorials 19~(3) (2017) 1701--1725.
+\newblock \href {https://doi.org/10.1109/COMST.2017.2689819}
+  {\path{doi:10.1109/COMST.2017.2689819}}.
+
+\bibitem{Fonseca2017}
+P.~C. Fonseca, E.~S. Mota, A {Survey} on {Fault} {Management} in
+  {Software}-{Defined} {Networks}, IEEE Communications Surveys Tutorials 19~(4)
+  (2017) 2284--2321.
+\newblock \href {https://doi.org/10.1109/COMST.2017.2719862}
+  {\path{doi:10.1109/COMST.2017.2719862}}.
+
+\bibitem{Guck2018}
+J.~W. Guck, A.~Van~Bemten, M.~Reisslein, W.~Kellerer, Unicast {QoS} {Routing}
+  {Algorithms} for {SDN}: {A} {Comprehensive} {Survey} and {Performance}
+  {Evaluation}, IEEE Communications Surveys Tutorials 20~(1) (2018) 388--415.
+\newblock \href {https://doi.org/10.1109/COMST.2017.2749760}
+  {\path{doi:10.1109/COMST.2017.2749760}}.
+
+\bibitem{Alvizu2017}
+R.~Alvizu, G.~Maier, N.~Kukreja, A.~Pattavina, R.~Morro, A.~Capello,
+  C.~Cavazzoni, Comprehensive {Survey} on {T}-{SDN}: {Software}-{Defined}
+  {Networking} for {Transport} {Networks}, IEEE Communications Surveys
+  Tutorials 19~(4) (2017) 2232--2283.
+\newblock \href {https://doi.org/10.1109/COMST.2017.2715220}
+  {\path{doi:10.1109/COMST.2017.2715220}}.
+
+\bibitem{Thyagaturu2016}
+A.~S. Thyagaturu, A.~Mercian, M.~P. McGarry, M.~Reisslein, W.~Kellerer,
+  Software {Defined} {Optical} {Networks} ({SDONs}): {A} {Comprehensive}
+  {Survey}, IEEE Communications Surveys Tutorials 18~(4) (2016) 2738--2786.
+\newblock \href {https://doi.org/10.1109/COMST.2016.2586999}
+  {\path{doi:10.1109/COMST.2016.2586999}}.
+
+\bibitem{Haque2016}
+I.~T. Haque, N.~Abu-Ghazaleh, Wireless {Software} {Defined} {Networking}: {A}
+  {Survey} and {Taxonomy}, IEEE Communications Surveys Tutorials 18~(4) (2016)
+  2713--2737.
+\newblock \href {https://doi.org/10.1109/COMST.2016.2571118}
+  {\path{doi:10.1109/COMST.2016.2571118}}.
+
+\bibitem{Bera2017}
+S.~Bera, S.~Misra, A.~V. Vasilakos, Software-{Defined} {Networking} for
+  {Internet} of {Things}: {A} {Survey}, IEEE Internet of Things Journal 4~(6)
+  (2017) 1994--2008.
+\newblock \href {https://doi.org/10.1109/JIOT.2017.2746186}
+  {\path{doi:10.1109/JIOT.2017.2746186}}.
+
+\bibitem{Baktir2017}
+A.~C. Baktir, A.~Ozgovde, C.~Ersoy, How {Can} {Edge} {Computing} {Benefit}
+  {From} {Software}-{Defined} {Networking}: {A} {Survey}, {Use} {Cases}, and
+  {Future} {Directions}, IEEE Communications Surveys Tutorials 19~(4) (2017)
+  2359--2391.
+\newblock \href {https://doi.org/10.1109/COMST.2017.2717482}
+  {\path{doi:10.1109/COMST.2017.2717482}}.
+
+\bibitem{Michel2017}
+O.~Michel, E.~Keller, {SDN} in wide-area networks: {A} survey, in: 2017
+  {Fourth} {International} {Conference} on {Software} {Defined} {Systems}
+  ({SDS}), 2017, pp. 37--42.
+\newblock \href {https://doi.org/10.1109/SDS.2017.7939138}
+  {\path{doi:10.1109/SDS.2017.7939138}}.
+
+\bibitem{Jain2013}
+R.~Jain, S.~Paul, Network virtualization and software defined networking for
+  cloud computing: a survey, IEEE Communications Magazine 51~(11) (2013)
+  24--31.
+\newblock \href {https://doi.org/10.1109/MCOM.2013.6658648}
+  {\path{doi:10.1109/MCOM.2013.6658648}}.
+
+\bibitem{Li2015}
+Y.~Li, M.~Chen, Software-{Defined} {Network} {Function} {Virtualization}: {A}
+  {Survey}, IEEE Access 3 (2015) 2542--2553.
+\newblock \href {https://doi.org/10.1109/ACCESS.2015.2499271}
+  {\path{doi:10.1109/ACCESS.2015.2499271}}.
+
+\bibitem{Liang2015}
+C.~Liang, F.~R. Yu, Wireless {Network} {Virtualization}: {A} {Survey}, {Some}
+  {Research} {Issues} and {Challenges}, IEEE Communications Surveys Tutorials
+  17~(1) (2015) 358--380.
+\newblock \href {https://doi.org/10.1109/COMST.2014.2352118}
+  {\path{doi:10.1109/COMST.2014.2352118}}.
+
+\bibitem{Nunes2014}
+B.~A.~A. {Nunes}, M.~{Mendonca}, X.~{Nguyen}, K.~{Obraczka}, T.~{Turletti}, A
+  survey of software-defined networking: Past, present, and future of
+  programmable networks, IEEE Communications Surveys Tutorials 16~(3) (2014)
+  1617--1634.
+
+\bibitem{Jarraya2014}
+Y.~Jarraya, T.~Madi, M.~Debbabi, A {Survey} and a {Layered} {Taxonomy} of
+  {Software}-{Defined} {Networking}, IEEE Communications Surveys Tutorials
+  16~(4) (2014) 1955--1980.
+\newblock \href {https://doi.org/10.1109/COMST.2014.2320094}
+  {\path{doi:10.1109/COMST.2014.2320094}}.
+
+\bibitem{Xia2015}
+W.~Xia, Y.~Wen, C.~H. Foh, D.~Niyato, H.~Xie, A {Survey} on
+  {Software}-{Defined} {Networking}, IEEE Communications Surveys Tutorials
+  17~(1) (2015) 27--51.
+\newblock \href {https://doi.org/10.1109/COMST.2014.2330903}
+  {\path{doi:10.1109/COMST.2014.2330903}}.
+
+\bibitem{Hu2014}
+F.~Hu, Q.~Hao, K.~Bao, A {Survey} on {Software}-{Defined} {Network} and
+  {OpenFlow}: {From} {Concept} to {Implementation}, IEEE Communications Surveys
+  Tutorials 16~(4) (2014) 2181--2206.
+\newblock \href {https://doi.org/10.1109/COMST.2014.2326417}
+  {\path{doi:10.1109/COMST.2014.2326417}}.
+
+\bibitem{Xie2015}
+J.~Xie, D.~Guo, Z.~Hu, T.~Qu, P.~Lv,
+  \href{http://www.sciencedirect.com/science/article/pii/S0140366415002200}{Control
+  plane of software defined networks: {A} survey}, Computer Communications 67
+  (2015) 1--10.
+\newblock \href {https://doi.org/10.1016/j.comcom.2015.06.004}
+  {\path{doi:10.1016/j.comcom.2015.06.004}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0140366415002200}
+
+\bibitem{Trois2016}
+C.~Trois, M.~D. Del~Fabro, L.~C.~E. de~Bona, M.~Martinello, A {Survey} on {SDN}
+  {Programming} {Languages}: {Toward} a {Taxonomy}, IEEE Communications Surveys
+  Tutorials 18~(4) (2016) 2687--2712.
+\newblock \href {https://doi.org/10.1109/COMST.2016.2553778}
+  {\path{doi:10.1109/COMST.2016.2553778}}.
+
+\bibitem{Huang2017}
+T.~Huang, F.~R. Yu, C.~Zhang, J.~Liu, J.~Zhang, Y.~Liu, A {Survey} on
+  {Large}-{Scale} {Software} {Defined} {Networking} ({SDN}) {Testbeds}:
+  {Approaches} and {Challenges}, IEEE Communications Surveys Tutorials 19~(2)
+  (2017) 891--917.
+\newblock \href {https://doi.org/10.1109/COMST.2016.2630047}
+  {\path{doi:10.1109/COMST.2016.2630047}}.
+
+\bibitem{Blenk2016}
+A.~Blenk, A.~Basta, M.~Reisslein, W.~Kellerer, Survey on {Network}
+  {Virtualization} {Hypervisors} for {Software} {Defined} {Networking}, IEEE
+  Communications Surveys Tutorials 18~(1) (2016) 655--685.
+\newblock \href {https://doi.org/10.1109/COMST.2015.2489183}
+  {\path{doi:10.1109/COMST.2015.2489183}}.
+
+\bibitem{Mohammed2016}
+M.~Mohammed, M.~B. Khan, E.~B.~M. Bashier, Machine {Learning}: {Algorithms} and
+  {Applications}, CRC Press, 2016, google-Books-ID: X8LBDAAAQBAJ.
+
+\bibitem{Marsland2015}
+S.~Marsland, Machine {Learning}: {An} {Algorithmic} {Perspective}, {Second}
+  {Edition}, CRC Press, 2015, google-Books-ID: y\_oYCwAAQBAJ.
+
+\bibitem{Alpaydin2020}
+E.~Alpaydin, Introduction to {Machine} {Learning}, MIT Press, 2020,
+  google-Books-ID: tZnSDwAAQBAJ.
+
+\bibitem{Kotsiantis2007}
+I.~Z. SB~Kotsiantis, Supervised machine learning: A review of classification
+  techniques, Emerging Artificial Intelligence Applications in Computer
+  Engineering (2007).
+
+\bibitem{Hastie2009}
+J.~F. Trevor~Hastie, Robert~Tibshirani, {The} {Elements} of {Statistical}
+  {Learning} : {Data} {Mining}, {Inference}, and {Prediction}, 2009.
+
+\bibitem{Cover1967}
+T.~Cover, P.~Hart, Nearest neighbor pattern classification, IEEE Transactions
+  on Information Theory 13~(1) (1967) 21--27.
+\newblock \href {https://doi.org/10.1109/TIT.1967.1053964}
+  {\path{doi:10.1109/TIT.1967.1053964}}.
+
+\bibitem{Han2011}
+J.~Han, J.~Pei, M.~Kamber, Data {Mining}: {Concepts} and {Techniques},
+  Elsevier, 2011, google-Books-ID: pQws07tdpjoC.
+
+\bibitem{Quinlan1986}
+J.~R. Quinlan, \href{https://doi.org/10.1007/BF00116251}{Induction of decision
+  trees}, Machine Learning 1~(1) (1986) 81--106.
+\newblock \href {https://doi.org/10.1007/BF00116251}
+  {\path{doi:10.1007/BF00116251}}.
+\newline\urlprefix\url{https://doi.org/10.1007/BF00116251}
+
+\bibitem{Karatsiolis2012}
+S.~Karatsiolis, C.~N. Schizas, Region based {Support} {Vector} {Machine}
+  algorithm for medical diagnosis on {Pima} {Indian} {Diabetes} dataset, in:
+  2012 {IEEE} 12th {International} {Conference} on {Bioinformatics}
+  {Bioengineering} ({BIBE}), 2012, pp. 139--144.
+\newblock \href {https://doi.org/10.1109/BIBE.2012.6399663}
+  {\path{doi:10.1109/BIBE.2012.6399663}}.
+
+\bibitem{Burrows1995}
+W.~R. Burrows, M.~Benjamin, S.~Beauchamp, E.~R. Lord, D.~McCollor, B.~Thomson,
+  \href{https://journals.ametsoc.org/jamc/article/34/8/1848/15131/CART-Decision-Tree-Statistical-Analysis-and}{{CART}
+  {Decision}-{Tree} {Statistical} {Analysis} and {Prediction} of {Summer}
+  {Season} {Maximum} {Surface} {Ozone} for the {Vancouver}, {Montreal}, and
+  {Atlantic} {Regions} of {Canada}}, Journal of Applied Meteorology 34~(8)
+  (1995) 1848--1862.
+\newblock \href
+  {https://doi.org/10.1175/1520-0450(1995)034<1848:CDTSAA>2.0.CO;2}
+  {\path{doi:10.1175/1520-0450(1995)034<1848:CDTSAA>2.0.CO;2}}.
+\newline\urlprefix\url{https://journals.ametsoc.org/jamc/article/34/8/1848/15131/CART-Decision-Tree-Statistical-Analysis-and}
+
+\bibitem{Breiman1999}
+L.~Breiman, Random forests (1999).
+
+\bibitem{Haykin}
+S.~Haykin, Neural {Networks}: {A} {Comprehensive} {Foundation}.
+
+\bibitem{Lee2005}
+K.~Lee, D.~Booth, P.~Alam,
+  \href{http://www.sciencedirect.com/science/article/pii/S0957417405000023}{A
+  comparison of supervised and unsupervised neural networks in predicting
+  bankruptcy of {Korean} firms}, Expert Systems with Applications 29~(1) (2005)
+  1--16.
+\newblock \href {https://doi.org/10.1016/j.eswa.2005.01.004}
+  {\path{doi:10.1016/j.eswa.2005.01.004}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0957417405000023}
+
+\bibitem{Timotheou2010}
+S.~Timotheou, The random neural network: a survey, The computer journal 53~(3)
+  (2010) 251--267.
+
+\bibitem{LeCun2015}
+G.~H. Yann~LeCun, Yoshua~Bengio, Deep learning, Nature (2015).
+
+\bibitem{Schmidhuber2015}
+J.~Schmidhuber,
+  \href{http://www.sciencedirect.com/science/article/pii/S0893608014002135}{Deep
+  learning in neural networks: {An} overview}, Neural Networks 61 (2015)
+  85--117.
+\newblock \href {https://doi.org/10.1016/j.neunet.2014.09.003}
+  {\path{doi:10.1016/j.neunet.2014.09.003}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0893608014002135}
+
+\bibitem{Pandey2014}
+A.~D. Gaurav~Pandey, Learning by stretching deep networks, Proceedings of the
+  31st International Conference on MachineLearning, Beijing, China (2014).
+
+\bibitem{Krizhevsky2012}
+A.~Krizhevsky, I.~Sutskever, G.~E. Hinton,
+  \href{http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf}{{ImageNet}
+  {Classification} with {Deep} {Convolutional} {Neural} {Networks}}, in:
+  F.~Pereira, C.~J.~C. Burges, L.~Bottou, K.~Q. Weinberger (Eds.), Advances in
+  {Neural} {Information} {Processing} {Systems} 25, Curran Associates, Inc.,
+  2012, pp. 1097--1105.
+\newline\urlprefix\url{http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf}
+
+\bibitem{Li2018}
+C.~Li, Y.~Wu, X.~Yuan, Z.~Sun, W.~Wang, X.~Li, L.~Gong,
+  \href{https://onlinelibrary.wiley.com/doi/abs/10.1002/dac.3497}{Detection and
+  defense of {DDoS} attack–based on deep learning in {OpenFlow}-based {SDN}},
+  International Journal of Communication Systems 31~(5) (2018) e3497.
+\newblock \href {https://doi.org/10.1002/dac.3497}
+  {\path{doi:10.1002/dac.3497}}.
+\newline\urlprefix\url{https://onlinelibrary.wiley.com/doi/abs/10.1002/dac.3497}
+
+\bibitem{Li2015a}
+X.~Li, X.~Wu, Constructing long short-term memory based deep recurrent neural
+  networks for large vocabulary speech recognition, in: 2015 {IEEE}
+  {International} {Conference} on {Acoustics}, {Speech} and {Signal}
+  {Processing} ({ICASSP}), 2015, pp. 4520--4524, iSSN: 2379-190X.
+\newblock \href {https://doi.org/10.1109/ICASSP.2015.7178826}
+  {\path{doi:10.1109/ICASSP.2015.7178826}}.
+
+\bibitem{Vapnik1999}
+V.~Vapnik, An overview of statistical learning theory, IEEE Transactions on
+  Neural Networks 10~(5) (1999) 988--999.
+\newblock \href {https://doi.org/10.1109/72.788640}
+  {\path{doi:10.1109/72.788640}}.
+
+\bibitem{Box2011}
+G.~E.~P. Box, G.~C. Tiao, Bayesian {Inference} in {Statistical} {Analysis},
+  John Wiley \& Sons, 2011, google-Books-ID: T8Askeyk1k4C.
+
+\bibitem{Bakker2017}
+J.~Bakker,
+  \href{http://researcharchive.vuw.ac.nz/handle/10063/6645}{Intelligent
+  {Traffic} {Classification} for {Detecting} {DDoS} {Attacks} using
+  {SDN}/{OpenFlow}} (2017).
+\newline\urlprefix\url{http://researcharchive.vuw.ac.nz/handle/10063/6645}
+
+\bibitem{Rabiner1989}
+L.~Rabiner, A tutorial on hidden {Markov} models and selected applications in
+  speech recognition, Proceedings of the IEEE 77~(2) (1989) 257--286.
+\newblock \href {https://doi.org/10.1109/5.18626} {\path{doi:10.1109/5.18626}}.
+
+\bibitem{Holgado2020}
+P.~Holgado, V.~A. Villagrá, L.~Vázquez, Real-{Time} {Multistep} {Attack}
+  {Prediction} {Based} on {Hidden} {Markov} {Models}, IEEE Transactions on
+  Dependable and Secure Computing 17~(1) (2020) 134--147.
+\newblock \href {https://doi.org/10.1109/TDSC.2017.2751478}
+  {\path{doi:10.1109/TDSC.2017.2751478}}.
+
+\bibitem{Kohonen2012}
+T.~Kohonen, Self-{Organizing} {Maps}, Springer Science \& Business Media, 2012.
+
+\bibitem{Wu2018}
+H.~Wu, S.~Prasad, Semi-{Supervised} {Deep} {Learning} {Using} {Pseudo} {Labels}
+  for {Hyperspectral} {Image} {Classification}, IEEE Transactions on Image
+  Processing 27~(3) (2018) 1259--1270.
+\newblock \href {https://doi.org/10.1109/TIP.2017.2772836}
+  {\path{doi:10.1109/TIP.2017.2772836}}.
+
+\bibitem{Sutton2018}
+R.~S. Sutton, A.~G. Barto, Reinforcement {Learning}, second edition: {An}
+  {Introduction}, MIT Press, 2018, google-Books-ID: uWV0DwAAQBAJ.
+
+\bibitem{Kaelbling1996}
+L.~P. Kaelbling, M.~L. Littman, A.~W. Moore,
+  \href{https://www.jair.org/index.php/jair/article/view/10166}{Reinforcement
+  {Learning}: {A} {Survey}}, Journal of Artificial Intelligence Research 4
+  (1996) 237--285.
+\newblock \href {https://doi.org/10.1613/jair.301}
+  {\path{doi:10.1613/jair.301}}.
+\newline\urlprefix\url{https://www.jair.org/index.php/jair/article/view/10166}
+
+\bibitem{Mininet}
+\href{http://mininet.org/}{Mininet}, 2019.
+\newline\urlprefix\url{http://mininet.org/}
+
+\bibitem{Avallone2004}
+S.~Avallone, S.~Guadagno, D.~Emma, A.~Pescap{\`e}, G.~Ventre, D-itg distributed
+  internet traffic generator, in: First International Conference on the
+  Quantitative Evaluation of Systems, 2004. QEST 2004. Proceedings., IEEE,
+  2004, pp. 316--317.
+
+\bibitem{Botta2012}
+A.~Botta, A.~Dainotti, A.~Pescap{\'e}, A tool for the generation of realistic
+  network workload for emerging networking scenarios, Computer Networks 56~(15)
+  (2012) 3531--3547.
+
+\bibitem{Botta2013}
+A.~Botta, W.~de~Donato, A.~Dainotti, S.~Avallone, A.~Pescape, D-itg 2.8. 1
+  manual, Computer for Interaction and Communications (COMICS) Group,
+  Department of Electrical Engineering and Information Technologies, University
+  of Naples Federico II, Naples, Italy (www. grid. unina.
+  it/software/ITG/manual) (2013).
+
+\bibitem{Baker1998}
+F.~Baker, D.~Black, S.~Blake, K.~Nichols, Definition of the differentiated
+  services field (ds field) in the ipv4 and ipv6 headers, Tech. rep., RFC 2474,
+  Dec (1998).
+
+\bibitem{Babiarz2006}
+J.~Babiarz, K.~Chan, F.~Baker, Configuration guidelines for diffserv service
+  classes, RFC 4594 (August 2006).
+
+\bibitem{Notiziario}
+A.~M. Langellotti, S.~Mastropietro, F.~T. Moretti, A.~Soldati, Notiziario
+  {T}ecnico {T}elecom {I}talia, Tech. rep., Telecom Italia (2004).
+
+\bibitem{ofctlrest}
+\href{https://ryu.readthedocs.io/en/latest/app/ofctl_rest.html}{ryu.app.ofctl
+  rest}, 2019.
+\newline\urlprefix\url{https://ryu.readthedocs.io/en/latest/app/ofctl_rest.html}
+
+\bibitem{QoS}
+\href{https://osrg.github.io/ryu-book/en/html/rest_qos.html}{QoS Ryubook 1.0
+  documentation}, 2019.
+\newline\urlprefix\url{https://osrg.github.io/ryu-book/en/html/rest_qos.html}
+
+\bibitem{SmarraADHS2018}
+F.~Smarra, A.~Jain, R.~Mangharam, A.~D'Innocenzo, Data-driven switched affine
+  modeling for model predictive control, in: IFAC Conference on Analysis and
+  Design of Hybrid Systems (ADHS'18), IFAC, 2018, pp. 199--204.
+
+\bibitem{smarraNAHS2020}
+F.~Smarra, G.~D. Di~Girolamo, V.~De~Iuliis, A.~Jain, R.~Mangharam,
+  A.~D'Innocenzo, Data-driven switching modeling for mpc using regression trees
+  and random forests, Nonlinear Analysis: Hybrid Systems 36C (2020).
+
+\bibitem{borrelli2017predictive}
+F.~Borrelli, et~al., Predictive control for linear and hybrid systems,
+  Cambridge University Press, 2017.
+
+\bibitem{BreimanCART2017}
+L.~Breiman, Classification and regression trees, Routledge, 2017.
+
+\bibitem{BreimanML2001}
+L.~Breiman, Random forests, Machine learning 45~(1) (2001) 5--32.
+
+\bibitem{UDOO}
+\href{https://www.udoo.org/}{UDOO x86}, 2019.
+\newline\urlprefix\url{https://www.udoo.org/}
+
+\bibitem{NNstateOfART}
+O.~I. Abiodun, A.~Jantan, A.~E. Omolara, K.~V. Dada, N.~A. Mohamed, H.~Arshad,
+  State-of-the-art in artificial neural network applications: A survey, Heliyon
+  4~(11) (2018) e00938.
+
+\bibitem{tensorflow2015}
+M.~Abadi, et~al., \href{https://www.tensorflow.org/}{{TensorFlow}: Large-scale
+  machine learning on heterogeneous systems} (2015).
+\newline\urlprefix\url{https://www.tensorflow.org/}
+
+\bibitem{chollet2015keras}
+F.~Chollet, et~al., Keras, \url{https://keras.io} (2015).
+
+\bibitem{openNN}
+A.~I. Techniques, opennn, \url{www.opennn.net} (2019).
+
+\bibitem{Moller1990}
+M.~F. M{\o}ller, A scaled conjugate gradient algorithm for fast supervised
+  learning, Aarhus University, Computer Science Department, 1990.
+
+\end{thebibliography}

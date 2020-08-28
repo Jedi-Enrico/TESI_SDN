@@ -1,0 +1,17 @@
+\BOOKMARK [0][-]{chapter*.3}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter*.4}{PART I: Background Knowledge}{}% 2
+\BOOKMARK [0][-]{chapter.1}{Software Defined Networks}{}% 3
+\BOOKMARK [1][-]{section.1.1}{Architecture}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Workflow}{chapter.1}% 5
+\BOOKMARK [0][-]{chapter.2}{Overview Of Machine Learning Algorithms}{}% 6
+\BOOKMARK [0][-]{figure.2.2}{PART II: Problem Formulations}{}% 7
+\BOOKMARK [0][-]{chapter.3}{Network emulation environment}{}% 8
+\BOOKMARK [0][-]{chapter.4}{Switched affine modeling via RT and RF}{}% 9
+\BOOKMARK [0][-]{problem.3}{PART II: Experimental Results}{}% 10
+\BOOKMARK [0][-]{chapter.5}{Simulation results}{}% 11
+\BOOKMARK [1][-]{section.5.1}{Disturbance predictive model validation}{chapter.5}% 12
+\BOOKMARK [1][-]{section.5.2}{Traffic predictive model validation on real network data}{chapter.5}% 13
+\BOOKMARK [1][-]{section.5.3}{Queues predictive model validation}{chapter.5}% 14
+\BOOKMARK [1][-]{section.5.4}{Control performance}{chapter.5}% 15
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 16
+\BOOKMARK [0][-]{chapter.6}{Bibliography}{}% 17

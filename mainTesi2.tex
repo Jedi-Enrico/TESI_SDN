@@ -1,0 +1,256 @@
+\documentclass[12pt, a4paper, twoside, openright]{ociamthesis}  % default square logo 
+
+
+
+%load any additional packages
+
+%%Pacchetti utili anche se non necessari
+%\usepackage{amsfonts}
+%\usepackage{amsmath}
+%\usepackage{latexsym}
+%\usepackage{tabularx}
+\usepackage[english]{babel}
+%\usepackage[hidelinks,bookmarks=true]{hyperref}
+%\usepackage{graphicx}
+%\usepackage{floatflt}
+%\usepackage{float}
+%%\usepackage[latin1]{inputenc} 
+%\usepackage{multirow} 
+%\usepackage[titletoc]{appendix}
+%\usepackage{listings}
+%\usepackage{xcolor}
+%\usepackage{longtable} 
+%\usepackage{verbatim}
+%\usepackage{booktabs}
+%\usepackage{amsmath,amssymb,amsfonts}
+%\usepackage{nameref}
+%\usepackage{longtable}
+%\usepackage{lscape} 
+%\usepackage{csquotes}
+%\usepackage{listings}
+%\usepackage[flushleft]{threeparttable}
+%%\usepackage[caption = false]{subfig}
+%\usepackage{slashbox}
+%\usepackage{rotating}
+%\usepackage{pdflscape}
+
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+\usepackage{url}
+\usepackage{times,amsmath,epsfig,amssymb}
+\usepackage{subfigure}
+\usepackage{wrapfig}
+\usepackage{amsfonts}
+%\usepackage{hyperref}
+%\usepackage{cite}
+\usepackage{ctable}
+\usepackage{tabularx,booktabs}
+\usepackage{amsmath}
+\usepackage{svg}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{problem}{Problem}
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\Xd}{\mathcal{X}_d}
+\newcommand{\Xdi}{\mathcal{X}_{d_\iota}}
+\newcommand{\Xdj}{\mathcal{X}_{d_\jmath}}
+\newcommand{\Xu}{\mathcal{X}_u}
+\newcommand{\Y}{\mathcal{Y}}
+\newcommand{\Yij}{\mathcal{Y}_{ij}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Dij}{\mathcal{D}_{ij}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Tij}{\mathcal{T}_{ij}}
+\newcommand{\Tilj}{\mathcal{T}_{i\ell_j}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Fij}{\mathcal{F}_{ij}}
+\newcommand{\Filj}{\mathcal{F}_{i\ell_j}}
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+
+\usepackage{setspace}
+\DeclareMathOperator{\tr}{tr}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+%Footnote without number
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+
+%% For Theorems, Lemmas, Definitions etc.   
+%\usepackage{blindtext}
+%\usepackage{amssymb}
+%
+%\usepackage{algorithm}
+%\usepackage[noend]{algpseudocode}
+%
+%\usepackage{amsthm}
+%
+%\allowdisplaybreaks[1] 
+
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{corollary}{Corollary}[theorem]
+%\newtheorem{lemma}[theorem]{Lemma}
+
+%\theoremstyle{remark}
+%\newtheorem*{remark}{Remark}
+%
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definition}[section]
+
+%\renewcommand\qedsymbol{$\blacksquare$}
+%\newcommand {\ps} {\,{\bf \cdot}} % prodotto scalare
+%
+%\renewcommand{\mkbegdispquote}[2]{\itshape}
+%
+%\setcounter{MaxMatrixCols}{15}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{titlesec}
+%
+%\titleclass{\subsubsubsection}{straight}[\subsection]
+%
+%\newcounter{subsubsubsection}[subsubsection]
+%\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+%\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+%
+%\titleformat{\subsubsubsection}
+%  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+%\titlespacing*{\subsubsubsection}
+%{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+%
+%\makeatletter
+%\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+%  {3.25ex \@plus1ex \@minus.2ex}%
+%  {-1em}%
+%  {\normalfont\normalsize\bfseries}}
+%\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+%  {3.25ex \@plus1ex \@minus .2ex}%
+%  {-1em}%
+%  {\normalfont\normalsize\bfseries}}
+%\def\toclevel@subsubsubsection{4}
+%\def\toclevel@paragraph{5}
+%\def\toclevel@paragraph{6}
+%\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+%\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+%\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+%\makeatother
+%
+%\setcounter{secnumdepth}{4}
+%\setcounter{tocdepth}{4}
+%
+%\lstset { %
+%    language=C++,
+%    backgroundcolor=\color{black!5}, % set backgroundcolor
+%    basicstyle=\footnotesize,% basic font setting
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%input macros (i.e. write your own macros file called mymacros.tex 
+%and uncomment the next line)
+%\include{mymacros}
+
+\title{Model Identification and Control of Priority Queueing in Software Defined Networks} %\\[1ex] %your thesis title,
+%}   %note \\[1ex] is a line break in the title
+
+\author{Enrico Reticcioli}             %your name
+\college{Universit\`a degli Studi dell'Aquila}  %your college
+
+\advisor{Prof. Alessandro D'Innocenzo}
+\coadvisor{Prof. Fabio Graziosi}
+\coordinator{Prof. Vittorio Cortellessa}
+
+\renewcommand{\submittedtext}{A thesis submitted for the degree of}
+\degree{Doctor of Philosophy}     %the degree
+\degreedate{2021}         %the degree date
+
+%end the preamble and start the document
+\begin{document}
+
+%this baselineskip gives sufficient line spacing for an examiner to easily
+%markup the thesis with comments
+\baselineskip=18pt plus1pt
+
+%set the number of sectioning levels that get number and appear in the contents
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\maketitle                  % create a title page from the preamble info
+%\afterpage{\null\newpage}
+
+%DA SCOMMENTARE PER LA STAMPA
+
+%\include{chapter/dedication}        % include a dedication.tex file
+\include{chapter/acknowledgements}   % include an acknowledgements.tex file
+
+%\afterpage{\null\newpage}
+
+\include{chapter/abstract}          % include the abstract
+
+\begin{romanpages}          % start roman page numbering
+\tableofcontents            % generate and include a table of contents
+\listoffigures              % generate and include a list of figures
+\listoftables               % generate and include a list of figures
+\end{romanpages}            % end roman page numbering
+
+%\input{chapter/00_00_notation}
+
+\addcontentsline{toc}{chapter}{Introduction}
+\input{chapter/00_01_introduction.tex}
+
+%now include the files of latex for each of the chapters etc
+\addcontentsline{toc}{chapter}{PART I: Background Knowledge}
+\chapter*{\centering PART I: Background Knowledge}
+\input{chapter/00_BGK_cap1}
+\input{chapter/00_BGK_cap2}
+\addcontentsline{toc}{chapter}{PART II: Problem Formulations}
+\chapter*{\centering PART II: Problem Formulations}  
+
+\input{chapter/01_cap1}
+\input{chapter/02_cap2}
+\addcontentsline{toc}{chapter}{PART II: Experimental Results}
+\chapter*{\centering PART III: Experimental Results}  
+\input{chapter/03_cap3}
+%\input{chapter/04_cap4}
+%\input{chapter/05_cap5}
+%\input{chapter/06_cap6}
+
+%\chapter*{\centering PART II: The HEPSYCODE Application Scenario}  
+%\addcontentsline{toc}{chapter}{PART II: The HEPSYCODE Application Scenario}
+%
+%\input{chapter/07_cap7}
+%\input{chapter/08_cap8}
+
+\input{chapter/10_conclusion}
+
+%now enable appendix numbering format and include any appendices
+%\appendix
+%\input{chapter/appendice}
+
+%next line adds the Bibliography to the contents page
+\addcontentsline{toc}{chapter}{Bibliography}
+%uncomment next line to change bibliography name to references
+\renewcommand{\bibname}{References}
+\bibliography{SDN}        %use a bibtex bibliography file refs.bib
+\bibliographystyle{elsarticle-num}  %use the plain bibliography style
+
+%\include{chapter/contribution}      % include the contribution
+
+\end{document}

@@ -1,0 +1,18 @@
+\babel@toc {english}{}
+\contentsline {chapter}{Introduction}{1}{chapter*.3}%
+\contentsline {chapter}{PART I: Background Knowledge}{4}{chapter*.4}%
+\contentsline {chapter}{\numberline {1}Software Defined Networks}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Architecture}{7}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Workflow}{10}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Overview Of Machine Learning Algorithms}{13}{chapter.2}%
+\contentsline {chapter}{PART II: Problem Formulations}{22}{figure.2.2}%
+\contentsline {chapter}{\numberline {3}Network emulation environment}{25}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Switched affine modeling via RT and RF}{29}{chapter.4}%
+\contentsline {chapter}{PART II: Experimental Results}{33}{problem.3}%
+\contentsline {chapter}{\numberline {5}Simulation results}{37}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Disturbance predictive model validation}{38}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Traffic predictive model validation on real network data}{39}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Queues predictive model validation}{40}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Control performance}{42}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Conclusion}{49}{chapter.6}%
+\contentsline {chapter}{Bibliography}{49}{chapter.6}%

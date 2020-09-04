@@ -1,18 +1,21 @@
 \babel@toc {english}{}
+\contentsline {chapter}{Abstract}{4}{Doc-Start}%
 \contentsline {chapter}{Introduction}{1}{chapter*.3}%
 \contentsline {chapter}{\numberline {1}Background Knowledge}{5}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Software Defined Networks Architecture}{5}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Workflow}{8}{subsection.1.1.1}%
 \contentsline {section}{\numberline {1.2}Overview Of Machine Learning Algorithms}{9}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Problem Formulation}{19}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Network emulation environment}{19}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Switched affine modeling via RT and RF}{22}{section.2.2}%
-\contentsline {chapter}{\numberline {3}Experimental Results}{27}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Simulation results}{27}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Disturbance predictive model validation}{28}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Traffic predictive model validation on real network data}{29}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Queues predictive model validation}{30}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Control performance}{32}{subsection.3.2.3}%
-\contentsline {chapter}{\numberline {4}Conclusion}{39}{chapter.4}%
-\contentsline {chapter}{References}{39}{chapter.4}%
-\contentsline {chapter}{Publications}{52}{chapter*.5}%
+\contentsline {section}{\numberline {1.3}Switched affine modeling via RT and RF}{18}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Network emulation environment}{23}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Mininet Setup}{23}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Simulation results}{25}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Disturbance predictive model validation}{26}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Queues predictive model validation}{27}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Control performance}{31}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Traffic predictive model validation on real network data}{34}{subsection.2.2.4}%
+\contentsline {chapter}{\numberline {3}Modeling Real Networks}{37}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Traffic predictive model validation on Italian Internet provider network data}{37}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Control performance validation over dedicated hardware network}{37}{section.3.2}%
+\contentsline {chapter}{Conclusion}{37}{section.3.2}%
+\contentsline {chapter}{References}{39}{chapter*.5}%
+\contentsline {chapter}{Publications}{52}{chapter*.6}%

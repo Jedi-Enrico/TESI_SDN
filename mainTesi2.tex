@@ -204,7 +204,7 @@
 \include{chapter/acknowledgements}   % include an acknowledgements.tex file
 
 %\afterpage{\null\newpage}
-
+\addcontentsline{toc}{chapter}{Abstract}
 \include{chapter/abstract}          % include the abstract
 
 \begin{romanpages}          % start roman page numbering
@@ -223,14 +223,20 @@
 \chapter{Background Knowledge}
 \input{chapter/00_BGK_cap1}
 \input{chapter/00_BGK_cap2}
+\input{chapter/SwitchedModeling}
 %\addcontentsline{toc}{chapter}{PART II: Problem Formulations}
-\chapter{Problem Formulation}  
+\chapter{Network emulation environment}
 
-\input{chapter/01_cap1}
-\input{chapter/02_cap2}
+\input{chapter/SDNNetSim}
+
+\chapter{Modeling Real Networks}
+
+\input{chapter/RealNet}
+%\input{chapter/01_cap1}
+%\input{chapter/02_cap2}
 %\addcontentsline{toc}{chapter}{PART III: Experimental Results}
-\chapter{Experimental Results}  
-\input{chapter/03_cap3}
+%\chapter{Experimental Results}  
+%\input{chapter/03_cap3}
 %\input{chapter/04_cap4}
 %\input{chapter/05_cap5}
 %\input{chapter/06_cap6}
@@ -240,7 +246,7 @@
 %
 %\input{chapter/07_cap7}
 %\input{chapter/08_cap8}
-
+\addcontentsline{toc}{chapter}{Conclusion}
 \input{chapter/10_conclusion}
 
 %now enable appendix numbering format and include any appendices

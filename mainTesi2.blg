@@ -9,7 +9,6 @@ Reallocating 'name_of_file' (item size: 1) to 4 items.
 Reallocating 'name_of_file' (item size: 1) to 15 items.
 The style file: elsarticle-num.bst
 Database file #1: SDN.bib
-Warning--I didn't find a database entry for "Cacti"
 Warning--empty journal in Hodo2017
 Warning--empty year in Hodo2017
 Warning--empty journal in Zhou2017
@@ -55,45 +54,48 @@ Warning--empty publisher in QoS
 Warning--empty author and editor in UDOO
 Warning--empty publisher in UDOO
 Warning--empty journal in tensorflow2015
-You've used 136 entries,
+Warning--empty author and editor in Cacti
+Warning--empty publisher in Cacti
+Warning--empty year in Cacti
+You've used 137 entries,
             2952 wiz_defined-function locations,
-            1547 strings with 32950 characters,
-and the built_in function-call counts, 43996 in all, are:
-= -- 4148
-> -- 1494
+            1548 strings with 32972 characters,
+and the built_in function-call counts, 44175 in all, are:
+= -- 4159
+> -- 1495
 < -- 22
-+ -- 588
++ -- 589
 - -- 452
-* -- 3349
-:= -- 5799
-add.period$ -- 198
-call.type$ -- 136
+* -- 3360
+:= -- 5816
+add.period$ -- 199
+call.type$ -- 137
 change.case$ -- 127
 chr.to.int$ -- 0
-cite$ -- 181
-duplicate$ -- 1380
-empty$ -- 5002
+cite$ -- 185
+duplicate$ -- 1390
+empty$ -- 5033
 format.name$ -- 556
-if$ -- 11396
+if$ -- 11448
 int.to.chr$ -- 0
-int.to.str$ -- 136
-missing$ -- 144
-newline$ -- 508
+int.to.str$ -- 137
+missing$ -- 145
+newline$ -- 512
 num.names$ -- 128
-pop$ -- 933
+pop$ -- 944
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 2830
+skip$ -- 2841
 stack$ -- 0
 substring$ -- 2306
-swap$ -- 427
+swap$ -- 428
 text.length$ -- 22
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 45
+warning$ -- 48
 while$ -- 314
-width$ -- 139
-write$ -- 1235
-(There were 46 warnings)
+width$ -- 140
+write$ -- 1241
+(There were 48 warnings)

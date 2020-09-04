@@ -2096,6 +2096,19 @@
   keywords = {computer network security, hidden Markov models, Internet, matrix algebra, probability, Hidden Markov Model, IDS alert information, multistep attack prediction, clusterization method, unsupervised-supervised algorithms, probability matrices, Viterbi algorithms, forward-backward algorithms, DDoS phases, Internet services, Hidden Markov models, Training, Computer crime, Proposals, Predictive models, Mathematical model, Prediction algorithms, Multistep attack prediction, hidden Markov model, distributed denial of service, proactive response, machine learning},
 }
 
+@Book{Kohonen2012,
+  author    = {Kohonen, Teuvo},
+  publisher = {Springer Science \& Business Media},
+  title     = {Self-{Organizing} {Maps}},
+  year      = {2012},
+  isbn      = {9783642569272},
+  month     = dec,
+  abstract  = {Since the second edition of this book came out in early 1997, the number of scientific papers published on the Self-Organizing Map (SOM) has increased from about 1500 to some 4000. Also, two special workshops dedicated to the SOM have been organized, not to mention numerous SOM sessions in neural network conferences. In view of this growing interest it was felt desirable to make extensive revisions to this book. They are of the following nature. Statistical pattern analysis has now been approached more carefully than earlier. A more detailed discussion of the eigenvectors and eigenvalues of symmetric matrices, which are the type usually encountered in statistics, has been included in Sect. 1.1.3: also, new probabilistic concepts, such as factor analysis, have been discussed in Sect. 1.3.1. A survey of projection methods (Sect. 1.3.2) has been added, in order to relate the SOM to classical paradigms. Vector Quantization is now discussed in one main section, and derivation of the point density of the codebook vectors using the calculus of variations has been added, in order to familiarize the reader with this otherwise com plicated statistical analysis. It was also felt that the discussion of the neural-modeling philosophy should include a broader perspective of the main issues. A historical review in Sect. 2.2, and the general philosophy in Sects. 2.3, 2.5 and 2.14 are now expected to especially help newcomers to orient themselves better amongst the profusion of contemporary neural models.},
+  file      = {Google Books Link:https\://books.google.it/books?id=M-zxCAAAQBAJ:text/html},
+  keywords  = {Science / Physics / General, Science / Life Sciences / Biophysics, Technology \& Engineering / Telecommunications, Science / Physics / Mathematical \& Computational},
+  language  = {en},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
 
 @Comment{jabref-meta: grouping:

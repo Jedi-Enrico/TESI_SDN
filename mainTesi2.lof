@@ -18,6 +18,6 @@
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces a}}{33}{figure.2.10}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces b}}{33}{figure.2.10}%
 \contentsline {figure}{\numberline {2.11}{\ignorespaces Static controller up to the $400th$, then MPC controller.}}{34}{figure.2.11}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces NRMSE of the packets predictive model over a time horizon of $N=10$.}}{35}{figure.2.12}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces NRMSE of the packets predictive model over a time horizon of $N=10$.}}{38}{figure.3.1}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces NRMSE of the packets predictive model over a time horizon of $N=10$.}}{36}{figure.3.1}%
+\addvspace {10\p@ }

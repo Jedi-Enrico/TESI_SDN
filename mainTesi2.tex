@@ -89,6 +89,55 @@
   \addtocounter{footnote}{-1}%
   \endgroup
 }
+\usepackage[toc,page]{appendix}%per appendici
+\usepackage{listings} %nuovo pacchetto
+%Per Colori di PYTHON
+\definecolor{mygreen}{rgb}{0,0.7,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{myred}{rgb}{0.8,0,0}
+\definecolor{myorange}{rgb}{1,0.5,0}
+\definecolor{mycyan}{rgb}{0.9,1,0.9}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{myred},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  %keywordstyle=\color{myorange},       % keyword style
+  %language=Octave,                 % the language of the code  
+  morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,continue,return,access,as,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},           % if you want to add more keywords to the set
+  keywordstyle={\color{myorange}},
+  morekeywords={[2] True,None,},
+keywordstyle={[2]\color{mymauve}},
+    emph=[1]{True,False,None,format,ord,len,str,},
+    emphstyle=[1]{\color{mymauve}},  
+	emph=[2]{import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,continue,return,access,as,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert,},
+    emphstyle=[2]{\color{myorange}},  
+emph=[3]{click_and_crop,},  
+  emphstyle=[3]{\color{blue}},  
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray},
+  %firstnumber=3, % the style that is used for the line-numbers
+  numberfirstline=true,  
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mygreen},		% string literal style   
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title %%%Decommentare per far vedere il nome del file sotto al codice
+}
+
 
 %\usepackage[round]{natbib} 
 %\usepackage{bibtopic}
@@ -226,32 +275,14 @@
 \input{chapter/SwitchedModeling}
 %\addcontentsline{toc}{chapter}{PART II: Problem Formulations}
 \chapter{Network emulation environment}
-
 \input{chapter/SDNNetSim}
 
 \chapter{Modeling Real Networks}
-
 \input{chapter/RealNet}
-%\input{chapter/01_cap1}
-%\input{chapter/02_cap2}
-%\addcontentsline{toc}{chapter}{PART III: Experimental Results}
-%\chapter{Experimental Results}  
-%\input{chapter/03_cap3}
-%\input{chapter/04_cap4}
-%\input{chapter/05_cap5}
-%\input{chapter/06_cap6}
 
-%\chapter*{\centering PART II: The HEPSYCODE Application Scenario}  
-%\addcontentsline{toc}{chapter}{PART II: The HEPSYCODE Application Scenario}
-%
-%\input{chapter/07_cap7}
-%\input{chapter/08_cap8}
 \addcontentsline{toc}{chapter}{Conclusion}
 \input{chapter/10_conclusion}
 
-%now enable appendix numbering format and include any appendices
-%\appendix
-%\input{chapter/appendice}
 
 %next line adds the Bibliography to the contents page
 \addcontentsline{toc}{chapter}{References}
@@ -274,5 +305,31 @@
 \end{thebibliography}
 %\bibliographystyle{plain}
 %\include{chapter/contribution}      % include the contribution
-
+\appendix
+\lstset{firstnumber=1}
+\chapter{Python Codes}\label{Py_codes}
+\section{datapath monitor Code}\label{datapath_monitor_TOS}
+\lstinputlisting[language=Python]{datapath_monitor_TOS.py}
+%-------------------------------------------------------------------
+\section{main controller}\label{main_controller_TOS}
+\lstinputlisting[language=Python]{main_controller_TOS.py}
+%-------------------------------------------------------------------
+\section{Controller commands}\label{Controller_commands}
+\lstinputlisting[language=Python]{Controller_commands.py}
+%-------------------------------------------------------------------
+\section{Topology}\label{Topology}
+\lstinputlisting[language=Python]{Topology_qos_TRAFFIC_GEN.py}
+%-------------------------------------------------------------------
+\section{QOS Simple Switch}\label{qos_simple_switch_13}
+\lstinputlisting[language=Python]{qos_simple_switch_13.py}
+%-------------------------------------------------------------------
+\section{ofctl rest API}\label{ofctl_rest}
+\lstinputlisting[language=Python]{ofctl_rest.py}
+%-------------------------------------------------------------------
+\section{rest conf switch}\label{rest_conf_switch}
+\lstinputlisting[language=Python]{rest_conf_switch.py}
+%-------------------------------------------------------------------
+\section{rest qos}\label{rest_qos}
+\lstinputlisting[language=Python]{rest_qos.py}
+%-------------------------------------------------------------------
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.8.24)  4 SEP 2020 15:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.8.24)  4 SEP 2020 16:54
 entering extended mode
 **./mainTesi2.tex
 (mainTesi2.tex
@@ -537,59 +537,87 @@ File: pgfsysprotocol.code.tex 2020/01/08 v3.1.5b (3.1.5b)
  ("C:\Program Files\MiKTeX\tex/latex/setspace\setspace.sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
+("C:\Program Files\MiKTeX\tex/latex/appendix\appendix.sty"
+Package: appendix 2020/02/08 v1.2c extra appendix facilities
+\c@@pps=\count301
+\c@@ppsavesec=\count302
+\c@@ppsaveapp=\count303
+)
+("C:\Program Files\MiKTeX\tex/latex/listings\listings.sty"
+\lst@mode=\count304
+\lst@gtempboxa=\box55
+\lst@token=\toks35
+\lst@length=\count305
+\lst@currlwidth=\dimen269
+\lst@column=\count306
+\lst@pos=\count307
+\lst@lostspace=\dimen270
+\lst@width=\dimen271
+\lst@newlines=\count308
+\lst@lineno=\count309
+\lst@maxwidth=\dimen272
+
+("C:\Program Files\MiKTeX\tex/latex/listings\lstmisc.sty"
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count310
+\lst@skipnumbers=\count311
+\lst@framebox=\box56
+)
+("C:\Program Files\MiKTeX\tex/latex/listings\listings.cfg"
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+
 ("C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdfmode.def"
 File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count301
-\l__pdf_internal_box=\box55
+\l__kernel_color_stack_int=\count312
+\l__pdf_internal_box=\box57
 )
-(mainTesi2.aux (chapter/acknowledgements.aux) (chapter/abstract.aux)
-
-LaTeX Warning: Label `fig:{errorPescara}' multiply defined.
-
-)
+(mainTesi2.aux (chapter/acknowledgements.aux) (chapter/abstract.aux))
 \openout1 = `mainTesi2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 188.
-LaTeX Font Info:    ... okay on input line 188.
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
-88.
- ("C:\Program Files\MiKTeX\tex/latex/psnfss\ot1ptm.fd"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 237.
+LaTeX Font Info:    ... okay on input line 237.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 237.
+LaTeX Font Info:    ... okay on input line 237.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 237.
+LaTeX Font Info:    ... okay on input line 237.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 237.
+LaTeX Font Info:    ... okay on input line 237.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 237.
+LaTeX Font Info:    ... okay on input line 237.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 237.
+LaTeX Font Info:    ... okay on input line 237.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 237.
+LaTeX Font Info:    ... okay on input line 237.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 237.
+LaTeX Font Info:    ... okay on input line 237.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2
+37.
+
+("C:\Program Files\MiKTeX\tex/latex/psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 ("C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count302
-\scratchdimen=\dimen269
-\scratchbox=\box56
-\nofMPsegments=\count303
-\nofMParguments=\count304
-\everyMPshowfont=\toks35
-\MPscratchCnt=\count305
-\MPscratchDim=\dimen270
-\MPnumerator=\count306
-\makeMPintoPDFobject=\count307
-\everyMPtoPDFconversion=\toks36
+\scratchcounter=\count313
+\scratchdimen=\dimen273
+\scratchbox=\box58
+\nofMPsegments=\count314
+\nofMParguments=\count315
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count316
+\MPscratchDim=\dimen274
+\MPnumerator=\count317
+\makeMPintoPDFobject=\count318
+\everyMPtoPDFconversion=\toks37
 ) ("C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty"
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 )
-\AtBeginShipoutBox=\box57
-Package hyperref Info: Link coloring OFF on input line 188.
+\AtBeginShipoutBox=\box59
+Package hyperref Info: Link coloring OFF on input line 237.
 
 ("C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty"
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -600,21 +628,22 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ("C:\Program Files\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty"
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count308
+\c@section@level=\count319
 )
-LaTeX Info: Redefining \ref on input line 188.
-LaTeX Info: Redefining \pageref on input line 188.
-LaTeX Info: Redefining \nameref on input line 188.
+LaTeX Info: Redefining \ref on input line 237.
+LaTeX Info: Redefining \pageref on input line 237.
+LaTeX Info: Redefining \nameref on input line 237.
 
 (mainTesi2.out) (mainTesi2.out)
 \@outlinefile=\write4
 \openout4 = `mainTesi2.out'.
 
  ABD: EveryShipout initializing macros
-<univaq_logo.png, id=85, 2731.20375pt x 1020.81375pt>
+\c@lstlisting=\count320
+<univaq_logo.png, id=117, 2731.20375pt x 1020.81375pt>
 File: univaq_logo.png Graphic file (type png)
 <use univaq_logo.png>
-Package pdftex.def Info: univaq_logo.png  used on input line 200.
+Package pdftex.def Info: univaq_logo.png  used on input line 249.
 (pdftex.def)             Requested size: 227.62204pt x 85.06241pt.
  [1
 
@@ -647,19 +676,19 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
 
 ("C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+) [1
+
+])
 \tf@toc=\write5
 \openout5 = `mainTesi2.toc'.
 
- [1
-
-] [2
-
-] (mainTesi2.lof)
+ [2] (mainTesi2.lof)
 \tf@lof=\write6
 \openout6 = `mainTesi2.lof'.
 
-[3] [4
+[3
+
+] [4
 
 ] (mainTesi2.lot)
 \tf@lot=\write7
@@ -683,16 +712,16 @@ l.12
 e.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.220 
+l.269 
        [3]pdfTeX warning (ext4): destination with the same identifier (name{pag
 e.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.223 \chapter
+l.272 \chapter
               {Background Knowledge} [4]
 Chapter 1.
 (chapter/00_BGK_cap1.tex
-<figure/ONF.png, id=320, 470.9595pt x 260.172pt>
+<figure/ONF.png, id=358, 470.9595pt x 260.172pt>
 File: figure/ONF.png Graphic file (type png)
 <use figure/ONF.png>
 Package pdftex.def Info: figure/ONF.png  used on input line 6.
@@ -717,19 +746,19 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 l.24 \item []
              \textbf{Application Plane}: The highest layer in the SDN archit...
 [6] [7]
-<figure/WorkFlow.png, id=423, 687.7695pt x 474.573pt>
+<figure/WorkFlow.png, id=461, 687.7695pt x 474.573pt>
 File: figure/WorkFlow.png Graphic file (type png)
 <use figure/WorkFlow.png>
 Package pdftex.def Info: figure/WorkFlow.png  used on input line 35.
 (pdftex.def)             Requested size: 369.88582pt x 255.23009pt.
 ) (chapter/00_BGK_cap2.tex [8 <./figure/WorkFlow.png>]
-<figure/ML_algo.png, id=436, 373.99725pt x 488.42474pt>
+<figure/ML_algo.png, id=474, 373.99725pt x 488.42474pt>
 File: figure/ML_algo.png Graphic file (type png)
 <use figure/ML_algo.png>
 Package pdftex.def Info: figure/ML_algo.png  used on input line 7.
 (pdftex.def)             Requested size: 369.88582pt x 483.08736pt.
  [9] [10 <./figure/ML_algo.png>]
-<figure/NN_base.png, id=469, 422.7795pt x 305.34074pt>
+<figure/NN_base.png, id=507, 422.7795pt x 305.34074pt>
 File: figure/NN_base.png Graphic file (type png)
 <use figure/NN_base.png>
 Package pdftex.def Info: figure/NN_base.png  used on input line 28.
@@ -768,7 +797,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/SDN_net_EPS-eps-converted-to.pdf): PDF 
 inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/SDN_net_EPS-eps-converted-to.pdf, id=627, 1498.59875pt x 769.87625pt>
+<figure/SDN_net_EPS-eps-converted-to.pdf, id=665, 1498.59875pt x 769.87625pt>
 File: figure/SDN_net_EPS-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/SDN_net_EPS-eps-converted-to.pdf>
 Package pdftex.def Info: figure/SDN_net_EPS-eps-converted-to.pdf  used on input
@@ -791,7 +820,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/QUEUE-eps-converted-to.pdf): PDF inclus
 ion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/QUEUE-eps-converted-to.pdf, id=656, 2809.49625pt x 517.935pt>
+<figure/QUEUE-eps-converted-to.pdf, id=694, 2809.49625pt x 517.935pt>
 File: figure/QUEUE-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/QUEUE-eps-converted-to.pdf>
 Package pdftex.def Info: figure/QUEUE-eps-converted-to.pdf  used on input line 
@@ -813,7 +842,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/Error_Disturbance-eps-converted-to.pdf)
 : PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/Error_Disturbance-eps-converted-to.pdf, id=673, 1445.4pt x 719.68875pt>
+<figure/Error_Disturbance-eps-converted-to.pdf, id=711, 1445.4pt x 719.68875pt>
 
 File: figure/Error_Disturbance-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/Error_Disturbance-eps-converted-to.pdf>
@@ -839,7 +868,7 @@ Package epstopdf Info: Output file is already uptodate.
 pdfTeX warning: pdflatex (file ./figure/Error_Disturbance_Packets-eps-converted
 -to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> all
 owed
-<figure/Error_Disturbance_Packets-eps-converted-to.pdf, id=674, 1445.4pt x 675.
+<figure/Error_Disturbance_Packets-eps-converted-to.pdf, id=712, 1445.4pt x 675.
 52374pt>
 File: figure/Error_Disturbance_Packets-eps-converted-to.pdf Graphic file (type 
 pdf)
@@ -867,7 +896,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/NRMSENNvsRTvsRF-eps-converted-to.pdf): 
 PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/NRMSENNvsRTvsRF-eps-converted-to.pdf, id=710, 1445.4pt x 755.82375pt>
+<figure/NRMSENNvsRTvsRF-eps-converted-to.pdf, id=748, 1445.4pt x 755.82375pt>
 File: figure/NRMSENNvsRTvsRF-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/NRMSENNvsRTvsRF-eps-converted-to.pdf>
 Package pdftex.def Info: figure/NRMSENNvsRTvsRF-eps-converted-to.pdf  used on i
@@ -890,7 +919,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/Error_State-eps-converted-to.pdf): PDF 
 inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/Error_State-eps-converted-to.pdf, id=712, 1445.4pt x 755.82375pt>
+<figure/Error_State-eps-converted-to.pdf, id=750, 1445.4pt x 755.82375pt>
 File: figure/Error_State-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/Error_State-eps-converted-to.pdf>
 Package pdftex.def Info: figure/Error_State-eps-converted-to.pdf  used on input
@@ -911,7 +940,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/Error_State_ddM4-eps-converted-to.pdf):
  PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/Error_State_ddM4-eps-converted-to.pdf, id=713, 1445.4pt x 755.82375pt>
+<figure/Error_State_ddM4-eps-converted-to.pdf, id=751, 1445.4pt x 755.82375pt>
 File: figure/Error_State_ddM4-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/Error_State_ddM4-eps-converted-to.pdf>
 Package pdftex.def Info: figure/Error_State_ddM4-eps-converted-to.pdf  used on 
@@ -933,7 +962,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/cumPL1-eps-converted-to.pdf): PDF inclu
 sion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/cumPL1-eps-converted-to.pdf, id=762, 1156.32pt x 559.08875pt>
+<figure/cumPL1-eps-converted-to.pdf, id=800, 1156.32pt x 559.08875pt>
 File: figure/cumPL1-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/cumPL1-eps-converted-to.pdf>
 Package pdftex.def Info: figure/cumPL1-eps-converted-to.pdf  used on input line
@@ -956,7 +985,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/cumPL_Total-eps-converted-to.pdf): PDF 
 inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/cumPL_Total-eps-converted-to.pdf, id=763, 1156.32pt x 594.22pt>
+<figure/cumPL_Total-eps-converted-to.pdf, id=801, 1156.32pt x 594.22pt>
 File: figure/cumPL_Total-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/cumPL_Total-eps-converted-to.pdf>
 Package pdftex.def Info: figure/cumPL_Total-eps-converted-to.pdf  used on input
@@ -981,7 +1010,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/BW_NoPred-eps-converted-to.pdf): PDF in
 clusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/BW_NoPred-eps-converted-to.pdf, id=787, 1101.11375pt x 849.1725pt>
+<figure/BW_NoPred-eps-converted-to.pdf, id=825, 1101.11375pt x 849.1725pt>
 File: figure/BW_NoPred-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/BW_NoPred-eps-converted-to.pdf>
 Package pdftex.def Info: figure/BW_NoPred-eps-converted-to.pdf  used on input l
@@ -1001,7 +1030,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/BW_Pred-eps-converted-to.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/BW_Pred-eps-converted-to.pdf, id=788, 1101.11375pt x 849.1725pt>
+<figure/BW_Pred-eps-converted-to.pdf, id=826, 1101.11375pt x 849.1725pt>
 File: figure/BW_Pred-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/BW_Pred-eps-converted-to.pdf>
 Package pdftex.def Info: figure/BW_Pred-eps-converted-to.pdf  used on input lin
@@ -1023,37 +1052,13 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/MPCfinal-eps-converted-to.pdf): PDF inc
 lusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/MPCfinal-eps-converted-to.pdf, id=808, 1016.79875pt x 513.92pt>
+<figure/MPCfinal-eps-converted-to.pdf, id=846, 1016.79875pt x 513.92pt>
 File: figure/MPCfinal-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/MPCfinal-eps-converted-to.pdf>
 Package pdftex.def Info: figure/MPCfinal-eps-converted-to.pdf  used on input li
 ne 177.
 (pdftex.def)             Requested size: 390.25534pt x 258.48851pt.
-Package epstopdf Info: Source file: <figure/Error_PESCARA_DATA.eps>
-(epstopdf)                    date: 2020-06-30 16:26:36
-(epstopdf)                    size: 38589 bytes
-(epstopdf)             Output file: <figure/Error_PESCARA_DATA-eps-converted-to
-.pdf>
-(epstopdf)                    date: 2020-08-28 16:22:45
-(epstopdf)                    size: 13059 bytes
-(epstopdf)             Command: <epstopdf --outfile=figure/Error_PESCARA_DATA-e
-ps-converted-to.pdf figure/Error_PESCARA_DATA.eps>
-(epstopdf)             \includegraphics on input line 202.
-Package epstopdf Info: Output file is already uptodate.
-
-
-pdfTeX warning: pdflatex (file ./figure/Error_PESCARA_DATA-eps-converted-to.pdf
-): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/Error_PESCARA_DATA-eps-converted-to.pdf, id=815, 1156.32pt x 594.22pt>
-File: figure/Error_PESCARA_DATA-eps-converted-to.pdf Graphic file (type pdf)
-<use figure/Error_PESCARA_DATA-eps-converted-to.pdf>
-Package pdftex.def Info: figure/Error_PESCARA_DATA-eps-converted-to.pdf  used o
-n input line 202.
-(pdftex.def)             Requested size: 433.62pt x 281.4686pt.
-) [34 <./figure/MPCfinal-eps-converted-to.pdf>] [35 <./figure/Error_PESCARA_DAT
-A-eps-converted-to.pdf>] [36
-
-]
+) [34 <./figure/MPCfinal-eps-converted-to.pdf>]
 Chapter 3.
 (chapter/RealNet.tex
 Package epstopdf Info: Source file: <figure/Error_PESCARA_DATA.eps>
@@ -1067,38 +1072,44 @@ Package epstopdf Info: Source file: <figure/Error_PESCARA_DATA.eps>
 ps-converted-to.pdf figure/Error_PESCARA_DATA.eps>
 (epstopdf)             \includegraphics on input line 8.
 Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ./figure/Error_PESCARA_DATA-eps-converted-to.pdf
+): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<figure/Error_PESCARA_DATA-eps-converted-to.pdf, id=862, 1156.32pt x 594.22pt>
 File: figure/Error_PESCARA_DATA-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/Error_PESCARA_DATA-eps-converted-to.pdf>
 Package pdftex.def Info: figure/Error_PESCARA_DATA-eps-converted-to.pdf  used o
 n input line 8.
 (pdftex.def)             Requested size: 433.62pt x 281.4686pt.
 
-
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) (chapter/10_conclusion.tex [37] [38]) (mainTesi2.bbl [39
+) (chapter/10_conclusion.tex [35
 
-] [40
+] [36 <./figure/Error_PESCARA_DATA-eps-converted-to.pdf>]) (mainTesi2.bbl [37
 
-] [41]
+] [38
+
+] [39]
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
 5.
 
 ("C:\Program Files\MiKTeX\tex/latex/psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [42]
+) [40]
 Underfull \hbox (badness 10000) in paragraph at lines 153--155
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / www . opennetworking . org /
  wp-[]content / uploads /
  []
 
-[43]
+[41]
 Underfull \hbox (badness 10000) in paragraph at lines 267--269
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / github . com / CPqD / ofsoft
 switch13 / wiki /
  []
 
-[44]
+[42]
 Underfull \hbox (badness 10000) in paragraph at lines 288--293
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / www . microsoft . com / en-[
 ]us / research /
@@ -1116,7 +1127,7 @@ Underfull \hbox (badness 1253) in paragraph at lines 344--351
 pro-gram-ming
  []
 
-[45]
+[43]
 Underfull \hbox (badness 1009) in paragraph at lines 378--385
 \OT1/ptm/m/n/12 SDN con-trol plane: Im-ple-men-ta-tion and eval-u-a-tion[], Com
 -put-ers & Elec-tri-cal
@@ -1128,7 +1139,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 378--385
 cience / article / pii /
  []
 
-[46] [47]
+[44] [45]
 Underfull \hbox (badness 3312) in paragraph at lines 542--549
 []\OT1/ptm/m/n/12 J. Xie, D. Guo, Z. Hu, T. Qu, P. Lv, []Con-trol plane of soft
 -ware de-
@@ -1146,7 +1157,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 542--549
 cience / article / pii /
  []
 
-[48]
+[46]
 Underfull \hbox (badness 10000) in paragraph at lines 637--645
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 http : / / www . sciencedirect . com / s
 cience / article / pii /
@@ -1158,14 +1169,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 654--661
 cience / article / pii /
  []
 
-[49]
+[47]
 Overfull \hbox (326.42572pt too wide) in paragraph at lines 667--674
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 http : / / papers . nips . cc / paper / 
 4824-[]imagenet-[]classification-[]with-[]deep-[]convolutional-[]neural-[]netwo
 rks .
  []
 
-[50]
+[48]
 Underfull \hbox (badness 2961) in paragraph at lines 736--743
 []\OT1/ptm/m/n/12 L. P. Kael-bling, M. L. Littman, A. W. Moore, []Re-in-force-m
 ent Learn-ing:
@@ -1183,36 +1194,66 @@ Underfull \hbox (badness 10000) in paragraph at lines 736--743
 hp / jair / article / view /
  []
 
-[51]
+[49]
 Underfull \hbox (badness 10000) in paragraph at lines 806--808
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / osrg . github . io / ryu-[]b
 ook / en / html / rest _ qos .
  []
 
-) [52] [53
+) [50] [51
+
+] [52
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 278.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 278.
- (mainTesi2.aux (chapter/acknowledgements.aux) (chapter/abstract.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 278.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 278.
+Appendix A.
+("C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty"
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 312.
+
+(datapath_monitor_TOS.py
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 3
+0.
+ ("C:\Program Files\MiKTeX\tex/latex/psnfss\omsptm.fd"
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 30.
+[53] [54]
+LaTeX Font Info:    Trying to load font information for OML+ptm on input line 8
+0.
+ ("C:\Program Files\MiKTeX\tex/latex/psnfss\omlptm.fd"
+File: omlptm.fd 
+)
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 80.
+ [55] [56]
+[57] [58] [59]) (main_controller_TOS.py [60] [61]) (Controller_commands.py
+[62] [63] [64] [65]) (Topology_qos_TRAFFIC_GEN.py [66] [67] [68] [69] [70]
+[71] [72] [73] [74]) (qos_simple_switch_13.py [75] [76] [77]) (ofctl_rest.py
+[78] [79] [80] [81] [82] [83] [84] [85] [86] [87] [88] [89] [90] [91] [92])
+(rest_conf_switch.py [93] [94] [95]) (rest_qos.py [96] [97] [98] [99] [100]
+[101] [102] [103] [104] [105] [106] [107] [108] [109] [110] [111] [112]
+[113] [114] [115] [116] [117]) [118]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 335.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 335.
+ (mainTesi2.aux
+(chapter/acknowledgements.aux) (chapter/abstract.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 335.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 335.
 Package rerunfilecheck Info: File `mainTesi2.out' has not changed.
-(rerunfilecheck)             Checksum: E33D894825C0175E3307B2B949949883;1447.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 278.
+(rerunfilecheck)             Checksum: 756783706AB01A3670CD43880F77BCA1;1883.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 335.
  ) 
 Here is how much of TeX's memory you used:
- 11677 strings out of 480790
- 183208 string characters out of 2907058
- 512532 words of memory out of 3000000
- 27067 multiletter control sequences out of 15000+200000
- 564323 words of font info for 86 fonts, out of 3000000 for 9000
+ 18520 strings out of 480790
+ 284181 string characters out of 2907058
+ 1177148 words of memory out of 3000000
+ 30505 multiletter control sequences out of 15000+200000
+ 565715 words of font info for 88 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,15n,62p,2287b,551s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 43i,15n,70p,2287b,2193s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX
 /fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfo
@@ -1231,9 +1272,9 @@ r8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program F
 iles/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX/fonts/ty
 pe1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmri8a
 .pfb>
-Output written on mainTesi2.pdf (65 pages, 1674507 bytes).
+Output written on mainTesi2.pdf (130 pages, 2500370 bytes).
 PDF statistics:
- 1219 PDF objects out of 1440 (max. 8388607)
- 258 named destinations out of 1000 (max. 500000)
- 263 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 5480 PDF objects out of 6186 (max. 8388607)
+ 3612 named destinations out of 4296 (max. 500000)
+ 327 words of extra memory for PDF output out of 10000 (max. 10000000)
 

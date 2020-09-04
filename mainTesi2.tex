@@ -90,6 +90,9 @@
   \endgroup
 }
 
+%\usepackage[round]{natbib} 
+%\usepackage{bibtopic}
+%\newcommand*{\bibref}[1]{\citealt{#1}} %cite item
 
 %% For Theorems, Lemmas, Definitions etc.   
 %\usepackage{blindtext}
@@ -216,17 +219,17 @@
 \input{chapter/00_01_introduction.tex}
 
 %now include the files of latex for each of the chapters etc
-\addcontentsline{toc}{chapter}{PART I: Background Knowledge}
-\chapter*{\centering PART I: Background Knowledge}
+%\addcontentsline{toc}{chapter}{PART I: Background Knowledge}
+\chapter{Background Knowledge}
 \input{chapter/00_BGK_cap1}
 \input{chapter/00_BGK_cap2}
-\addcontentsline{toc}{chapter}{PART II: Problem Formulations}
-\chapter*{\centering PART II: Problem Formulations}  
+%\addcontentsline{toc}{chapter}{PART II: Problem Formulations}
+\chapter{Problem Formulation}  
 
 \input{chapter/01_cap1}
 \input{chapter/02_cap2}
-\addcontentsline{toc}{chapter}{PART II: Experimental Results}
-\chapter*{\centering PART III: Experimental Results}  
+%\addcontentsline{toc}{chapter}{PART III: Experimental Results}
+\chapter{Experimental Results}  
 \input{chapter/03_cap3}
 %\input{chapter/04_cap4}
 %\input{chapter/05_cap5}
@@ -245,12 +248,25 @@
 %\input{chapter/appendice}
 
 %next line adds the Bibliography to the contents page
-\addcontentsline{toc}{chapter}{Bibliography}
+\addcontentsline{toc}{chapter}{References}
 %uncomment next line to change bibliography name to references
 \renewcommand{\bibname}{References}
 \bibliography{SDN}        %use a bibtex bibliography file refs.bib
 \bibliographystyle{elsarticle-num}  %use the plain bibliography style
 
+\addcontentsline{toc}{chapter}{Publications}
+\renewcommand{\bibname}{Publications}
+
+\begin{thebibliography}{4}
+\bibitem[1]{1} Enrico Reticcioli, Tommaso Campi, Valerio De Santis, An Automated Scanning System for the Acquisition of Non-Uniform Time-Varying Magnetic Fields, IEEE Transactions on Instrumentation and Measurement, 2019
+
+\bibitem[2]{2}Achin Jain, Francesco Smarra, Enrico Reticcioli, Alessandro D'Innocenzo, Manfred Morari, NeurOpt: Neural network based optimization for building energy management and climate control, Learning for Dynamics and Control (L4DC) conference, 2020
+
+\bibitem[3]{3}Enrico Reticcioli, Giovanni Domenico Di Girolamo, Francsco Smarra, Alessio Carmenini, Alessandro D’Innocenzo and Fabio Graziosi, Learning SDN traffic flow accurate models to enable queue bandwidth dynamic optimization, European Conference on Networks and Communications (EuCNC 2020) conference, 2020
+
+\bibitem[4]{4}Enrico Reticcioli, Giovanni Domenico Di Girolamo, Francsco Smarra, Fabio Graziosi and Alessandro D’Innocenzo, Model Identification and Control of Priority Queueing in Software Defined Networks, Submitted to Computer Networks, 2020
+\end{thebibliography}
+%\bibliographystyle{plain}
 %\include{chapter/contribution}      % include the contribution
 
 \end{document}

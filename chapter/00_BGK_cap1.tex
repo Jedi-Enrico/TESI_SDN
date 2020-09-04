@@ -1,7 +1,4 @@
-\chapter{Software Defined Networks} \label{sec:SDN_BGK}
-In this chapter a brief background knowledge of architecture and workflow of SDN has been presented.
-
-\section{Architecture}
+\section{Software Defined Networks Architecture} \label{sec:SDN_BGK}
 The Open Networking Foundation (ONF) \cite{ONF} is a nonprofit consortium dedicated to the development and standardization of SDN. The SDN paradigm has been defined by ONF as follows: “In the SDN architecture, the control plane and data plane are decoupled, network intelligence and state are logically centralized, and the underlying network infrastructure is abstracted from the applications” \cite{Sezer2013}.
 A SDN architecture is presented is composed by three main planes, including data plane, control plane and application plane. The architectural components of each plane and their interactions are shown in Figure \ref{fig:{ONF}}. In the following, we will give a brief description of these planes and their interactions.
 \begin{figure}[tb!]
@@ -31,7 +28,7 @@ SDN has been deployed in many networks, such as transport networks \cite{Alvizu2
 For more informations on SDN, please refer to \cite{Nunes2014, Jarraya2014, Xia2015, Hu2014, Xie2015, Trois2016, Huang2017, Blenk2016}.
 
 
-\section{Workflow}
+\subsection{Workflow}
 To understand the SDN architecture, it is important to recall its basic operation. Figure \ref{fig:{WorkFlow}} shows the working procedure of the OpenFlow-based SDN network \cite{OFP13}. Each OpenFlow switch has a flow table and uses the OpenFlow protocol to communicate with the SDN controller. The messages transmitted between the OpenFlow-based switches and the software-based controller are standardized by the OpenFlow protocol \cite{Erickson2013}. The OpenFlow controller can manage the traffic forwarding by modifying flow entries in switches flow tables.
 \begin{figure}[tb!]
 	\centering

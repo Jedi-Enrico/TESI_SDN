@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 import pandas as pd
 import time
 
@@ -14,9 +15,9 @@ SIZE = 576
 SIM = 720
 # Simulation in number of intevals
 SIM_N = SIM * 12
-computername="jedi"
+computername="pi"
 # CSV File
-CSV = '/home/'+computername+'/Scrivania/RyuDatapathMonitor-master/CSV/vlan_interfaccia1_DOS.csv'
+CSV = '/home/'+computername+'/Desktop/Hardware_Interface/CSV/vlan_interfaccia1_DOS.csv'
 # ToS 
 SERV_0 = "0"
 SERV_1 = "32"
@@ -48,8 +49,7 @@ DEFAULT_P = "UDP"
 DEFAULT_PS = "512"
 
 # Host Ip
-src = "10.0.0.11"
-dst = "10.0.0.13"
+dst = "169.254.207.100"
 
 # Type of distribution
 choice_i = c_idt
@@ -63,7 +63,7 @@ def createCmd(src, dst, tos, nPkts, avg, protocol=DEFAULT_P, ps_dim=DEFAULT_PS):
 
 # Cmd creation
 def createCmd_2(dst, port, tos, nPkts, avg, protocol=DEFAULT_P, ps_dim=DEFAULT_PS):		
-    com = 'ITGSend -a ' + dst + ' -rp ' + str(port) + ' -b ' + tos + ' ' + choice_i + ' ' + str(avg) + ' ' + choice_s + ' ' + ps_dim + ' -t ' + str(TIME_MS-10000) + ' &'				
+    com = 'ITGSend -a ' + dst + ' -rp ' + str(port) + ' -b ' + tos + ' ' + choice_i + ' ' + str(avg) + ' ' + choice_s + ' ' + ps_dim + ' -t ' + str(TIME_MS-10000)+ ' &'				
     return com
 
 # Cmd creation Iperf

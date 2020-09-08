@@ -65,7 +65,6 @@ def myNetwork():
     h5 = net.addHost('h5', ip='10.15/24', mac='00:00:00:00:00:0f')
 
     info( '***Adding Link\n')
-##    net.addLink(s1,s2,2,2,cls=TCLink,bw=10)
     net.addLink(s1,s2,2,2)
     
     net.addLink(s1, h0,3,0)
@@ -87,7 +86,7 @@ def myNetwork():
     net.get('s2').start([c0])
 
 
-    #Attivazione del manager in ascolto sulla porta 6632
+    #Activation of manager in listening on port 6632
     os.popen("sudo -S ovs-vsctl set-manager ptcp:6632", 'w').write("Ao70pa45")
     time.sleep(2)
     NET = get_switchis()
@@ -114,7 +113,6 @@ def myNetwork():
             IP_Flag=True
             for index in range(0,len(port_id)):
                 if port_id[index]=="s1-eth2" or port_id[index]=="s2-eth2":
-##                    print "Port_ID: "+port_id[index]
                     set_queue(datapath, port_id[index], str(max_rate_queue), "{\"max_rate\": \""+Default+"\"}, {\"max_rate\": \""+Premium+"\"}, {\"min_rate\": \""+Gold+"\"}")
                     port = port_id[index][port_id[index].find("h")+1:]
                     if port_id[index]=="s1-eth2":
@@ -124,7 +122,6 @@ def myNetwork():
                     set_Telecom_queue(datapath, port, IP_Flag, IP_Destination)
             for index in range(0,len(port_id)):
                 if port_id[index]=="s1-eth4" or port_id[index]=="s2-eth3":
-##                    set_queue(datapath, port_id[index], str(max_rate_queue), "{\"max_rate\": \""+Default+"\"}, {\"max_rate\": \""+Premium+"\"}, {\"min_rate\": \""+Gold+"\"}")
                     port = port_id[index][port_id[index].find("h")+1:]
                     if port_id[index]=="s1-eth4":
                         IP_Destination="10.0.0.13"
@@ -132,7 +129,7 @@ def myNetwork():
                         IP_Destination="10.0.0.11"
                     set_Telecom_queue(datapath, port, IP_Flag, IP_Destination)
 
-    # Import CSV
+    # Import CSV data
     print 'Csv Import'
     serv = ditg.pd.read_csv(ditg.CSV, sep=';', usecols=[0], skiprows=[0]) # serv 0 tx
     time_values = serv.values
@@ -178,7 +175,6 @@ def myNetwork():
     F0=F0_max
     F1=1
     F2=1
-##    print time_values[0]
     print 'Wait for time alignment'
     wait=ditg.TIME/60
     check_time=False
@@ -199,7 +195,6 @@ def myNetwork():
                     break
                 k=k+1
     print 'Starting Time: '+str(time_values[i])
-
     while j < ditg.SIM_N:
         #calculate the moltiplicators
 
@@ -236,7 +231,6 @@ def myNetwork():
         n[0] = int(serv_0_tx[i])*F0 / ditg.SCALE + 1
         avg[0] = n[0] / (ditg.TIME-10) + 1
         if avg[0] > 0 and n[0] > 0:
-            #com = ditg.createCmd(src=ditg.src,dst=ditg.dst,tos=ditg.SERV_0,nPkts=str(n[0]),avg=str(avg[0]))
             com = ditg.createCmd_2(dst=ditg.dst,port="10001",tos=ditg.SERV_0,nPkts=str(n[0]),avg=str(avg[0]))
             print(com)
             h1.cmd(com)
@@ -246,7 +240,6 @@ def myNetwork():
         n[0] = int(serv_0_rx[i])*F0 / ditg.SCALE + 1
         avg[0] = n[0] / (ditg.TIME-10) + 1
         if avg[0] > 0 and n[0] > 0:
-            #com = ditg.createCmd(src=ditg.dst,dst=ditg.src,tos=ditg.SERV_0,nPkts=str(n[0]),avg=str(avg[0]))
             com = ditg.createCmd_2(dst=ditg.src,port="10001",tos=ditg.SERV_0,nPkts=str(n[0]),avg=str(avg[0]))
             print(com)
             h3.cmd(com)
@@ -256,7 +249,6 @@ def myNetwork():
         n[1] = int(serv_1_tx[i])*F0 / ditg.SCALE + 1
         avg[1] = n[1] / (ditg.TIME-10) + 1
         if avg[1] > 0 and n[1] > 0:
-            #com = ditg.createCmd(src=ditg.src,dst=ditg.dst,tos=ditg.SERV_1,nPkts=str(n[1]),avg=str(avg[1]))
             com = ditg.createCmd_2(dst=ditg.dst,port="10002",tos=ditg.SERV_1,nPkts=str(n[1]),avg=str(avg[1]))
             print(com)
             h1.cmd(com)
@@ -266,7 +258,6 @@ def myNetwork():
         n[1] = int(serv_1_rx[i])*F0 / ditg.SCALE + 1
         avg[1] = n[1] / (ditg.TIME-10) + 1
         if avg[1] > 0 and n[1] > 0:
-            #com = ditg.createCmd(src=ditg.dst,dst=ditg.src,tos=ditg.SERV_1,nPkts=str(n[1]),avg=str(avg[1]))
             com = ditg.createCmd_2(dst=ditg.src,port="10002",tos=ditg.SERV_1,nPkts=str(n[1]),avg=str(avg[1]))
             print(com)
             h3.cmd(com)
@@ -276,7 +267,6 @@ def myNetwork():
         n[2] = int(serv_2_tx[i])*F1 / ditg.SCALE + 1
         avg[2] = n[2] / (ditg.TIME-10) + 1
         if avg[2] > 0 and n[2] > 0:
-            #com = ditg.createCmd(src=ditg.src,dst=ditg.dst,tos=ditg.SERV_2,nPkts=str(n[2]),avg=str(avg[2]))
             com = ditg.createCmd_2(dst=ditg.dst,port="10003",tos=ditg.SERV_2,nPkts=str(n[2]),avg=str(avg[2]))
             print(com)
             h1.cmd(com)
@@ -286,7 +276,6 @@ def myNetwork():
         n[2] = int(serv_2_rx[i])*F1 / ditg.SCALE + 1
         avg[2] = n[2] / (ditg.TIME-10) + 1
         if avg[2] > 0 and n[2] > 0:
-            #com = ditg.createCmd(src=ditg.dst,dst=ditg.src,tos=ditg.SERV_2,nPkts=str(n[2]),avg=str(avg[2]))
             com = ditg.createCmd_2(dst=ditg.src,port="10003",tos=ditg.SERV_2,nPkts=str(n[2]),avg=str(avg[2]))
             print(com)
             h3.cmd(com)
@@ -296,7 +285,6 @@ def myNetwork():
         n[3] = int(serv_3_tx[i])*F0 / ditg.SCALE + 1
         avg[3] = n[3] / (ditg.TIME-10) + 1
         if avg[3] > 0 and n[3] > 0:
-            #com = ditg.createCmd(src=ditg.src,dst=ditg.dst,tos=ditg.SERV_3,nPkts=str(n[3]),avg=str(avg[3]))
             com = ditg.createCmd_2(dst=ditg.dst,port="10004",tos=ditg.SERV_3,nPkts=str(n[3]),avg=str(avg[3]))
             print(com)
             h1.cmd(com)
@@ -306,7 +294,6 @@ def myNetwork():
         n[3] = int(serv_3_rx[i])*F0 / ditg.SCALE + 1
         avg[3] = n[3] / (ditg.TIME-10) + 1
         if avg[3] > 0 and n[3] > 0:
-            #com = ditg.createCmd(src=ditg.dst,dst=ditg.src,tos=ditg.SERV_3,nPkts=str(n[3]),avg=str(avg[3]))
             com = ditg.createCmd_2(dst=ditg.src,port="10004",tos=ditg.SERV_3,nPkts=str(n[3]),avg=str(avg[3]))
             print(com)
             h3.cmd(com)
@@ -316,7 +303,6 @@ def myNetwork():
         n[4] = int(serv_4_tx[i])*F1 / ditg.SCALE + 1
         avg[4] = n[4] / (ditg.TIME-10) + 1
         if avg[4] > 0 and n[4] > 0:
-            #com = ditg.createCmd(src=ditg.src,dst=ditg.dst,tos=ditg.SERV_4,nPkts=str(n[4]),avg=str(avg[4]))
             com = ditg.createCmd_2(dst=ditg.dst,port="10005",tos=ditg.SERV_4,nPkts=str(n[4]),avg=str(avg[4]))
             print(com)
             h1.cmd(com)
@@ -326,7 +312,6 @@ def myNetwork():
         n[4] = int(serv_4_rx[i])*F1 / ditg.SCALE + 1
         avg[4] = n[4] / (ditg.TIME-10) + 1
         if avg[4] > 0 and n[4] > 0:
-            #com = ditg.createCmd(src=ditg.dst,dst=ditg.src,tos=ditg.SERV_4,nPkts=str(n[4]),avg=str(avg[4]))
             com = ditg.createCmd_2(dst=ditg.src,port="10005",tos=ditg.SERV_4,nPkts=str(n[4]),avg=str(avg[4]))
             print(com)
             h3.cmd(com)
@@ -336,7 +321,6 @@ def myNetwork():
         n[5] = int(serv_5_tx[i])*F2 / ditg.SCALE + 1
         avg[5] = n[5] / (ditg.TIME-10) + 1
         if avg[5] > 0 and n[5] > 0:
-            #com = ditg.createCmd(src=ditg.src,dst=ditg.dst,tos=ditg.SERV_5,nPkts=str(n[5]),avg=str(avg[5]))
             com = ditg.createCmd_2(dst=ditg.dst,port="10006",tos=ditg.SERV_5,nPkts=str(n[5]),avg=str(avg[5]))
             print(com)
             h1.cmd(com)
@@ -346,7 +330,6 @@ def myNetwork():
         n[5] = int(serv_5_rx[i])*F2 / ditg.SCALE + 1
         avg[5] = n[5] / (ditg.TIME-10) + 1
         if avg[5] > 0 and n[5] > 0:
-            #com = ditg.createCmd(src=ditg.dst,dst=ditg.src,tos=ditg.SERV_5,nPkts=str(n[5]),avg=str(avg[5]))
             com = ditg.createCmd_2(dst=ditg.src,port="10006",tos=ditg.SERV_5,nPkts=str(n[5]),avg=str(avg[5]))
             print(com)
             h3.cmd(com)
@@ -356,7 +339,6 @@ def myNetwork():
         n[6] = int(serv_6_tx[i])*F1 / ditg.SCALE + 1
         avg[6] = n[6] / (ditg.TIME-10) + 1
         if avg[6] > 0 and n[6] > 0:
-            #com = ditg.createCmd(src=ditg.src,dst=ditg.dst,tos=ditg.SERV_6,nPkts=str(n[6]),avg=str(avg[6]))
             com = ditg.createCmd_2(dst=ditg.dst,port="10007",tos=ditg.SERV_6,nPkts=str(n[6]),avg=str(avg[6]))
             print(com)
             h1.cmd(com)
@@ -366,7 +348,6 @@ def myNetwork():
         n[6] = int(serv_6_rx[i])*F1 / ditg.SCALE + 1
         avg[6] = n[6] / (ditg.TIME-10) + 1
         if avg[6] > 0 and n[6] > 0:
-            #com = ditg.createCmd(src=ditg.dst,dst=ditg.src,tos=ditg.SERV_6,nPkts=str(n[6]),avg=str(avg[6]))
             com = ditg.createCmd_2(dst=ditg.src,port="10007",tos=ditg.SERV_6,nPkts=str(n[6]),avg=str(avg[6]))
             print(com)
             h3.cmd(com)
@@ -377,7 +358,6 @@ def myNetwork():
         n[7] = int(serv_7_tx[i])*F1 / ditg.SCALE + 1
         avg[7] = n[7] / (ditg.TIME-10) + 1
         if avg[7] > 0 and n[7] > 0:
-            #com = ditg.createCmd(src=ditg.src,dst=ditg.dst,tos=ditg.SERV_7,nPkts=str(n[7]),avg=str(avg[7]))
             com = ditg.createCmd_2(dst=ditg.dst,port="10008",tos=ditg.SERV_7,nPkts=str(n[7]),avg=str(avg[7]))
             print(com)
             h1.cmd(com)
@@ -387,21 +367,20 @@ def myNetwork():
         n[7] = int(serv_7_rx[i])*F1 / ditg.SCALE + 1
         avg[7] = n[7] / (ditg.TIME-10) + 1
         if avg[7] > 0 and n[7] > 0:
-            #com = ditg.createCmd(src=ditg.dst,dst=ditg.src,tos=ditg.SERV_7,nPkts=str(n[7]),avg=str(avg[7]))
             com = ditg.createCmd_2(dst=ditg.src,port="10008",tos=ditg.SERV_7,nPkts=str(n[7]),avg=str(avg[7]))
             print(com)
             h3.cmd(com)
             sum_out = sum_out + n[7]
 
         j = j+1
-##        i = j % ditg.SIZE
-        if i % ditg.SIZE==0:
+        i=i+1
+        if i % ditg.SIZE==0 and i!=0:
             i=0
-        else:
-            i=i+1
+        print i
         print('Sum of Packets IN: ' + str(sum_in))
         print('Sum of Packets OUT: ' + str(sum_out))
 
+	time.sleep(61)
         check_time=False
         while check_time==False:
             now=datetime.datetime.now()

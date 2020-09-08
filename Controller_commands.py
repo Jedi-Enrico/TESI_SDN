@@ -25,7 +25,6 @@ def ovssctl_set_bridge(switch_name):
     try:
         os.popen("sudo -S ovs-vsctl set Bridge "+switch_name+" protocols=OpenFlow13", 'w').write("Ao70pa45")
         print "\n"
-##        time.sleep(2)
     except:
         print "ovssctl_set_bridge: ERROR"
 
@@ -42,7 +41,6 @@ def get_switchis():
         list1[end_response]=','
         output=''.join(list1)+"]"
         print "\n"
-##        time.sleep(2)
     except:
         output="NO NET"
     return output
@@ -118,7 +116,6 @@ def set_queue(datapath, port_id, max_rate, queue_rate_list):
     print "Set queue on port "+port_id+" of switch "+datapath
     print queue_rate_list
     try:
-##        os.popen("curl -X POST -d '{\"port_name\": \""+port_id+"\", \"type\": \"linux-htb\", \"max_rate\": \""+max_rate+"\", \"queues\": ["+queue_rate_list+"]}' http://localhost:8080/qos/queue/"+datapath, 'w').write("Ao70pa45")
         output = subprocess.check_output("curl -X POST -d '{\"port_name\": \""+port_id+"\", \"type\": \"linux-htb\", \"max_rate\": \""+max_rate+"\", \"queues\": ["+queue_rate_list+"]}' http://localhost:8080/qos/queue/"+datapath,
              stderr=subprocess.STDOUT,
              shell=True)
@@ -134,10 +131,6 @@ def set_Telecom_queue(datapath, port_number, IP_flag, IP_dst):
     mom_datapath=''.join(mom_datapath)
     datapath=mom_datapath+datapath
     if IP_flag==True:
-        #Default Queue (queue_id = 0)
-    #    queue_rule(datapath, port, "0", "0")#Service 0
-    #    queue_rule(datapath, port, "32", "0")#Service 1
-    #    queue_rule(datapath, port, "96", "0")#Service 3
         queue_rule_byIP(datapath, port, "0", "0", IP_dst)#Service 0
         queue_rule_byIP(datapath, port, "8", "0", IP_dst)#Service 1
         queue_rule_byIP(datapath, port, "10", "0", IP_dst)#Service 1
@@ -147,11 +140,7 @@ def set_Telecom_queue(datapath, port_number, IP_flag, IP_dst):
         queue_rule_byIP(datapath, port, "26", "0", IP_dst)#Service 3
         queue_rule_byIP(datapath, port, "28", "0", IP_dst)#Service 3
         queue_rule_byIP(datapath, port, "30", "0", IP_dst)#Service 3
-        #Premium Queue (queue_id = 1)
-    #    queue_rule(datapath, port, "72", "1")#Service 2
-    #    queue_rule(datapath, port, "136", "1")#Service 4
-    #    queue_rule(datapath, port, "192", "1")#Service 6
-    #    queue_rule(datapath, port, "224", "1")#Service 7
+
         queue_rule_byIP(datapath, port, "16", "1", IP_dst)#Service 2
         queue_rule_byIP(datapath, port, "18", "1", IP_dst)#Service 2
         queue_rule_byIP(datapath, port, "20", "1", IP_dst)#Service 2
@@ -162,16 +151,12 @@ def set_Telecom_queue(datapath, port_number, IP_flag, IP_dst):
         queue_rule_byIP(datapath, port, "38", "1", IP_dst)#Service 4
         queue_rule_byIP(datapath, port, "48", "1", IP_dst)#Service 6
         queue_rule_byIP(datapath, port, "56", "1", IP_dst)#Service 7
-        #Gold Queue (queue_id = 2)
-    #    queue_rule(datapath, port, "160", "2")#Service 5
+
         queue_rule_byIP(datapath, port, "40", "2", IP_dst)#Service 5
         queue_rule_byIP(datapath, port, "46", "2", IP_dst)#Service 5
 
     if IP_flag==False:
         #Default Queue (queue_id = 0)
-    #    queue_rule(datapath, port, "0", "0")#Service 0
-    #    queue_rule(datapath, port, "32", "0")#Service 1
-    #    queue_rule(datapath, port, "96", "0")#Service 3
         queue_rule(datapath, port, "0", "0")#Service 0
         queue_rule(datapath, port, "8", "0")#Service 1
         queue_rule(datapath, port, "10", "0")#Service 1
@@ -182,10 +167,6 @@ def set_Telecom_queue(datapath, port_number, IP_flag, IP_dst):
         queue_rule(datapath, port, "28", "0")#Service 3
         queue_rule(datapath, port, "30", "0")#Service 3
         #Premium Queue (queue_id = 1)
-    #    queue_rule(datapath, port, "72", "1")#Service 2
-    #    queue_rule(datapath, port, "136", "1")#Service 4
-    #    queue_rule(datapath, port, "192", "1")#Service 6
-    #    queue_rule(datapath, port, "224", "1")#Service 7
         queue_rule(datapath, port, "16", "1")#Service 2
         queue_rule(datapath, port, "18", "1")#Service 2
         queue_rule(datapath, port, "20", "1")#Service 2
@@ -197,7 +178,6 @@ def set_Telecom_queue(datapath, port_number, IP_flag, IP_dst):
         queue_rule(datapath, port, "48", "1")#Service 6
         queue_rule(datapath, port, "56", "1")#Service 7
         #Gold Queue (queue_id = 2)
-    #    queue_rule(datapath, port, "160", "2")#Service 5
         queue_rule(datapath, port, "40", "2")#Service 5
         queue_rule(datapath, port, "46", "2")#Service 5
     

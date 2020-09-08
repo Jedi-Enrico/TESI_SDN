@@ -138,7 +138,18 @@ emph=[3]{click_and_crop,},
   %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title %%%Decommentare per far vedere il nome del file sotto al codice
 }
 
-
+\input{arduinoLanguage.tex} 
+\lstdefinestyle{myArduino}{
+  language=Arduino,
+  %% Add other words needing highlighting below %%
+  morekeywords=[1]{},                  % [1] -> dark green
+  morekeywords=[2]{FILE_WRITE},        % [2] -> light blue
+  morekeywords=[3]{SD, File},          % [3] -> bold orange
+  morekeywords=[4]{open, exists},      % [4] -> orange
+  %% The lines below add a nifty box around the code %%
+  frame=shadowbox,
+  rulesepcolor=\color{arduinoBlue},
+}
 %\usepackage[round]{natbib} 
 %\usepackage{bibtopic}
 %\newcommand*{\bibref}[1]{\citealt{#1}} %cite item
@@ -305,31 +316,62 @@ emph=[3]{click_and_crop,},
 \end{thebibliography}
 %\bibliographystyle{plain}
 %\include{chapter/contribution}      % include the contribution
+
+%Appendix A
 \appendix
 \lstset{firstnumber=1}
-\chapter{Python Codes}\label{Py_codes}
-\section{datapath monitor Code}\label{datapath_monitor_TOS}
+\chapter{Python Codes for Mininet Environment}\label{Py_codes}
+\section{datapath\textunderscore monitor\textunderscore TOS.py}\label{datapath_monitor_TOS}
 \lstinputlisting[language=Python]{datapath_monitor_TOS.py}
 %-------------------------------------------------------------------
-\section{main controller}\label{main_controller_TOS}
+\section{main\textunderscore controller\textunderscore TOS.py}\label{main_controller_TOS}
 \lstinputlisting[language=Python]{main_controller_TOS.py}
 %-------------------------------------------------------------------
-\section{Controller commands}\label{Controller_commands}
+\section{Controller\textunderscore commands.py}\label{Controller_commands}
 \lstinputlisting[language=Python]{Controller_commands.py}
 %-------------------------------------------------------------------
-\section{Topology}\label{Topology}
+\section{Topology\textunderscore qos\textunderscore TRAFFIC\textunderscore GEN.py}\label{Topology}
 \lstinputlisting[language=Python]{Topology_qos_TRAFFIC_GEN.py}
 %-------------------------------------------------------------------
-\section{QOS Simple Switch}\label{qos_simple_switch_13}
+\section{ditg.py}\label{ditg}
+\lstinputlisting[language=Python]{ditg.py}
+%-------------------------------------------------------------------
+\section{qos\textunderscore simple\textunderscore switch\textunderscore 13.py}\label{qos_simple_switch_13}
 \lstinputlisting[language=Python]{qos_simple_switch_13.py}
 %-------------------------------------------------------------------
-\section{ofctl rest API}\label{ofctl_rest}
+\section{ofctl\textunderscore rest.py}\label{ofctl_rest}
 \lstinputlisting[language=Python]{ofctl_rest.py}
 %-------------------------------------------------------------------
-\section{rest conf switch}\label{rest_conf_switch}
+\section{rest\textunderscore conf\textunderscore switch.py}\label{rest_conf_switch}
 \lstinputlisting[language=Python]{rest_conf_switch.py}
 %-------------------------------------------------------------------
-\section{rest qos}\label{rest_qos}
+\section{rest\textunderscore qos.py}\label{rest_qos}
 \lstinputlisting[language=Python]{rest_qos.py}
 %-------------------------------------------------------------------
+
+%Appendix B
+\lstset{firstnumber=2}
+\chapter{Codes For Dedicated Hardware Network Devices}\label{Py_codes_RNT}
+\section{Traffic\textunderscore Real\textunderscore Hwd.py}\label{Traffic_Real_Hwd}
+\lstinputlisting[language=Python]{RLNT/Traffic_Real_Hwd.py}
+%-------------------------------------------------------------------
+\section{Start\textunderscore ITGRecv.py}\label{Start_ITGRecv}
+\lstinputlisting[language=Python]{RLNT/Start_ITGRecv.py}
+%-------------------------------------------------------------------
+\section{ditg.py}\label{ditg_RLNT}
+\lstinputlisting[language=Python]{RLNT/ditg.py}
+%-------------------------------------------------------------------
+\section{Set\textunderscore Queue.py}\label{Set_Queue}
+\lstinputlisting[language=Python]{RLNT/Set_Queue.py}
+%-------------------------------------------------------------------
+\section{SendTime.py}\label{SendTime}
+\lstinputlisting[language=Python]{RLNT/SendTime.py}
+%-------------------------------------------------------------------
+\section{ReadTime.ino}\label{ReadTime}
+\lstinputlisting[language=Arduino]{RLNT/LetturaSerialePython.ino}
+%-------------------------------------------------------------------
+
+
+
+
 \end{document}

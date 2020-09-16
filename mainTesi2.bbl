@@ -830,6 +830,11 @@ A.~I. Techniques, opennn, \url{www.opennn.net} (2019).
 M.~F. M{\o}ller, A scaled conjugate gradient algorithm for fast supervised
   learning, Aarhus University, Computer Science Department, 1990.
 
+\bibitem{rasp}
+\href{https://www.raspberrypi.org/}{Teach, {Learn}, and {Make} with {Raspberry}
+  {Pi} – {Raspberry} {Pi}}.
+\newline\urlprefix\url{https://www.raspberrypi.org/}
+
 \bibitem{Cacti}
 \href{https://www.cacti.net/}{Cacti}.
 \newline\urlprefix\url{https://www.cacti.net/}

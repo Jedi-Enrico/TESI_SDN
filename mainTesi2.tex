@@ -34,6 +34,7 @@
 %\usepackage{rotating}
 %\usepackage{pdflscape}
 
+
 \usepackage{lineno,hyperref}
 \modulolinenumbers[5]
 \usepackage{url}
@@ -56,6 +57,7 @@
 \newtheorem{problem}{Problem}
 \newtheorem{remark}{Remark}
 \newtheorem{assumption}{Assumption}
+
 
 \newcommand{\X}{\mathcal{X}}
 \newcommand{\Xd}{\mathcal{X}_d}
@@ -150,6 +152,19 @@ emph=[3]{click_and_crop,},
   frame=shadowbox,
   rulesepcolor=\color{arduinoBlue},
 }
+
+%%Pacchetti per backround nero
+%\usepackage{showframe}
+\usepackage{adjustbox}
+\usepackage{xcolor}
+\newcommand*\Blackline[1]{%
+  \par\noindent\adjustbox{bgcolor=black,innercode={\color{white}}{},}%
+                     {\makebox[\linewidth][l]{\strut #1}}%
+  \par%
+}
+
+
+
 %\usepackage[round]{natbib} 
 %\usepackage{bibtopic}
 %\newcommand*{\bibref}[1]{\citealt{#1}} %cite item
@@ -283,7 +298,7 @@ emph=[3]{click_and_crop,},
 \chapter{Background Knowledge}
 \input{chapter/00_BGK_cap1}
 \input{chapter/00_BGK_cap2}
-\input{chapter/SwitchedModeling}
+%\input{chapter/SwitchedModeling}
 %\addcontentsline{toc}{chapter}{PART II: Problem Formulations}
 \chapter{Network emulation environment}
 \input{chapter/SDNNetSim}
@@ -321,20 +336,14 @@ emph=[3]{click_and_crop,},
 \appendix
 \lstset{firstnumber=1}
 \chapter{Python Codes for Mininet Environment}\label{Py_codes}
-\section{datapath\textunderscore monitor\textunderscore TOS.py}\label{datapath_monitor_TOS}
-\lstinputlisting[language=Python]{datapath_monitor_TOS.py}
-%-------------------------------------------------------------------
 \section{main\textunderscore controller\textunderscore TOS.py}\label{main_controller_TOS}
 \lstinputlisting[language=Python]{main_controller_TOS.py}
 %-------------------------------------------------------------------
+\section{datapath\textunderscore monitor\textunderscore TOS.py}\label{datapath_monitor_TOS}
+\lstinputlisting[language=Python]{datapath_monitor_TOS.py}
+%-------------------------------------------------------------------
 \section{Controller\textunderscore commands.py}\label{Controller_commands}
 \lstinputlisting[language=Python]{Controller_commands.py}
-%-------------------------------------------------------------------
-\section{Topology\textunderscore qos\textunderscore TRAFFIC\textunderscore GEN.py}\label{Topology}
-\lstinputlisting[language=Python]{Topology_qos_TRAFFIC_GEN.py}
-%-------------------------------------------------------------------
-\section{ditg.py}\label{ditg}
-\lstinputlisting[language=Python]{ditg.py}
 %-------------------------------------------------------------------
 \section{qos\textunderscore simple\textunderscore switch\textunderscore 13.py}\label{qos_simple_switch_13}
 \lstinputlisting[language=Python]{qos_simple_switch_13.py}
@@ -347,6 +356,12 @@ emph=[3]{click_and_crop,},
 %-------------------------------------------------------------------
 \section{rest\textunderscore qos.py}\label{rest_qos}
 \lstinputlisting[language=Python]{rest_qos.py}
+%-------------------------------------------------------------------
+\section{Topology\textunderscore qos\textunderscore TRAFFIC\textunderscore GEN.py}\label{Topology}
+\lstinputlisting[language=Python]{Topology_qos_TRAFFIC_GEN.py}
+%-------------------------------------------------------------------
+\section{ditg.py}\label{ditg}
+\lstinputlisting[language=Python]{ditg.py}
 %-------------------------------------------------------------------
 
 %Appendix B

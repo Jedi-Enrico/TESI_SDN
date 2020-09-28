@@ -741,26 +741,6 @@ L.~P. Kaelbling, M.~L. Littman, A.~W. Moore,
   {\path{doi:10.1613/jair.301}}.
 \newline\urlprefix\url{https://www.jair.org/index.php/jair/article/view/10166}
 
-\bibitem{SmarraADHS2018}
-F.~Smarra, A.~Jain, R.~Mangharam, A.~D'Innocenzo, Data-driven switched affine
-  modeling for model predictive control, in: IFAC Conference on Analysis and
-  Design of Hybrid Systems (ADHS'18), IFAC, 2018, pp. 199--204.
-
-\bibitem{smarraNAHS2020}
-F.~Smarra, G.~D. Di~Girolamo, V.~De~Iuliis, A.~Jain, R.~Mangharam,
-  A.~D'Innocenzo, Data-driven switching modeling for mpc using regression trees
-  and random forests, Nonlinear Analysis: Hybrid Systems 36C (2020).
-
-\bibitem{borrelli2017predictive}
-F.~Borrelli, et~al., Predictive control for linear and hybrid systems,
-  Cambridge University Press, 2017.
-
-\bibitem{BreimanCART2017}
-L.~Breiman, Classification and regression trees, Routledge, 2017.
-
-\bibitem{BreimanML2001}
-L.~Breiman, Random forests, Machine learning 45~(1) (2001) 5--32.
-
 \bibitem{Mininet}
 \href{http://mininet.org/}{Mininet}, 2019.
 \newline\urlprefix\url{http://mininet.org/}
@@ -805,6 +785,26 @@ A.~M. Langellotti, S.~Mastropietro, F.~T. Moretti, A.~Soldati, Notiziario
 \href{https://osrg.github.io/ryu-book/en/html/rest_qos.html}{QoS Ryubook 1.0
   documentation}, 2019.
 \newline\urlprefix\url{https://osrg.github.io/ryu-book/en/html/rest_qos.html}
+
+\bibitem{SmarraADHS2018}
+F.~Smarra, A.~Jain, R.~Mangharam, A.~D'Innocenzo, Data-driven switched affine
+  modeling for model predictive control, in: IFAC Conference on Analysis and
+  Design of Hybrid Systems (ADHS'18), IFAC, 2018, pp. 199--204.
+
+\bibitem{smarraNAHS2020}
+F.~Smarra, G.~D. Di~Girolamo, V.~De~Iuliis, A.~Jain, R.~Mangharam,
+  A.~D'Innocenzo, Data-driven switching modeling for mpc using regression trees
+  and random forests, Nonlinear Analysis: Hybrid Systems 36C (2020).
+
+\bibitem{borrelli2017predictive}
+F.~Borrelli, et~al., Predictive control for linear and hybrid systems,
+  Cambridge University Press, 2017.
+
+\bibitem{BreimanCART2017}
+L.~Breiman, Classification and regression trees, Routledge, 2017.
+
+\bibitem{BreimanML2001}
+L.~Breiman, Random forests, Machine learning 45~(1) (2001) 5--32.
 
 \bibitem{UDOO}
 \href{https://www.udoo.org/}{UDOO x86}, 2019.

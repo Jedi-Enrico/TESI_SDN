@@ -39,9 +39,218 @@ Using D-ITG Sender and Receiver SW modules it has been possible to establish a c
 
 In this work we first applied in our emulative scenario the static control of queues used in the Italian service provider network of \textit{Telecom Italia} \cite{Notiziario}, which is depicted in Figure \ref{fig:{queue}}. To this aim we defined 3 queues in $s0$ and configured the queues as follows: packets with the DSCP values 0, 1 and 3 (Default queue) are routed via queue 0, with maximum rate $u_1(k) = 20 \textit{MB/s}, \forall k$; the packets with values 2, 4, 6 and 7 (Premium queue) are routed on queue 1, with maximum rate $u_2(k) = 80 \textit{MB/s}, \forall k$; the packets with value 5 (Gold queue) are routed on queue 2, with minimum rate $u_3(k) = 100 \textit{MB/s}, \forall k$. To obtain this prioritization it has also been necessary to set the flow tables of $s0$ to discriminate incoming packets based on the DSCP value and the destination IP address, and re-route them to the desired queue. Also, to obtain a bottleneck situation in $s0$, we have chosen the bandwidth of the output port of switch $s0$ at 100 \textit{MB/s}. Using this configuration queue 2 uses the maximum capacity of the port to forward packets with preemptive priority, while the other two queues use the remaining bandwidth from 0 \textit{MB/s} to the specified maximum bandwidth based on needs.
 %As formally defined later in Section \ref{secSwitchedModeling}, the packets sent by the queues will be collected in the state vector to be controlled $x(k)\in\mathbf{R}^3,\ \forall k$,  while the bandwidth associated to the queues will compose the control variables vector $u(k)\in\mathbf{R}^3,\ \forall k$.
+To instantiate the chosen topology in Mininet it has been necessary to run the \ref{Topology} code from the Ubuntu command line with the following text:\\
+\Blackline{ sudo python Topology\textunderscore qos.py}
+In this script all network devices (remote controller, switches and hosts), their attributes and their connections are defined. Furthermore this script is also responsible for the traffic generated between hosts thanks to the function defined within the \ref{ditg} code that is iteratively used every five minutes to read the provided real data traffic database and generate the synthetic traffic inside the network. In lines $49$ to $53$ of \ref{Topology} code Mininet try to adding an external controller, Ryu in our case, to specified IP address and port. Obviously it is necessary that the controller is already instantiated before launching the network topology, and it is possible to do this through the following command:
+\Blackline{ ryu run main\textunderscore controller\textunderscore TOS.py rest\textunderscore qos.py rest\textunderscore conf\textunderscore switch.py ofctl\textunderscore rest.py}
+This command executes several scripts, the first one (\ref{main_controller_TOS}) is the Ryu controller which invokes additional functions designed for saving network information and setting queue bandwidths (from \ref{datapath_monitor_TOS} to \ref{qos_simple_switch_13}). The remaining scripts are all the rest APIs required for these features to work properly (\ref{ofctl_rest}, \ref{rest_conf_switch} and \ref{rest_qos} codes).
 
-As we will see in Section \ref{secExpRes}, using static priority control the queues will not be able to send all the packets incoming from network $n1$, and a dramatic amount of packets will be lost. This motivates the application of optimization techniques, which are enabled by the predictive models derived using the methodology described in the following section.
+As we will see in Section \ref{secExpRes}, using static priority control the queues will not be able to send all the packets incoming from network $n1$, and a dramatic amount of packets will be lost. This motivates the application of optimization techniques, which are enabled by the predictive models derived using the methodology described in section \ref{secSwitchedModeling}.
 
+\section{Switched affine modeling via RT and RF}\label{secSwitchedModeling}
+%====================================================================================================
+
+\textbf{\emph{Problem formulation.}} In this section it is illustrated the methodology to apply the results proposed in \cite{SmarraADHS2018,smarraNAHS2020} to identify, starting from a set of collected historical data $ \mathcal{D}=\{y(k),u(k),d(k)\}_{k = 0}^{\ell} $ as illustrated in the previous section, a switching ARX model of input-output behavior of the traffic flow in a switch of a SDN network as follows:
+%The aim of such predictive model is to enable the direct and computationally efficient implementation of Model Predictive Control for bandwidth and packet losses optimisation.
+\small
+\begin{equation}\label{eqIdentifiedModelNSARX}
+x(k+j+1) =	A'_{\sigma_j(x(k),d(k))} x(k) + \sum_{\alpha = 0}^{j}B'_{\sigma_{j}(x(k),d(k)),\alpha} u(k+\alpha) + f'_{\sigma_j(x(k),d(k))},
+\end{equation}
+\normalsize
+\noindent $j = 0,\ldots, N-1$, where $x(k) \doteq [y^\top(k)\ \cdots\ y^\top(k-\delta_y)\ u^\top(k-1)\ \cdots\ u^\top(k-\delta_u)]^\top\in\Real^{n_x}$ is an extended state to characterize a switching ARX model, with $x_\iota(k) \doteq [y_\iota(k)\ \cdots\ y_\iota(k-\delta_y)\ u^\top(k-1)\ \cdots\ u^\top(k-\delta_u)]^\top\in\Real^{\delta_y+1+3\delta_u}$, $\iota = 1,2,3$, $N$ is the chosen future predictive horizon, and  $\sigma_j : \mathbb{R}^{n_x+10} \to \mathcal M \subset \mathbb{N}$ is a switching signal that associates an operating mode in a finite set $\mathcal M$ to each pair $(x(k),d(k))$ and each prediction step $j$ of the horizon.
+It is possible to directly use model \eqref{eqIdentifiedModelNSARX} to setup the following problem, which can be solved using standard Quadratic Programming (QP) solvers:\\
+\begin{problem}\label{pbMPCSwitching}
+	\small
+	\vspace{-0.3cm}
+	\begin{equation*}
+		\begin{aligned}
+			& \underset{u_0,\ldots,u_{N-1}}{\text{minimize}} & &  \sum_{j=0}^{N-1} \left(\left(x_{j+1}-x_{\mathrm{ref}}\right)^\top Q \left(x_{j+1}-x_{\mathrm{ref}}\right) + u^\top_{j} R u_{j}\right)\\
+			& \text{subject to }            & &  x_{j+1} = A'_{\sigma_j(x_{0},d_{0})} x_0 + \sum_{\alpha = 0}^{j}B'_{\sigma_{j}(x_{0},d_{0}),\alpha} u_\alpha + f'_{\sigma_j(x_{0},d_{0})}\\       
+			&                               & &  u_{j}   \in \mathcal{U}\\
+			&                               & &  x_{0} = x(k), d_{0} = d(k)\\ 
+			&                               & &  j = 0,\ldots,N-1.			\\
+		\end{aligned}
+		\vspace{0.1cm}
+	\end{equation*}
+	\normalsize
+\end{problem}
+\noindent As it is well known \cite{borrelli2017predictive}, Problem \ref{pbMPCSwitching} is solved at each time step $k$ using QP to compute the optimal sequence $u^*_0,\ldots,u^*_{N-1}$, but only the first input is applied to the system, i.e. $u(k) = u^*_0$. Note that, for any prediction step $j$, $x_{j+1}$ only depends on the measurements $x_0=x(k),d_0=d(k)$ at time $k$, since they are the only available measurements at time-step $k$. 
+%\subsection{Switching ARX Identification using RF}\label{secSARX}
+
+%====================================================================================================
+
+\textbf{\emph{RT and RF background.}} Let us consider a dataset $\{y(k),x_1(k),\ldots,x_\eta(k)\}_{k=0}^\ell$, with $y,x_1,\ldots,x_\eta\in\mathbb{R}$. Let us suppose  to estimate, using Regression Trees, the prediction of the (response) variable $y(k)$ using the values of predictor variables $x_1(k),\ldots,x_\eta(k)$. The CART algorithm \cite{BreimanCART2017} creates a RT structure via optimal partition of the dataset. It solves a Least Square problem by optimally choosing recursively a variable to split and a corresponding splitting point. After several steps the algorithm converges to the optimal solution, and the dataset is partitioned in hyper-rectangular regions (the leaves of the tree) $R_1, R_2,\cdots, R_\nu$. In each partition $y(k)$ is estimated with a different constant $\hat y_i\, i=1,\ldots,\nu,$ given by the average of the samples of $y(k)$ falling in $R_i$, i.e.
+
+\begin{equation}\label{eqAverageResponseRT}
+\hat y_{i} = \frac{\sum\limits_{\{k|(x_1(k),\ldots, x_\eta(k)) \in R_i\}}y(k)}{|R_i|}
+\end{equation}
+
+
+\noindent Random Forests \cite{BreimanML2001} are instead an averaging method that exploits a combination of tree predictors such that each tree depends on the values of a random vector sampled independently and with the same distribution for all trees in the forest. The output prediction is given by averaging the predictions provided by all trees in the forest. It is possible to show that the error introduced by the forests quickly and almost surely converges to a limit as the number of trees in the forest becomes large. Such error also depends on the strength of the individual trees in the forest and the correlation between them. Thus, due to the Law of Large Numbers, Random Forests (differently from Regression Trees) do not suffer much variance and overfitting problems. For more details the reader is refered to \cite{BreimanCART2017,BreimanML2001}.
+
+%====================================================================================================
+
+\textbf{\emph{Switching ARX (SARX) model identification via RT.}} To derive a model as in \eqref{eqIdentifiedModelNSARX}, a new dataset $\X= \{x(k),u(k),d(k)\}_{k = 0}^{\ell}$ has to be defined starting from $\D$. In order to apply MPC it is needed, for each component of $y(k)$, a model that can predict system's dynamics over a horizon of length $N$. The idea is to create $3 N$ predictive trees $\{\mathcal{T}_{\iota,j}\},\ \iota=1,2,3,\ j=0,\ldots,N-1$, each one to predict the 3 outputs components of the system over the $N$ steps of the horizon. To create the tree structure, the RT algorithm (CART) partitions the dataset $\X$ into regions $\X_i$, such that $\biguplus \X_i = \X$, and assigns to each region a constant value given by the average of the output values of the samples that ended up in that leaf. In run-time, once the trees are created, and given a real-time measurement $(x(k), u(k), d(k))$ belonging to leaf $i$, the CART algorithm provides as a prediction the averaged value associated to the leaf as in \eqref{eqAverageResponseRT}. However, since the prediction provided by the RT is a constant value, it cannot be used to setup an MPC problem, thus the learning procedure needs to be modified to identify a modeling framework as in \eqref{eqIdentifiedModelN}. To this end, $\X$ is partitioned in two disjoint sets $\mathcal{X}_c = \{u(k)\}_{k=0}^{\ell}$ of data associated to the control variables, and $\mathcal{X}_{nc} = \{(x(k), d(k))\}_{k=0}^{\ell}$ of data associated to remaining variables, and then apply the CART algorithm only on $\mathcal{X}_{nc}$ (this is to avoid that the MPC problem turns out into a Mixed Integer Quadratic Program, see \cite{SmarraADHS2018,smarraNAHS2020} for details); thus, $3 N$ RTs $\{\mathcal{T}_{\iota,j}\}$ have been created, each constructed to predict the variable $y_\iota(k+j+1)$, and consequently $x_\iota(k+j+1)$. In particular, it is associated to each leaf $\iota,i_j$, corresponding to the partition  $\mathcal{X}_{nc,\iota,i_j}$, of each tree $\mathcal{T}_{\iota,j}$ the following affine model
+
+\small
+
+\begin{equation}\label{eqLTIleavesSinglState}
+	x_\iota(k+j+1) = A'_{\iota,i_j}x(k) + \sum_{\alpha = 0}^{j}{B'_{\iota,i_j,\alpha}u(k+\alpha)} + f'_{\iota,i_j},
+\end{equation}
+\normalsize
+\small
+\begin{equation}\label{eqLeafModel}
+\begin{aligned}
+A'_{\iota,i_j} =& \left[\begin{array}{cccccccccc}
+a_1       & a_2       & \cdots & a_{\delta_y } & a_{\delta_y + 1} & b_{\delta_y + 2} & \cdots & b_{\delta_y + 1+ 3(\delta_u-1)} & \cdots & b_{\delta_y + 1 + 3\delta_u} \\
+1         & 0         & \cdots & 0             & 0                & 0                & \cdots & 0                               & \cdots & 0                            \\
+\vdots    & \vdots    & \ddots & \vdots        & \vdots           & 0                & \cdots & 0                               & \cdots & 0                            \\
+0         & 0         & \cdots & 1             & 0                & 0                & \cdots & 0                               & \cdots & 0                            \\
+0         & 0         & \cdots & 0             & 0                & 0                & \cdots & 0                               & \cdots & 0                            \\
+0         & 0         & \cdots & 0             & 0                & 0                & \cdots & 0                               & \cdots & 0                            \\
+0         & 0         & \cdots & 0             & 0                & 0                & \cdots & 0                               & \cdots & 0                            \\
+0         & 0         & \cdots & 0             & 0                & 1                & \cdots & 0                               & \cdots & 0                            \\
+\vdots    & \vdots    & \ddots & \vdots        & \vdots           & \vdots           & \ddots & \vdots                          & \ddots & \vdots                       \\
+0         & 0         & \cdots & 0             & 0                & 0                & \cdots & 1                               & \cdots & 0                            \\
+
+\end{array}\right],\\
+B'_{\iota,i_j,\alpha} = & \left[\begin{array}{ccc}
+b_{1,\alpha} & b_{2,\alpha} & b_{3,\alpha}\\
+0            & 0            & 0            \\
+\vdots       & \vdots       & \vdots \\
+0            & 0            & 0            \\   
+0            & 0            & 0            \\  
+0            & 0            & 0            \\  
+0            & 0            & 0            \\  
+0            & 0            & 0            \\  
+\vdots       & \vdots       & \vdots            \\   
+0            & 0            & 0            \\   
+\end{array}\right],\ \alpha<j,\ 
+B'_{\iota,i_j,j} =  \left[\begin{array}{ccc}
+b_{1,\alpha} & b_{2,\alpha} & b_{3,\alpha}\\
+0            & 0            & 0            \\
+\vdots       & \vdots       & \vdots \\
+0            & 0            & 0            \\   
+1            & 0            & 0            \\  
+0            & 1            & 0            \\  
+0            & 0            & 1            \\  
+0            & 0            & 0            \\  
+\vdots       & \vdots       & \vdots            \\   
+0            & 0            & 0            \\   
+\end{array}\right],\ 
+f'_{\iota,i_j} = \left[\begin{array}{ccccc}
+f      \\	0 \\ \vdots \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ \vdots \\ 0      
+\end{array}\right],
+\end{aligned}
+\end{equation}
+\normalsize
+
+\noindent where the coefficients of matrices $A'_{\iota,i_j}$, $B'_{\iota,i_j,\alpha}$ and $f'_{\iota,i_j}$ are obtained in each leaf $\iota,i_j$ by fitting the corresponding set of samples solving the following Least Squares with inequality constraints problem:
+
+\begin{problem}\label{pbLeastSquareProblem}
+	\small
+	\begin{alignat}{2}
+		& \nonumber \underset{\xi_{\iota,i_j}}{\text{minimize}} & &  \parallel \Lambda_{\iota,i_j} \xi_{\iota,i_j}  - \lambda_{\iota,i_j} \parallel_2^2   		 \\
+		& \text{subject to }    \nonumber            & &  f_\mathrm{min} \leq f \leq f_\mathrm{max}    										  					 \\
+		&                  					    	 & &  a_\mathrm{min} \leq a_{\jmath} \leq a_\mathrm{max}\label{eqInequalityConstraints} \\
+		& 	                    \nonumber			 & &  b_\mathrm{min} \leq b_{\iota,\alpha} \leq b_\mathrm{max},
+	\end{alignat}
+	\normalsize
+\end{problem}
+
+\noindent where $\xi_{\iota,i_j}$, $\lambda_{\iota,i_j}$, and $\Lambda_{\iota,i_j}$ contain respectively the parameters of matrices in \eqref{eqLeafModel}, the predictions $x_\iota(k+j+1)$, and the current measurements of $x(k)$ and $u(k+\alpha)$. Linear inequalities \eqref{eqInequalityConstraints} are used to constrain elements in $\xi_{\iota,i_j}$ to take into account physical system constraints and improve prediction accuracy.
+Model \eqref{eqLTIleavesSinglState} can be easily compacted in the following form taking into account all the states $\iota=1,2,3$:
+\small
+\begin{equation}\label{eqLTIleavesCompact}
+x(k+j+1) = A'_{i_j}x(k) + \sum_{\alpha = 0}^{j}{B'_{i_j,\alpha}u(k+\alpha)} + f'_{i_j}.
+\end{equation}
+\normalsize
+\noindent In particular, with the specific choice of $\delta_u = 0$ model \eqref{eqIdentifiedModelNSARX} can be rewritten in the following state-space formulation
+\small
+\begin{equation}\label{eqIdentifiedModelN}
+x(k+j+1) =	A_{\sigma_j(x(k),\bold{u^-}(k),d(k))} x(k+j) + B_{\sigma_j(x(k),\bold{u^-}(k),d(k))} u(k+j) + f_{\sigma_j(x(k),\bold{u^-}(k),d(k))},
+\end{equation}
+\normalsize
+where $\bold{u^-}(k) = [u^\top(k-1)\ \cdots\ u^\top(k-\delta)]^\top$ is the vector with the regressive terms of the input used to only grow the trees, and  $\sigma_j : \mathbb{R}^{3(\delta_y+1)+3\delta+10} \to \mathcal M \subset \mathbb{N}$.
+%\noindent In particular, as anticipated in the problem formulation, with the specific choice of $\delta_u = 0$ matrices $A'_{\iota,i_j}$ in \eqref{eqLeafModel} modify as follows:
+%
+%\small
+%\begin{equation}\label{eqLeafModelDelta_u=0}
+%	\begin{aligned}
+%		A'_{\iota,i_j} =& \left[\begin{array}{ccccc}
+%			a_1       & a_2       & \cdots & a_{\delta_y } & a_{\delta_y + 1} \\
+%			1         & 0         & \cdots & 0                         & 0     \\
+%			\vdots    & \vdots    & \ddots & \vdots                    & \vdots     \\
+%			0         & 0         & \cdots & 1                         & 0     
+%		\end{array}\right]\\
+%		B'_{\iota,i_j,\alpha} = & \left[\begin{array}{ccccc}
+%			b_{1,\alpha} & 0 & \cdots & 0 & 0\\
+%			b_{2,\alpha} & 0 & \cdots & 0 & 0           \\
+%			b_{3,\alpha} & 0 & \cdots & 0 & 0           \\   
+%		\end{array}\right]^\top\\
+%				f'_{\iota,i_j} = &\left[\begin{array}{ccccc}
+%		f      &	0 & \cdots & 0 & 0      
+%		\end{array}\right]^\top.
+%	\end{aligned}
+%\end{equation}
+%%\normalsize
+Thanks to this new formulation the following proposition shows that model \eqref{eqLTIleavesCompact} is equivalent to model \eqref{eqIdentifiedModelN} for any initial condition, any switching signal and any control sequence.
+\begin{proposition}\label{propSwitchingSystem}\cite{smarraNAHS2020}
+	Let $A'_{i_j}$, $B'_{i_j,\alpha}$ and $f'_{i_j}$, $\alpha=0,\ldots,j$, $j=0,\ldots,N-1$, be given. If $A'_{i_j}$ is invertible for $j=0,\ldots,N-1$, then there exists a model in the form
+	\vspace{-0.2cm}
+	\small
+	\begin{equation*}
+	\bar x({k+j+1}) = A_{\sigma_j(\bar x(k),\bold{u^-}(k), d(k))} \bar x({k+j})+B_{\sigma_j(\bar x(k),\bold{u^-}(k), d(k))} u({k+j})+ f_{\sigma_j(\bar x(k),\bold{u^-}(k), d(k))}	
+	\end{equation*}
+	\normalsize
+	such that for any initial condition $\bar x(k) = x(k) = x_k$, any switching sequence $i_0, \ldots, i_{N-1}$ and any control sequence $u(k),\ldots,u(k+N-1)$, then $\bar x(k+j+1) = x(k+j+1),\ \forall j=0,\ldots,N-1$.
+\end{proposition}
+
+As discussed in \cite{smarraNAHS2020}, from experimental findings it is possible to notice that the contribution in terms of model accuracy introduced by the choice of $\delta_u = 0$ is negligible, since previous control inputs are already considered in the tree structure choosing $\delta > 0$. Thus, in the rest of the paper it will be considered $\delta_u = 0$ and $\delta > 0$, i.e. only the regressive terms of the input in the tree structure learning will be used and not in the state definition.
+
+\textbf{\emph{SARX model identification via RF.}} RF-based models can be constructed exploiting the RT-based formulation: in particular, let us consider $3 N$ RFs $\mathcal{F}_{\iota,j}$, $\iota = 1,2,3,\ j = 0,\ldots,N-1$. 
+For each tree $\mathcal{T}^{\mathcal{F}_{\iota,j}}_\tau$ of the forest $\mathcal{F}_{\iota,j}$, it is possible to estimate the coefficients $a_*$, $b_*$ and $f$ in \eqref{eqLeafModel} for each leaf $\iota,j,i_\tau$, i.e. $\tilde\xi_{\iota,j,i_\tau}$, solving Problem \ref{pbLeastSquareProblem}.
+With a small abuse of notation, let us indicate by $|\mathcal{F}_{\iota,j}|$ the number of trees in the forest ${\iota,j}$. 
+Then $\forall \iota,j$, the parameters to build matrices in \eqref{eqLTIleaves} can be obtained by averaging parameters $a_*$, $b_*$ and $f$, $\forall \tau = 1,\ldots,|\mathcal{F}_{\iota,j}|$, i.e.
+\small
+\begin{equation}\label{eqAverageRF}
+\tilde\xi_{\iota,j} = \frac{\sum\limits_{\tau=1}^{|\F_{\iota,j}|}\tilde\xi_{\iota,j,i_\tau}}{|\F_{\iota,j}|},
+\end{equation}
+\normalsize
+over all the trees of forest $\F_{\iota,j}$. At this point, starting from \eqref{eqLTIleavesSinglState}, it can be easily construct the following model, as in \eqref{eqLTIleavesCompact} to be used in the MPC formulation by combining for $\iota=1,2,3$ the matrices in \eqref{eqLeafModel} coming either from the RTs or from the RFs:
+\small
+\begin{equation}\label{eqLTIleaves}
+	x(k+j+1) = A'_{i_j}x(k) + \sum_{\alpha = 0}^{j}{B'_{i_j,\alpha}u(k+\alpha)} + f'_{i_j}.
+\end{equation}
+\normalsize
+
+%====================================================================================================
+
+\textbf{\emph{MPC problem formulation.}} It is used model \eqref{eqLTIleaves} to formalize Problem \ref{pbMPCSwitching} according to the SDN priority queueing problem:
+\begin{problem}\label{pbMPC}
+
+	\begin{equation*}
+		\begin{aligned}
+			& \underset{\bold u}
+			{\text{minimize}}               & &  \sum_{j=0}^{N-1} \Big[(x_{j+1}-x_{\mathrm{ref},j})^\top Q (x_{j+1}-x_{\mathrm{ref},j}) + u^\top_{j} R u_{j}\Big]   \\
+			& \text{subject to}             & &  x_{j+1}  =   A_{\sigma_j(k)} x_{j}+B_{\sigma_j(k)}  u_j+f_{\sigma_j(k)} \\
+			&								& &  \Delta u_\iota^\mathrm{min} \leq u_{\iota,j} - u_{\iota,j-1} \leq \Delta u_\iota^\mathrm{max}             \\
+			&								& &  u_\iota^\mathrm{min} \leq u_{\iota,j} \leq u_\iota^\mathrm{max}             \\
+			&                               & &  u_{1,j} + u_{2,j} \leq 100			          		\\
+			&                               & &  x_0 = x(k),\ \bold u^-_{0} = [u^\top(-1)\ \cdots\ u^\top(-\delta)]^\top,\ d_0 = d(k),\\
+			&								& &  j = 0,\ldots,N-1,\ \iota = 1,2,3,                                 
+		\end{aligned}
+	\end{equation*}
+	\normalsize
+\end{problem}
+\noindent where $\sigma_j(k) = \sigma_j(x(k),\bold{u^-}(k),d(k))$ (with a slight abuse of notation), $u_{\iota,j}$ is the $\iota^{th}$ component of the input $u$ at time $k+j$; $\Delta u_\iota^\mathrm{min}$ and $\Delta u_\iota^\mathrm{max}$ are used to limit large variations on the inputs in 2 consecutive steps, in order to avoid that the queues drastically set to the minimum value and thus potentially increase packet losses during the next period; $u_\iota^\mathrm{min}$ and $u_\iota^\mathrm{max}$ define the bandwidth limits induced by the QoS requirements of the corresponding priority class. At each time step $k$ the measurements of the variables in $\X_{nc}$ are collected, select the current matrices of \eqref{eqLTIleaves} narrowing down the leaves of the trees, for $j = 0,\ldots,N-1$, solve Problem \eqref{pbMPC}, and finally apply only the first input of the optimal sequence $\bold u^*$ found, i.e. $u(k) = u_0^*$.
+
+%====================================================================================================
+
+\textbf{\emph{Disturbance forecast.}} The knowledge at each time $k$ of the future input traffic $(d(k+1), \ldots, d(k+N-1))$ can greatly improve the MPC performance. However, while the future values of the proxy variables (hours and minutes) are clearly well known, the knowledge of the future values of the first 8 component of the disturbance, i.e. number of packets incoming in the switches for each DSCP index are unknown at the current instant $k$. To address this problem $8(N-1)$ RFs $\mathcal{F}^d_{\iota,j},\ \iota=1,\ldots,8,\ j = 0,\ldots,N-1$ have been built in order to provide a prediction $\hat d_\iota(k+j)$ of the 8 disturbance components $d_\iota(k+j)$ over the future time horizon: as widely illustrated in \cite{SmarraADHS2018,smarraNAHS2020} the technique previously described can be easily modified by appropriately redefining the dataset as $\mathcal{X} = \{(x(k), u(k), d(k),\ldots,d(k+N-1))\}_{k=1}^{\ell}$ for the training phase, and considering a switching signal in \eqref{eqIdentifiedModelN} given by $\sigma_j(k) = \sigma_j(x(k),\bold{u^-}(k),d(k),\hat d(k+1),\ldots,\hat d(k+j)), \forall j=0,\ldots,N-1$, i.e. also depending at time $k$ on the future input traffic.
+
+%====================================================================================================
+%====================================================================================================
 \section{Simulation results}\label{secExpRes}
 In this section simulation results of the application of the proposed approach to SDN Priority Queueing identification and control will be provided. Standard RFs are used to derive predictive models of the disturbance components $d_1(k),\ldots,d_8(k)$, i.e. the switch input differentiated for each DSCP index, and validate the accuracy. Then the validation of accuracy of the predictive model of the output variable $y(k)$ derived as illustrated in Section \ref{secSwitchedModeling} is shown: the predictive models (based on RTs and RFs) will be compared with Artificial Neural Networks, showing that RFs represent the ideal solution both in terms of prediction accuracy and computational complexity; then it will be illustrated the effect of iterative dataset updates in the prediction accuracy, both with and without prediction of the future disturbances. Finally it will be used the proposed predictive models to setup a MPC problem (see Problem \ref{pbMPC}), and validate the control performance in terms of packet losses reduction and bandwidth saving, both with and without prediction of the future disturbances. It will also be shown, as expected, that using accurate predictive models and applying MPC provides dramatic reduction of packet losses and increase of bandwidth saving with respect to the static bandwidth allocation policy used in Service Provider Networks as described in Section \ref{sec:SDNNetSim}: even thought this result is not surprising, it is decided to quantify the gap to emphasize that much better performance can be obtained in real networks just collecting historical data and applying a controller that can be directly implemented using the accurate models of the proposed identification algorithm and Quadratic Programming solvers (which are well known to be very efficient).
 

@@ -26,3 +26,12 @@ About data analysis, 53 days of data measurements have been used for RF training
 	\caption{NRMSE of the packets predictive model over a time horizon of $N=10$.}
 	\label{fig:{errorPescara}}
 \end{figure}
+
+After few months it has been possible to extend our trained model, using a total of $25727$ samples, with the same method previously explained in section \ref{secExpRes}. This model has been validated on a test of $19144$ samples, i.e. on more than two months of measurements. Even though the test pool is so large, thanks to the variety of train data it has been possible to obtain very low error values on packet prediction, as shown in Figure \ref{fig:{LONGTEST_Pescara}}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[trim={120 0 120 0}, width=1\linewidth]{figure/LONGTEST_PESCARA.eps}
+	\caption{NRMSE of the packets predictive model over a time horizon of $N=10$.}
+	\label{fig:{LONGTEST_Pescara}}
+\end{figure}

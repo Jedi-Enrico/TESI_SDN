@@ -114,7 +114,7 @@
     {Department of Information Engineering,\\ Computer Science and Mathematics \par}}
     
 {\small \vspace*{5mm}
-    {Ph.D. Program in ICT - System Engineering, Telecommunications and HW/SW Platforms\\ XXXIII cycle - SSD ING-INF/04 \par}}
+    {Ph.D. Program in ICT - System Engineering, Telecommunications and HW/SW Platforms\\ XXXIII cycle - SSD ING-INF/03 \par}}
     
 \vspace*{2mm}
 {\large {{\@college} \par}

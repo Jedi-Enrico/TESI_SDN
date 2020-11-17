@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.8.24)  8 NOV 2020 16:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.8.24)  17 NOV 2020 14:07
 entering extended mode
 **./mainTesi2.tex
 (mainTesi2.tex
@@ -922,8 +922,10 @@ Package pdftex.def Info: figure/Error_Disturbance_Packets-eps-converted-to.pdf
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[28 <./figure/Error_Disturbance-eps-converted-to.pdf>] [29 <./figure/Error_Dist
-urbance_Packets-eps-converted-to.pdf>]
+[28 <./figure/Error_Disturbance-eps-converted-to.pdf>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 Package epstopdf Info: Source file: <figure/NRMSENNvsRTvsRF.eps>
 (epstopdf)                    date: 2020-02-11 16:33:21
 (epstopdf)                    size: 33533 bytes
@@ -939,12 +941,13 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/NRMSENNvsRTvsRF-eps-converted-to.pdf): 
 PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/NRMSENNvsRTvsRF-eps-converted-to.pdf, id=815, 1445.4pt x 755.82375pt>
+<figure/NRMSENNvsRTvsRF-eps-converted-to.pdf, id=799, 1445.4pt x 755.82375pt>
 File: figure/NRMSENNvsRTvsRF-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/NRMSENNvsRTvsRF-eps-converted-to.pdf>
 Package pdftex.def Info: figure/NRMSENNvsRTvsRF-eps-converted-to.pdf  used on i
 nput line 310.
 (pdftex.def)             Requested size: 390.25534pt x 244.89017pt.
+[29 <./figure/Error_Disturbance_Packets-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figure/Error_State.eps>
 (epstopdf)                    date: 2020-02-11 16:33:21
 (epstopdf)                    size: 34862 bytes
@@ -987,11 +990,7 @@ Package pdftex.def Info: figure/Error_State_ddM4-eps-converted-to.pdf  used on
 input line 325.
 (pdftex.def)             Requested size: 390.25534pt x 244.89017pt.
 [30 <./figure/NRMSENNvsRTvsRF-eps-converted-to.pdf>] [31 <./figure/Error_State-
-eps-converted-to.pdf>]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[32 <./figure/Error_State_ddM4-eps-converted-to.pdf>]
+eps-converted-to.pdf>] [32 <./figure/Error_State_ddM4-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figure/cumPL1.eps>
 (epstopdf)                    date: 2020-02-05 13:36:01
 (epstopdf)                    size: 79014 bytes
@@ -1442,7 +1441,7 @@ b8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program
  Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX/fonts/t
 ype1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8
 a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on mainTesi2.pdf (151 pages, 4239598 bytes).
+Output written on mainTesi2.pdf (151 pages, 4239909 bytes).
 PDF statistics:
  6446 PDF objects out of 7423 (max. 8388607)
  4279 named destinations out of 4296 (max. 500000)

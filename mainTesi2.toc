@@ -8,8 +8,8 @@
 \contentsline {section}{\numberline {2.1}Mininet Setup}{19}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Switched affine modeling via RT and RF}{22}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Simulation results}{27}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Disturbance predictive model validation}{27}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Queues predictive model validation}{28}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.1}Disturbance predictive model validation}{28}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Queues predictive model validation}{29}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}Control performance}{32}{subsection.2.3.3}%
 \contentsline {chapter}{\numberline {3}Network sperimental environment}{37}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Control performance validation over dedicated hardware network}{37}{section.3.1}%

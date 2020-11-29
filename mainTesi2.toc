@@ -13,8 +13,8 @@
 \contentsline {subsection}{\numberline {2.3.3}Control performance}{32}{subsection.2.3.3}%
 \contentsline {chapter}{\numberline {3}Network sperimental environment}{37}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Control performance validation over dedicated hardware network}{37}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Traffic predictive model validation on Italian Internet provider network}{39}{section.3.2}%
-\contentsline {chapter}{Conclusion}{39}{figure.3.4}%
+\contentsline {section}{\numberline {3.2}Traffic predictive model validation on Italian Internet provider network}{40}{section.3.2}%
+\contentsline {chapter}{Conclusion}{42}{figure.3.5}%
 \contentsline {chapter}{References}{43}{chapter*.5}%
 \contentsline {chapter}{Publications}{56}{chapter*.6}%
 \contentsline {chapter}{\numberline {A}Python Codes for Mininet Environment}{59}{appendix.A}%

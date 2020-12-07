@@ -4,33 +4,33 @@
 \contentsline {chapter}{\numberline {1}Background Knowledge}{5}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Software Defined Networks Architecture}{5}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Overview Of Machine Learning Algorithms}{9}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Network emulation environment}{19}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Mininet Setup}{19}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Switched affine modeling via RT and RF}{22}{section.2.2}%
+\contentsline {chapter}{\numberline {2}RT- and RF-based models of SDN switched for Priority Queueing}{19}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Mininet network emulation environment and control problem}{19}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Regression Trees and Random Forest based models for MPC}{22}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Simulation results}{27}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Disturbance predictive model validation}{28}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Queues predictive model validation}{29}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Control performance}{32}{subsection.2.3.3}%
-\contentsline {chapter}{\numberline {3}Network sperimental environment}{37}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Control performance validation over dedicated hardware network}{37}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Traffic predictive model validation on Italian Internet provider network}{40}{section.3.2}%
-\contentsline {chapter}{Conclusion}{42}{figure.3.5}%
-\contentsline {chapter}{References}{43}{chapter*.5}%
-\contentsline {chapter}{Publications}{56}{chapter*.6}%
-\contentsline {chapter}{\numberline {A}Python Codes for Mininet Environment}{59}{appendix.A}%
-\contentsline {section}{\numberline {A.1}main\textunderscore controller\textunderscore TOS.py}{59}{section.A.1}%
-\contentsline {section}{\numberline {A.2}datapath\textunderscore monitor\textunderscore TOS.py}{60}{section.A.2}%
-\contentsline {section}{\numberline {A.3}Controller\textunderscore commands.py}{68}{section.A.3}%
-\contentsline {section}{\numberline {A.4}qos\textunderscore simple\textunderscore switch\textunderscore 13.py}{72}{section.A.4}%
-\contentsline {section}{\numberline {A.5}ofctl\textunderscore rest.py}{75}{section.A.5}%
-\contentsline {section}{\numberline {A.6}rest\textunderscore conf\textunderscore switch.py}{90}{section.A.6}%
-\contentsline {section}{\numberline {A.7}rest\textunderscore qos.py}{93}{section.A.7}%
-\contentsline {section}{\numberline {A.8}Topology\textunderscore qos\textunderscore TRAFFIC\textunderscore GEN.py}{115}{section.A.8}%
-\contentsline {section}{\numberline {A.9}ditg.py}{124}{section.A.9}%
-\contentsline {chapter}{\numberline {B}Codes For Dedicated Hardware Network Devices}{127}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Traffic\textunderscore Real\textunderscore Hwd.py}{127}{section.B.1}%
-\contentsline {section}{\numberline {B.2}Start\textunderscore ITGRecv.py}{133}{section.B.2}%
-\contentsline {section}{\numberline {B.3}ditg.py}{133}{section.B.3}%
-\contentsline {section}{\numberline {B.4}Set\textunderscore Queue.py}{135}{section.B.4}%
-\contentsline {section}{\numberline {B.5}SendTime.py}{136}{section.B.5}%
-\contentsline {section}{\numberline {B.6}ReadTime.ino}{138}{section.B.6}%
+\contentsline {subsection}{\numberline {2.3.2}Queues predictive model validation}{30}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Control performance}{33}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}RT- and RF-based predictive models of multi-service traffic in a real Service Provider Network}{39}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Control performance validation over dedicated hardware network}{39}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Traffic predictive model validation on Italian Internet provider network}{43}{section.3.2}%
+\contentsline {chapter}{Conclusion}{45}{figure.3.5}%
+\contentsline {chapter}{References}{47}{chapter*.5}%
+\contentsline {chapter}{Publications}{60}{chapter*.6}%
+\contentsline {chapter}{\numberline {A}Python Codes for Mininet Environment}{63}{appendix.A}%
+\contentsline {section}{\numberline {A.1}main\textunderscore controller\textunderscore TOS.py}{63}{section.A.1}%
+\contentsline {section}{\numberline {A.2}datapath\textunderscore monitor\textunderscore TOS.py}{64}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Controller\textunderscore commands.py}{72}{section.A.3}%
+\contentsline {section}{\numberline {A.4}qos\textunderscore simple\textunderscore switch\textunderscore 13.py}{76}{section.A.4}%
+\contentsline {section}{\numberline {A.5}ofctl\textunderscore rest.py}{79}{section.A.5}%
+\contentsline {section}{\numberline {A.6}rest\textunderscore conf\textunderscore switch.py}{94}{section.A.6}%
+\contentsline {section}{\numberline {A.7}rest\textunderscore qos.py}{97}{section.A.7}%
+\contentsline {section}{\numberline {A.8}Topology\textunderscore qos\textunderscore TRAFFIC\textunderscore GEN.py}{119}{section.A.8}%
+\contentsline {section}{\numberline {A.9}ditg.py}{128}{section.A.9}%
+\contentsline {chapter}{\numberline {B}Codes For Dedicated Hardware Network Devices}{131}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Traffic\textunderscore Real\textunderscore Hwd.py}{131}{section.B.1}%
+\contentsline {section}{\numberline {B.2}Start\textunderscore ITGRecv.py}{137}{section.B.2}%
+\contentsline {section}{\numberline {B.3}ditg.py}{137}{section.B.3}%
+\contentsline {section}{\numberline {B.4}Set\textunderscore Queue.py}{139}{section.B.4}%
+\contentsline {section}{\numberline {B.5}SendTime.py}{140}{section.B.5}%
+\contentsline {section}{\numberline {B.6}ReadTime.ino}{142}{section.B.6}%

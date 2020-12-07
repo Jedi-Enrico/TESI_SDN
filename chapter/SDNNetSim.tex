@@ -1,6 +1,6 @@
 This chapter explains how it is possible to instantiate network devices within the Mininet emulation environment, how to generate traffic packets starting from real data and howf retrieve network information directly through the SDN controller thanks to the OF protocol. It is then shown how to use the collected data to create a predictive model and thus control the queues of an SDN switch in an excellent way.
 
-\section{Mininet Setup} \label{sec:SDNNetSim}
+\section{Mininet network emulation environment and control problem} \label{sec:SDNNetSim}
 The Mininet environment \cite{Mininet} has been used to emulate a SDN network to validate our methodology in terms of prediction accuracy and control performance. This software runs a collection of virtual network elements (i.e. end-hosts, switches, routers, and links) on a single Linux kernel using lightweight virtualization. 
 %To test the effectiveness of the realized controller a simulated network has been programmed using the Mininet environment as a network emulation orchestration system. This software runs a collection of end-hosts, switches, routers, and links on a single Linux kernel by using lightweight virtualization to make a single system look like a complete network. Mininet's virtual objects emulate real SDN network devices. It is usually possible to create a Mininet network that resembles a hardware network, or a hardware network that resembles a Mininet network, and to run the same binary code and applications on either platform.
 To generate traffic we used the D-ITG generator \cite{Avallone2004, Botta2012, Botta2013}.
@@ -49,7 +49,7 @@ This command executes several scripts, the first one (\ref{main_controller_TOS})
 
 As we will see in Section \ref{secExpRes}, using static priority control the queues will not be able to send all the packets incoming from network $n1$, and a dramatic amount of packets will be lost. This motivates the application of optimization techniques, which are enabled by the predictive models derived using the methodology described in section \ref{secSwitchedModeling}.
 
-\section{Switched affine modeling via RT and RF}\label{secSwitchedModeling}
+\section{Regression Trees and Random Forest based models for MPC}\label{secSwitchedModeling}
 %====================================================================================================
 
 \textbf{\emph{Problem formulation.}} In this section it is illustrated the methodology to apply the results proposed in \cite{SmarraADHS2018,smarraNAHS2020} to identify, starting from a set of collected historical data $ \mathcal{D}=\{y(k),u(k),d(k)\}_{k = 0}^{\ell} $ as illustrated in the previous section, a switching ARX model of input-output behavior of the traffic flow in a switch of a SDN network as follows:

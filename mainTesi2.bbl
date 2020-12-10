@@ -180,6 +180,78 @@ P.~Mulinka, P.~Casas, Stream-based machine learning for network security and
   anomaly detection, in: Proceedings of the 2018 Workshop on Big Data Analytics
   and Machine Learning for Data Communication Networks, ACM, 2018, pp. 1--7.
 
+\bibitem{Umadevi}
+K.~S. {Umadevi}, M.~S.~S. {Pranay}, K.~{Rachana}, Multilevel queue scheduling
+  in software defined networks, in: 2017 Innovations in Power and Advanced
+  Computing Technologies (i-PACT), 2017, pp. 1--4.
+\newblock \href {https://doi.org/10.1109/IPACT.2017.8245144}
+  {\path{doi:10.1109/IPACT.2017.8245144}}.
+
+\bibitem{Olariu}
+C.~{Olariu}, M.~{Zuber}, C.~{Thorpe}, Delay-based priority queueing for voip
+  over software defined networks, in: 2017 IFIP/IEEE Symposium on Integrated
+  Network and Service Management (IM), 2017, pp. 652--655.
+\newblock \href {https://doi.org/10.23919/INM.2017.7987352}
+  {\path{doi:10.23919/INM.2017.7987352}}.
+
+\bibitem{Haiyan}
+M.~{Haiyan}, Y.~{Jinyao}, P.~{Georgopoulos}, B.~{Plattner}, Towards sdn based
+  queuing delay estimation, China Communications 13~(3) (2016) 27--36.
+\newblock \href {https://doi.org/10.1109/CC.2016.7445500}
+  {\path{doi:10.1109/CC.2016.7445500}}.
+
+\bibitem{ChenWang}
+Y.~{Chen}, L.~{Wang}, F.~{Lin}, B.~P. {Lin}, Deterministic quality of service
+  guarantee for dynamic service chaining in software defined networking, IEEE
+  Transactions on Network and Service Management 14~(4) (2017) 991--1002.
+\newblock \href {https://doi.org/10.1109/TNSM.2017.2758328}
+  {\path{doi:10.1109/TNSM.2017.2758328}}.
+
+\bibitem{Najjar}
+A.~{Al-Najjar}, S.~{Layeghy}, M.~{Portmann}, J.~{Indulska}, Enhancing quality
+  of experience of voip traffic in sdn based end-hosts, in: 2018 28th
+  International Telecommunication Networks and Applications Conference (ITNAC),
+  2018, pp. 1--8.
+\newblock \href {https://doi.org/10.1109/ATNAC.2018.8615286}
+  {\path{doi:10.1109/ATNAC.2018.8615286}}.
+
+\bibitem{MDPSDNSURV}
+Q.-L. Li, J.-Y. Ma, R.-N. Fan, L.~Xia, An Overview for Markov Decision
+  Processes in Queues and Networks, 2019, pp. 44--71.
+\newblock \href {https://doi.org/10.1007/978-981-15-0864-6_3}
+  {\path{doi:10.1007/978-981-15-0864-6_3}}.
+
+\bibitem{ParameterStateEst}
+A.~Asanjarani, Y.~Nazarathy, P.~K. Pollett, Parameter and state estimation in
+  queues and related stochastic models: A bibliography (2017).
+\newblock \href {http://arxiv.org/abs/1701.08338} {\path{arXiv:1701.08338}}.
+
+\bibitem{Sood2016PerformanceAO}
+K.~Sood, S.~Yu, Y.~Xiang, Performance analysis of software-defined network
+  switch using \$m/geo/1\$ model, IEEE Communications Letters 20 (2016)
+  2522--2525.
+
+\bibitem{SINGH201824}
+D.~Singh, B.~Ng, Y.-C. Lai, Y.-D. Lin, W.~K. Seah, Modelling software-defined
+  networking: Software and hardware switches, Journal of Network and Computer
+  Applications 122 (2018) 24 -- 36.
+
+\bibitem{WANG2012120}
+P.~Wang, H.~Chen, X.~Yang, Y.~Ma, Design and analysis of a model predictive
+  controller for active queue management, ISA Transactions 51~(1) (2012) 120 --
+  131.
+
+\bibitem{TCPSTATESPACE}
+{Ki Baek Kim}, Design of feedback controls supporting tcp based on the
+  state-space approach, IEEE Transactions on Automatic Control 51~(7) (2006)
+  1086--1099.
+\newblock \href {https://doi.org/10.1109/TAC.2006.878749}
+  {\path{doi:10.1109/TAC.2006.878749}}.
+
+\bibitem{SchoffMPC}
+R.~Schoffauer, G.~Wunder, Model-predictive control for discrete-time queueing
+  networks with varying topology, ArXiv abs/2004.01985 (2020).
+
 \bibitem{Kim2019}
 J.~{Kim}, G.~{Hwang}, Prediction based efficient online bandwidth allocation
   method, IEEE Communications Letters 23~(12) (2019) 2330--2334.

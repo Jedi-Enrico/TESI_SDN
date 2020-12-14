@@ -7,6 +7,11 @@
 \contentsline {chapter}{\numberline {2}RT- and RF-based models of SDN switched for Priority Queueing}{21}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Mininet network emulation environment and control problem}{21}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Regression Trees and Random Forest based models for MPC}{24}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}RT and RF background}{25}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Switching ARX (SARX) model identification via RT}{26}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}SARX model identification via RF}{28}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}MPC problem formulation.}{28}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}Disturbance forecast}{29}{subsection.2.2.5}%
 \contentsline {section}{\numberline {2.3}Simulation results}{29}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Disturbance predictive model validation}{30}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Queues predictive model validation}{32}{subsection.2.3.2}%

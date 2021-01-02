@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.8.24)  14 DEC 2020 12:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.8.24)  2 JAN 2021 22:33
 entering extended mode
 **./mainTesi2.tex
 (mainTesi2.tex
@@ -755,37 +755,41 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 me identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.7 
+l.6 
      [1
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.13 
-      [2]pdfTeX warning (ext4): destination with the same identifier (name{page
-.3}) has been already used, duplicate ignored
+l.10 
+      [2]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
+4.
+ ("C:\Program Files\MiKTeX\tex/latex/psnfss\ts1ptm.fd"
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
+ been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.15 
-      [3]pdfTeX warning (ext4): destination with the same identifier (name{page
-.4}) has been already used, duplicate ignored
+l.18   \item \textit
+                    {Model-based approach}, where a \textit{dynamical} mathe...
+[3]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) h
+as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.21 
-      [4])pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.5}) has been already used, duplicate ignored
+l.26 
+      [4]pdfTeX warning (ext4): destination with the same identifier (name{page
+.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.33 
+      [5])pdfTeX warning (ext4): destination with the same identifier (name{pag
+e.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.298 \chapter
-              {Background Knowledge} [5]pdfTeX warning (ext4): destination with
- the same identifier (name{page.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.298 \chapter
-              {Background Knowledge} [6
-
-]
+              {Background Knowledge} [6]
 Chapter 1.
 (chapter/00_BGK_cap1.tex
 <figure/ONF.png, id=466, 470.9595pt x 260.172pt>
@@ -793,20 +797,16 @@ File: figure/ONF.png Graphic file (type png)
 <use figure/ONF.png>
 Package pdftex.def Info: figure/ONF.png  used on input line 7.
 (pdftex.def)             Requested size: 369.88582pt x 204.34264pt.
- [7]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-6.
+ [7
 
-("C:\Program Files\MiKTeX\tex/latex/psnfss\ts1ptm.fd"
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [8 <./figure/ONF.png>]
-[9]
+] [8 <./figure/ONF.png>] [9]
 <figure/WorkFlow.jpg, id=564, 4205.7125pt x 3457.91875pt>
 File: figure/WorkFlow.jpg Graphic file (type jpg)
 <use figure/WorkFlow.jpg>
 Package pdftex.def Info: figure/WorkFlow.jpg  used on input line 36.
 (pdftex.def)             Requested size: 420.59589pt x 345.81213pt.
-) (chapter/00_BGK_cap2.tex [10 <./figure/WorkFlow.jpg>]
+)
+(chapter/00_BGK_cap2.tex [10 <./figure/WorkFlow.jpg>]
 <figure/ML_algo.jpg, id=584, 2163.08125pt x 3417.76875pt>
 File: figure/ML_algo.jpg Graphic file (type jpg)
 <use figure/ML_algo.jpg>
@@ -958,12 +958,12 @@ nput line 310.
 (pdftex.def)             Requested size: 390.25534pt x 244.89017pt.
 [32]
 Package epstopdf Info: Source file: <figure/datadistribution.eps>
-(epstopdf)                    date: 2020-12-14 12:41:29
-(epstopdf)                    size: 541676 bytes
+(epstopdf)                    date: 2020-12-14 12:52:09
+(epstopdf)                    size: 536889 bytes
 (epstopdf)             Output file: <figure/datadistribution-eps-converted-to.p
 df>
-(epstopdf)                    date: 2020-12-14 12:41:32
-(epstopdf)                    size: 649572 bytes
+(epstopdf)                    date: 2020-12-14 12:52:35
+(epstopdf)                    size: 647439 bytes
 (epstopdf)             Command: <epstopdf --outfile=figure/datadistribution-eps
 -converted-to.pdf figure/datadistribution.eps>
 (epstopdf)             \includegraphics on input line 318.
@@ -1293,13 +1293,13 @@ input line 43.
 
 ]) (mainTesi2.bbl [49] [50
 
-] [51]
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
-5.
+]
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 3
+7.
 
 ("C:\Program Files\MiKTeX\tex/latex/psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [52]
+) [51] [52]
 Underfull \hbox (badness 10000) in paragraph at lines 153--155
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / www . opennetworking . org /
  wp-[]content / uploads /
@@ -1479,7 +1479,7 @@ Here is how much of TeX's memory you used:
  32067 multiletter control sequences out of 15000+200000
  564601 words of font info for 88 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,15n,124p,4603b,2413s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 59i,15n,124p,4581b,2413s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Program Files/MiKTeX
 /fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfo
@@ -1498,7 +1498,7 @@ b8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program
  Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX/fonts/t
 ype1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on mainTesi2.pdf (159 pages, 6629976 bytes).
+Output written on mainTesi2.pdf (159 pages, 6629834 bytes).
 PDF statistics:
  6572 PDF objects out of 7423 (max. 8388607)
  4306 named destinations out of 5155 (max. 500000)

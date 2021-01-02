@@ -28,6 +28,63 @@ A.~Mestres, A.~Rodriguez-Natal, J.~Carner, P.~Barlet-Ros, E.~Alarc{\'o}n,
   et~al., Knowledge-defined networking, ACM SIGCOMM Computer Communication
   Review 47~(3) (2017) 2--10.
 
+\bibitem{Sezer2013}
+S.~Sezer, S.~Scott-Hayward, P.~K. Chouhan, B.~Fraser, D.~Lake, J.~Finnegan,
+  N.~Viljoen, M.~Miller, N.~Rao, Are we ready for {SDN}? {Implementation}
+  challenges for software-defined networks, IEEE Communications Magazine 51~(7)
+  (2013) 36--43.
+\newblock \href {https://doi.org/10.1109/MCOM.2013.6553676}
+  {\path{doi:10.1109/MCOM.2013.6553676}}.
+
+\bibitem{Kreutz2015}
+D.~{Kreutz}, F.~M.~V. {Ramos}, P.~E. {Veríssimo}, C.~E. {Rothenberg},
+  S.~{Azodolmolky}, S.~{Uhlig}, Software-defined networking: A comprehensive
+  survey, Proceedings of the IEEE 103~(1) (2015) 14--76.
+\newblock \href {https://doi.org/10.1109/JPROC.2014.2371999}
+  {\path{doi:10.1109/JPROC.2014.2371999}}.
+
+\bibitem{Jarschel2014}
+M.~{Jarschel}, T.~{Zinner}, T.~{Hossfeld}, P.~{Tran-Gia}, W.~{Kellerer},
+  Interfaces, attributes, and use cases: A compass for sdn, IEEE Communications
+  Magazine 52~(6) (2014) 210--217.
+\newblock \href {https://doi.org/10.1109/MCOM.2014.6829966}
+  {\path{doi:10.1109/MCOM.2014.6829966}}.
+
+\bibitem{Chen2015}
+T.~{Chen}, M.~{Matinmikko}, X.~{Chen}, X.~{Zhou}, P.~{Ahokangas}, Software
+  defined mobile networks: concept, survey, and research directions, IEEE
+  Communications Magazine 53~(11) (2015) 126--133.
+\newblock \href {https://doi.org/10.1109/MCOM.2015.7321981}
+  {\path{doi:10.1109/MCOM.2015.7321981}}.
+
+\bibitem{Ameigeiras2015}
+P.~{Ameigeiras}, J.~J. {Ramos-munoz}, L.~{Schumacher}, J.~{Prados-Garzon},
+  J.~{Navarro-Ortiz}, J.~M. {Lopez-soler}, Link-level access cloud architecture
+  design based on sdn for 5g networks, IEEE Network 29~(2) (2015) 24--31.
+\newblock \href {https://doi.org/10.1109/MNET.2015.7064899}
+  {\path{doi:10.1109/MNET.2015.7064899}}.
+
+\bibitem{Amaral2016}
+P.~Amaral, J.~Dinis, P.~Pinto, L.~Bernardo, J.~Tavares, H.~S. Mamede, Machine
+  {Learning} in {Software} {Defined} {Networks}: {Data} collection and traffic
+  classification, in: 2016 {IEEE} 24th {International} {Conference} on
+  {Network} {Protocols} ({ICNP}), 2016, pp. 1--5.
+\newblock \href {https://doi.org/10.1109/ICNP.2016.7785327}
+  {\path{doi:10.1109/ICNP.2016.7785327}}.
+
+\bibitem{Wang2018}
+M.~{Wang}, Y.~{Cui}, X.~{Wang}, S.~{Xiao}, J.~{Jiang}, Machine learning for
+  networking: Workflow, advances and opportunities, IEEE Network 32~(2) (2018)
+  92--99.
+\newblock \href {https://doi.org/10.1109/MNET.2017.1700200}
+  {\path{doi:10.1109/MNET.2017.1700200}}.
+
+\bibitem{Usama2017}
+M.~Usama, J.~Qadir, A.~Raza, H.~Arif, K.-L.~A. Yau, Y.~Elkhatib, A.~Hussain,
+  A.~Al-Fuqaha, Unsupervised {Machine} {Learning} for {Networking}:
+  {Techniques}, {Applications} and {Research} {Challenges}, arXiv:1709.06599
+  [cs]ArXiv: 1709.06599 (Sep. 2017).
+
 \bibitem{Patcha2007}
 A.~Patcha, J.-M. Park, An overview of anomaly detection techniques: Existing
   solutions and latest technological trends, Computer networks 51~(12) (2007)
@@ -83,63 +140,6 @@ X.~Zhou, M.~Sun, G.~Y. Li, B.-H. Juang, Intelligent wireless communications
 M.~Chen, U.~Challita, W.~Saad, C.~Yin, M.~Debbah, Artificial neural
   networks-based machine learning for wireless networks: A tutorial\href
   {http://arxiv.org/abs/1710.02913v2} {\path{arXiv:1710.02913v2}}.
-
-\bibitem{Usama2017}
-M.~Usama, J.~Qadir, A.~Raza, H.~Arif, K.-L.~A. Yau, Y.~Elkhatib, A.~Hussain,
-  A.~Al-Fuqaha, Unsupervised {Machine} {Learning} for {Networking}:
-  {Techniques}, {Applications} and {Research} {Challenges}, arXiv:1709.06599
-  [cs]ArXiv: 1709.06599 (Sep. 2017).
-
-\bibitem{Sezer2013}
-S.~Sezer, S.~Scott-Hayward, P.~K. Chouhan, B.~Fraser, D.~Lake, J.~Finnegan,
-  N.~Viljoen, M.~Miller, N.~Rao, Are we ready for {SDN}? {Implementation}
-  challenges for software-defined networks, IEEE Communications Magazine 51~(7)
-  (2013) 36--43.
-\newblock \href {https://doi.org/10.1109/MCOM.2013.6553676}
-  {\path{doi:10.1109/MCOM.2013.6553676}}.
-
-\bibitem{Kreutz2015}
-D.~{Kreutz}, F.~M.~V. {Ramos}, P.~E. {Veríssimo}, C.~E. {Rothenberg},
-  S.~{Azodolmolky}, S.~{Uhlig}, Software-defined networking: A comprehensive
-  survey, Proceedings of the IEEE 103~(1) (2015) 14--76.
-\newblock \href {https://doi.org/10.1109/JPROC.2014.2371999}
-  {\path{doi:10.1109/JPROC.2014.2371999}}.
-
-\bibitem{Jarschel2014}
-M.~{Jarschel}, T.~{Zinner}, T.~{Hossfeld}, P.~{Tran-Gia}, W.~{Kellerer},
-  Interfaces, attributes, and use cases: A compass for sdn, IEEE Communications
-  Magazine 52~(6) (2014) 210--217.
-\newblock \href {https://doi.org/10.1109/MCOM.2014.6829966}
-  {\path{doi:10.1109/MCOM.2014.6829966}}.
-
-\bibitem{Chen2015}
-T.~{Chen}, M.~{Matinmikko}, X.~{Chen}, X.~{Zhou}, P.~{Ahokangas}, Software
-  defined mobile networks: concept, survey, and research directions, IEEE
-  Communications Magazine 53~(11) (2015) 126--133.
-\newblock \href {https://doi.org/10.1109/MCOM.2015.7321981}
-  {\path{doi:10.1109/MCOM.2015.7321981}}.
-
-\bibitem{Ameigeiras2015}
-P.~{Ameigeiras}, J.~J. {Ramos-munoz}, L.~{Schumacher}, J.~{Prados-Garzon},
-  J.~{Navarro-Ortiz}, J.~M. {Lopez-soler}, Link-level access cloud architecture
-  design based on sdn for 5g networks, IEEE Network 29~(2) (2015) 24--31.
-\newblock \href {https://doi.org/10.1109/MNET.2015.7064899}
-  {\path{doi:10.1109/MNET.2015.7064899}}.
-
-\bibitem{Amaral2016}
-P.~Amaral, J.~Dinis, P.~Pinto, L.~Bernardo, J.~Tavares, H.~S. Mamede, Machine
-  {Learning} in {Software} {Defined} {Networks}: {Data} collection and traffic
-  classification, in: 2016 {IEEE} 24th {International} {Conference} on
-  {Network} {Protocols} ({ICNP}), 2016, pp. 1--5.
-\newblock \href {https://doi.org/10.1109/ICNP.2016.7785327}
-  {\path{doi:10.1109/ICNP.2016.7785327}}.
-
-\bibitem{Wang2018}
-M.~{Wang}, Y.~{Cui}, X.~{Wang}, S.~{Xiao}, J.~{Jiang}, Machine learning for
-  networking: Workflow, advances and opportunities, IEEE Network 32~(2) (2018)
-  92--99.
-\newblock \href {https://doi.org/10.1109/MNET.2017.1700200}
-  {\path{doi:10.1109/MNET.2017.1700200}}.
 
 \bibitem{McKeown2008}
 N.~McKeown, T.~Anderson, H.~Balakrishnan, G.~Parulkar, L.~Peterson, J.~Rexford,
@@ -236,6 +236,10 @@ D.~Singh, B.~Ng, Y.-C. Lai, Y.-D. Lin, W.~K. Seah, Modelling software-defined
   networking: Software and hardware switches, Journal of Network and Computer
   Applications 122 (2018) 24 -- 36.
 
+\bibitem{SchoffMPC}
+R.~Schoffauer, G.~Wunder, Model-predictive control for discrete-time queueing
+  networks with varying topology, ArXiv abs/2004.01985 (2020).
+
 \bibitem{WANG2012120}
 P.~Wang, H.~Chen, X.~Yang, Y.~Ma, Design and analysis of a model predictive
   controller for active queue management, ISA Transactions 51~(1) (2012) 120 --
@@ -247,10 +251,6 @@ P.~Wang, H.~Chen, X.~Yang, Y.~Ma, Design and analysis of a model predictive
   1086--1099.
 \newblock \href {https://doi.org/10.1109/TAC.2006.878749}
   {\path{doi:10.1109/TAC.2006.878749}}.
-
-\bibitem{SchoffMPC}
-R.~Schoffauer, G.~Wunder, Model-predictive control for discrete-time queueing
-  networks with varying topology, ArXiv abs/2004.01985 (2020).
 
 \bibitem{Kim2019}
 J.~{Kim}, G.~{Hwang}, Prediction based efficient online bandwidth allocation

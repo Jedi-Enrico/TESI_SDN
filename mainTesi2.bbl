@@ -358,10 +358,8 @@ M.~B. Anwer, M.~Motiwala, M.~b. Tariq, N.~Feamster,
 
 \bibitem{Lu2011}
 G.~Lu, C.~Guo, Y.~Li, Z.~Zhou, T.~Yuan, H.~Wu, Y.~Xiong, R.~Gao, Y.~Zhang,
-  \href{https://www.microsoft.com/en-us/research/publication/serverswitch-a-programmable-and-high-performance-platform-for-data-center-networks/}{{ServerSwitch}:
-  {A} {Programmable} and {High} {Performance} {Platform} for {Data} {Center}
-  {Networks}} (Mar. 2011).
-\newline\urlprefix\url{https://www.microsoft.com/en-us/research/publication/serverswitch-a-programmable-and-high-performance-platform-for-data-center-networks/}
+  {ServerSwitch}: {A} {Programmable} and {High} {Performance} {Platform} for
+  {Data} {Center} {Networks} (Mar. 2011).
 
 \bibitem{RYU}
 \href{https://osrg.github.io/ryu/}{RYU Controller}, 2019.
@@ -736,13 +734,10 @@ A.~D. Gaurav~Pandey, Learning by stretching deep networks, Proceedings of the
   31st International Conference on MachineLearning, Beijing, China (2014).
 
 \bibitem{Krizhevsky2012}
-A.~Krizhevsky, I.~Sutskever, G.~E. Hinton,
-  \href{http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf}{{ImageNet}
-  {Classification} with {Deep} {Convolutional} {Neural} {Networks}}, in:
-  F.~Pereira, C.~J.~C. Burges, L.~Bottou, K.~Q. Weinberger (Eds.), Advances in
-  {Neural} {Information} {Processing} {Systems} 25, Curran Associates, Inc.,
-  2012, pp. 1097--1105.
-\newline\urlprefix\url{http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf}
+A.~Krizhevsky, I.~Sutskever, G.~E. Hinton, {ImageNet} {Classification} with
+  {Deep} {Convolutional} {Neural} {Networks}, in: F.~Pereira, C.~J.~C. Burges,
+  L.~Bottou, K.~Q. Weinberger (Eds.), Advances in {Neural} {Information}
+  {Processing} {Systems} 25, Curran Associates, Inc., 2012, pp. 1097--1105.
 
 \bibitem{Li2018}
 C.~Li, Y.~Wu, X.~Yuan, Z.~Sun, W.~Wang, X.~Li, L.~Gong,

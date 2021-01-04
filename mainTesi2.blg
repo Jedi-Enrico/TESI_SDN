@@ -62,37 +62,37 @@ Warning--empty publisher in Cacti
 Warning--empty year in Cacti
 You've used 150 entries,
             2952 wiz_defined-function locations,
-            1630 strings with 35483 characters,
-and the built_in function-call counts, 48456 in all, are:
-= -- 4559
+            1628 strings with 35247 characters,
+and the built_in function-call counts, 48394 in all, are:
+= -- 4551
 > -- 1628
 < -- 26
 + -- 642
 - -- 492
-* -- 3663
-:= -- 6363
+* -- 3651
+:= -- 6353
 add.period$ -- 220
 call.type$ -- 150
 change.case$ -- 139
 chr.to.int$ -- 0
 cite$ -- 201
-duplicate$ -- 1529
-empty$ -- 5533
+duplicate$ -- 1525
+empty$ -- 5525
 format.name$ -- 607
-if$ -- 12593
+if$ -- 12577
 int.to.chr$ -- 0
 int.to.str$ -- 150
 missing$ -- 157
-newline$ -- 560
+newline$ -- 558
 num.names$ -- 140
-pop$ -- 1031
+pop$ -- 1029
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 3142
+skip$ -- 3146
 stack$ -- 0
 substring$ -- 2519
-swap$ -- 479
+swap$ -- 477
 text.length$ -- 26
 text.prefix$ -- 0
 top$ -- 0
@@ -100,5 +100,5 @@ type$ -- 0
 warning$ -- 51
 while$ -- 340
 width$ -- 153
-write$ -- 1362
+write$ -- 1360
 (There were 51 warnings)

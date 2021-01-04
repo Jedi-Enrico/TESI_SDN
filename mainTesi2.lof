@@ -7,26 +7,26 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Mininet emulated network architecture.}}{22}{figure.2.1}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Static queues rate with routed packets relative to DSCP.}}{23}{figure.2.2}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces NRMSE of the disturbance predictive model over a time horizon of $N=5$.}}{31}{figure.2.3}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Comparison between the real traffic (YELLOW LINE) and the traffic prediction for the different models for Service 0.}}{31}{figure.2.4}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces NRMSE, up to $N=5$ and for each priority class, for RT (blue), RF (red), NN with sigmoids as activation function (yellow) and NN with hyperbolic tangent as activation function (black).}}{33}{figure.2.5}%
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Grid pattern emerged from dataset distribution.}}{34}{figure.2.6}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces NRMSE of the queues output predictive model over a time horizon of $N=5$, without knowledge of the future disturbances}}{34}{figure.2.7}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces NRMSE of the queues output predictive model over a time horizon of $N=5$, with knowledge of the 4-steps future disturbances}}{35}{figure.2.8}%
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Cumulative Packet Losses without knowledge of the future disturbance.}}{36}{figure.2.9}%
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Comparison between Cumulative Packet Losses with (solid lines) and without (dashed lines) knowledge of the future disturbance.}}{37}{figure.2.10}%
-\contentsline {figure}{\numberline {2.11}{\ignorespaces Bandwidth saving comparison without (a) and with (b) knowledge of the future disturbances.}}{38}{figure.2.11}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces a}}{38}{figure.2.11}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces b}}{38}{figure.2.11}%
-\contentsline {figure}{\numberline {2.12}{\ignorespaces Static controller up to the $400th$, then MPC controller.}}{39}{figure.2.12}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces NRMSE of the disturbance predictive model over a time horizon of $N=5$.}}{32}{figure.2.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Comparison between the real traffic (YELLOW LINE) and the traffic prediction for the different models for Service 0.}}{32}{figure.2.4}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces NRMSE, up to $N=5$ and for each priority class, for RT (blue), RF (red), NN with sigmoids as activation function (yellow) and NN with hyperbolic tangent as activation function (black).}}{34}{figure.2.5}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Grid pattern emerged from dataset distribution.}}{35}{figure.2.6}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces NRMSE of the queues output predictive model over a time horizon of $N=5$, without knowledge of the future disturbances}}{36}{figure.2.7}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces NRMSE of the queues output predictive model over a time horizon of $N=5$, with knowledge of the 4-steps future disturbances}}{36}{figure.2.8}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Cumulative Packet Losses without knowledge of the future disturbance.}}{38}{figure.2.9}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Comparison between Cumulative Packet Losses with (solid lines) and without (dashed lines) knowledge of the future disturbance.}}{38}{figure.2.10}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Bandwidth saving comparison without (a) and with (b) knowledge of the future disturbances.}}{40}{figure.2.11}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces a}}{40}{figure.2.11}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces b}}{40}{figure.2.11}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Static controller up to the $400th$, then MPC controller.}}{41}{figure.2.12}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Network architecture with dedicated hardware devices.}}{42}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Packets that transit inside the switch (a), comparison between packets incoming in the switch in emulation environment and in dedicated hardware (b) and sum of packets sent by the switch port with different control model (c).}}{44}{figure.3.2}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces a}}{44}{figure.3.2}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces b}}{44}{figure.3.2}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces c}}{44}{figure.3.2}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces NRMSE of the packets predictive model over a time horizon of $N=10$.}}{45}{figure.3.3}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces NRMSE of the packets predictive model over a time horizon of $N=10$ after one data update.}}{46}{figure.3.4}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces NRMSE of the packets predictive model at prediction horizon of N=1 with different updated models. Every update add 288 samples (about 1 day) to the previous model training data.}}{47}{figure.3.5}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Network architecture with dedicated hardware devices.}}{44}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Packets that transit inside the switch (a), comparison between packets incoming in the switch in emulation environment and in dedicated hardware (b) and sum of packets sent by the switch port with different control model (c).}}{46}{figure.3.2}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces a}}{46}{figure.3.2}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces b}}{46}{figure.3.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces c}}{46}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces NRMSE of the packets predictive model over a time horizon of $N=10$.}}{47}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces NRMSE of the packets predictive model over a time horizon of $N=10$ after one data update.}}{48}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces NRMSE of the packets predictive model at prediction horizon of N=1 with different updated models. Every update add 288 samples (about 1 day) to the previous model training data.}}{49}{figure.3.5}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.8.24)  4 JAN 2021 10:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.8.24)  5 JAN 2021 13:57
 entering extended mode
 **./mainTesi2.tex
 (mainTesi2.tex
@@ -864,11 +864,6 @@ File: figure/QUEUE-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: figure/QUEUE-eps-converted-to.pdf  used on input line 
 36.
 (pdftex.def)             Requested size: 433.62pt x 79.93135pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--45
-
- []
-
 [23 <./figure/QUEUE-eps-converted-to.pdf>] [24] [25] [26] [27]
 
 Package amsfonts Warning: Obsolete command \bold; \mathbf should be used instea
@@ -1444,7 +1439,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 392.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 392.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 392.
 Package rerunfilecheck Info: File `mainTesi2.out' has not changed.
-(rerunfilecheck)             Checksum: C321A16EA0FC6AD8E83061F8BAB02B2D;3529.
+(rerunfilecheck)             Checksum: B130E612232E11969303AA9F69F79191;3530.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 392.
  ) 
 Here is how much of TeX's memory you used:
@@ -1472,7 +1467,7 @@ w/courier/ucrb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pf
 b><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/M
 iKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw
 /times/utmri8a.pfb>
-Output written on mainTesi2.pdf (163 pages, 6618649 bytes).
+Output written on mainTesi2.pdf (163 pages, 6618469 bytes).
 PDF statistics:
  6614 PDF objects out of 7423 (max. 8388607)
  4317 named destinations out of 5155 (max. 500000)

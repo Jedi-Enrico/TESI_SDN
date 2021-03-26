@@ -9,16 +9,7 @@ Reallocating 'name_of_file' (item size: 1) to 4 items.
 Reallocating 'name_of_file' (item size: 1) to 15 items.
 The style file: elsarticle-num.bst
 Database file #1: SDN.bib
-Warning--empty journal in Hodo2017
-Warning--empty year in Hodo2017
-Warning--empty journal in Zhou2017
-Warning--empty year in Zhou2017
-Warning--empty journal in Chen2017
-Warning--empty year in Chen2017
 Warning--empty author and editor in OFP13
-Warning--empty publisher in MDPSDNSURV
-Warning--empty chapter and pages in MDPSDNSURV
-Warning--empty journal in Xu2018
 Warning--empty author in ONF
 Warning--empty journal in ONF
 Warning--empty year in ONF
@@ -47,6 +38,15 @@ Warning--empty journal in Breiman1999
 Warning--empty publisher in Haykin
 Warning--empty year in Haykin
 Warning--empty journal in Bakker2017
+Warning--empty publisher in MDPSDNSURV
+Warning--empty chapter and pages in MDPSDNSURV
+Warning--empty journal in Xu2018
+Warning--empty journal in Hodo2017
+Warning--empty year in Hodo2017
+Warning--empty journal in Zhou2017
+Warning--empty year in Zhou2017
+Warning--empty journal in Chen2017
+Warning--empty year in Chen2017
 Warning--empty author and editor in Mininet
 Warning--empty publisher in Mininet
 Warning--empty author and editor in ofctlrest
@@ -60,45 +60,45 @@ Warning--empty year in rasp
 Warning--empty author and editor in Cacti
 Warning--empty publisher in Cacti
 Warning--empty year in Cacti
-You've used 150 entries,
+You've used 158 entries,
             2952 wiz_defined-function locations,
-            1628 strings with 35247 characters,
-and the built_in function-call counts, 48394 in all, are:
-= -- 4551
-> -- 1628
-< -- 26
-+ -- 642
-- -- 492
-* -- 3651
-:= -- 6353
-add.period$ -- 220
-call.type$ -- 150
-change.case$ -- 139
+            1677 strings with 36921 characters,
+and the built_in function-call counts, 50892 in all, are:
+= -- 4796
+> -- 1705
+< -- 27
++ -- 673
+- -- 515
+* -- 3829
+:= -- 6682
+add.period$ -- 231
+call.type$ -- 158
+change.case$ -- 146
 chr.to.int$ -- 0
-cite$ -- 201
-duplicate$ -- 1525
-empty$ -- 5525
-format.name$ -- 607
-if$ -- 12577
+cite$ -- 209
+duplicate$ -- 1604
+empty$ -- 5809
+format.name$ -- 637
+if$ -- 13229
 int.to.chr$ -- 0
-int.to.str$ -- 150
-missing$ -- 157
-newline$ -- 558
-num.names$ -- 140
-pop$ -- 1029
+int.to.str$ -- 158
+missing$ -- 166
+newline$ -- 586
+num.names$ -- 148
+pop$ -- 1081
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 3146
+skip$ -- 3312
 stack$ -- 0
-substring$ -- 2519
-swap$ -- 477
-text.length$ -- 26
+substring$ -- 2659
+swap$ -- 501
+text.length$ -- 27
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 51
-while$ -- 340
-width$ -- 153
-write$ -- 1360
+while$ -- 360
+width$ -- 161
+write$ -- 1431
 (There were 51 warnings)

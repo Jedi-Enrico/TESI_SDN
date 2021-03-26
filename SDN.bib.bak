@@ -2046,7 +2046,6 @@ doi = {10.1007/978-981-15-0864-6_3}
   editor    = {Pereira, F. and Burges, C. J. C. and Bottou, L. and Weinberger, K. Q.},
   pages     = {1097--1105},
   file      = {NIPS Full Text PDF:http\://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networ.pdf:application/pdf},
-  url       = {http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf},
   urldate   = {2020-08-26},
 }
 
@@ -2229,6 +2228,64 @@ doi = {10.1007/978-981-15-0864-6_3}
   title   = {Teach, {Learn}, and {Make} with {Raspberry} {Pi} – {Raspberry} {Pi}},
   url     = {https://www.raspberrypi.org/},
   urldate = {2020-09-11},
+}
+
+@Article{EuCNC2020,
+  author  = {E. Reticcioli and G.D. Di Girolamo and F. Smarra and A. Carmenini and A. D’Innocenzo and F. Graziosi},
+  title   = {Learning {SDN} traffic flow accurate models to enable queue bandwidth dynamic optimization},
+  journal = {European Conference on Networks and Communications (EuCNC), 2020},
+  year    = {2020},
+}
+
+@Book{Tan2017,
+  author    = {Tan, Liansheng},
+  publisher = {CRC press},
+  title     = {Resource Allocation and Performance Optimization in Communication Networks and the Internet},
+  year      = {2017},
+}
+
+@InProceedings{Abdelmoniem2019,
+  author       = {Abdelmoniem, Ahmed M and Bensaou, Brahim},
+  booktitle    = {IEEE INFOCOM 2019-IEEE Conference on Computer Communications},
+  title        = {Hysteresis-based active queue management for tcp traffic in data centers},
+  year         = {2019},
+  organization = {IEEE},
+  pages        = {1621--1629},
+}
+
+@Article{Yeremenko2018,
+  author    = {Yeremenko, Oleksandra and Simonenko, Oleksandr},
+  journal   = {Advances in Computer Science for Engineering and Education},
+  title     = {Mathematical Model of Queue Management with Flows Aggregation and Bandwidth Allocation},
+  year      = {2018},
+  pages     = {165},
+  volume    = {754},
+  publisher = {Springer},
+}
+
+@Article{John2017,
+  author  = {John, J and Balan, R},
+  journal = {International Journal of Applied Engineering Research},
+  title   = {Priority queuing technique promoting deadline sensitive data transfers in router based heterogeneous networks},
+  year    = {2017},
+  number  = {15},
+  pages   = {4899--4903},
+  volume  = {12},
+}
+
+@Article{Yang2011,
+  author   = {Yang, Jing and Ulukus, Sennur},
+  journal  = {IEEE Journal on Selected Areas in Communications},
+  title    = {Trading {Rate} for {Balanced} {Queue} {Lengths} for {Network} {Delay} {Minimization}},
+  year     = {2011},
+  issn     = {1558-0008},
+  month    = may,
+  number   = {5},
+  pages    = {988--996},
+  volume   = {29},
+  abstract = {We consider a communication channel with two transmitters and one receiver, with an underlying rate region which is approximated as a general pentagon. Different from the Gaussian multiple access channel (MAC) capacity region, the sum-rate on the dominant face of this pentagon is not a constant. We allocate rates from this rate region to users according to their current queue lengths in order to minimize the average delay in the system. We formulate the problem as a Markov decision problem (MDP), and derive the structural properties of the corresponding discounted-cost MDP. We show that the delay-optimal policy has a switch curve structure. For the discounted-cost problem, we prove that the switch curve has a limit along one of the dimensions. The delay-optimal policy divides the entire queue state space into two via a switch curve. If the queue state is on one side of the switch curve, the system operates at one of the corner points of the rate pentagon which favors maximum sum-rate. When the queue state switches to the other side of the switch curve, the system operates at the other corner point of the rate pentagon which favors balancing the queue lengths. As a result, the system does not always operate at the sum-rate maximizing rate pair, but trades rate for balanced queue lengths for the goal of minimizing the overall delay. The existence of a limit in the switch curve along one of dimensions implies that, once the queue state is beyond the limit, the system always operates at one of the corner points, implying that the queues can be operated partially distributedly.},
+  doi      = {10.1109/JSAC.2011.110509},
+  keywords = {Gaussian channels, Markov processes, optimisation, queueing theory, balanced queue lengths, network delay minimization, communication channel, Gaussian multiple access channel capacity region, MAC capacity region, Markov decision problem, discounted-cost MDP, delay-optimal policy, switch curve structure, discounted-cost problem, Switches, Delay, Face, Markov processes, Transmitters, Minimization, Queueing analysis, Delay minimization, rate-delay trade-off, queue-length based rate allocation, multiple access channel, Markov decision processes},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

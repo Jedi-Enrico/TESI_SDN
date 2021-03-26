@@ -1,7 +1,7 @@
 \documentclass[12pt, a4paper, twoside, openright]{ociamthesis}  % default square logo 
 
 
-
+%\usepackage{tocbibind}
 %load any additional packages
 
 %%Pacchetti utili anche se non necessari
@@ -279,6 +279,7 @@ emph=[3]{click_and_crop,},
 \include{chapter/acknowledgements}   % include an acknowledgements.tex file
 
 %\afterpage{\null\newpage}
+\phantomsection
 \addcontentsline{toc}{chapter}{Abstract}
 \include{chapter/abstract}          % include the abstract
 
@@ -289,7 +290,7 @@ emph=[3]{click_and_crop,},
 \end{romanpages}            % end roman page numbering
 
 %\input{chapter/00_00_notation}
-
+\phantomsection
 \addcontentsline{toc}{chapter}{Introduction}
 \input{chapter/00_01_introduction.tex}
 
@@ -305,18 +306,19 @@ emph=[3]{click_and_crop,},
 
 \chapter{RT- and RF-based predictive models of multi-service traffic in a real Service Provider Network}
 \input{chapter/RealNet}
-
+\phantomsection
 \addcontentsline{toc}{chapter}{Conclusions}
 \input{chapter/10_conclusion}
 
 
 %next line adds the Bibliography to the contents page
+\phantomsection
 \addcontentsline{toc}{chapter}{References}
 %uncomment next line to change bibliography name to references
 \renewcommand{\bibname}{References}
 \bibliography{SDN}        %use a bibtex bibliography file refs.bib
 \bibliographystyle{elsarticle-num}  %use the plain bibliography style
-
+\phantomsection
 \addcontentsline{toc}{chapter}{Publications}
 \renewcommand{\bibname}{Publications}
 
@@ -366,7 +368,7 @@ emph=[3]{click_and_crop,},
 
 %Appendix B
 \lstset{firstnumber=2}
-\chapter{Codes For Dedicated Hardware Network Devices}\label{Py_codes_RNT}
+\chapter{Python Codes For Dedicated Hardware Network Devices}\label{Py_codes_RNT}
 \section{Traffic\textunderscore Real\textunderscore Hwd.py}\label{Traffic_Real_Hwd}
 \lstinputlisting[language=Python]{RLNT/Traffic_Real_Hwd.py}
 %-------------------------------------------------------------------

@@ -1,9 +1,9 @@
 \babel@toc {english}{}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces The high-level SDN architecture proposed by ONF.}}{4}{figure.1.1}%
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Example of OpenFlow-based SDN network.}}{6}{figure.1.2}%
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Common machine learning algorithms.}}{8}{figure.1.3}%
-\contentsline {figure}{\numberline {1.4}{\ignorespaces A basic neural network with three layers: an input layer, a hidden layer and an output layer.}}{10}{figure.1.4}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces The high-level SDN architecture proposed by ONF.}}{8}{figure.1.1}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Example of OpenFlow-based SDN network.}}{10}{figure.1.2}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Common machine learning algorithms.}}{12}{figure.1.3}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces A basic neural network with three layers: an input layer, a hidden layer and an output layer.}}{14}{figure.1.4}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Mininet emulated network architecture.}}{22}{figure.2.1}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Static queues rate with routed packets relative to DSCP.}}{23}{figure.2.2}%

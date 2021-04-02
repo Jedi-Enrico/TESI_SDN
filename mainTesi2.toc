@@ -1,17 +1,16 @@
 \babel@toc {english}{}
 \contentsline {chapter}{Abstract}{4}{section*.1}%
 \contentsline {chapter}{Introduction}{1}{section*.5}%
-\contentsline {chapter}{\numberline {1}Background Knowledge}{3}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Software Defined Networks Architecture}{3}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Data Plane}{3}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Control Plane}{4}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Application Plane}{5}{subsection.1.1.3}%
-\contentsline {section}{\numberline {1.2}Overview Of Machine Learning Algorithms}{7}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Supervised Learning}{7}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Unsupervised Learning}{13}{subsection.1.2.2}%
-\contentsline {subsection}{\numberline {1.2.3}Semi-Supervised Learning}{14}{subsection.1.2.3}%
-\contentsline {subsection}{\numberline {1.2.4}Reinforcement Learning}{14}{subsection.1.2.4}%
-\contentsline {section}{\numberline {1.3}Related Works}{16}{section.1.3}%
+\contentsline {chapter}{\numberline {1}Background Knowledge}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Software Defined Networks Architecture}{7}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Data Plane}{7}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Control Plane}{8}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Application Plane}{9}{subsection.1.1.3}%
+\contentsline {section}{\numberline {1.2}Overview Of Machine Learning Algorithms}{11}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Supervised Learning}{11}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Unsupervised Learning}{17}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Semi-Supervised Learning}{18}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Reinforcement Learning}{18}{subsection.1.2.4}%
 \contentsline {chapter}{\numberline {2}RT- and RF-based models of SDN switched for Priority Queueing}{21}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Mininet network emulation environment and control problem}{21}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Regression Trees and Random Forest based models for MPC}{24}{section.2.2}%
@@ -27,23 +26,23 @@
 \contentsline {chapter}{\numberline {3}RT- and RF-based predictive models of multi-service traffic in a real Service Provider Network}{43}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Control performance validation over dedicated hardware network}{43}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Traffic predictive model validation on Italian Internet provider network}{47}{section.3.2}%
-\contentsline {chapter}{Conclusions}{49}{section*.7}%
-\contentsline {chapter}{References}{51}{section*.9}%
-\contentsline {chapter}{Publications}{69}{section*.11}%
-\contentsline {chapter}{\numberline {A}Python Codes for Mininet Environment}{73}{appendix.A}%
-\contentsline {section}{\numberline {A.1}main\textunderscore controller\textunderscore TOS.py}{73}{section.A.1}%
-\contentsline {section}{\numberline {A.2}datapath\textunderscore monitor\textunderscore TOS.py}{74}{section.A.2}%
-\contentsline {section}{\numberline {A.3}Controller\textunderscore commands.py}{82}{section.A.3}%
-\contentsline {section}{\numberline {A.4}qos\textunderscore simple\textunderscore switch\textunderscore 13.py}{86}{section.A.4}%
-\contentsline {section}{\numberline {A.5}ofctl\textunderscore rest.py}{89}{section.A.5}%
-\contentsline {section}{\numberline {A.6}rest\textunderscore conf\textunderscore switch.py}{104}{section.A.6}%
-\contentsline {section}{\numberline {A.7}rest\textunderscore qos.py}{107}{section.A.7}%
-\contentsline {section}{\numberline {A.8}Topology\textunderscore qos\textunderscore TRAFFIC\textunderscore GEN.py}{129}{section.A.8}%
-\contentsline {section}{\numberline {A.9}ditg.py}{138}{section.A.9}%
-\contentsline {chapter}{\numberline {B}Python Codes For Dedicated Hardware Network Devices}{141}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Traffic\textunderscore Real\textunderscore Hwd.py}{141}{section.B.1}%
-\contentsline {section}{\numberline {B.2}Start\textunderscore ITGRecv.py}{147}{section.B.2}%
-\contentsline {section}{\numberline {B.3}ditg.py}{147}{section.B.3}%
-\contentsline {section}{\numberline {B.4}Set\textunderscore Queue.py}{149}{section.B.4}%
-\contentsline {section}{\numberline {B.5}SendTime.py}{150}{section.B.5}%
-\contentsline {section}{\numberline {B.6}ReadTime.ino}{152}{section.B.6}%
+\contentsline {chapter}{Conclusions}{49}{section*.8}%
+\contentsline {chapter}{References}{51}{section*.10}%
+\contentsline {chapter}{Publications}{68}{section*.12}%
+\contentsline {chapter}{\numberline {A}Python Codes for Mininet Environment}{71}{appendix.A}%
+\contentsline {section}{\numberline {A.1}main\textunderscore controller\textunderscore TOS.py}{71}{section.A.1}%
+\contentsline {section}{\numberline {A.2}datapath\textunderscore monitor\textunderscore TOS.py}{72}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Controller\textunderscore commands.py}{80}{section.A.3}%
+\contentsline {section}{\numberline {A.4}qos\textunderscore simple\textunderscore switch\textunderscore 13.py}{84}{section.A.4}%
+\contentsline {section}{\numberline {A.5}ofctl\textunderscore rest.py}{87}{section.A.5}%
+\contentsline {section}{\numberline {A.6}rest\textunderscore conf\textunderscore switch.py}{102}{section.A.6}%
+\contentsline {section}{\numberline {A.7}rest\textunderscore qos.py}{105}{section.A.7}%
+\contentsline {section}{\numberline {A.8}Topology\textunderscore qos\textunderscore TRAFFIC\textunderscore GEN.py}{127}{section.A.8}%
+\contentsline {section}{\numberline {A.9}ditg.py}{136}{section.A.9}%
+\contentsline {chapter}{\numberline {B}Python Codes For Dedicated Hardware Network Devices}{139}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Traffic\textunderscore Real\textunderscore Hwd.py}{139}{section.B.1}%
+\contentsline {section}{\numberline {B.2}Start\textunderscore ITGRecv.py}{145}{section.B.2}%
+\contentsline {section}{\numberline {B.3}ditg.py}{145}{section.B.3}%
+\contentsline {section}{\numberline {B.4}Set\textunderscore Queue.py}{147}{section.B.4}%
+\contentsline {section}{\numberline {B.5}SendTime.py}{148}{section.B.5}%
+\contentsline {section}{\numberline {B.6}ReadTime.ino}{150}{section.B.6}%

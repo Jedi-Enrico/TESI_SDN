@@ -10,6 +10,15 @@ Reallocating 'name_of_file' (item size: 1) to 15 items.
 The style file: elsarticle-num.bst
 Database file #1: SDN.bib
 Warning--empty author and editor in OFP13
+Warning--empty publisher in MDPSDNSURV
+Warning--empty chapter and pages in MDPSDNSURV
+Warning--empty journal in Xu2018
+Warning--empty journal in Hodo2017
+Warning--empty year in Hodo2017
+Warning--empty journal in Zhou2017
+Warning--empty year in Zhou2017
+Warning--empty journal in Chen2017
+Warning--empty year in Chen2017
 Warning--empty author in ONF
 Warning--empty journal in ONF
 Warning--empty year in ONF
@@ -38,15 +47,6 @@ Warning--empty journal in Breiman1999
 Warning--empty publisher in Haykin
 Warning--empty year in Haykin
 Warning--empty journal in Bakker2017
-Warning--empty publisher in MDPSDNSURV
-Warning--empty chapter and pages in MDPSDNSURV
-Warning--empty journal in Xu2018
-Warning--empty journal in Hodo2017
-Warning--empty year in Hodo2017
-Warning--empty journal in Zhou2017
-Warning--empty year in Zhou2017
-Warning--empty journal in Chen2017
-Warning--empty year in Chen2017
 Warning--empty author and editor in Mininet
 Warning--empty publisher in Mininet
 Warning--empty author and editor in ofctlrest

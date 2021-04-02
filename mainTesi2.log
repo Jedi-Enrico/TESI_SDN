@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.8.24)  16 MAR 2021 16:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.8.24)  2 APR 2021 15:25
 entering extended mode
 **./mainTesi2.tex
 (mainTesi2.tex
@@ -694,7 +694,7 @@ LaTeX Info: Redefining \nameref on input line 263.
 
  ABD: EveryShipout initializing macros
 \c@lstlisting=\count323
-<univaq_logo.png, id=198, 2731.20375pt x 1020.81375pt>
+<univaq_logo.png, id=194, 2731.20375pt x 1020.81375pt>
 File: univaq_logo.png Graphic file (type png)
 <use univaq_logo.png>
 Package pdftex.def Info: univaq_logo.png  used on input line 275.
@@ -758,25 +758,40 @@ me identifier (name{page.1}) has been already used, duplicate ignored
 l.63 
       [1
 
-])pdfTeX warning (ext4): destination with the same identifier (name{page.2}) ha
-s been already used, duplicate ignored
+]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.77 
+      [2]pdfTeX warning (ext4): destination with the same identifier (name{page
+.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.83 
+      [3]pdfTeX warning (ext4): destination with the same identifier (name{page
+.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.89 
+      [4]pdfTeX warning (ext4): destination with the same identifier (name{page
+.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.95 
+      [5])pdfTeX warning (ext4): destination with the same identifier (name{pag
+e.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.299 \chapter
-              {Background Knowledge} [2]
+              {Background Knowledge} [6]
 Chapter 1.
 (chapter/00_BGK_cap1.tex
-<figure/ONF.png, id=408, 470.9595pt x 260.172pt>
+<figure/ONF.png, id=528, 470.9595pt x 260.172pt>
 File: figure/ONF.png Graphic file (type png)
 <use figure/ONF.png>
 Package pdftex.def Info: figure/ONF.png  used on input line 7.
 (pdftex.def)             Requested size: 369.88582pt x 204.34264pt.
-pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.15 \subsection
-                {Control Plane} [3
+ [7
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
@@ -784,42 +799,26 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 
 ("C:\Program Files\MiKTeX\tex/latex/psnfss\ts1ptm.fd"
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.27 \subsection
-                {Application Plane} [4 <./figure/ONF.png>]pdfTeX warning (ext4)
-: destination with the same identifier (name{page.5}) has been already used, du
-plicate ignored
-<to be read again> 
-                   \relax 
-l.31 
-      [5]
-<figure/WorkFlow.jpg, id=502, 4205.7125pt x 3457.91875pt>
+) [8 <./figure/ONF.png>]
+[9]
+<figure/WorkFlow.jpg, id=624, 4205.7125pt x 3457.91875pt>
 File: figure/WorkFlow.jpg Graphic file (type jpg)
 <use figure/WorkFlow.jpg>
 Package pdftex.def Info: figure/WorkFlow.jpg  used on input line 39.
 (pdftex.def)             Requested size: 420.59589pt x 345.81213pt.
-) (chapter/00_BGK_cap2.texpdfTeX warning (ext4): destination with the same iden
-tifier (name{page.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1 \section
-            {Overview Of Machine Learning Algorithms} \label{sec:ML_BGK}
-[6 <./figure/WorkFlow.jpg>]
-<figure/ML_algo.jpg, id=524, 2163.08125pt x 3417.76875pt>
+) (chapter/00_BGK_cap2.tex [10 <./figure/WorkFlow.jpg>]
+<figure/ML_algo.jpg, id=646, 2163.08125pt x 3417.76875pt>
 File: figure/ML_algo.jpg Graphic file (type jpg)
 <use figure/ML_algo.jpg>
 Package pdftex.def Info: figure/ML_algo.jpg  used on input line 6.
 (pdftex.def)             Requested size: 281.21043pt x 444.32555pt.
- [7] [8 <./figure/ML_algo.jpg>]
-<figure/NN_base.png, id=555, 445.665pt x 305.34074pt>
+ [11] [12 <./figure/ML_algo.jpg>]
+<figure/NN_base.png, id=676, 445.665pt x 305.34074pt>
 File: figure/NN_base.png Graphic file (type png)
 <use figure/NN_base.png>
 Package pdftex.def Info: figure/NN_base.png  used on input line 27.
 (pdftex.def)             Requested size: 369.88582pt x 253.42343pt.
- [9] [10 <./figure/NN_base.png>] [11] [12] [13] [14] [15] [16] [17] [18]) [19] 
+ [13] [14 <./figure/NN_base.png>] [15] [16] [17] [18] [19])
 [20]
 Chapter 2.
 (chapter/SDNNetSim.tex
@@ -837,7 +836,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/SDN_net_EPS-eps-converted-to.pdf): PDF 
 inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/SDN_net_EPS-eps-converted-to.pdf, id=764, 1498.59875pt x 769.87625pt>
+<figure/SDN_net_EPS-eps-converted-to.pdf, id=759, 1498.59875pt x 769.87625pt>
 File: figure/SDN_net_EPS-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/SDN_net_EPS-eps-converted-to.pdf>
 Package pdftex.def Info: figure/SDN_net_EPS-eps-converted-to.pdf  used on input
@@ -860,7 +859,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/QUEUE-eps-converted-to.pdf): PDF inclus
 ion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/QUEUE-eps-converted-to.pdf, id=791, 2809.49625pt x 517.935pt>
+<figure/QUEUE-eps-converted-to.pdf, id=786, 2809.49625pt x 517.935pt>
 File: figure/QUEUE-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/QUEUE-eps-converted-to.pdf>
 Package pdftex.def Info: figure/QUEUE-eps-converted-to.pdf  used on input line 
@@ -887,7 +886,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/Error_Disturbance-eps-converted-to.pdf)
 : PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/Error_Disturbance-eps-converted-to.pdf, id=908, 1445.4pt x 719.68875pt>
+<figure/Error_Disturbance-eps-converted-to.pdf, id=903, 1445.4pt x 719.68875pt>
 
 File: figure/Error_Disturbance-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/Error_Disturbance-eps-converted-to.pdf>
@@ -913,7 +912,7 @@ Package epstopdf Info: Output file is already uptodate.
 pdfTeX warning: pdflatex (file ./figure/Error_Disturbance_Packets-eps-converted
 -to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> all
 owed
-<figure/Error_Disturbance_Packets-eps-converted-to.pdf, id=909, 1445.4pt x 675.
+<figure/Error_Disturbance_Packets-eps-converted-to.pdf, id=904, 1445.4pt x 675.
 52374pt>
 File: figure/Error_Disturbance_Packets-eps-converted-to.pdf Graphic file (type 
 pdf)
@@ -941,7 +940,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/NRMSENNvsRTvsRF-eps-converted-to.pdf): 
 PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/NRMSENNvsRTvsRF-eps-converted-to.pdf, id=946, 1445.4pt x 755.82375pt>
+<figure/NRMSENNvsRTvsRF-eps-converted-to.pdf, id=941, 1445.4pt x 755.82375pt>
 File: figure/NRMSENNvsRTvsRF-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/NRMSENNvsRTvsRF-eps-converted-to.pdf>
 Package pdftex.def Info: figure/NRMSENNvsRTvsRF-eps-converted-to.pdf  used on i
@@ -963,7 +962,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/datadistribution-eps-converted-to.pdf):
  PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/datadistribution-eps-converted-to.pdf, id=957, 1156.32pt x 559.08875pt>
+<figure/datadistribution-eps-converted-to.pdf, id=952, 1156.32pt x 559.08875pt>
 
 File: figure/datadistribution-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/datadistribution-eps-converted-to.pdf>
@@ -984,7 +983,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/Error_State-eps-converted-to.pdf): PDF 
 inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/Error_State-eps-converted-to.pdf, id=958, 1445.4pt x 755.82375pt>
+<figure/Error_State-eps-converted-to.pdf, id=953, 1445.4pt x 755.82375pt>
 File: figure/Error_State-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/Error_State-eps-converted-to.pdf>
 Package pdftex.def Info: figure/Error_State-eps-converted-to.pdf  used on input
@@ -1005,7 +1004,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/Error_State_ddM4-eps-converted-to.pdf):
  PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/Error_State_ddM4-eps-converted-to.pdf, id=959, 1445.4pt x 755.82375pt>
+<figure/Error_State_ddM4-eps-converted-to.pdf, id=954, 1445.4pt x 755.82375pt>
 File: figure/Error_State_ddM4-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/Error_State_ddM4-eps-converted-to.pdf>
 Package pdftex.def Info: figure/Error_State_ddM4-eps-converted-to.pdf  used on 
@@ -1028,7 +1027,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/cumPL1-eps-converted-to.pdf): PDF inclu
 sion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/cumPL1-eps-converted-to.pdf, id=1013, 1156.32pt x 559.08875pt>
+<figure/cumPL1-eps-converted-to.pdf, id=1008, 1156.32pt x 559.08875pt>
 File: figure/cumPL1-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/cumPL1-eps-converted-to.pdf>
 Package pdftex.def Info: figure/cumPL1-eps-converted-to.pdf  used on input line
@@ -1051,7 +1050,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/cumPL_Total-eps-converted-to.pdf): PDF 
 inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/cumPL_Total-eps-converted-to.pdf, id=1014, 1156.32pt x 594.22pt>
+<figure/cumPL_Total-eps-converted-to.pdf, id=1009, 1156.32pt x 594.22pt>
 File: figure/cumPL_Total-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/cumPL_Total-eps-converted-to.pdf>
 Package pdftex.def Info: figure/cumPL_Total-eps-converted-to.pdf  used on input
@@ -1076,7 +1075,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/BW_NoPred-eps-converted-to.pdf): PDF in
 clusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/BW_NoPred-eps-converted-to.pdf, id=1037, 1101.11375pt x 849.1725pt>
+<figure/BW_NoPred-eps-converted-to.pdf, id=1032, 1101.11375pt x 849.1725pt>
 File: figure/BW_NoPred-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/BW_NoPred-eps-converted-to.pdf>
 Package pdftex.def Info: figure/BW_NoPred-eps-converted-to.pdf  used on input l
@@ -1096,7 +1095,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/BW_Pred-eps-converted-to.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/BW_Pred-eps-converted-to.pdf, id=1038, 1101.11375pt x 849.1725pt>
+<figure/BW_Pred-eps-converted-to.pdf, id=1033, 1101.11375pt x 849.1725pt>
 File: figure/BW_Pred-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/BW_Pred-eps-converted-to.pdf>
 Package pdftex.def Info: figure/BW_Pred-eps-converted-to.pdf  used on input lin
@@ -1119,7 +1118,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/MPCfinal-eps-converted-to.pdf): PDF inc
 lusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/MPCfinal-eps-converted-to.pdf, id=1040, 1016.79875pt x 513.92pt>
+<figure/MPCfinal-eps-converted-to.pdf, id=1035, 1016.79875pt x 513.92pt>
 File: figure/MPCfinal-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/MPCfinal-eps-converted-to.pdf>
 Package pdftex.def Info: figure/MPCfinal-eps-converted-to.pdf  used on input li
@@ -1134,7 +1133,7 @@ erted-to.pdf>] [41 <./figure/MPCfinal-eps-converted-to.pdf>] [42
 ]
 Chapter 3.
 (chapter/RealNet.tex
-<figure/Real_NET.png, id=1084, 3483.0125pt x 1982.40625pt>
+<figure/Real_NET.png, id=1079, 3483.0125pt x 1982.40625pt>
 File: figure/Real_NET.png Graphic file (type png)
 <use figure/Real_NET.png>
 Package pdftex.def Info: figure/Real_NET.png  used on input line 6.
@@ -1155,7 +1154,7 @@ Package epstopdf Info: Output file is already uptodate.
 pdfTeX warning: pdflatex (file ./figure_Real_HW/PKTS_RX_TX_realHWD-eps-converte
 d-to.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> al
 lowed
-<figure_Real_HW/PKTS_RX_TX_realHWD-eps-converted-to.pdf, id=1099, 1156.32pt x 5
+<figure_Real_HW/PKTS_RX_TX_realHWD-eps-converted-to.pdf, id=1094, 1156.32pt x 5
 94.22pt>
 File: figure_Real_HW/PKTS_RX_TX_realHWD-eps-converted-to.pdf Graphic file (type
  pdf)
@@ -1178,7 +1177,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure_Real_HW/PKTS_RX-eps-converted-to.pdf): 
 PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure_Real_HW/PKTS_RX-eps-converted-to.pdf, id=1100, 1156.32pt x 594.22pt>
+<figure_Real_HW/PKTS_RX-eps-converted-to.pdf, id=1095, 1156.32pt x 594.22pt>
 File: figure_Real_HW/PKTS_RX-eps-converted-to.pdf Graphic file (type pdf)
 <use figure_Real_HW/PKTS_RX-eps-converted-to.pdf>
 Package pdftex.def Info: figure_Real_HW/PKTS_RX-eps-converted-to.pdf  used on i
@@ -1199,7 +1198,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure_Real_HW/SUM_TX-eps-converted-to.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure_Real_HW/SUM_TX-eps-converted-to.pdf, id=1101, 1156.32pt x 594.22pt>
+<figure_Real_HW/SUM_TX-eps-converted-to.pdf, id=1096, 1156.32pt x 594.22pt>
 File: figure_Real_HW/SUM_TX-eps-converted-to.pdf Graphic file (type pdf)
 <use figure_Real_HW/SUM_TX-eps-converted-to.pdf>
 Package pdftex.def Info: figure_Real_HW/SUM_TX-eps-converted-to.pdf  used on in
@@ -1221,7 +1220,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/Error_PESCARA_DATA-eps-converted-to.pdf
 ): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/Error_PESCARA_DATA-eps-converted-to.pdf, id=1118, 1156.32pt x 594.22pt>
+<figure/Error_PESCARA_DATA-eps-converted-to.pdf, id=1113, 1156.32pt x 594.22pt>
 
 File: figure/Error_PESCARA_DATA-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/Error_PESCARA_DATA-eps-converted-to.pdf>
@@ -1250,7 +1249,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/LONGTEST_PESCARA-eps-converted-to.pdf):
  PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/LONGTEST_PESCARA-eps-converted-to.pdf, id=1144, 1156.32pt x 594.22pt>
+<figure/LONGTEST_PESCARA-eps-converted-to.pdf, id=1139, 1156.32pt x 594.22pt>
 File: figure/LONGTEST_PESCARA-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/LONGTEST_PESCARA-eps-converted-to.pdf>
 Package pdftex.def Info: figure/LONGTEST_PESCARA-eps-converted-to.pdf  used on 
@@ -1272,7 +1271,7 @@ Package epstopdf Info: Output file is already uptodate.
 
 pdfTeX warning: pdflatex (file ./figure/NEWSETUP_PESCARA-eps-converted-to.pdf):
  PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<figure/NEWSETUP_PESCARA-eps-converted-to.pdf, id=1158, 1156.32pt x 594.22pt>
+<figure/NEWSETUP_PESCARA-eps-converted-to.pdf, id=1153, 1156.32pt x 594.22pt>
 File: figure/NEWSETUP_PESCARA-eps-converted-to.pdf Graphic file (type pdf)
 <use figure/NEWSETUP_PESCARA-eps-converted-to.pdf>
 Package pdftex.def Info: figure/NEWSETUP_PESCARA-eps-converted-to.pdf  used on 
@@ -1302,99 +1301,99 @@ Underfull \hbox (badness 1648) in paragraph at lines 69--73
 A. D'Innocenzo,
  []
 
+[54]
+Underfull \hbox (badness 2376) in paragraph at lines 124--128
+[]\OT1/ptm/m/n/12 Q.-L. Li, J.-Y. Ma, R.-N. Fan, L. Xia, An Overview for Markov
+ De-ci-
+ []
 
-Underfull \hbox (badness 10000) in paragraph at lines 105--107
+[55] [56]
+Underfull \hbox (badness 10000) in paragraph at lines 279--286
+\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 http : / / www . sciencedirect . com / s
+cience / article / pii /
+ []
+
+[57] [58]
+Underfull \hbox (badness 10000) in paragraph at lines 387--389
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / github . com / CPqD / ofsoft
 switch13 / wiki /
  []
 
-[54] [55]
-Underfull \hbox (badness 1253) in paragraph at lines 180--187
+[59]
+Underfull \hbox (badness 1253) in paragraph at lines 462--469
 []\OT1/ptm/m/n/12 G. Bianchi, M. Bonola, A. Capone, C. Cas-cone, []Open-State: 
 pro-gram-ming
  []
 
-
-Underfull \hbox (badness 1009) in paragraph at lines 214--221
+[60]
+Underfull \hbox (badness 1009) in paragraph at lines 496--503
 \OT1/ptm/m/n/12 SDN con-trol plane: Im-ple-men-ta-tion and eval-u-a-tion[], Com
 -put-ers & Elec-tri-cal
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--221
+Underfull \hbox (badness 10000) in paragraph at lines 496--503
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 http : / / www . sciencedirect . com / s
 cience / article / pii /
  []
 
-[56] [57] [58]
-Underfull \hbox (badness 3312) in paragraph at lines 385--392
+[61] [62] [63]
+Underfull \hbox (badness 3312) in paragraph at lines 660--667
 []\OT1/ptm/m/n/12 J. Xie, D. Guo, Z. Hu, T. Qu, P. Lv, []Con-trol plane of soft
 -ware de-
  []
 
 
-Underfull \hbox (badness 5036) in paragraph at lines 385--392
+Underfull \hbox (badness 5036) in paragraph at lines 660--667
 \OT1/ptm/m/n/12 fined net-works: A sur-vey[], Com-puter Com-mu-ni-ca-tions 67 (
 2015) 1--10.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--392
+Underfull \hbox (badness 10000) in paragraph at lines 660--667
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 http : / / www . sciencedirect . com / s
 cience / article / pii /
  []
 
-[59]
-Underfull \hbox (badness 10000) in paragraph at lines 480--488
+[64]
+Underfull \hbox (badness 10000) in paragraph at lines 755--763
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 http : / / www . sciencedirect . com / s
 cience / article / pii /
  []
 
-[60]
-Underfull \hbox (badness 10000) in paragraph at lines 497--504
+
+Underfull \hbox (badness 10000) in paragraph at lines 772--779
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 http : / / www . sciencedirect . com / s
 cience / article / pii /
  []
 
-[61]
-Underfull \hbox (badness 2961) in paragraph at lines 576--583
+[65] [66]
+Underfull \hbox (badness 2961) in paragraph at lines 851--858
 []\OT1/ptm/m/n/12 L. P. Kael-bling, M. L. Littman, A. W. Moore, []Re-in-force-m
 ent Learn-ing:
  []
 
 
-Underfull \hbox (badness 4048) in paragraph at lines 576--583
+Underfull \hbox (badness 4048) in paragraph at lines 851--858
 \OT1/ptm/m/n/12 A Sur-vey[], Jour-nal of Ar-ti-fi-cial In-tel-li-gence Re-searc
 h 4 (1996) 237--285.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 576--583
+Underfull \hbox (badness 10000) in paragraph at lines 851--858
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / www . jair . org / index . p
 hp / jair / article / view /
  []
 
-[62]
-Underfull \hbox (badness 2376) in paragraph at lines 634--638
-[]\OT1/ptm/m/n/12 Q.-L. Li, J.-Y. Ma, R.-N. Fan, L. Xia, An Overview for Markov
- De-ci-
- []
 
-[63] [64]
-Underfull \hbox (badness 10000) in paragraph at lines 766--773
-\OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 http : / / www . sciencedirect . com / s
-cience / article / pii /
- []
-
-[65] [66] [67]
 Underfull \hbox (badness 10000) in paragraph at lines 901--903
 \OT1/ptm/m/n/12 URL []$\OT1/pcr/m/n/12 https : / / osrg . github . io / ryu-[]b
 ook / en / html / rest _ qos .
  []
 
-[68]) [69] [70
+[67]) [68] [69
 
-] [71] [72
+] [70
 
 ]
 Appendix A.
@@ -1413,7 +1412,7 @@ File: omsptm.fd
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 20.
 
-[73]) (datapath_monitor_TOS.py [74] [75]
+[71]) (datapath_monitor_TOS.py [72] [73]
 LaTeX Font Info:    Trying to load font information for OML+ptm on input line 8
 9.
 
@@ -1422,20 +1421,20 @@ File: omlptm.fd
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 89.
- [76] [77] [78] [79]
-[80] [81]) (Controller_commands.py [82] [83] [84] [85])
-(qos_simple_switch_13.py [86] [87] [88]) (ofctl_rest.py [89] [90] [91] [92]
-[93] [94] [95] [96] [97] [98] [99] [100] [101] [102] [103])
-(rest_conf_switch.py [104] [105] [106]) (rest_qos.py [107] [108] [109] [110]
-[111] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121] [122]
-[123] [124] [125] [126] [127] [128]) (Topology_qos_TRAFFIC_GEN.py [129]
-[130] [131] [132] [133] [134] [135] [136]) [137] (ditg.py [138]) [139] [140
+ [74] [75] [76] [77]
+[78] [79]) (Controller_commands.py [80] [81] [82] [83])
+(qos_simple_switch_13.py [84] [85] [86]) (ofctl_rest.py [87] [88] [89] [90]
+[91] [92] [93] [94] [95] [96] [97] [98] [99] [100] [101]) (rest_conf_switch.py
+[102] [103] [104]) (rest_qos.py [105] [106] [107] [108] [109] [110] [111]
+[112] [113] [114] [115] [116] [117] [118] [119] [120] [121] [122] [123]
+[124] [125] [126]) (Topology_qos_TRAFFIC_GEN.py [127] [128] [129] [130]
+[131] [132] [133] [134]) [135] (ditg.py [136]) [137] [138
 
 ]
 Appendix B.
-(RLNT/Traffic_Real_Hwd.py [141] [142] [143] [144] [145]) [146]
-(RLNT/Start_ITGRecv.py) (RLNT/ditg.py [147]) [148] (RLNT/Set_Queue.py [149])
-(RLNT/SendTime.py [150])
+(RLNT/Traffic_Real_Hwd.py [139] [140] [141] [142] [143]) [144]
+(RLNT/Start_ITGRecv.py) (RLNT/ditg.py [145]) [146] (RLNT/Set_Queue.py [147])
+(RLNT/SendTime.py [148])
 ("C:\Program Files\MiKTeX\tex/latex/listings\lstlang1.sty"
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
@@ -1444,8 +1443,8 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 ("C:\Program Files\MiKTeX\tex/latex/listings\lstmisc.sty"
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-) [151]
-(RLNT/LetturaSerialePython.ino [152]) [153]
+) [149]
+(RLNT/LetturaSerialePython.ino [150]) [151]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 394.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 394.
  (mainTesi2.aux
@@ -1453,14 +1452,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 394.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 394.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 394.
 Package rerunfilecheck Info: File `mainTesi2.out' has not changed.
-(rerunfilecheck)             Checksum: E29F8436A3573DB1C1D13232F5C3246D;3599.
+(rerunfilecheck)             Checksum: 2B532C2076C98B477E7A66164D016E4A;3540.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 394.
  ) 
 Here is how much of TeX's memory you used:
- 20879 strings out of 480790
- 322351 string characters out of 2907058
- 1263146 words of memory out of 3000000
- 32076 multiletter control sequences out of 15000+200000
+ 20876 strings out of 480790
+ 322323 string characters out of 2907058
+ 1264144 words of memory out of 3000000
+ 32075 multiletter control sequences out of 15000+200000
  561061 words of font info for 79 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  59i,15n,124p,4582b,2415s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1481,9 +1480,9 @@ w/courier/ucrb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pf
 b><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/M
 iKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw
 /times/utmri8a.pfb>
-Output written on mainTesi2.pdf (165 pages, 6629315 bytes).
+Output written on mainTesi2.pdf (163 pages, 6627173 bytes).
 PDF statistics:
- 6668 PDF objects out of 7423 (max. 8388607)
- 4333 named destinations out of 5155 (max. 500000)
- 522 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6654 PDF objects out of 7423 (max. 8388607)
+ 4331 named destinations out of 5155 (max. 500000)
+ 514 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -71,6 +71,140 @@ E.~Reticcioli, G.~D. Girolamo, F.~Smarra, A.~Carmenini, A.~D’Innocenzo,
   bandwidth dynamic optimization, European Conference on Networks and
   Communications (EuCNC), 2020 (2020).
 
+\bibitem{Tan2017}
+L.~Tan, Resource Allocation and Performance Optimization in Communication
+  Networks and the Internet, CRC press, 2017.
+
+\bibitem{Abdelmoniem2019}
+A.~M. Abdelmoniem, B.~Bensaou, Hysteresis-based active queue management for tcp
+  traffic in data centers, in: IEEE INFOCOM 2019-IEEE Conference on Computer
+  Communications, IEEE, 2019, pp. 1621--1629.
+
+\bibitem{Boero2016}
+L.~Boero, M.~Cello, C.~Garibotto, M.~Marchese, M.~Mongelli, {BeaQoS}: {Load}
+  balancing and deadline management of queues in an {OpenFlow} {SDN} switch,
+  Computer Networks 106 (2016) 161--170.
+
+\bibitem{Umadevi}
+K.~S. {Umadevi}, M.~S.~S. {Pranay}, K.~{Rachana}, Multilevel queue scheduling
+  in software defined networks, in: 2017 Innovations in Power and Advanced
+  Computing Technologies (i-PACT), 2017, pp. 1--4.
+\newblock \href {https://doi.org/10.1109/IPACT.2017.8245144}
+  {\path{doi:10.1109/IPACT.2017.8245144}}.
+
+\bibitem{Olariu}
+C.~{Olariu}, M.~{Zuber}, C.~{Thorpe}, Delay-based priority queueing for voip
+  over software defined networks, in: 2017 IFIP/IEEE Symposium on Integrated
+  Network and Service Management (IM), 2017, pp. 652--655.
+\newblock \href {https://doi.org/10.23919/INM.2017.7987352}
+  {\path{doi:10.23919/INM.2017.7987352}}.
+
+\bibitem{Haiyan}
+M.~{Haiyan}, Y.~{Jinyao}, P.~{Georgopoulos}, B.~{Plattner}, Towards sdn based
+  queuing delay estimation, China Communications 13~(3) (2016) 27--36.
+\newblock \href {https://doi.org/10.1109/CC.2016.7445500}
+  {\path{doi:10.1109/CC.2016.7445500}}.
+
+\bibitem{ChenWang}
+Y.~{Chen}, L.~{Wang}, F.~{Lin}, B.~P. {Lin}, Deterministic quality of service
+  guarantee for dynamic service chaining in software defined networking, IEEE
+  Transactions on Network and Service Management 14~(4) (2017) 991--1002.
+\newblock \href {https://doi.org/10.1109/TNSM.2017.2758328}
+  {\path{doi:10.1109/TNSM.2017.2758328}}.
+
+\bibitem{Najjar}
+A.~{Al-Najjar}, S.~{Layeghy}, M.~{Portmann}, J.~{Indulska}, Enhancing quality
+  of experience of voip traffic in sdn based end-hosts, in: 2018 28th
+  International Telecommunication Networks and Applications Conference (ITNAC),
+  2018, pp. 1--8.
+\newblock \href {https://doi.org/10.1109/ATNAC.2018.8615286}
+  {\path{doi:10.1109/ATNAC.2018.8615286}}.
+
+\bibitem{MDPSDNSURV}
+Q.-L. Li, J.-Y. Ma, R.-N. Fan, L.~Xia, An Overview for Markov Decision
+  Processes in Queues and Networks, 2019, pp. 44--71.
+\newblock \href {https://doi.org/10.1007/978-981-15-0864-6_3}
+  {\path{doi:10.1007/978-981-15-0864-6_3}}.
+
+\bibitem{ParameterStateEst}
+A.~Asanjarani, Y.~Nazarathy, P.~K. Pollett, Parameter and state estimation in
+  queues and related stochastic models: A bibliography (2017).
+\newblock \href {http://arxiv.org/abs/1701.08338} {\path{arXiv:1701.08338}}.
+
+\bibitem{Sood2016PerformanceAO}
+K.~Sood, S.~Yu, Y.~Xiang, Performance analysis of software-defined network
+  switch using \$m/geo/1\$ model, IEEE Communications Letters 20 (2016)
+  2522--2525.
+
+\bibitem{SINGH201824}
+D.~Singh, B.~Ng, Y.-C. Lai, Y.-D. Lin, W.~K. Seah, Modelling software-defined
+  networking: Software and hardware switches, Journal of Network and Computer
+  Applications 122 (2018) 24 -- 36.
+
+\bibitem{SchoffMPC}
+R.~Schoffauer, G.~Wunder, Model-predictive control for discrete-time queueing
+  networks with varying topology, ArXiv abs/2004.01985 (2020).
+
+\bibitem{WANG2012120}
+P.~Wang, H.~Chen, X.~Yang, Y.~Ma, Design and analysis of a model predictive
+  controller for active queue management, ISA Transactions 51~(1) (2012) 120 --
+  131.
+
+\bibitem{TCPSTATESPACE}
+{Ki Baek Kim}, Design of feedback controls supporting tcp based on the
+  state-space approach, IEEE Transactions on Automatic Control 51~(7) (2006)
+  1086--1099.
+\newblock \href {https://doi.org/10.1109/TAC.2006.878749}
+  {\path{doi:10.1109/TAC.2006.878749}}.
+
+\bibitem{Kim2019}
+J.~{Kim}, G.~{Hwang}, Prediction based efficient online bandwidth allocation
+  method, IEEE Communications Letters 23~(12) (2019) 2330--2334.
+\newblock \href {https://doi.org/10.1109/LCOMM.2019.2947895}
+  {\path{doi:10.1109/LCOMM.2019.2947895}}.
+
+\bibitem{Aljoby2019}
+W.~{Aljoby}, X.~{Wang}, T.~Z.~J. {Fu}, R.~T.~B. {Ma}, On sdn-enabled online and
+  dynamic bandwidth allocation for stream analytics, IEEE Journal on Selected
+  Areas in Communications 37~(8) (2019) 1688--1702.
+\newblock \href {https://doi.org/10.1109/JSAC.2019.2927062}
+  {\path{doi:10.1109/JSAC.2019.2927062}}.
+
+\bibitem{Lebedenko2018}
+T.~Lebedenko, O.~Yeremenko, S.~Harkusha, A.~S. Ali, Dynamic model of queue
+  management based on resource allocation in telecommunication networks, in:
+  2018 14th International Conference on Advanced Trends in Radioelecrtronics,
+  Telecommunications and Computer Engineering (TCSET), IEEE, 2018, pp.
+  1035--1038.
+
+\bibitem{Le2007}
+L.~{Le}, J.~{Aikat}, K.~{Jeffay}, F.~D. {Smith}, The effects of active queue
+  management and explicit congestion notification on web performance, IEEE/ACM
+  Transactions on Networking 15~(6) (2007) 1217--1230.
+\newblock \href {https://doi.org/10.1109/TNET.2007.910583}
+  {\path{doi:10.1109/TNET.2007.910583}}.
+
+\bibitem{SouravGhosh2005}
+and {Sourav Ghosh}, R.~{Rajkumar}, J.~{Hansen}, J.~{Lehoczky}, Scalable
+  {QoS}-based resource allocation in hierarchical networked environment, in:
+  Proc. 11th IEEE Real Time and Embedded Technology and Applications Symp,
+  2005, pp. 256--267.
+\newblock \href {https://doi.org/10.1109/RTAS.2005.47}
+  {\path{doi:10.1109/RTAS.2005.47}}.
+
+\bibitem{Wang2018}
+M.~{Wang}, Y.~{Cui}, X.~{Wang}, S.~{Xiao}, J.~{Jiang}, Machine learning for
+  networking: Workflow, advances and opportunities, IEEE Network 32~(2) (2018)
+  92--99.
+\newblock \href {https://doi.org/10.1109/MNET.2017.1700200}
+  {\path{doi:10.1109/MNET.2017.1700200}}.
+
+\bibitem{Usama2017}
+M.~Usama, J.~Qadir, A.~Raza, H.~Arif, K.-L.~A. Yau, Y.~Elkhatib, A.~Hussain,
+  A.~Al-Fuqaha, Unsupervised {Machine} {Learning} for {Networking}:
+  {Techniques}, {Applications} and {Research} {Challenges}, arXiv:1709.06599
+  [cs]ArXiv: 1709.06599 (Sep. 2017).
+
 \bibitem{Xie2019}
 J.~Xie, F.~R. Yu, T.~Huang, R.~Xie, J.~Liu, C.~Wang, Y.~Liu, A {Survey} of
   {Machine} {Learning} {Techniques} {Applied} to {Software} {Defined}
@@ -79,9 +213,21 @@ J.~Xie, F.~R. Yu, T.~Huang, R.~Xie, J.~Liu, C.~Wang, Y.~Liu, A {Survey} of
 \newblock \href {https://doi.org/10.1109/COMST.2018.2866942}
   {\path{doi:10.1109/COMST.2018.2866942}}.
 
-\bibitem{ONF}
-\href{https://www.opennetworking.org/}{Open networking foundation}.
-\newline\urlprefix\url{https://www.opennetworking.org/}
+\bibitem{Xu2018}
+G.~Xu, Y.~Mu, J.~Liu, Inclusion of artificial intelligence in communication
+  networks and services (Jan. 2018).
+
+\bibitem{Clark2003}
+D.~D. Clark, C.~Partridge, J.~C. Ramming, J.~T. Wroclawski, A knowledge plane
+  for the internet, in: Proceedings of the 2003 conference on Applications,
+  technologies, architectures, and protocols for computer communications, ACM,
+  2003, pp. 3--10.
+
+\bibitem{Mestres2017}
+A.~Mestres, A.~Rodriguez-Natal, J.~Carner, P.~Barlet-Ros, E.~Alarc{\'o}n,
+  M.~Sol{\'e}, V.~Munt{\'e}s-Mulero, D.~Meyer, S.~Barkai, M.~J. Hibbett,
+  et~al., Knowledge-defined networking, ACM SIGCOMM Computer Communication
+  Review 47~(3) (2017) 2--10.
 
 \bibitem{Sezer2013}
 S.~Sezer, S.~Scott-Hayward, P.~K. Chouhan, B.~Fraser, D.~Lake, J.~Finnegan,
@@ -90,6 +236,142 @@ S.~Sezer, S.~Scott-Hayward, P.~K. Chouhan, B.~Fraser, D.~Lake, J.~Finnegan,
   (2013) 36--43.
 \newblock \href {https://doi.org/10.1109/MCOM.2013.6553676}
   {\path{doi:10.1109/MCOM.2013.6553676}}.
+
+\bibitem{Chen2015}
+T.~{Chen}, M.~{Matinmikko}, X.~{Chen}, X.~{Zhou}, P.~{Ahokangas}, Software
+  defined mobile networks: concept, survey, and research directions, IEEE
+  Communications Magazine 53~(11) (2015) 126--133.
+\newblock \href {https://doi.org/10.1109/MCOM.2015.7321981}
+  {\path{doi:10.1109/MCOM.2015.7321981}}.
+
+\bibitem{Jarschel2014}
+M.~{Jarschel}, T.~{Zinner}, T.~{Hossfeld}, P.~{Tran-Gia}, W.~{Kellerer},
+  Interfaces, attributes, and use cases: A compass for sdn, IEEE Communications
+  Magazine 52~(6) (2014) 210--217.
+\newblock \href {https://doi.org/10.1109/MCOM.2014.6829966}
+  {\path{doi:10.1109/MCOM.2014.6829966}}.
+
+\bibitem{Ameigeiras2015}
+P.~{Ameigeiras}, J.~J. {Ramos-munoz}, L.~{Schumacher}, J.~{Prados-Garzon},
+  J.~{Navarro-Ortiz}, J.~M. {Lopez-soler}, Link-level access cloud architecture
+  design based on sdn for 5g networks, IEEE Network 29~(2) (2015) 24--31.
+\newblock \href {https://doi.org/10.1109/MNET.2015.7064899}
+  {\path{doi:10.1109/MNET.2015.7064899}}.
+
+\bibitem{Yeremenko2018}
+O.~Yeremenko, O.~Simonenko, Mathematical model of queue management with flows
+  aggregation and bandwidth allocation, Advances in Computer Science for
+  Engineering and Education 754 (2018) 165.
+
+\bibitem{John2017}
+J.~John, R.~Balan, Priority queuing technique promoting deadline sensitive data
+  transfers in router based heterogeneous networks, International Journal of
+  Applied Engineering Research 12~(15) (2017) 4899--4903.
+
+\bibitem{Yang2011}
+J.~Yang, S.~Ulukus, Trading {Rate} for {Balanced} {Queue} {Lengths} for
+  {Network} {Delay} {Minimization}, IEEE Journal on Selected Areas in
+  Communications 29~(5) (2011) 988--996.
+\newblock \href {https://doi.org/10.1109/JSAC.2011.110509}
+  {\path{doi:10.1109/JSAC.2011.110509}}.
+
+\bibitem{Bahnasy2018}
+M.~Bahnasy, H.~Elbiaze, B.~Boughzala,
+  \href{http://www.sciencedirect.com/science/article/pii/S108480451730423X}{Zero-queue
+  ethernet congestion control protocol based on available bandwidth
+  estimation}, Journal of Network and Computer Applications 105 (2018) 1--20.
+\newblock \href {https://doi.org/10.1016/j.jnca.2017.12.016}
+  {\path{doi:10.1016/j.jnca.2017.12.016}}.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S108480451730423X}
+
+\bibitem{Zhang2014}
+J.~Zhang, F.~Ren, X.~Yue, R.~Shu, C.~Lin, Sharing {Bandwidth} by {Allocating}
+  {Switch} {Buffer} in {Data} {Center} {Networks}, IEEE Journal on Selected
+  Areas in Communications 32~(1) (2014) 39--51.
+\newblock \href {https://doi.org/10.1109/JSAC.2014.140105}
+  {\path{doi:10.1109/JSAC.2014.140105}}.
+
+\bibitem{Cello2016}
+M.~Cello, M.~Marchese, M.~Mongelli, On the {QoS} {Estimation} in an {OpenFlow}
+  {Network}: {The} {Packet} {Loss} {Case}, IEEE Communications Letters 20~(3)
+  (2016) 554--557.
+
+\bibitem{LeeIEEEToN2007}
+J.~Lee, S.~Bohacek, J.~Hespanha, K.~Obraczka, Modeling communication networks
+  with hybrid systems, IEEE/ACM Transactions on Networking 15~(3) (2007)
+  630--643.
+
+\bibitem{DiBenedetto2014}
+M.~D. {Di Benedetto}, A.~{Di Loreto}, A.~{D'Innocenzo}, T.~{Ionta}, Modeling of
+  traffic congestion and re-routing in a service provider network, in: Proc.
+  IEEE Int. Conf. Communications Workshops (ICC), 2014, pp. 557--562.
+\newblock \href {https://doi.org/10.1109/ICCW.2014.6881257}
+  {\path{doi:10.1109/ICCW.2014.6881257}}.
+
+\bibitem{Mulinka2018}
+P.~Mulinka, P.~Casas, Stream-based machine learning for network security and
+  anomaly detection, in: Proceedings of the 2018 Workshop on Big Data Analytics
+  and Machine Learning for Data Communication Networks, ACM, 2018, pp. 1--7.
+
+\bibitem{Patcha2007}
+A.~Patcha, J.-M. Park, An overview of anomaly detection techniques: Existing
+  solutions and latest technological trends, Computer networks 51~(12) (2007)
+  3448--3470.
+
+\bibitem{Nguyen2008}
+T.~T. Nguyen, G.~Armitage, A survey of techniques for internet traffic
+  classification using machine learning, IEEE communications surveys \&
+  tutorials 10~(4) (2008) 56--76.
+
+\bibitem{Bkassiny2013}
+M.~{Bkassiny}, Y.~{Li}, S.~K. {Jayaweera}, A survey on machine-learning
+  techniques in cognitive radios, IEEE Communications Surveys Tutorials 15~(3)
+  (2013) 1136--1159.
+
+\bibitem{Alsheikh2014}
+M.~A. {Alsheikh}, S.~{Lin}, D.~{Niyato}, H.~{Tan}, Machine learning in wireless
+  sensor networks: Algorithms, strategies, and applications, IEEE
+  Communications Surveys Tutorials 16~(4) (2014) 1996--2018.
+
+\bibitem{Wang2015}
+X.~{Wang}, X.~{Li}, V.~C.~M. {Leung}, Artificial intelligence-based techniques
+  for emerging heterogeneous network: State of the arts, opportunities, and
+  challenges, IEEE Access 3 (2015) 1379--1391.
+
+\bibitem{Buczak2016}
+A.~L. {Buczak}, E.~{Guven}, A survey of data mining and machine learning
+  methods for cyber security intrusion detection, IEEE Communications Surveys
+  Tutorials 18~(2) (2016) 1153--1176.
+
+\bibitem{Klaine2017}
+P.~V. {Klaine}, M.~A. {Imran}, O.~{Onireti}, R.~D. {Souza}, A survey of machine
+  learning techniques applied to self-organizing cellular networks, IEEE
+  Communications Surveys Tutorials 19~(4) (2017) 2392--2431.
+
+\bibitem{Fadlullah2017}
+Z.~M. {Fadlullah}, F.~{Tang}, B.~{Mao}, N.~{Kato}, O.~{Akashi}, T.~{Inoue},
+  K.~{Mizutani}, State-of-the-art deep learning: Evolving machine intelligence
+  toward tomorrow’s intelligent network traffic control systems, IEEE
+  Communications Surveys Tutorials 19~(4) (2017) 2432--2455.
+
+\bibitem{Hodo2017}
+E.~Hodo, X.~Bellekens, A.~Hamilton, C.~Tachtatzis, R.~Atkinson, Shallow and
+  deep networks intrusion detection system: A taxonomy and survey\href
+  {http://arxiv.org/abs/1701.02145v1} {\path{arXiv:1701.02145v1}}.
+
+\bibitem{Zhou2017}
+X.~Zhou, M.~Sun, G.~Y. Li, B.-H. Juang, Intelligent wireless communications
+  enabled by cognitive radio and machine learning\href
+  {http://arxiv.org/abs/1710.11240v4} {\path{arXiv:1710.11240v4}}.
+
+\bibitem{Chen2017}
+M.~Chen, U.~Challita, W.~Saad, C.~Yin, M.~Debbah, Artificial neural
+  networks-based machine learning for wireless networks: A tutorial\href
+  {http://arxiv.org/abs/1710.02913v2} {\path{arXiv:1710.02913v2}}.
+
+\bibitem{ONF}
+\href{https://www.opennetworking.org/}{Open networking foundation}.
+\newline\urlprefix\url{https://www.opennetworking.org/}
 
 \bibitem{OVS}
 \href{https://www.openvswitch.org/}{Open vSwitch}, 2019.
@@ -304,13 +586,6 @@ I.~T. Haque, N.~Abu-Ghazaleh, Wireless {Software} {Defined} {Networking}: {A}
   2713--2737.
 \newblock \href {https://doi.org/10.1109/COMST.2016.2571118}
   {\path{doi:10.1109/COMST.2016.2571118}}.
-
-\bibitem{Chen2015}
-T.~{Chen}, M.~{Matinmikko}, X.~{Chen}, X.~{Zhou}, P.~{Ahokangas}, Software
-  defined mobile networks: concept, survey, and research directions, IEEE
-  Communications Magazine 53~(11) (2015) 126--133.
-\newblock \href {https://doi.org/10.1109/MCOM.2015.7321981}
-  {\path{doi:10.1109/MCOM.2015.7321981}}.
 
 \bibitem{Bera2017}
 S.~Bera, S.~Misra, A.~V. Vasilakos, Software-{Defined} {Networking} for
@@ -580,281 +855,6 @@ L.~P. Kaelbling, M.~L. Littman, A.~W. Moore,
 \newblock \href {https://doi.org/10.1613/jair.301}
   {\path{doi:10.1613/jair.301}}.
 \newline\urlprefix\url{https://www.jair.org/index.php/jair/article/view/10166}
-
-\bibitem{Tan2017}
-L.~Tan, Resource Allocation and Performance Optimization in Communication
-  Networks and the Internet, CRC press, 2017.
-
-\bibitem{Abdelmoniem2019}
-A.~M. Abdelmoniem, B.~Bensaou, Hysteresis-based active queue management for tcp
-  traffic in data centers, in: IEEE INFOCOM 2019-IEEE Conference on Computer
-  Communications, IEEE, 2019, pp. 1621--1629.
-
-\bibitem{Boero2016}
-L.~Boero, M.~Cello, C.~Garibotto, M.~Marchese, M.~Mongelli, {BeaQoS}: {Load}
-  balancing and deadline management of queues in an {OpenFlow} {SDN} switch,
-  Computer Networks 106 (2016) 161--170.
-
-\bibitem{Umadevi}
-K.~S. {Umadevi}, M.~S.~S. {Pranay}, K.~{Rachana}, Multilevel queue scheduling
-  in software defined networks, in: 2017 Innovations in Power and Advanced
-  Computing Technologies (i-PACT), 2017, pp. 1--4.
-\newblock \href {https://doi.org/10.1109/IPACT.2017.8245144}
-  {\path{doi:10.1109/IPACT.2017.8245144}}.
-
-\bibitem{Olariu}
-C.~{Olariu}, M.~{Zuber}, C.~{Thorpe}, Delay-based priority queueing for voip
-  over software defined networks, in: 2017 IFIP/IEEE Symposium on Integrated
-  Network and Service Management (IM), 2017, pp. 652--655.
-\newblock \href {https://doi.org/10.23919/INM.2017.7987352}
-  {\path{doi:10.23919/INM.2017.7987352}}.
-
-\bibitem{Haiyan}
-M.~{Haiyan}, Y.~{Jinyao}, P.~{Georgopoulos}, B.~{Plattner}, Towards sdn based
-  queuing delay estimation, China Communications 13~(3) (2016) 27--36.
-\newblock \href {https://doi.org/10.1109/CC.2016.7445500}
-  {\path{doi:10.1109/CC.2016.7445500}}.
-
-\bibitem{ChenWang}
-Y.~{Chen}, L.~{Wang}, F.~{Lin}, B.~P. {Lin}, Deterministic quality of service
-  guarantee for dynamic service chaining in software defined networking, IEEE
-  Transactions on Network and Service Management 14~(4) (2017) 991--1002.
-\newblock \href {https://doi.org/10.1109/TNSM.2017.2758328}
-  {\path{doi:10.1109/TNSM.2017.2758328}}.
-
-\bibitem{Najjar}
-A.~{Al-Najjar}, S.~{Layeghy}, M.~{Portmann}, J.~{Indulska}, Enhancing quality
-  of experience of voip traffic in sdn based end-hosts, in: 2018 28th
-  International Telecommunication Networks and Applications Conference (ITNAC),
-  2018, pp. 1--8.
-\newblock \href {https://doi.org/10.1109/ATNAC.2018.8615286}
-  {\path{doi:10.1109/ATNAC.2018.8615286}}.
-
-\bibitem{MDPSDNSURV}
-Q.-L. Li, J.-Y. Ma, R.-N. Fan, L.~Xia, An Overview for Markov Decision
-  Processes in Queues and Networks, 2019, pp. 44--71.
-\newblock \href {https://doi.org/10.1007/978-981-15-0864-6_3}
-  {\path{doi:10.1007/978-981-15-0864-6_3}}.
-
-\bibitem{ParameterStateEst}
-A.~Asanjarani, Y.~Nazarathy, P.~K. Pollett, Parameter and state estimation in
-  queues and related stochastic models: A bibliography (2017).
-\newblock \href {http://arxiv.org/abs/1701.08338} {\path{arXiv:1701.08338}}.
-
-\bibitem{Sood2016PerformanceAO}
-K.~Sood, S.~Yu, Y.~Xiang, Performance analysis of software-defined network
-  switch using \$m/geo/1\$ model, IEEE Communications Letters 20 (2016)
-  2522--2525.
-
-\bibitem{SINGH201824}
-D.~Singh, B.~Ng, Y.-C. Lai, Y.-D. Lin, W.~K. Seah, Modelling software-defined
-  networking: Software and hardware switches, Journal of Network and Computer
-  Applications 122 (2018) 24 -- 36.
-
-\bibitem{SchoffMPC}
-R.~Schoffauer, G.~Wunder, Model-predictive control for discrete-time queueing
-  networks with varying topology, ArXiv abs/2004.01985 (2020).
-
-\bibitem{WANG2012120}
-P.~Wang, H.~Chen, X.~Yang, Y.~Ma, Design and analysis of a model predictive
-  controller for active queue management, ISA Transactions 51~(1) (2012) 120 --
-  131.
-
-\bibitem{TCPSTATESPACE}
-{Ki Baek Kim}, Design of feedback controls supporting tcp based on the
-  state-space approach, IEEE Transactions on Automatic Control 51~(7) (2006)
-  1086--1099.
-\newblock \href {https://doi.org/10.1109/TAC.2006.878749}
-  {\path{doi:10.1109/TAC.2006.878749}}.
-
-\bibitem{Kim2019}
-J.~{Kim}, G.~{Hwang}, Prediction based efficient online bandwidth allocation
-  method, IEEE Communications Letters 23~(12) (2019) 2330--2334.
-\newblock \href {https://doi.org/10.1109/LCOMM.2019.2947895}
-  {\path{doi:10.1109/LCOMM.2019.2947895}}.
-
-\bibitem{Aljoby2019}
-W.~{Aljoby}, X.~{Wang}, T.~Z.~J. {Fu}, R.~T.~B. {Ma}, On sdn-enabled online and
-  dynamic bandwidth allocation for stream analytics, IEEE Journal on Selected
-  Areas in Communications 37~(8) (2019) 1688--1702.
-\newblock \href {https://doi.org/10.1109/JSAC.2019.2927062}
-  {\path{doi:10.1109/JSAC.2019.2927062}}.
-
-\bibitem{Lebedenko2018}
-T.~Lebedenko, O.~Yeremenko, S.~Harkusha, A.~S. Ali, Dynamic model of queue
-  management based on resource allocation in telecommunication networks, in:
-  2018 14th International Conference on Advanced Trends in Radioelecrtronics,
-  Telecommunications and Computer Engineering (TCSET), IEEE, 2018, pp.
-  1035--1038.
-
-\bibitem{Le2007}
-L.~{Le}, J.~{Aikat}, K.~{Jeffay}, F.~D. {Smith}, The effects of active queue
-  management and explicit congestion notification on web performance, IEEE/ACM
-  Transactions on Networking 15~(6) (2007) 1217--1230.
-\newblock \href {https://doi.org/10.1109/TNET.2007.910583}
-  {\path{doi:10.1109/TNET.2007.910583}}.
-
-\bibitem{SouravGhosh2005}
-and {Sourav Ghosh}, R.~{Rajkumar}, J.~{Hansen}, J.~{Lehoczky}, Scalable
-  {QoS}-based resource allocation in hierarchical networked environment, in:
-  Proc. 11th IEEE Real Time and Embedded Technology and Applications Symp,
-  2005, pp. 256--267.
-\newblock \href {https://doi.org/10.1109/RTAS.2005.47}
-  {\path{doi:10.1109/RTAS.2005.47}}.
-
-\bibitem{Wang2018}
-M.~{Wang}, Y.~{Cui}, X.~{Wang}, S.~{Xiao}, J.~{Jiang}, Machine learning for
-  networking: Workflow, advances and opportunities, IEEE Network 32~(2) (2018)
-  92--99.
-\newblock \href {https://doi.org/10.1109/MNET.2017.1700200}
-  {\path{doi:10.1109/MNET.2017.1700200}}.
-
-\bibitem{Usama2017}
-M.~Usama, J.~Qadir, A.~Raza, H.~Arif, K.-L.~A. Yau, Y.~Elkhatib, A.~Hussain,
-  A.~Al-Fuqaha, Unsupervised {Machine} {Learning} for {Networking}:
-  {Techniques}, {Applications} and {Research} {Challenges}, arXiv:1709.06599
-  [cs]ArXiv: 1709.06599 (Sep. 2017).
-
-\bibitem{Xu2018}
-G.~Xu, Y.~Mu, J.~Liu, Inclusion of artificial intelligence in communication
-  networks and services (Jan. 2018).
-
-\bibitem{Clark2003}
-D.~D. Clark, C.~Partridge, J.~C. Ramming, J.~T. Wroclawski, A knowledge plane
-  for the internet, in: Proceedings of the 2003 conference on Applications,
-  technologies, architectures, and protocols for computer communications, ACM,
-  2003, pp. 3--10.
-
-\bibitem{Mestres2017}
-A.~Mestres, A.~Rodriguez-Natal, J.~Carner, P.~Barlet-Ros, E.~Alarc{\'o}n,
-  M.~Sol{\'e}, V.~Munt{\'e}s-Mulero, D.~Meyer, S.~Barkai, M.~J. Hibbett,
-  et~al., Knowledge-defined networking, ACM SIGCOMM Computer Communication
-  Review 47~(3) (2017) 2--10.
-
-\bibitem{Jarschel2014}
-M.~{Jarschel}, T.~{Zinner}, T.~{Hossfeld}, P.~{Tran-Gia}, W.~{Kellerer},
-  Interfaces, attributes, and use cases: A compass for sdn, IEEE Communications
-  Magazine 52~(6) (2014) 210--217.
-\newblock \href {https://doi.org/10.1109/MCOM.2014.6829966}
-  {\path{doi:10.1109/MCOM.2014.6829966}}.
-
-\bibitem{Ameigeiras2015}
-P.~{Ameigeiras}, J.~J. {Ramos-munoz}, L.~{Schumacher}, J.~{Prados-Garzon},
-  J.~{Navarro-Ortiz}, J.~M. {Lopez-soler}, Link-level access cloud architecture
-  design based on sdn for 5g networks, IEEE Network 29~(2) (2015) 24--31.
-\newblock \href {https://doi.org/10.1109/MNET.2015.7064899}
-  {\path{doi:10.1109/MNET.2015.7064899}}.
-
-\bibitem{Yeremenko2018}
-O.~Yeremenko, O.~Simonenko, Mathematical model of queue management with flows
-  aggregation and bandwidth allocation, Advances in Computer Science for
-  Engineering and Education 754 (2018) 165.
-
-\bibitem{John2017}
-J.~John, R.~Balan, Priority queuing technique promoting deadline sensitive data
-  transfers in router based heterogeneous networks, International Journal of
-  Applied Engineering Research 12~(15) (2017) 4899--4903.
-
-\bibitem{Yang2011}
-J.~Yang, S.~Ulukus, Trading {Rate} for {Balanced} {Queue} {Lengths} for
-  {Network} {Delay} {Minimization}, IEEE Journal on Selected Areas in
-  Communications 29~(5) (2011) 988--996.
-\newblock \href {https://doi.org/10.1109/JSAC.2011.110509}
-  {\path{doi:10.1109/JSAC.2011.110509}}.
-
-\bibitem{Bahnasy2018}
-M.~Bahnasy, H.~Elbiaze, B.~Boughzala,
-  \href{http://www.sciencedirect.com/science/article/pii/S108480451730423X}{Zero-queue
-  ethernet congestion control protocol based on available bandwidth
-  estimation}, Journal of Network and Computer Applications 105 (2018) 1--20.
-\newblock \href {https://doi.org/10.1016/j.jnca.2017.12.016}
-  {\path{doi:10.1016/j.jnca.2017.12.016}}.
-\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S108480451730423X}
-
-\bibitem{Zhang2014}
-J.~Zhang, F.~Ren, X.~Yue, R.~Shu, C.~Lin, Sharing {Bandwidth} by {Allocating}
-  {Switch} {Buffer} in {Data} {Center} {Networks}, IEEE Journal on Selected
-  Areas in Communications 32~(1) (2014) 39--51.
-\newblock \href {https://doi.org/10.1109/JSAC.2014.140105}
-  {\path{doi:10.1109/JSAC.2014.140105}}.
-
-\bibitem{Cello2016}
-M.~Cello, M.~Marchese, M.~Mongelli, On the {QoS} {Estimation} in an {OpenFlow}
-  {Network}: {The} {Packet} {Loss} {Case}, IEEE Communications Letters 20~(3)
-  (2016) 554--557.
-
-\bibitem{LeeIEEEToN2007}
-J.~Lee, S.~Bohacek, J.~Hespanha, K.~Obraczka, Modeling communication networks
-  with hybrid systems, IEEE/ACM Transactions on Networking 15~(3) (2007)
-  630--643.
-
-\bibitem{DiBenedetto2014}
-M.~D. {Di Benedetto}, A.~{Di Loreto}, A.~{D'Innocenzo}, T.~{Ionta}, Modeling of
-  traffic congestion and re-routing in a service provider network, in: Proc.
-  IEEE Int. Conf. Communications Workshops (ICC), 2014, pp. 557--562.
-\newblock \href {https://doi.org/10.1109/ICCW.2014.6881257}
-  {\path{doi:10.1109/ICCW.2014.6881257}}.
-
-\bibitem{Mulinka2018}
-P.~Mulinka, P.~Casas, Stream-based machine learning for network security and
-  anomaly detection, in: Proceedings of the 2018 Workshop on Big Data Analytics
-  and Machine Learning for Data Communication Networks, ACM, 2018, pp. 1--7.
-
-\bibitem{Patcha2007}
-A.~Patcha, J.-M. Park, An overview of anomaly detection techniques: Existing
-  solutions and latest technological trends, Computer networks 51~(12) (2007)
-  3448--3470.
-
-\bibitem{Nguyen2008}
-T.~T. Nguyen, G.~Armitage, A survey of techniques for internet traffic
-  classification using machine learning, IEEE communications surveys \&
-  tutorials 10~(4) (2008) 56--76.
-
-\bibitem{Bkassiny2013}
-M.~{Bkassiny}, Y.~{Li}, S.~K. {Jayaweera}, A survey on machine-learning
-  techniques in cognitive radios, IEEE Communications Surveys Tutorials 15~(3)
-  (2013) 1136--1159.
-
-\bibitem{Alsheikh2014}
-M.~A. {Alsheikh}, S.~{Lin}, D.~{Niyato}, H.~{Tan}, Machine learning in wireless
-  sensor networks: Algorithms, strategies, and applications, IEEE
-  Communications Surveys Tutorials 16~(4) (2014) 1996--2018.
-
-\bibitem{Wang2015}
-X.~{Wang}, X.~{Li}, V.~C.~M. {Leung}, Artificial intelligence-based techniques
-  for emerging heterogeneous network: State of the arts, opportunities, and
-  challenges, IEEE Access 3 (2015) 1379--1391.
-
-\bibitem{Buczak2016}
-A.~L. {Buczak}, E.~{Guven}, A survey of data mining and machine learning
-  methods for cyber security intrusion detection, IEEE Communications Surveys
-  Tutorials 18~(2) (2016) 1153--1176.
-
-\bibitem{Klaine2017}
-P.~V. {Klaine}, M.~A. {Imran}, O.~{Onireti}, R.~D. {Souza}, A survey of machine
-  learning techniques applied to self-organizing cellular networks, IEEE
-  Communications Surveys Tutorials 19~(4) (2017) 2392--2431.
-
-\bibitem{Fadlullah2017}
-Z.~M. {Fadlullah}, F.~{Tang}, B.~{Mao}, N.~{Kato}, O.~{Akashi}, T.~{Inoue},
-  K.~{Mizutani}, State-of-the-art deep learning: Evolving machine intelligence
-  toward tomorrow’s intelligent network traffic control systems, IEEE
-  Communications Surveys Tutorials 19~(4) (2017) 2432--2455.
-
-\bibitem{Hodo2017}
-E.~Hodo, X.~Bellekens, A.~Hamilton, C.~Tachtatzis, R.~Atkinson, Shallow and
-  deep networks intrusion detection system: A taxonomy and survey\href
-  {http://arxiv.org/abs/1701.02145v1} {\path{arXiv:1701.02145v1}}.
-
-\bibitem{Zhou2017}
-X.~Zhou, M.~Sun, G.~Y. Li, B.-H. Juang, Intelligent wireless communications
-  enabled by cognitive radio and machine learning\href
-  {http://arxiv.org/abs/1710.11240v4} {\path{arXiv:1710.11240v4}}.
-
-\bibitem{Chen2017}
-M.~Chen, U.~Challita, W.~Saad, C.~Yin, M.~Debbah, Artificial neural
-  networks-based machine learning for wireless networks: A tutorial\href
-  {http://arxiv.org/abs/1710.02913v2} {\path{arXiv:1710.02913v2}}.
 
 \bibitem{Mininet}
 \href{http://mininet.org/}{Mininet}, 2019.
